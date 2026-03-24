@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0b09'/%3E%3Cpolygon points='8,4 22,4 28,60 14,60' fill='%23f0ebe2'/%3E%3Cpolygon points='28,60 40,60 54,4 40,4' fill='%23ff4d00'/%3E%3C/svg%3E" />
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,7 +32,7 @@
     body {
       background: var(--bg);
       color: var(--cream);
-      font-family: var(--font-b);
+      font-family: var(--font-b),sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       cursor: none;
@@ -77,7 +78,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -52%);
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-weight: 900;
       font-size: clamp(20vw, 26vw, 32vw);
       color: transparent;
@@ -159,7 +160,7 @@
       animation: tickerMove 40s linear infinite;
     }
     .ticker-item {
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-weight: 700;
       font-size: 0.6rem;
       letter-spacing: 0.16em;
@@ -193,11 +194,8 @@
     }
 
     .logo {
-      font-family: var(--font-d);
-      font-weight: 900;
-      font-size: 1.25rem;
-      letter-spacing: -0.07em;
-      color: var(--cream);
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
     .logo .accent { color: var(--orange); }
@@ -220,7 +218,7 @@
       border: 1px solid rgba(255,77,0,0.35);
       border-radius: 2px;
       padding: 0.35rem 0.9rem;
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-size: 0.58rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -285,7 +283,7 @@
     }
 
     h1 {
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-weight: 900;
       font-size: clamp(3rem, 6.5vw, 7rem);
       line-height: 0.9;
@@ -373,7 +371,7 @@
       background: var(--orange);
       color: var(--bg);
       border: none;
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-weight: 700;
       font-size: 0.58rem;
       letter-spacing: 0.12em;
@@ -449,7 +447,7 @@
     }
     .stat:last-child { border-right: none; }
     .stat-n {
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-size: 1.9rem;
       font-weight: 900;
       color: var(--orange);
@@ -542,220 +540,228 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="ring"></div>
-<div class="top-line"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="ring"></div>
+  <div class="top-line"></div>
 
-<!-- Background -->
-<div class="bg-text">IQ</div>
-<div class="geo geo-diamond"></div>
-<div class="geo geo-diamond-sm"></div>
-<div class="geo geo-circle"></div>
-<div class="geo geo-dot"></div>
+  <!-- Background -->
+  <div class="bg-text">IQ</div>
+  <div class="geo geo-diamond"></div>
+  <div class="geo geo-diamond-sm"></div>
+  <div class="geo geo-circle"></div>
+  <div class="geo geo-dot"></div>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <header>
-    <a href="/" class="logo">veel<span class="accent">iq</span></a>
-    <div class="header-right">
-      <span class="header-tag">Skills as a Service</span>
-      <div class="status-pill">Coming Soon</div>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- Left column: eyebrow + headline -->
-    <div class="hero-left">
-      <div class="eyebrow">
-        <div class="eyebrow-line"></div>
-        <span>Upgrade your AI instantly</span>
-      </div>
-      <h1>
-        <span class="line-mask"><span class="line-inner">Give your</span></span>
-        <span class="line-mask"><span class="line-inner c-orange">AI more</span></span>
-        <span class="line-mask"><span class="line-inner c-outline-orange">IQ.</span></span>
-      </h1>
-    </div>
-
-    <!-- Right column top: subtitle -->
-    <div class="hero-right-top">
-      <p class="subtitle">
-        Subscribe to skills and agents that plug directly into your AI.
-        No code. No setup. Just more intelligence, on demand.
-      </p>
-    </div>
-
-    <!-- Right column bottom: form + skill tags -->
-    <div class="hero-right-bottom">
-      <span class="form-heading">Early access - limited spots</span>
-      <form class="form" id="wf" onsubmit="handleSubmit(event)">
-        <input type="email" id="em" placeholder="your@email.com" required autocomplete="email" />
-        <button type="submit" class="btn">Get Access</button>
-      </form>
-      <div class="success-msg" id="sm">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="8" cy="8" r="8" fill="currentColor" opacity="0.2"/>
-          <path d="M4.5 8l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <header>
+      <a href="/" class="logo">
+        <svg width="140" height="32" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#f0ebe2"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#f0ebe2">veel</tspan><tspan fill="#ff4d00">iq</tspan>
+          </text>
         </svg>
-        You're in. We'll be in touch.
+      </a>
+      <div class="header-right">
+        <span class="header-tag">Skills as a Service</span>
+        <div class="status-pill">Coming Soon</div>
       </div>
-      <p class="form-note">No spam. Just the launch notification.</p>
+    </header>
 
-      <div class="skills-aside">
-        <div class="skill-tag">CRM Intelligence</div>
-        <div class="skill-tag">Data Analyst</div>
-        <div class="skill-tag">Email Agent</div>
-        <div class="skill-tag">Code Reviewer</div>
-        <div class="skill-tag">Research Agent</div>
-        <div class="skill-tag">+ 45 more</div>
+    <main>
+
+      <!-- Left column: eyebrow + headline -->
+      <div class="hero-left">
+        <div class="eyebrow">
+          <div class="eyebrow-line"></div>
+          <span>Upgrade your AI instantly</span>
+        </div>
+        <h1>
+          <span class="line-mask"><span class="line-inner">Give your</span></span>
+          <span class="line-mask"><span class="line-inner c-orange">AI more</span></span>
+          <span class="line-mask"><span class="line-inner c-outline-orange">IQ.</span></span>
+        </h1>
+      </div>
+
+      <!-- Right column top: subtitle -->
+      <div class="hero-right-top">
+        <p class="subtitle">
+          Subscribe to skills and agents that plug directly into your AI.
+          No code. No setup. Just more intelligence, on demand.
+        </p>
+      </div>
+
+      <!-- Right column bottom: form + skill tags -->
+      <div class="hero-right-bottom">
+        <span class="form-heading">Early access - limited spots</span>
+        <form class="form" id="wf" onsubmit="handleSubmit(event)">
+          <input type="email" id="em" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit" class="btn">Get Access</button>
+        </form>
+        <div class="success-msg" id="sm">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="8" fill="currentColor" opacity="0.2"/>
+            <path d="M4.5 8l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          You're in. We'll be in touch.
+        </div>
+        <p class="form-note">No spam. Just the launch notification.</p>
+
+        <div class="skills-aside">
+          <div class="skill-tag">CRM Intelligence</div>
+          <div class="skill-tag">Data Analyst</div>
+          <div class="skill-tag">Email Agent</div>
+          <div class="skill-tag">Code Reviewer</div>
+          <div class="skill-tag">Research Agent</div>
+          <div class="skill-tag">+ 45 more</div>
+        </div>
+      </div>
+
+    </main>
+
+    <div class="stats-strip">
+      <div class="stat">
+        <div class="stat-n" data-target="50">0</div>
+        <div class="stat-info"><b>Skills at launch</b>ready to plug in</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">1x</div>
+        <div class="stat-info"><b>Click setup</b>no config needed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" data-target="3">0</div>
+        <div class="stat-info"><b>AI providers</b>Claude, GPT, Gemini</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">&infin;</div>
+        <div class="stat-info"><b>Possibilities</b>your AI, redefined</div>
       </div>
     </div>
 
-  </main>
-
-  <div class="stats-strip">
-    <div class="stat">
-      <div class="stat-n" data-target="50">0</div>
-      <div class="stat-info"><b>Skills at launch</b>ready to plug in</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">1x</div>
-      <div class="stat-info"><b>Click setup</b>no config needed</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n" data-target="3">0</div>
-      <div class="stat-info"><b>AI providers</b>Claude, GPT, Gemini</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">&infin;</div>
-      <div class="stat-info"><b>Possibilities</b>your AI, redefined</div>
-    </div>
   </div>
 
-</div>
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tk"></div>
+  </div>
 
-<!-- Ticker -->
-<div class="ticker-wrap">
-  <div class="ticker-track" id="tk"></div>
-</div>
+  <script>
+    // Cursor
+    const cur = document.getElementById('cursor');
+    const rng = document.getElementById('ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    });
+    (function loop(){
+      rx+=(mx-rx)*0.13; ry+=(my-ry)*0.13;
+      rng.style.left=rx+'px'; rng.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button,input,.skill-tag').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{ cur.style.width='20px'; cur.style.height='20px'; });
+      el.addEventListener('mouseleave',()=>{ cur.style.width='12px'; cur.style.height='12px'; });
+    });
 
-<script>
-  // Cursor
-  const cur = document.getElementById('cursor');
-  const rng = document.getElementById('ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove', e => {
-    mx=e.clientX; my=e.clientY;
-    cur.style.left=mx+'px'; cur.style.top=my+'px';
-  });
-  (function loop(){
-    rx+=(mx-rx)*0.13; ry+=(my-ry)*0.13;
-    rng.style.left=rx+'px'; rng.style.top=ry+'px';
-    requestAnimationFrame(loop);
-  })();
-  document.querySelectorAll('a,button,input,.skill-tag').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cur.style.width='20px'; cur.style.height='20px'; });
-    el.addEventListener('mouseleave',()=>{ cur.style.width='12px'; cur.style.height='12px'; });
-  });
+    // Ticker
+    const tk = document.getElementById('tk');
+    const words = ['Veeliq','Skills as a Service','AI Intelligence','Coming Soon','Get Early Access','More IQ for your AI','Plug & Play Skills','No Code Required'];
+    const row = words.map(w=>`<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">-</span>`).join('');
+    tk.innerHTML = row+row;
 
-  // Ticker
-  const tk = document.getElementById('tk');
-  const words = ['Veeliq','Skills as a Service','AI Intelligence','Coming Soon','Get Early Access','More IQ for your AI','Plug & Play Skills','No Code Required'];
-  const row = words.map(w=>`<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">-</span>`).join('');
-  tk.innerHTML = row+row;
-
-  // Counter
-  function countUp(el) {
-    const t = +el.dataset.target; if(!t) return;
-    let c=0; const step=Math.ceil(t/40);
-    const iv=setInterval(()=>{
-      c=Math.min(c+step,t);
-      el.textContent=c+'+';
-      if(c>=t) clearInterval(iv);
-    },30);
-  }
-  new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting){
-      document.querySelectorAll('[data-target]').forEach(countUp);
+    // Counter
+    function countUp(el) {
+      const t = +el.dataset.target; if(!t) return;
+      let c=0; const step=Math.ceil(t/40);
+      const iv=setInterval(()=>{
+        c=Math.min(c+step,t);
+        el.textContent=c+'+';
+        if(c>=t) clearInterval(iv);
+      },30);
     }
-  }).observe(document.querySelector('.stats-strip'));
+    new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){
+        document.querySelectorAll('[data-target]').forEach(countUp);
+      }
+    }).observe(document.querySelector('.stats-strip'));
 
   // ── Supabase config ──────────────────────────────────
   const SUPABASE_URL  = 'https://zwooxaxtmvqjfsdfiqyz.supabase.co';
   const SUPABASE_ANON = 'sb_publishable_WG_QY3Rt2iUx_3RrS3fI9A_-Zo4RCFH';
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+    async function handleSubmit(e) {
+      e.preventDefault();
 
-    const btn   = document.querySelector('.btn');
-    const email = document.getElementById('em').value.trim();
+      const btn   = document.querySelector('.btn');
+      const email = document.getElementById('em').value.trim();
 
-    // Loading state
-    btn.textContent = 'Saving...';
-    btn.disabled = true;
+      // Loading state
+      btn.textContent = 'Saving...';
+      btn.disabled = true;
 
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json',
-          'apikey':         SUPABASE_ANON,
-          'Authorization': `Bearer ${SUPABASE_ANON}`,
-          'Prefer':        'return=minimal'
-        },
-        body: JSON.stringify({
-          email,
-          referrer:    document.referrer   || null,
-          user_agent:  navigator.userAgent || null,
-        })
-      });
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: 'POST',
+          headers: {
+            'Content-Type':  'application/json',
+            'apikey':         SUPABASE_ANON,
+            'Authorization': `Bearer ${SUPABASE_ANON}`,
+            'Prefer':        'return=minimal'
+          },
+          body: JSON.stringify({
+            email,
+            referrer:    document.referrer   || null,
+            user_agent:  navigator.userAgent || null,
+          })
+        });
 
-      if (res.status === 409) {
-        // Email already registered (UNIQUE constraint)
-        showSuccess("You're already on the list!");
-        return;
+        if (res.status === 409) {
+          // Email already registered (UNIQUE constraint)
+          showSuccess("You're already on the list!");
+          return;
+        }
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || `HTTP ${res.status}`);
+        }
+
+        showSuccess("You're in. We'll be in touch.");
+
+      } catch (err) {
+        console.error('Waitlist error:', err);
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        showError('Something went wrong. Please try again.');
       }
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.message || `HTTP ${res.status}`);
-      }
-
-      showSuccess("You're in. We'll be in touch.");
-
-    } catch (err) {
-      console.error('Waitlist error:', err);
-      btn.textContent = 'Try again';
-      btn.disabled = false;
-      showError('Something went wrong. Please try again.');
     }
-  }
 
-  function showSuccess(msg) {
-    const sm = document.getElementById('sm');
-    sm.querySelector('span') && (sm.querySelector('span').textContent = msg);
-    sm.innerHTML = `
+    function showSuccess(msg) {
+      const sm = document.getElementById('sm');
+      sm.querySelector('span') && (sm.querySelector('span').textContent = msg);
+      sm.innerHTML = `
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <circle cx="8" cy="8" r="8" fill="currentColor" opacity="0.2"/>
           <path d="M4.5 8l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         ${msg}
       `;
-    document.getElementById('wf').style.display = 'none';
-    sm.classList.add('show');
-  }
-
-  function showError(msg) {
-    let errEl = document.getElementById('err-msg');
-    if (!errEl) {
-      errEl = document.createElement('p');
-      errEl.id = 'err-msg';
-      errEl.style.cssText = 'font-size:0.72rem;color:#ff4d00;margin-top:0.5rem;font-style:italic;';
-      document.getElementById('wf').after(errEl);
+      document.getElementById('wf').style.display = 'none';
+      sm.classList.add('show');
     }
-    errEl.textContent = msg;
-  }
-</script>
+
+    function showError(msg) {
+      let errEl = document.getElementById('err-msg');
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.id = 'err-msg';
+        errEl.style.cssText = 'font-size:0.72rem;color:#ff4d00;margin-top:0.5rem;font-style:italic;';
+        document.getElementById('wf').after(errEl);
+      }
+      errEl.textContent = msg;
+    }
+  </script>
 </body>
 </html>
