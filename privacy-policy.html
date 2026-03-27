@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — VeelIQ</title>
+  <meta name="description" content="VeelIQ Privacy Policy — how we collect, use, and protect your data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0c0b09;
+      --surface:     #141310;
+      --orange:      #ff4d00;
+      --orange-2:    #ff7733;
+      --orange-dim:  rgba(255,77,0,0.1);
+      --orange-glow: rgba(255,77,0,0.25);
+      --cream:       #f0ebe2;
+      --muted:       rgba(240,235,226,0.4);
+      --border:      rgba(255,77,0,0.14);
+      --font-d:      'Unbounded', sans-serif;
+      --font-b:      'Epilogue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--font-b), sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--orange);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--orange);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      opacity: 0.5;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Geometric decorations */
+    .geo { position: fixed; pointer-events: none; z-index: 0; }
+    .geo-diamond {
+      width: 260px; height: 260px;
+      border: 1px solid rgba(255,77,0,0.1);
+      transform: rotate(45deg);
+      top: 10%; right: 10%;
+      animation: rotateSlow 45s linear infinite;
+    }
+    .geo-diamond-sm {
+      width: 130px; height: 130px;
+      border: 1px solid rgba(255,77,0,0.07);
+      transform: rotate(45deg);
+      top: calc(10% + 65px); right: calc(10% + 65px);
+      animation: rotateSlow 28s linear infinite reverse;
+    }
+    .geo-circle {
+      width: 480px; height: 480px;
+      border: 1px solid rgba(255,77,0,0.05);
+      border-radius: 50%;
+      bottom: -180px; left: -160px;
+      animation: rotateSlow 70s linear infinite;
+    }
+    @keyframes rotateSlow { to { transform: rotate(405deg); } }
+
+    /* Top line */
+    .top-line {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), var(--orange-2), var(--orange), transparent);
+      background-size: 200% 100%;
+      animation: scanline 15s linear infinite;
+      z-index: 50;
+    }
+    @keyframes scanline {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Ticker bottom */
+    .ticker-wrap {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 20px;
+      background: var(--orange);
+      overflow: hidden;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerMove 40s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bg);
+      padding: 0 2rem;
+    }
+    .ticker-sep { color: rgba(12,11,9,0.35); padding: 0 0.5rem; }
+    @keyframes tickerMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Layout */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 2px 0 56px;
+    }
+
+    header {
+      padding: 2rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--orange); }
+    .back-link svg { flex-shrink: 0; }
+
+    /* Content */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 3.5rem 5rem;
+      opacity: 0;
+      animation: fadeSlideUp 1s ease 0.2s forwards;
+    }
+
+    /* Page eyebrow */
+    .page-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .page-eyebrow-line { width: 36px; height: 1px; background: var(--orange); }
+    .page-eyebrow span {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .page-title {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Sections */
+    .policy-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      font-family: var(--font-d), sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .policy-section p,
+    .policy-section li {
+      font-size: 0.875rem;
+      line-height: 1.9;
+      color: rgba(240,235,226,0.72);
+      font-weight: 300;
+    }
+
+    .policy-section p + p { margin-top: 0.9rem; }
+
+    .policy-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.6rem 0;
+    }
+    .policy-section ul li {
+      padding: 0.35rem 0 0.35rem 1.4rem;
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 0.75rem;
+    }
+
+    a.inline-link {
+      color: var(--orange);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,77,0,0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    a.inline-link:hover {
+      color: var(--orange-2);
+      border-color: var(--orange-2);
+    }
+
+    /* Callout box */
+    .callout {
+      background: rgba(255,77,0,0.05);
+      border: 1px solid rgba(255,77,0,0.22);
+      border-left: 3px solid var(--orange);
+      border-radius: 3px;
+      padding: 1.1rem 1.4rem;
+      margin: 1.2rem 0;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: rgba(240,235,226,0.8);
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3.5rem 0;
+    }
+
+    /* Contact block */
+    .contact-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin-top: 1rem;
+    }
+    .contact-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--orange-dim);
+      border: 1px solid rgba(255,77,0,0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+    }
+    .contact-block p {
+      font-size: 0.82rem !important;
+      line-height: 1.7 !important;
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 3.5rem;
+    }
+    .toc-title {
+      font-family: var(--font-d), sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      padding: 0.22rem 0;
+    }
+    .toc ol li a {
+      font-size: 0.8rem;
+      color: rgba(240,235,226,0.65);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: var(--font-d), sans-serif;
+      font-size: 0.52rem;
+      color: var(--orange);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    .toc ol li a:hover { color: var(--cream); }
+
+    /* Animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.6rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    .page-footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .page-footer a:hover { color: var(--orange); }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      header { padding: 1.25rem 1.5rem; }
+      .content { padding: 2.5rem 1.5rem 4rem; }
+      .geo-diamond, .geo-diamond-sm { display: none; }
+      .page-footer { padding: 1.4rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="ring"></div>
+  <div class="top-line"></div>
+
+  <!-- Background -->
+  <div class="geo geo-diamond"></div>
+  <div class="geo geo-diamond-sm"></div>
+  <div class="geo geo-circle"></div>
+
+  <div class="wrapper">
+
+    <header>
+      <a href="/" class="logo">
+        <svg width="140" height="32" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#f0ebe2"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#f0ebe2">Veel</tspan><tspan fill="#ff4d00">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="header-right">
+        <a href="/" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to home
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <div class="page-eyebrow">
+        <div class="page-eyebrow-line"></div>
+        <span>Legal</span>
+      </div>
+
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-meta">Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: March 27, 2026</p>
+
+      <!-- Table of Contents -->
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">Contents</p>
+        <ol>
+          <li><a href="#s1">Who We Are</a></li>
+          <li><a href="#s2">Information We Collect</a></li>
+          <li><a href="#s3">How We Use Your Information</a></li>
+          <li><a href="#s4">Data Storage &amp; Security</a></li>
+          <li><a href="#s5">Sharing &amp; Third-Party Services</a></li>
+          <li><a href="#s6">Cookies &amp; Tracking</a></li>
+          <li><a href="#s7">Data Retention</a></li>
+          <li><a href="#s8">Your Rights</a></li>
+          <li><a href="#s9">Children's Privacy</a></li>
+          <li><a href="#s10">Changes to this Policy</a></li>
+          <li><a href="#s11">Contact Us</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1 -->
+      <section class="policy-section" id="s1">
+        <p class="section-number">01</p>
+        <h2 class="section-title">Who We Are</h2>
+        <p>VeelIQ ("VeelIQ", "we", "our", or "us") is the company operating this website and the forthcoming VeelIQ platform — a Skills-as-a-Service product that provides plug-and-play AI skills and agents for individuals and businesses.</p>
+        <p>This Privacy Policy explains how we handle the personal data we collect through this website, including our early-access waitlist.</p>
+      </section>
+
+      <!-- 2 -->
+      <section class="policy-section" id="s2">
+        <p class="section-number">02</p>
+        <h2 class="section-title">Information We Collect</h2>
+        <p>We collect only what is necessary to operate the waitlist and improve the product. This includes:</p>
+        <ul>
+          <li><strong style="color:var(--cream)">Email address</strong> — provided voluntarily when you sign up for early access.</li>
+          <li><strong style="color:var(--cream)">Referrer URL</strong> — the page you visited immediately before arriving on our site, captured automatically by your browser.</li>
+          <li><strong style="color:var(--cream)">User agent string</strong> — your browser and operating system information, collected automatically to understand our audience.</li>
+          <li><strong style="color:var(--cream)">Sign-up timestamp</strong> — the date and time your submission was recorded.</li>
+        </ul>
+        <div class="callout">
+          We do <strong>not</strong> collect your name, phone number, payment details, or any sensitive personal data at this stage of the product. We do not use tracking pixels or third-party advertising networks.
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="policy-section" id="s3">
+        <p class="section-number">03</p>
+        <h2 class="section-title">How We Use Your Information</h2>
+        <p>We use the information we collect solely for the following purposes:</p>
+        <ul>
+          <li>To add you to the VeelIQ early-access waitlist and notify you when access becomes available.</li>
+          <li>To send you launch-related updates that you have explicitly opted into by submitting the form.</li>
+          <li>To understand where our audience is coming from and improve the product experience.</li>
+          <li>To prevent duplicate registrations and maintain the integrity of the waitlist.</li>
+        </ul>
+        <p>We will never sell your data or use it for purposes incompatible with those listed above.</p>
+      </section>
+
+      <!-- 4 -->
+      <section class="policy-section" id="s4">
+        <p class="section-number">04</p>
+        <h2 class="section-title">Data Storage &amp; Security</h2>
+        <p>Waitlist data is stored in <a href="https://supabase.com" class="inline-link" target="_blank" rel="noopener">Supabase</a>, a managed PostgreSQL platform with industry-standard security practices, including encryption at rest and in transit (TLS 1.2+).</p>
+        <p>Supabase infrastructure is hosted on AWS and is SOC 2 Type II compliant. Data is stored in the EU (Frankfurt) region.</p>
+        <p>While we take reasonable precautions to protect your data, no method of transmission over the internet is 100 % secure. We encourage you to use a unique email address when signing up.</p>
+      </section>
+
+      <!-- 5 -->
+      <section class="policy-section" id="s5">
+        <p class="section-number">05</p>
+        <h2 class="section-title">Sharing &amp; Third-Party Services</h2>
+        <p>We do not sell, trade, or rent your personal information. We share data only with:</p>
+        <ul>
+          <li><strong style="color:var(--cream)">Supabase</strong> — our database provider (see Section 4).</li>
+          <li><strong style="color:var(--cream)">Google Fonts</strong> — font assets are loaded from <code style="font-size:0.8em;color:var(--orange)">fonts.googleapis.com</code>. Google may log the request; see <a href="https://policies.google.com/privacy" class="inline-link" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+          <li><strong style="color:var(--cream)">Legal authorities</strong> — if required by applicable law or a valid legal process.</li>
+        </ul>
+        <p>All third-party providers are contractually bound to process your data only as directed by us and in accordance with applicable data-protection laws.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="policy-section" id="s6">
+        <p class="section-number">06</p>
+        <h2 class="section-title">Cookies &amp; Tracking</h2>
+        <p>This website currently does <strong>not</strong> use cookies, local storage, analytics scripts, or any persistent client-side tracking technologies. No consent banner is required at this time.</p>
+        <p>Should we introduce cookies or analytics in the future, this policy will be updated and appropriate consent mechanisms will be implemented before any tracking begins.</p>
+      </section>
+
+      <!-- 7 -->
+      <section class="policy-section" id="s7">
+        <p class="section-number">07</p>
+        <h2 class="section-title">Data Retention</h2>
+        <p>We retain waitlist data for as long as it is necessary to fulfil the purpose for which it was collected — specifically, to notify you when VeelIQ launches and to provide you with early access.</p>
+        <p>Once the product has launched and the waitlist is closed, or upon your request for deletion, your data will be permanently removed from our systems within <strong style="color:var(--cream)">30 days</strong>.</p>
+      </section>
+
+      <!-- 8 -->
+      <section class="policy-section" id="s8">
+        <p class="section-number">08</p>
+        <h2 class="section-title">Your Rights</h2>
+        <p>Depending on your jurisdiction (including the EU/EEA under GDPR, the UK under UK GDPR, and California under CCPA), you may have the following rights:</p>
+        <ul>
+          <li><strong style="color:var(--cream)">Access</strong> — request a copy of the personal data we hold about you.</li>
+          <li><strong style="color:var(--cream)">Rectification</strong> — request correction of inaccurate data.</li>
+          <li><strong style="color:var(--cream)">Erasure</strong> — request deletion of your personal data ("right to be forgotten").</li>
+          <li><strong style="color:var(--cream)">Restriction</strong> — request that we limit how we use your data.</li>
+          <li><strong style="color:var(--cream)">Portability</strong> — receive your data in a structured, machine-readable format.</li>
+          <li><strong style="color:var(--cream)">Objection</strong> — object to processing based on legitimate interests.</li>
+          <li><strong style="color:var(--cream)">Withdraw consent</strong> — opt out of communications at any time by contacting us.</li>
+        </ul>
+        <p>To exercise any of these rights, email us at <a href="mailto:privacy@veeliq.com" class="inline-link">privacy@veeliq.com</a>. We will respond within <strong style="color:var(--cream)">30 days</strong>. You also have the right to lodge a complaint with your local data-protection authority.</p>
+      </section>
+
+      <!-- 9 -->
+      <section class="policy-section" id="s9">
+        <p class="section-number">09</p>
+        <h2 class="section-title">Children's Privacy</h2>
+        <p>VeelIQ is not directed at children under the age of 16. We do not knowingly collect personal data from anyone under 16. If you believe we have inadvertently collected such data, please contact us and we will delete it promptly.</p>
+      </section>
+
+      <!-- 10 -->
+      <section class="policy-section" id="s10">
+        <p class="section-number">10</p>
+        <h2 class="section-title">Changes to this Policy</h2>
+        <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. If changes are material, we will notify waitlist subscribers by email.</p>
+        <p>Continued use of our website after changes are posted constitutes your acceptance of the updated policy.</p>
+      </section>
+
+      <!-- 11 -->
+      <section class="policy-section" id="s11">
+        <p class="section-number">11</p>
+        <h2 class="section-title">Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please reach out:</p>
+        <div class="contact-block">
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p>
+            <strong style="color:var(--cream);display:block;margin-bottom:0.3rem">VeelIQ — Privacy Team</strong>
+            Email: <a href="mailto:privacy@veeliq.com" class="inline-link">privacy@veeliq.com</a><br/>
+            We aim to respond to all privacy-related enquiries within 5 business days.
+          </p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <p style="font-size:0.72rem;color:var(--muted);font-style:italic;text-align:center;">
+        This document constitutes the entire Privacy Policy of VeelIQ for this website.<br/>
+        &copy; 2026 VeelIQ. All rights reserved.
+      </p>
+
+    </div><!-- /.content -->
+
+    <footer class="page-footer">
+      <span>&copy; 2026 VeelIQ</span>
+      <span><a href="/">← Back to home</a></span>
+      <span>privacy@veeliq.com</span>
+    </footer>
+
+  </div><!-- /.wrapper -->
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tk"></div>
+  </div>
+
+  <script>
+    // Cursor
+    const cur = document.getElementById('cursor');
+    const rng = document.getElementById('ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    });
+    (function loop(){
+      rx+=(mx-rx)*0.13; ry+=(my-ry)*0.13;
+      rng.style.left=rx+'px'; rng.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{ cur.style.width='20px'; cur.style.height='20px'; });
+      el.addEventListener('mouseleave',()=>{ cur.style.width='12px'; cur.style.height='12px'; });
+    });
+
+    // Ticker
+    const tk = document.getElementById('tk');
+    const words = ['VeelIQ','Privacy Policy','Skills as a Service','AI Intelligence','Your Data is Safe','No Tracking','No Ads','GDPR Compliant'];
+    const row = words.map(w=>`<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">-</span>`).join('');
+    tk.innerHTML = row+row;
+  </script>
+
+</body>
+</html>
+
