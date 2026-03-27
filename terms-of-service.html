@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — VeelIQ</title>
-  <meta name="description" content="VeelIQ Privacy Policy — how we collect, use, and protect your data." />
+  <title>Terms of Service — VeelIQ</title>
+  <meta name="description" content="VeelIQ Terms of Service — the rules and conditions governing use of our website and platform." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -153,6 +153,8 @@
       z-index: 1;
       min-height: 100vh;
       padding: 2px 0 56px;
+      max-width: 1440px;
+      margin-inline: auto;
     }
 
     header {
@@ -225,33 +227,8 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Legal siblings nav */
-    .legal-nav {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 3rem;
-    }
-    .legal-nav a {
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .legal-nav a:hover,
-    .legal-nav a.active {
-      color: var(--orange);
-      border-color: rgba(255,77,0,0.35);
-    }
-
     /* Sections */
-    .policy-section {
-      margin-bottom: 3rem;
-    }
+    .policy-section { margin-bottom: 3rem; }
 
     .section-number {
       font-family: var(--font-d), sans-serif;
@@ -281,7 +258,8 @@
 
     .policy-section p + p { margin-top: 0.9rem; }
 
-    .policy-section ul {
+    .policy-section ul,
+    .policy-section ol {
       list-style: none;
       padding: 0;
       margin: 0.6rem 0;
@@ -296,6 +274,22 @@
       left: 0;
       color: var(--orange);
       font-size: 0.75rem;
+    }
+    .policy-section ol { counter-reset: ol-counter; }
+    .policy-section ol li {
+      counter-increment: ol-counter;
+      padding: 0.35rem 0 0.35rem 2rem;
+      position: relative;
+    }
+    .policy-section ol li::before {
+      content: counter(ol-counter, decimal-leading-zero) '.';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-family: var(--font-d), sans-serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.05em;
+      top: 0.55rem;
     }
 
     a.inline-link {
@@ -400,6 +394,29 @@
     }
     .toc ol li a:hover { color: var(--cream); }
 
+    /* Legal siblings nav */
+    .legal-nav {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+    .legal-nav a {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .legal-nav a:hover,
+    .legal-nav a.active {
+      color: var(--orange);
+      border-color: rgba(255,77,0,0.35);
+    }
+
     /* Animations */
     @keyframes fadeSlideUp {
       from { opacity: 0; transform: translateY(16px); }
@@ -473,157 +490,164 @@
         <span>Legal</span>
       </div>
 
-      <h1 class="page-title">Privacy Policy</h1>
+      <h1 class="page-title">Terms of Service</h1>
       <p class="page-meta">Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: March 27, 2026</p>
 
       <!-- Legal siblings -->
       <nav class="legal-nav" aria-label="Legal documents">
-        <a href="/privacy-policy.html" class="active">Privacy Policy</a>
-        <a href="/terms-of-service.html">Terms of Service</a>
+        <a href="/terms-of-service.html" class="active">Terms of Service</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
       </nav>
 
       <!-- Table of Contents -->
       <nav class="toc" aria-label="Table of contents">
         <p class="toc-title">Contents</p>
         <ol>
-          <li><a href="#s1">Who We Are</a></li>
-          <li><a href="#s2">Information We Collect</a></li>
-          <li><a href="#s3">How We Use Your Information</a></li>
-          <li><a href="#s4">Data Storage &amp; Security</a></li>
-          <li><a href="#s5">Sharing &amp; Third-Party Services</a></li>
-          <li><a href="#s6">Cookies &amp; Tracking</a></li>
-          <li><a href="#s7">Data Retention</a></li>
-          <li><a href="#s8">Your Rights</a></li>
-          <li><a href="#s9">Children's Privacy</a></li>
-          <li><a href="#s10">Changes to this Policy</a></li>
-          <li><a href="#s11">Contact Us</a></li>
+          <li><a href="#s1">Acceptance of Terms</a></li>
+          <li><a href="#s2">Description of Service</a></li>
+          <li><a href="#s3">Eligibility</a></li>
+          <li><a href="#s4">Waitlist &amp; Early Access</a></li>
+          <li><a href="#s5">Acceptable Use</a></li>
+          <li><a href="#s6">Intellectual Property</a></li>
+          <li><a href="#s7">Disclaimers &amp; Limitation of Liability</a></li>
+          <li><a href="#s8">Third-Party Services</a></li>
+          <li><a href="#s9">Privacy</a></li>
+          <li><a href="#s10">Termination</a></li>
+          <li><a href="#s11">Governing Law &amp; Disputes</a></li>
+          <li><a href="#s12">Changes to these Terms</a></li>
+          <li><a href="#s13">Contact</a></li>
         </ol>
       </nav>
+
+      <div class="callout">
+        Please read these Terms carefully before using this website or signing up for early access. By accessing the site or submitting your email, you agree to be bound by these Terms.
+      </div>
 
       <!-- 1 -->
       <section class="policy-section" id="s1">
         <p class="section-number">01</p>
-        <h2 class="section-title">Who We Are</h2>
-        <p>VeelIQ ("VeelIQ", "we", "our", or "us") is the company operating this website and the forthcoming VeelIQ platform — a Skills-as-a-Service product that provides plug-and-play AI skills and agents for individuals and businesses.</p>
-        <p>This Privacy Policy explains how we handle the personal data we collect through this website, including our early-access waitlist.</p>
+        <h2 class="section-title">Acceptance of Terms</h2>
+        <p>These Terms of Service ("Terms") govern your access to and use of the VeelIQ website located at <a href="/" class="inline-link">veeliq.com</a> (the "Site") and any related services, content, and features (collectively, the "Service") provided by VeelIQ ("VeelIQ", "we", "our", or "us").</p>
+        <p>By accessing or using the Service — including submitting your email address on our waitlist — you confirm that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy-policy.html" class="inline-link">Privacy Policy</a>. If you do not agree, do not use the Service.</p>
       </section>
 
       <!-- 2 -->
       <section class="policy-section" id="s2">
         <p class="section-number">02</p>
-        <h2 class="section-title">Information We Collect</h2>
-        <p>We collect only what is necessary to operate the waitlist and improve the product. This includes:</p>
-        <ul>
-          <li><strong style="color:var(--cream)">Email address</strong> — provided voluntarily when you sign up for early access.</li>
-          <li><strong style="color:var(--cream)">Referrer URL</strong> — the page you visited immediately before arriving on our site, captured automatically by your browser.</li>
-          <li><strong style="color:var(--cream)">User agent string</strong> — your browser and operating system information, collected automatically to understand our audience.</li>
-          <li><strong style="color:var(--cream)">Sign-up timestamp</strong> — the date and time your submission was recorded.</li>
-        </ul>
-        <div class="callout">
-          We do <strong>not</strong> collect your name, phone number, payment details, or any sensitive personal data at this stage of the product. We do not use tracking pixels or third-party advertising networks.
-        </div>
+        <h2 class="section-title">Description of Service</h2>
+        <p>VeelIQ is a Skills-as-a-Service platform (currently in pre-launch) that will allow users to subscribe to AI skills and agents that extend the capabilities of third-party AI systems. The current Site is a pre-launch landing page offering an early-access waitlist.</p>
+        <p>We reserve the right to modify, suspend, or discontinue any part of the Service at any time without prior notice or liability.</p>
       </section>
 
       <!-- 3 -->
       <section class="policy-section" id="s3">
         <p class="section-number">03</p>
-        <h2 class="section-title">How We Use Your Information</h2>
-        <p>We use the information we collect solely for the following purposes:</p>
-        <ul>
-          <li>To add you to the VeelIQ early-access waitlist and notify you when access becomes available.</li>
-          <li>To send you launch-related updates that you have explicitly opted into by submitting the form.</li>
-          <li>To understand where our audience is coming from and improve the product experience.</li>
-          <li>To prevent duplicate registrations and maintain the integrity of the waitlist.</li>
-        </ul>
-        <p>We will never sell your data or use it for purposes incompatible with those listed above.</p>
+        <h2 class="section-title">Eligibility</h2>
+        <p>You must be at least <strong style="color:var(--cream)">16 years old</strong> to use the Service. By using the Service, you represent that you meet this requirement. If you are using the Service on behalf of a company or other legal entity, you represent that you have authority to bind that entity to these Terms.</p>
       </section>
 
       <!-- 4 -->
       <section class="policy-section" id="s4">
         <p class="section-number">04</p>
-        <h2 class="section-title">Data Storage &amp; Security</h2>
-        <p>Waitlist data is stored in <a href="https://supabase.com" class="inline-link" target="_blank" rel="noopener">Supabase</a>, a managed PostgreSQL platform with industry-standard security practices, including encryption at rest and in transit (TLS 1.2+).</p>
-        <p>Supabase infrastructure is hosted on AWS and is SOC 2 Type II compliant. Data is stored in the EU (Frankfurt) region.</p>
-        <p>While we take reasonable precautions to protect your data, no method of transmission over the internet is 100 % secure. We encourage you to use a unique email address when signing up.</p>
+        <h2 class="section-title">Waitlist &amp; Early Access</h2>
+        <p>Joining the waitlist does not guarantee access to the VeelIQ platform, any specific feature, or any particular pricing. By submitting your email, you agree to:</p>
+        <ul>
+          <li>Receive a one-time notification when early access becomes available.</li>
+          <li>Receive occasional product updates related to VeelIQ's launch.</li>
+        </ul>
+        <p>You may opt out of communications at any time by contacting us at <a href="mailto:hello@veeliq.com" class="inline-link">hello@veeliq.com</a>. Waitlist positions are non-transferable.</p>
       </section>
 
       <!-- 5 -->
       <section class="policy-section" id="s5">
         <p class="section-number">05</p>
-        <h2 class="section-title">Sharing &amp; Third-Party Services</h2>
-        <p>We do not sell, trade, or rent your personal information. We share data only with:</p>
+        <h2 class="section-title">Acceptable Use</h2>
+        <p>You agree not to use the Service to:</p>
         <ul>
-          <li><strong style="color:var(--cream)">Supabase</strong> — our database provider (see Section 4).</li>
-          <li><strong style="color:var(--cream)">Google Fonts</strong> — font assets are loaded from <code style="font-size:0.8em;color:var(--orange)">fonts.googleapis.com</code>. Google may log the request; see <a href="https://policies.google.com/privacy" class="inline-link" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
-          <li><strong style="color:var(--cream)">Legal authorities</strong> — if required by applicable law or a valid legal process.</li>
+          <li>Violate any applicable local, national, or international law or regulation.</li>
+          <li>Submit false, misleading, or fraudulent information.</li>
+          <li>Transmit spam, unsolicited communications, or malicious code.</li>
+          <li>Attempt to gain unauthorized access to any part of the Service or its infrastructure.</li>
+          <li>Reverse-engineer, scrape, or harvest data from the Site by automated means.</li>
+          <li>Interfere with or disrupt the integrity or performance of the Service.</li>
+          <li>Impersonate any person, company, or entity, including VeelIQ.</li>
         </ul>
-        <p>All third-party providers are contractually bound to process your data only as directed by us and in accordance with applicable data-protection laws.</p>
+        <p>We reserve the right to remove you from the waitlist or restrict access for any violation of these rules.</p>
       </section>
 
       <!-- 6 -->
       <section class="policy-section" id="s6">
         <p class="section-number">06</p>
-        <h2 class="section-title">Cookies &amp; Tracking</h2>
-        <p>This website currently does <strong>not</strong> use cookies, local storage, analytics scripts, or any persistent client-side tracking technologies. No consent banner is required at this time.</p>
-        <p>Should we introduce cookies or analytics in the future, this policy will be updated and appropriate consent mechanisms will be implemented before any tracking begins.</p>
+        <h2 class="section-title">Intellectual Property</h2>
+        <p>All content on the Site — including but not limited to text, graphics, logos, icons, design, code, and the "VeelIQ" name and brand — is the exclusive property of VeelIQ and is protected by applicable copyright, trademark, and intellectual property laws.</p>
+        <p>You are granted a limited, non-exclusive, non-transferable, revocable licence to access and view the Site for personal, non-commercial purposes. You may not copy, reproduce, distribute, modify, create derivative works of, publicly display, or exploit any content from the Site without our prior written consent.</p>
       </section>
 
       <!-- 7 -->
       <section class="policy-section" id="s7">
         <p class="section-number">07</p>
-        <h2 class="section-title">Data Retention</h2>
-        <p>We retain waitlist data for as long as it is necessary to fulfil the purpose for which it was collected — specifically, to notify you when VeelIQ launches and to provide you with early access.</p>
-        <p>Once the product has launched and the waitlist is closed, or upon your request for deletion, your data will be permanently removed from our systems within <strong style="color:var(--cream)">30 days</strong>.</p>
+        <h2 class="section-title">Disclaimers &amp; Limitation of Liability</h2>
+        <p>The Service is provided on an <strong style="color:var(--cream)">"as is" and "as available"</strong> basis, without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+        <p>VeelIQ does not warrant that the Service will be uninterrupted, error-free, or free of viruses or other harmful components. We do not guarantee that the Service will launch on any specific date or include any specific feature.</p>
+        <div class="callout">
+          To the fullest extent permitted by applicable law, VeelIQ shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of — or inability to use — the Service, even if we have been advised of the possibility of such damages. Our total liability to you for any claim shall not exceed <strong>€100</strong>.
+        </div>
       </section>
 
       <!-- 8 -->
       <section class="policy-section" id="s8">
         <p class="section-number">08</p>
-        <h2 class="section-title">Your Rights</h2>
-        <p>Depending on your jurisdiction (including the EU/EEA under GDPR, the UK under UK GDPR, and California under CCPA), you may have the following rights:</p>
-        <ul>
-          <li><strong style="color:var(--cream)">Access</strong> — request a copy of the personal data we hold about you.</li>
-          <li><strong style="color:var(--cream)">Rectification</strong> — request correction of inaccurate data.</li>
-          <li><strong style="color:var(--cream)">Erasure</strong> — request deletion of your personal data ("right to be forgotten").</li>
-          <li><strong style="color:var(--cream)">Restriction</strong> — request that we limit how we use your data.</li>
-          <li><strong style="color:var(--cream)">Portability</strong> — receive your data in a structured, machine-readable format.</li>
-          <li><strong style="color:var(--cream)">Objection</strong> — object to processing based on legitimate interests.</li>
-          <li><strong style="color:var(--cream)">Withdraw consent</strong> — opt out of communications at any time by contacting us.</li>
-        </ul>
-        <p>To exercise any of these rights, email us at <a href="mailto:privacy@veeliq.com" class="inline-link">privacy@veeliq.com</a>. We will respond within <strong style="color:var(--cream)">30 days</strong>. You also have the right to lodge a complaint with your local data-protection authority.</p>
+        <h2 class="section-title">Third-Party Services</h2>
+        <p>The Site may reference or link to third-party websites and services (e.g., Supabase, Google Fonts). These are provided for convenience only. VeelIQ has no control over, and accepts no responsibility for, the content or practices of any third party. Your use of third-party services is subject to their own terms and privacy policies.</p>
       </section>
 
       <!-- 9 -->
       <section class="policy-section" id="s9">
         <p class="section-number">09</p>
-        <h2 class="section-title">Children's Privacy</h2>
-        <p>VeelIQ is not directed at children under the age of 16. We do not knowingly collect personal data from anyone under 16. If you believe we have inadvertently collected such data, please contact us and we will delete it promptly.</p>
+        <h2 class="section-title">Privacy</h2>
+        <p>Our collection and use of personal data is governed by our <a href="/privacy-policy.html" class="inline-link">Privacy Policy</a>, which is incorporated into these Terms by reference. By using the Service, you consent to our data practices as described therein.</p>
       </section>
 
       <!-- 10 -->
       <section class="policy-section" id="s10">
         <p class="section-number">10</p>
-        <h2 class="section-title">Changes to this Policy</h2>
-        <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. If changes are material, we will notify waitlist subscribers by email.</p>
-        <p>Continued use of our website after changes are posted constitutes your acceptance of the updated policy.</p>
+        <h2 class="section-title">Termination</h2>
+        <p>We may suspend or terminate your access to the Service at any time, with or without cause, and with or without notice. Upon termination, all licences granted under these Terms will immediately cease. Provisions that by their nature should survive termination (including Sections 6, 7, 11) shall survive.</p>
       </section>
 
       <!-- 11 -->
       <section class="policy-section" id="s11">
         <p class="section-number">11</p>
-        <h2 class="section-title">Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please reach out:</p>
+        <h2 class="section-title">Governing Law &amp; Disputes</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of the <strong style="color:var(--cream)">European Union</strong> and applicable member-state legislation, without regard to conflict-of-law principles.</p>
+        <p>Any dispute arising out of or relating to these Terms or the Service shall first be attempted to be resolved through good-faith negotiation. If unresolved within 30 days, the dispute shall be submitted to the competent courts of the jurisdiction in which VeelIQ is incorporated.</p>
+        <p>If you are a consumer based in the EU, you may also use the European Commission's <a href="https://ec.europa.eu/consumers/odr" class="inline-link" target="_blank" rel="noopener">Online Dispute Resolution platform</a>.</p>
+      </section>
+
+      <!-- 12 -->
+      <section class="policy-section" id="s12">
+        <p class="section-number">12</p>
+        <h2 class="section-title">Changes to these Terms</h2>
+        <p>We reserve the right to update these Terms at any time. We will notify waitlist subscribers of material changes by email and update the "Last updated" date at the top of this page. Your continued use of the Service after changes are posted constitutes acceptance of the revised Terms.</p>
+        <p>We encourage you to review this page periodically.</p>
+      </section>
+
+      <!-- 13 -->
+      <section class="policy-section" id="s13">
+        <p class="section-number">13</p>
+        <h2 class="section-title">Contact</h2>
+        <p>If you have any questions about these Terms, please contact us:</p>
         <div class="contact-block">
           <div class="contact-icon">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
-              <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
             </svg>
           </div>
           <p>
-            <strong style="color:var(--cream);display:block;margin-bottom:0.3rem">VeelIQ — Privacy Team</strong>
-            Email: <a href="mailto:privacy@veeliq.com" class="inline-link">privacy@veeliq.com</a><br/>
-            We aim to respond to all privacy-related enquiries within 5 business days.
+            <strong style="color:var(--cream);display:block;margin-bottom:0.3rem">VeelIQ — Legal</strong>
+            Email: <a href="mailto:legal@veeliq.com" class="inline-link">legal@veeliq.com</a><br/>
+            We aim to respond to all legal enquiries within 5 business days.
           </p>
         </div>
       </section>
@@ -631,7 +655,7 @@
       <hr class="divider" />
 
       <p style="font-size:0.72rem;color:var(--muted);font-style:italic;text-align:center;">
-        This document constitutes the entire Privacy Policy of VeelIQ for this website.<br/>
+        These Terms of Service constitute the entire agreement between you and VeelIQ regarding use of this website.<br/>
         &copy; 2026 VeelIQ. All rights reserved.
       </p>
 
@@ -675,7 +699,7 @@
 
     // Ticker
     const tk = document.getElementById('tk');
-    const words = ['VeelIQ','Privacy Policy','Skills as a Service','AI Intelligence','Your Data is Safe','No Tracking','No Ads','GDPR Compliant'];
+    const words = ['VeelIQ','Terms of Service','Skills as a Service','Fair Use','No Ads','GDPR Compliant','AI Intelligence','Coming Soon'];
     const row = words.map(w=>`<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">-</span>`).join('');
     tk.innerHTML = row+row;
   </script>
