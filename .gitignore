@@ -83,3 +83,6 @@ fabric.properties
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/git_toolbox_prj.xml
+
+# Superpowers brainstorming sessions
+.superpowers/
