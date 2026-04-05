@@ -453,6 +453,83 @@
     }
 
 
+    /* ── Footer CTA ── */
+    .footer-cta {
+      background: var(--bg-dark-2);
+      padding: 6rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,77,0,0.12);
+    }
+    .footer-cta-headline {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.05em;
+      color: #f0ebe2;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .footer-cta-headline .c-orange { color: var(--orange); }
+    .footer-cta-sub {
+      font-size: 0.84rem;
+      color: rgba(240,235,226,0.4);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .btn-cta-large {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.4rem;
+      border-radius: 2px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-cta-large:hover {
+      background: var(--orange-2);
+      box-shadow: 0 0 40px rgba(255,77,0,0.3);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-dark);
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,77,0,0.08);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-link {
+      font-size: 0.62rem;
+      color: rgba(240,235,226,0.3);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(240,235,226,0.7); }
+    .footer-copy {
+      font-size: 0.6rem;
+      color: rgba(240,235,226,0.2);
+      letter-spacing: 0.04em;
+    }
+
     /* ── Skill Catalog ── */
     .skill-catalog {
       background: var(--bg);
@@ -777,7 +854,36 @@
     </div>
   </section>
 
-  <!-- sections added in subsequent tasks -->
+  <section class="footer-cta">
+    <div class="section-wrap">
+      <h2 class="footer-cta-headline">More <span class="c-orange">IQ.</span><br>Instantly.</h2>
+      <p class="footer-cta-sub">Get started in under a minute. No credit card required to explore.</p>
+      <a href="https://app.veeliq.com/" class="btn-cta-large" target="_blank" rel="noopener">Get Started at app.veeliq.com →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="./index.html" class="logo">
+        <svg width="100" height="24" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#f0ebe2"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#f0ebe2">Veel</tspan><tspan fill="#ff4d00">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="footer-links">
+        <a href="../coming-soon/privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="../coming-soon/terms-of-service.html" class="footer-link">Terms of Service</a>
+      </div>
+      <span class="footer-copy">© 2026 VeelIQ</span>
+    </div>
+  </footer>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tk"></div>
+  </div>
 
   <script>
     // Cursor tracking
