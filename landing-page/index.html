@@ -198,6 +198,109 @@
       line-height: 1;
     }
 
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 150;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeSlideDown 1s ease 0.2s forwards;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 1.2rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .nav-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .btn-nav {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.4rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--orange-2); }
+
+    /* Hamburger — hidden on desktop */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .nav-drawer.open {
+      max-height: 300px;
+      padding: 1rem 0;
+    }
+    .nav-drawer .nav-link {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.78rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer .btn-nav {
+      margin: 0.75rem 1.5rem 0;
+      display: inline-block;
+      width: calc(100% - 3rem);
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -205,6 +308,33 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="ring"></div>
   <div class="top-line"></div>
+
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <svg width="120" height="28" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#0c0b09"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#0c0b09">Veel</tspan><tspan fill="#ff4d00">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="nav-links" id="nav-links-desktop">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
+    </div>
+  </nav>
 
   <!-- sections added in subsequent tasks -->
 
@@ -233,6 +363,23 @@
       const words = ['VeelIQ', 'Skills as a Service', 'AI Intelligence', 'Plug & Play Skills', 'No Code Required', 'Claude.ai · Cursor · MCP', 'More IQ for your AI', 'One URL. All Skills.'];
       const row = words.map(w => `<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">—</span>`).join('');
       tk.innerHTML = row + row;
+    }
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navDrawer = document.getElementById('nav-drawer');
+    if (hamburger && navDrawer) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navDrawer.classList.toggle('open');
+      });
+      // Close drawer when a link is clicked
+      navDrawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          navDrawer.classList.remove('open');
+        });
+      });
     }
   </script>
 </body>
