@@ -311,7 +311,7 @@
 
   <nav id="main-nav">
     <div class="nav-inner">
-      <a href="/" class="logo">
+      <a href="./index.html" class="logo">
         <svg width="120" height="28" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
           <polygon points="0,0 14,0 20,56 6,56" fill="#0c0b09"/>
           <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
@@ -370,8 +370,9 @@
     const navDrawer = document.getElementById('nav-drawer');
     if (hamburger && navDrawer) {
       hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
+        const isOpen = hamburger.classList.toggle('open');
         navDrawer.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
       });
       // Close drawer when a link is clicked
       navDrawer.querySelectorAll('a').forEach(a => {
