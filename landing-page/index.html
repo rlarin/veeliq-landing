@@ -301,6 +301,157 @@
       text-align: center;
     }
 
+    /* ── Hero ── */
+    .hero {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0 4rem;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BG watermark */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; right: -2rem;
+      transform: translateY(-52%);
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(18vw, 22vw, 28vw);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,77,0,0.055);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      letter-spacing: -0.06em;
+    }
+
+    /* Hero left — eyebrow + headline */
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideRight 1.2s ease 0.9s forwards;
+    }
+    .hero-eyebrow .eyebrow-line { width: 36px; }
+
+    h1 {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 6.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+    }
+    .line-mask {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.08em;
+    }
+    .line-inner {
+      display: block;
+      transform: translateY(110%);
+      animation: lineReveal 1.4s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .line-mask:nth-child(1) .line-inner { animation-delay: 1.4s; }
+    .line-mask:nth-child(2) .line-inner { animation-delay: 1.75s; color: var(--orange); }
+    .line-mask:nth-child(3) .line-inner {
+      animation-delay: 2.1s;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--orange);
+    }
+
+    /* Hero right — subtitle, CTAs, badges */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--muted);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideUp 1.4s ease 2.2s forwards;
+    }
+    .hero-cta-wrap {
+      opacity: 0;
+      animation: fadeSlideUp 1.4s ease 2.8s forwards;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--orange-2); }
+    .btn-ghost {
+      font-size: 0.68rem;
+      color: var(--orange);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,77,0,0.4);
+      transition: text-decoration-color 0.2s;
+    }
+    .btn-ghost:hover { text-decoration-color: var(--orange); }
+    .hero-note {
+      font-size: 0.64rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+    .client-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .client-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .client-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: rgba(12,11,9,0.65);
+      letter-spacing: 0.02em;
+    }
+
   </style>
 </head>
 <body>
@@ -335,6 +486,47 @@
       <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
     </div>
   </nav>
+
+  <section class="hero">
+    <div class="hero-bg-text">IQ</div>
+    <div class="geo geo-diamond"></div>
+    <div class="geo geo-diamond-sm"></div>
+    <div class="geo geo-dot"></div>
+    <div class="hero-inner">
+      <!-- Left: eyebrow + headline -->
+      <div class="hero-left">
+        <div class="hero-eyebrow eyebrow">
+          <div class="eyebrow-line"></div>
+          <span>Skills as a Service</span>
+        </div>
+        <h1>
+          <span class="line-mask"><span class="line-inner">Give your</span></span>
+          <span class="line-mask"><span class="line-inner">AI more</span></span>
+          <span class="line-mask"><span class="line-inner">IQ.</span></span>
+        </h1>
+      </div>
+      <!-- Right: subtitle + CTAs + badges -->
+      <div class="hero-right">
+        <p class="hero-subtitle">
+          Subscribe to expert skills that appear as native tools inside Claude.ai,
+          Cursor, or any MCP-compatible AI client. No code. No setup. Just more intelligence.
+        </p>
+        <div class="hero-cta-wrap">
+          <div class="hero-cta-row">
+            <a href="https://app.veeliq.com/" class="btn-primary" target="_blank" rel="noopener">Get Started →</a>
+            <a href="#skills" class="btn-ghost">See all skills</a>
+          </div>
+          <p class="hero-note">No AI model needed. No API keys. Just one MCP URL.</p>
+          <div class="client-row">
+            <span class="client-label">Works with</span>
+            <span class="client-badge">Claude.ai</span>
+            <span class="client-badge">Cursor</span>
+            <span class="client-badge">+ any MCP client</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- sections added in subsequent tasks -->
 
