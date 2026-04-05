@@ -453,6 +453,72 @@
     }
 
 
+    /* ── Skill Catalog ── */
+    .skill-catalog {
+      background: var(--bg);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .catalog-header {
+      margin-bottom: 0.4rem;
+    }
+    .catalog-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--text);
+      margin-top: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+    .catalog-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .skill-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
+      color: rgba(12,11,9,0.55);
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      border-color: var(--orange);
+      color: var(--text);
+      background: rgba(255,77,0,0.04);
+    }
+    .skill-tag.featured {
+      background: rgba(255,77,0,0.07);
+      border-color: rgba(255,77,0,0.3);
+      color: var(--orange);
+    }
+    .skill-tag.featured:hover {
+      background: rgba(255,77,0,0.12);
+      border-color: var(--orange);
+    }
+    .catalog-link {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,77,0,0.35);
+      transition: text-decoration-color 0.2s;
+    }
+    .catalog-link:hover { text-decoration-color: var(--orange); }
+
     /* ── How It Works ── */
     .how-it-works {
       background: var(--bg-dark);
@@ -684,6 +750,30 @@
           <p class="step-body">Your subscribed skills instantly appear as native tools inside your AI. Use them in any conversation.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="skill-catalog" id="skills">
+    <div class="section-wrap">
+      <div class="catalog-header eyebrow"><span>Skill Catalog</span></div>
+      <h2 class="section-title catalog-title">50+ skills at launch.</h2>
+      <p class="catalog-sub">From CRM intelligence to research agents — one subscription unlocks them all.</p>
+      <div class="skill-tags">
+        <span class="skill-tag featured">CRM Intelligence</span>
+        <span class="skill-tag featured">Email Agent</span>
+        <span class="skill-tag featured">Code Reviewer</span>
+        <span class="skill-tag featured">Research Agent</span>
+        <span class="skill-tag featured">Data Analyst</span>
+        <span class="skill-tag">SEO Optimizer</span>
+        <span class="skill-tag">Contract Reviewer</span>
+        <span class="skill-tag">Meeting Summarizer</span>
+        <span class="skill-tag">Social Media Writer</span>
+        <span class="skill-tag">Lead Qualifier</span>
+        <span class="skill-tag">Invoice Extractor</span>
+        <span class="skill-tag">Support Triage</span>
+        <span class="skill-tag">+ 40 more</span>
+      </div>
+      <a href="https://app.veeliq.com/" class="catalog-link" target="_blank" rel="noopener">Browse all skills →</a>
     </div>
   </section>
 
