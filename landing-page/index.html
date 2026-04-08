@@ -1244,6 +1244,42 @@
         }
       });
     })();
+
+    // ── Scroll Reveal ──
+    (function () {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealSections = document.querySelectorAll('.what-it-is, .how-it-works, .skill-catalog');
+
+      // Collect [data-parallax-y] elements per section
+      const groups = Array.from(revealSections).map(section => ({
+        section,
+        els: Array.from(section.querySelectorAll('[data-parallax-y]')),
+      }));
+
+      // Respect reduced motion — leave elements fully visible, skip animation
+      if (reducedMotion) return;
+
+      // Mark elements hidden before first paint
+      groups.forEach(({ els }) => {
+        els.forEach(el => el.classList.add('reveal-up'));
+      });
+
+      // Reveal on section entry — fires once per section, then unobserves
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          const group = groups.find(g => g.section === target);
+          if (!group) return;
+          group.els.forEach((el, i) => {
+            el.style.transitionDelay = `${i * 80}ms`;
+            el.classList.add('is-visible');
+          });
+          observer.unobserve(target);
+        });
+      }, { threshold: 0.15 });
+
+      groups.forEach(({ section }) => io.observe(section));
+    })();
   </script>
 </body>
 </html>
