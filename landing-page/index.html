@@ -206,13 +206,42 @@
       line-height: 1;
     }
 
+    /* ── Full-viewport sections ── */
+    .hero,
+    .what-it-is,
+    .how-it-works,
+    .skill-catalog {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Parallax performance hint */
+    [data-parallax-y] {
+      will-change: translate;
+    }
+
+    /* Disable parallax on mobile — layout still 100vh */
+    @media (max-width: 767px) {
+      [data-parallax-y] { will-change: auto; }
+    }
+
+    /* Disable parallax animations for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      [data-parallax-y] { will-change: auto; }
+    }
+
     /* ── Navigation ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 150;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: rgba(240, 235, 226, 0.65);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid rgba(12, 11, 9, 0.07);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 2px 12px rgba(12, 11, 9, 0.06);
       opacity: 0;
       animation: fadeSlideDown 1s ease 0.2s forwards;
     }
@@ -285,8 +314,10 @@
       display: none;
       flex-direction: column;
       gap: 0;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
+      background: rgba(240, 235, 226, 0.85);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border-top: 1px solid rgba(12, 11, 9, 0.07);
       padding: 0;
       max-height: 0;
       overflow: hidden;
@@ -958,10 +989,6 @@
     </div>
   </footer>
 
-  <div class="ticker-wrap">
-    <div class="ticker-track" id="tk"></div>
-  </div>
-
   <script>
     // Particle system
     (function () {
@@ -1078,14 +1105,6 @@
       el.addEventListener('mouseenter', () => { cur.style.width = '20px'; cur.style.height = '20px'; });
       el.addEventListener('mouseleave', () => { cur.style.width = '12px'; cur.style.height = '12px'; });
     });
-
-    // Ticker
-    const tk = document.getElementById('tk');
-    if (tk) {
-      const words = ['VeelIQ', 'Skills as a Service', 'AI Intelligence', 'Plug & Play Skills', 'No Code Required', 'Claude.ai · Cursor · MCP', 'More IQ for your AI', 'One URL. All Skills.'];
-      const row = words.map(w => `<span class="ticker-item">${w}</span><span class="ticker-item ticker-sep">—</span>`).join('');
-      tk.innerHTML = row + row;
-    }
 
     // Hamburger
     const hamburger = document.getElementById('hamburger');
