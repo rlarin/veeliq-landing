@@ -43,7 +43,6 @@
       font-family: var(--font-b), sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
-      cursor: none;
     }
 
     /* ── Grain overlay ── */
@@ -55,29 +54,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 100;
-    }
-
-    /* ── Custom cursor ── */
-    .cursor {
-      position: fixed;
-      width: 12px; height: 12px;
-      background: var(--orange);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s;
-      mix-blend-mode: multiply;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid var(--orange);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      opacity: 0.4;
     }
 
     /* ── Top scan line ── */
@@ -93,36 +69,6 @@
     @keyframes scanline {
       0%   { background-position: 200% 0; }
       100% { background-position: -200% 0; }
-    }
-
-    /* ── Ticker ── */
-    .ticker-wrap {
-      position: relative;
-      height: 20px;
-      background: var(--orange);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-    }
-    .ticker-track {
-      display: flex;
-      white-space: nowrap;
-      animation: tickerMove 40s linear infinite;
-    }
-    .ticker-item {
-      font-family: var(--font-d), sans-serif;
-      font-weight: 700;
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--bg-dark);
-      padding: 0 2rem;
-    }
-    .ticker-sep { color: rgba(12,11,9,0.35); padding: 0 0.5rem; }
-    @keyframes tickerMove {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* ── Geometric decorations ── */
@@ -153,8 +99,6 @@
       backdrop-filter: blur(18px) saturate(160%);
       border-bottom: 1px solid rgba(12, 11, 9, 0.07);
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 2px 12px rgba(12, 11, 9, 0.06);
-      opacity: 0;
-      animation: fadeSlideDown 1s ease 0.2s forwards;
     }
     .nav-inner {
       max-width: 1200px;
@@ -464,10 +408,6 @@
     .footer-copy { font-size: 0.6rem; color: rgba(240,235,226,0.2); letter-spacing: 0.04em; }
 
     /* ── Animations ── */
-    @keyframes fadeSlideDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
     @keyframes fadeSlideUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -475,8 +415,6 @@
 
     /* ── Responsive ── */
     @media (max-width: 800px) {
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
       .nav-inner { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -491,8 +429,6 @@
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="ring"></div>
   <div class="top-line"></div>
 
   <div class="geo geo-diamond" aria-hidden="true"></div>
@@ -526,39 +462,6 @@
       <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
     </div>
   </nav>
-
-  <div class="ticker-wrap" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-item">VeelIQ</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Privacy Policy</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Skills as a Service</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Your Data is Safe</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">No Tracking</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">No Ads</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">GDPR Compliant</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">VeelIQ</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Privacy Policy</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Skills as a Service</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">Your Data is Safe</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">No Tracking</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">No Ads</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">GDPR Compliant</span>
-      <span class="ticker-sep">✦</span>
-    </div>
-  </div>
 
   <div class="page-body">
     <div class="content">
@@ -743,24 +646,6 @@
   </footer>
 
   <script>
-    // Cursor
-    const cur = document.getElementById('cursor');
-    const rng = document.getElementById('ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
-    });
-    (function loop() {
-      rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
-      rng.style.left = rx + 'px'; rng.style.top = ry + 'px';
-      requestAnimationFrame(loop);
-    })();
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { cur.style.width = '20px'; cur.style.height = '20px'; });
-      el.addEventListener('mouseleave', () => { cur.style.width = '12px'; cur.style.height = '12px'; });
-    });
-
     // Hamburger
     const hamburger = document.getElementById('hamburger');
     const navDrawer = document.getElementById('nav-drawer');
