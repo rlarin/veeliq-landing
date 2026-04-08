@@ -81,13 +81,6 @@
     }
 
     /* ── Particle canvas ── */
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
     /* ── Top scan line ── */
     .top-line {
       position: fixed;
@@ -137,23 +130,24 @@
     .geo { position: absolute; pointer-events: none; }
     .geo-diamond {
       width: 260px; height: 260px;
-      border: 1px solid rgba(255,77,0,0.08);
+      border: 1.5px solid rgba(255,77,0,0.35);
       transform: rotate(45deg);
       top: 8%; right: 6%;
       animation: rotateSlow 45s linear infinite;
+      box-shadow: 0 0 32px rgba(255,77,0,0.06) inset;
     }
     .geo-diamond-sm {
       width: 130px; height: 130px;
-      border: 1px solid rgba(255,77,0,0.05);
+      border: 1.5px solid rgba(255,77,0,0.22);
       transform: rotate(45deg);
       top: calc(8% + 65px); right: calc(6% + 65px);
       animation: rotateSlow 28s linear infinite reverse;
     }
     .geo-dot {
-      width: 6px; height: 6px;
+      width: 8px; height: 8px;
       background: var(--orange);
       border-radius: 50%;
-      opacity: 0.4;
+      opacity: 0.7;
       top: 50%; right: 8%;
       animation: pulseDot 3s ease infinite;
     }
@@ -762,8 +756,6 @@
 
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
-      #particles { display: none; }
-
       /* Nav */
       .nav-inner { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -827,7 +819,6 @@
 </head>
 <body>
 
-  <canvas id="particles"></canvas>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="ring"></div>
   <div class="top-line"></div>
@@ -1001,104 +992,6 @@
   </footer>
 
   <script>
-    // Particle system
-    (function () {
-      const cvs = document.getElementById('particles');
-      if (!cvs) return;
-      const ctx = cvs.getContext('2d');
-      let W, H, mouseX = -999, mouseY = -999;
-
-      function resize() {
-        W = cvs.width  = window.innerWidth;
-        H = cvs.height = window.innerHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-      document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-
-      const COUNT        = 72;
-      const CONNECT_DIST = 145;
-      const MOUSE_DIST   = 130;
-      const MAX_SPEED    = 0.7;
-
-      const pts = Array.from({ length: COUNT }, () => ({
-        x:  Math.random() * window.innerWidth,
-        y:  Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r:  Math.random() * 1.4 + 0.6,
-        orange: Math.random() > 0.28
-      }));
-
-      function tick() {
-        ctx.clearRect(0, 0, W, H);
-
-        // connections first (below dots)
-        for (let i = 0; i < COUNT; i++) {
-          for (let j = i + 1; j < COUNT; j++) {
-            const a = pts[i], b = pts[j];
-            const dx = a.x - b.x, dy = a.y - b.y;
-            const d2 = dx * dx + dy * dy;
-            if (d2 < CONNECT_DIST * CONNECT_DIST) {
-              const t = 1 - Math.sqrt(d2) / CONNECT_DIST;
-              ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = `rgba(255,77,0,${(t * t * 0.22).toFixed(3)})`;
-              ctx.lineWidth   = t * 0.9;
-              ctx.stroke();
-            }
-          }
-        }
-
-        // dots + physics
-        for (let i = 0; i < COUNT; i++) {
-          const p = pts[i];
-
-          // Mouse repulsion
-          const mdx = p.x - mouseX, mdy = p.y - mouseY;
-          const md  = Math.sqrt(mdx * mdx + mdy * mdy);
-          if (md < MOUSE_DIST && md > 1) {
-            const f = (1 - md / MOUSE_DIST) * 0.018;
-            p.vx += (mdx / md) * f;
-            p.vy += (mdy / md) * f;
-          }
-
-          // Speed cap
-          const sp = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-          if (sp > MAX_SPEED) { p.vx = p.vx / sp * MAX_SPEED; p.vy = p.vy / sp * MAX_SPEED; }
-
-          p.x += p.vx; p.y += p.vy;
-
-          // Wrap
-          if (p.x < -10) p.x = W + 10;
-          else if (p.x > W + 10) p.x = -10;
-          if (p.y < -10) p.y = H + 10;
-          else if (p.y > H + 10) p.y = -10;
-
-          // Glow — brighten if near mouse
-          const nearMouse = md < MOUSE_DIST * 0.5;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r + (nearMouse ? 1.2 : 0), 0, Math.PI * 2);
-          ctx.fillStyle = p.orange
-            ? `rgba(255,77,0,${nearMouse ? 0.7 : 0.42})`
-            : `rgba(12,11,9,${nearMouse ? 0.35 : 0.18})`;
-          ctx.fill();
-
-          // Extra glow ring on orange particles near mouse
-          if (p.orange && nearMouse) {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255,77,0,0.06)';
-            ctx.fill();
-          }
-        }
-
-        requestAnimationFrame(tick);
-      }
-      tick();
-    })();
-
     // Cursor tracking
     const cur = document.getElementById('cursor');
     const rng = document.getElementById('ring');
