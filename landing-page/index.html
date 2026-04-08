@@ -1123,6 +1123,103 @@
         });
       });
     }
+
+    // ── Parallax System (scroll + mouse drift + hero fade) ──
+    (function () {
+      // Guards
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.innerWidth < 768) return;
+
+      const SCROLL_LERP = 0.10;
+      const MOUSE_LERP  = 0.08;
+      const MOUSE_SENS  = 0.018;
+
+      // Build layer registry — group parallax elements by parent section
+      const sections = [];
+      document.querySelectorAll('.hero, .what-it-is, .how-it-works, .skill-catalog').forEach(section => {
+        const isHero = section.classList.contains('hero');
+        const items  = Array.from(section.querySelectorAll('[data-parallax-y]')).map(el => ({
+          el,
+          speed:    parseFloat(el.dataset.parallaxY),
+          mouseDiv: parseFloat(el.dataset.mouseDiv || 0),
+          scrollY:  0,   // current lerped scroll offset
+          mouseX:   0,   // current lerped mouse X offset
+          mouseY:   0,   // current lerped mouse Y offset
+        }));
+        if (items.length) sections.push({ section, items, isHero, active: false });
+      });
+
+      // Hero fade targets
+      const hero      = document.querySelector('.hero');
+      const heroInner = hero && hero.querySelector('.hero-inner');
+      const heroBgEls = hero ? [
+        hero.querySelector('.hero-bg-text'),
+        hero.querySelector('.geo-diamond'),
+        hero.querySelector('.geo-diamond-sm'),
+        hero.querySelector('.geo-dot'),
+      ].filter(Boolean) : [];
+
+      // IntersectionObserver — activate sections within ±1 viewport of edge
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const s = sections.find(s => s.section === target);
+          if (s) s.active = isIntersecting;
+        });
+      }, { rootMargin: '100% 0px 100% 0px' });
+      sections.forEach(s => io.observe(s.section));
+
+      // Mouse state — updated on mousemove, consumed in rAF loop
+      let rawMouseX = 0, rawMouseY = 0;
+      if (hero) {
+        document.addEventListener('mousemove', e => {
+          const r = hero.getBoundingClientRect();
+          rawMouseX = (e.clientX - (r.left + r.width  / 2)) * MOUSE_SENS;
+          rawMouseY = (e.clientY - (r.top  + r.height / 2)) * MOUSE_SENS;
+        });
+      }
+
+      // Main rAF loop — runs continuously; skips inactive sections
+      function tick() {
+        const vh = window.innerHeight;
+
+        sections.forEach(({ section, items, isHero, active }) => {
+          if (!active) return;
+          const rect     = section.getBoundingClientRect();
+          const progress = -rect.top / vh; // -1 entering, 0 at top, +1 exited
+
+          items.forEach(item => {
+            // Scroll parallax — lerp toward target
+            item.scrollY += (progress * item.speed - item.scrollY) * SCROLL_LERP;
+
+            // Mouse drift — hero elements only, when data-mouse-div is set
+            if (isHero && item.mouseDiv) {
+              item.mouseX += (rawMouseX / item.mouseDiv - item.mouseX) * MOUSE_LERP;
+              item.mouseY += (rawMouseY / item.mouseDiv - item.mouseY) * MOUSE_LERP;
+            }
+
+            // Write via CSS `translate` property — does NOT conflict with
+            // CSS `transform` animations (e.g. rotateSlow on geo-diamond)
+            item.el.style.translate = `${item.mouseX}px ${item.scrollY + item.mouseY}px`;
+          });
+
+          // Hero scroll fade — applied when hero exits upward
+          if (isHero) {
+            const p = Math.max(0, Math.min(1, progress));
+            if (heroInner) {
+              heroInner.style.opacity   = String(Math.max(0, 1 - p * 1.2));
+              heroInner.style.transform = `scale(${Math.max(0.96, 1 - p * 0.04)})`;
+            }
+            heroBgEls.forEach(el => {
+              el.style.opacity = String(Math.max(0, 1 - p * 1.6));
+            });
+          }
+        });
+
+        requestAnimationFrame(tick);
+      }
+
+      tick(); // start loop immediately
+    })();
   </script>
 </body>
 </html>
