@@ -1170,8 +1170,10 @@
 
       // Mouse state — updated on mousemove, consumed in rAF loop
       let rawMouseX = 0, rawMouseY = 0;
+      const heroSection = sections.find(s => s.isHero);
       if (hero) {
         document.addEventListener('mousemove', e => {
+          if (!heroSection || !heroSection.active) return;
           const r = hero.getBoundingClientRect();
           rawMouseX = (e.clientX - (r.left + r.width  / 2)) * MOUSE_SENS;
           rawMouseY = (e.clientY - (r.top  + r.height / 2)) * MOUSE_SENS;
@@ -1179,6 +1181,7 @@
       }
 
       // Main rAF loop — runs continuously; skips inactive sections
+      let rafId;
       function tick() {
         const vh = window.innerHeight;
 
@@ -1215,7 +1218,7 @@
           }
         });
 
-        requestAnimationFrame(tick);
+        rafId = requestAnimationFrame(tick);
       }
 
       tick(); // start loop immediately
