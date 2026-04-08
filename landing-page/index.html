@@ -1128,7 +1128,9 @@
     (function () {
       // Guards
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (window.innerWidth < 768) return;
+      const mobileQuery = window.matchMedia('(max-width: 767px)');
+      if (mobileQuery.matches) return;
+      mobileQuery.addEventListener('change', e => { if (e.matches) cancelAnimationFrame(rafId); });
 
       const SCROLL_LERP = 0.10;
       const MOUSE_LERP  = 0.08;
@@ -1156,7 +1158,7 @@
         hero.querySelector('.hero-bg-text'),
         hero.querySelector('.geo-diamond'),
         hero.querySelector('.geo-diamond-sm'),
-        hero.querySelector('.geo-dot'),
+        // .geo-dot excluded: pulseDot CSS animation drives its opacity independently
       ].filter(Boolean) : [];
 
       // IntersectionObserver — activate sections within ±1 viewport of edge
@@ -1222,6 +1224,14 @@
       }
 
       tick(); // start loop immediately
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          cancelAnimationFrame(rafId);
+        } else {
+          tick();
+        }
+      });
     })();
   </script>
 </body>
