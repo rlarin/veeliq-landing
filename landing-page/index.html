@@ -126,6 +126,17 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* ── Circuit traces ── */
+    .circuit-traces {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
     /* ── Geometric decorations ── */
     .geo { position: absolute; pointer-events: none; }
     .geo-diamond {
@@ -502,6 +513,7 @@
       background: var(--bg-alt);
       padding: 5rem 0;
       border-top: 1px solid var(--border);
+      position: relative;
     }
     .what-header {
       margin-bottom: 3rem;
@@ -611,6 +623,7 @@
       background: var(--bg);
       padding: 5rem 0;
       border-top: 1px solid var(--border);
+      position: relative;
     }
     .catalog-header {
       margin-bottom: 0.4rem;
