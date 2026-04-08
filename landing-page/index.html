@@ -828,6 +828,193 @@
       .hero-bg-text { display: none; }
     }
 
+    /* ══════════════════════════════════════
+       CREATIVE ENHANCEMENTS
+       ══════════════════════════════════════ */
+
+    /* ── Button shine sweep ── */
+    .btn-primary, .btn-nav, .btn-cta-large { position: relative; overflow: hidden; }
+    .btn-primary::after, .btn-nav::after, .btn-cta-large::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.16) 50%, transparent 70%);
+      transform: translateX(-160%);
+      transition: transform 0.55s ease;
+      pointer-events: none;
+    }
+    .btn-primary:hover::after, .btn-nav:hover::after, .btn-cta-large:hover::after {
+      transform: translateX(160%);
+    }
+
+    /* ── Hero terminal mock ── */
+    .hero-terminal {
+      background: var(--bg);
+      border: 1px solid rgba(12,11,9,0.14);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 28px rgba(12,11,9,0.09), 0 1px 0 rgba(255,255,255,0.8) inset;
+      opacity: 0;
+      animation: fadeSlideUp 1.2s ease 2.4s forwards;
+    }
+    .terminal-bar {
+      background: rgba(12,11,9,0.05);
+      border-bottom: 1px solid rgba(12,11,9,0.09);
+      padding: 0.55rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.38rem;
+    }
+    .t-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .t-dot:nth-child(1) { background: #ff5f57; }
+    .t-dot:nth-child(2) { background: #febc2e; }
+    .t-dot:nth-child(3) { background: #28c840; }
+    .t-title { font-family: var(--font-b); font-size: 0.57rem; color: var(--muted); letter-spacing: 0.04em; margin-left: 0.6rem; }
+    .terminal-body { padding: 1rem 1.1rem; }
+    .t-url-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+    .t-url-label { font-size: 0.6rem; color: var(--muted); font-family: 'Courier New', monospace; }
+    .t-url-label .t-accent { color: var(--orange); }
+    .t-connected {
+      font-size: 0.52rem;
+      color: #22c55e;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-d);
+    }
+    .t-connected::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      animation: pulseDot 2s ease infinite;
+    }
+    .t-rule { height: 1px; background: rgba(12,11,9,0.08); margin-bottom: 0.8rem; }
+    .t-tool-list { display: flex; flex-direction: column; gap: 0.52rem; margin-bottom: 0.85rem; }
+    .t-tool {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.63rem;
+      opacity: 0;
+      animation: toolAppear 0.5s cubic-bezier(0.16,1,0.3,1) calc(3.2s + var(--ti, 0) * 0.32s) forwards;
+    }
+    .t-tool-icon { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); opacity: 0.65; flex-shrink: 0; }
+    .t-tool-name { flex: 1; color: var(--text); }
+    .t-check { font-size: 0.6rem; color: #22c55e; font-weight: 700; }
+    .t-tool.is-loading .t-check { color: var(--orange); animation: loadingDots 1.2s ease infinite; letter-spacing: 0.1em; }
+    .t-cursor-line {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.62rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(12,11,9,0.08);
+    }
+    .t-prompt-sym { color: var(--orange); font-weight: 700; }
+    .t-blink { color: var(--orange); animation: blinkCursor 1s step-end infinite; }
+    @keyframes toolAppear {
+      from { opacity: 0; transform: translateX(-6px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes loadingDots {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+    @keyframes blinkCursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255,77,0,0.18);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat-item {
+      padding: 2.8rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,77,0,0.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      display: block;
+    }
+    .stat-plus { font-size: 0.55em; color: rgba(255,77,0,0.65); }
+    .stat-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(240,235,226,0.3);
+      margin-top: 0.6rem;
+      display: block;
+    }
+
+    /* ── Pillar number watermark ── */
+    .pillar { position: relative; overflow: hidden; }
+    .pillar-num {
+      position: absolute;
+      top: -0.6rem;
+      right: 0.8rem;
+      font-family: var(--font-d);
+      font-size: 5.5rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(255,77,0,0.052);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Nav active indicator ── */
+    .nav-link { position: relative; }
+    .nav-link.is-active { color: var(--text); }
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 1px;
+    }
+
+    /* ── Footer CTA positioning ── */
+    .footer-cta { position: relative; overflow: hidden; }
+    .footer-cta .section-wrap { position: relative; z-index: 1; }
+
+    /* ── Circuit SVG scroll fade-in ── */
+    @media (prefers-reduced-motion: no-preference) {
+      section .circuit-traces {
+        opacity: 0;
+        transition: opacity 1.4s ease;
+      }
+      section .circuit-traces.is-lit {
+        opacity: 1;
+      }
+    }
+
+    /* ── Additional mobile responsive ── */
+    @media (max-width: 800px) {
+      .hero-terminal { margin-bottom: 1.4rem; }
+      .stat-item { padding: 1.8rem 1rem; }
+      .stat-num { font-size: clamp(2rem, 8vw, 3rem); }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,77,0,0.1); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -862,6 +1049,39 @@
       <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
     </div>
   </nav>
+
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Skills as a Service</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">CRM Intelligence</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Email Agent</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Code Reviewer</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Research Agent</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Works with Claude.ai · Cursor · Any MCP Client</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">No Code. No Setup. Just More Intelligence.</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Skills as a Service</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">CRM Intelligence</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Email Agent</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Code Reviewer</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Research Agent</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Works with Claude.ai · Cursor · Any MCP Client</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">No Code. No Setup. Just More Intelligence.</span>
+      <span class="ticker-sep">✦</span>
+    </div>
+  </div>
 
   <section class="hero">
     <svg class="circuit-traces" aria-hidden="true" focusable="false"
@@ -933,8 +1153,49 @@
           <span class="line-mask"><span class="line-inner">IQ.</span></span>
         </h1>
       </div>
-      <!-- Right: subtitle + CTAs + badges -->
+      <!-- Right: terminal mock + subtitle + CTAs -->
       <div class="hero-right" data-parallax-y="25" data-mouse-div="28">
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="terminal-bar">
+            <span class="t-dot"></span>
+            <span class="t-dot"></span>
+            <span class="t-dot"></span>
+            <span class="t-title">claude.ai — MCP Tools</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-url-row">
+              <span class="t-url-label">mcp.veeliq.com/u/<span class="t-accent">k7f3x2</span></span>
+              <span class="t-connected">connected</span>
+            </div>
+            <div class="t-rule"></div>
+            <div class="t-tool-list">
+              <div class="t-tool" style="--ti:0">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">CRM Intelligence</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool" style="--ti:1">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">Email Agent</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool" style="--ti:2">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">Code Reviewer</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool is-loading" style="--ti:3">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">Research Agent</span>
+                <span class="t-check">···</span>
+              </div>
+            </div>
+            <div class="t-cursor-line">
+              <span class="t-prompt-sym">›</span>
+              <span class="t-blink">▋</span>
+            </div>
+          </div>
+        </div>
         <p class="hero-subtitle">
           Subscribe to expert skills that appear as native tools inside Claude.ai,
           Cursor, or any MCP-compatible AI client. No code. No setup. Just more intelligence.
@@ -955,6 +1216,25 @@
       </div>
     </div>
   </section>
+
+  <div class="stats-strip" aria-label="Key stats">
+    <div class="section-wrap">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num">50<span class="stat-plus">+</span></span>
+          <span class="stat-label">Expert Skills</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1</span>
+          <span class="stat-label">Minute to get started</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0</span>
+          <span class="stat-label">Lines of code required</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="what-it-is">
     <svg class="circuit-traces" aria-hidden="true" focusable="false"
@@ -999,19 +1279,22 @@
     </svg>
     <div class="section-wrap">
       <div class="what-header" data-parallax-y="20">
-        <div class="eyebrow"><span>What is VeelIQ?</span></div>
+        <div class="eyebrow"><div class="eyebrow-line"></div><span>What is VeelIQ?</span></div>
         <h2 class="section-title what-title">Not another AI.<br>An upgrade for yours.</h2>
       </div>
       <div class="pillars">
         <div class="pillar" data-parallax-y="15">
+          <div class="pillar-num" aria-hidden="true">01</div>
           <div class="pillar-title">No new AI. No new app.</div>
           <p class="pillar-body">VeelIQ upgrades the AI you already have — it doesn't replace it. Keep using Claude.ai, Cursor, or whatever you love.</p>
         </div>
         <div class="pillar" data-parallax-y="22">
+          <div class="pillar-num" aria-hidden="true">02</div>
           <div class="pillar-title">Expert skills, on demand.</div>
           <p class="pillar-body">CRM analyst, email agent, code reviewer — subscribe to only the skills you need. Add more anytime, cancel anytime.</p>
         </div>
         <div class="pillar" data-parallax-y="30">
+          <div class="pillar-num" aria-hidden="true">03</div>
           <div class="pillar-title">MCP-native. Works everywhere.</div>
           <p class="pillar-body">One MCP server URL. Works with Claude.ai, Cursor, and any MCP-compatible client. No lock-in.</p>
         </div>
@@ -1061,7 +1344,7 @@
       </g>
     </svg>
     <div class="section-wrap">
-      <div class="eyebrow" data-parallax-y="20"><span>How It Works</span></div>
+      <div class="eyebrow" data-parallax-y="20"><div class="eyebrow-line"></div><span>How It Works</span></div>
       <h2 class="section-title how-title" data-parallax-y="20">Three steps. That's it.</h2>
       <div class="steps">
         <div class="step" data-parallax-y="18">
@@ -1127,7 +1410,7 @@
       </g>
     </svg>
     <div class="section-wrap">
-      <div class="catalog-header eyebrow" data-parallax-y="20"><span>Skill Catalog</span></div>
+      <div class="catalog-header eyebrow" data-parallax-y="20"><div class="eyebrow-line"></div><span>Skill Catalog</span></div>
       <h2 class="section-title catalog-title" data-parallax-y="20">50+ skills at launch.</h2>
       <p class="catalog-sub" data-parallax-y="25">From CRM intelligence to research agents — one subscription unlocks them all.</p>
       <div class="skill-tags" data-parallax-y="15">
@@ -1150,6 +1433,40 @@
   </section>
 
   <section class="footer-cta">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.38)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Left cluster -->
+        <polyline points="0,245 48,245 48,278 85,278"/>
+        <polyline points="0,308 32,308 32,345 62,345 62,378"/>
+        <polyline points="48,278 48,255"/>
+        <!-- Right cluster -->
+        <polyline points="1200,245 1152,245 1152,278 1115,278"/>
+        <polyline points="1200,308 1168,308 1168,345 1138,345 1138,378"/>
+        <polyline points="1152,278 1152,255"/>
+        <!-- Top center -->
+        <polyline points="480,0 480,48 518,48 518,72"/>
+        <polyline points="555,0 555,35 522,35"/>
+        <!-- Bottom center -->
+        <polyline points="645,700 645,652 680,652 680,625"/>
+        <polyline points="720,700 720,665 755,665 755,638"/>
+      </g>
+      <g fill="rgba(255,77,0,0.6)">
+        <circle cx="85" cy="278" r="3.5"/>
+        <circle cx="62" cy="378" r="3"/>
+        <circle cx="1115" cy="278" r="3.5"/>
+        <circle cx="1138" cy="378" r="3"/>
+        <circle cx="518" cy="72" r="3.5"/>
+        <circle cx="680" cy="625" r="3.5"/>
+        <circle cx="48" cy="255" r="2.5"/>
+        <circle cx="1152" cy="255" r="2.5"/>
+      </g>
+      <g fill="none" stroke="rgba(255,77,0,0.6)" stroke-width="1.5">
+        <circle cx="522" cy="35" r="3"/>
+        <circle cx="755" cy="638" r="3"/>
+      </g>
+    </svg>
     <div class="section-wrap">
       <h2 class="footer-cta-headline">More <span class="c-orange">IQ.</span><br>Instantly.</h2>
       <p class="footer-cta-sub">Get started in under a minute. No credit card required to explore.</p>
@@ -1202,7 +1519,7 @@
       hamburger.addEventListener('click', () => {
         const isOpen = hamburger.classList.toggle('open');
         navDrawer.classList.toggle('open');
-        hamburger.setAttribute('aria-expanded', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
       });
       // Close drawer when a link is clicked
       navDrawer.querySelectorAll('a').forEach(a => {
@@ -1323,15 +1640,47 @@
       });
     })();
 
+    // ── Nav Scroll Spy ──
+    (function () {
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      if (!navLinks.length) return;
+      const sections = Array.from(navLinks)
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+      const spy = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          navLinks.forEach(l => l.classList.remove('is-active'));
+          const link = document.querySelector(`.nav-link[href="#${target.id}"]`);
+          if (link) link.classList.add('is-active');
+        });
+      }, { threshold: 0.45 });
+      sections.forEach(s => spy.observe(s));
+    })();
+
+    // ── Circuit SVG fade-in on scroll ──
+    (function () {
+      const svgs = document.querySelectorAll('section .circuit-traces');
+      if (!svgs.length) return;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          target.classList.add('is-lit');
+          io.unobserve(target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      svgs.forEach(s => io.observe(s));
+    })();
+
     // ── Scroll Reveal ──
     (function () {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const revealSections = document.querySelectorAll('.what-it-is, .how-it-works, .skill-catalog');
+      const revealSections = document.querySelectorAll('.stats-strip, .what-it-is, .how-it-works, .skill-catalog');
 
-      // Collect [data-parallax-y] elements per section
+      // Collect reveal elements per section (parallax elements + cards)
       const groups = Array.from(revealSections).map(section => ({
         section,
-        els: Array.from(section.querySelectorAll('[data-parallax-y]')),
+        els: Array.from(section.querySelectorAll('[data-parallax-y], .pillar, .step, .stat-item')),
       }));
 
       // Respect reduced motion — leave elements fully visible, skip animation
