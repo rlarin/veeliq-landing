@@ -864,6 +864,58 @@
   </nav>
 
   <section class="hero">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Left cluster -->
+        <polyline points="80,700 80,580 120,580 120,540"/>
+        <polyline points="80,625 50,625 50,595"/>
+        <polyline points="120,580 155,580 155,552 190,552"/>
+        <line x1="80" y1="580" x2="80" y2="558"/>
+        <!-- Center cluster -->
+        <polyline points="580,700 580,565 545,565 545,508 510,508 510,462"/>
+        <polyline points="580,620 618,620 618,588 655,588 655,552"/>
+        <polyline points="545,535 578,535 578,505"/>
+        <polyline points="580,648 610,648 610,668 642,668"/>
+        <!-- Right cluster -->
+        <polyline points="962,700 962,602 998,602 998,562"/>
+        <polyline points="962,652 928,652 928,618 902,618"/>
+        <polyline points="998,582 1028,582 1028,550 1058,550"/>
+        <!-- Top-right accent -->
+        <polyline points="1200,58 1152,58 1152,92 1122,92"/>
+        <polyline points="1178,0 1178,42 1145,42"/>
+        <polyline points="1200,105 1168,105 1168,128 1140,128 1140,155"/>
+      </g>
+      <!-- Filled nodes at key junctions -->
+      <g fill="rgba(255,77,0,0.55)">
+        <circle cx="120" cy="540" r="4"/>
+        <circle cx="190" cy="552" r="3.5"/>
+        <circle cx="510" cy="462" r="4.5"/>
+        <circle cx="655" cy="552" r="4"/>
+        <circle cx="642" cy="668" r="3"/>
+        <circle cx="998" cy="562" r="4"/>
+        <circle cx="1058" cy="550" r="3.5"/>
+        <circle cx="1145" cy="42" r="3.5"/>
+        <circle cx="1140" cy="155" r="3"/>
+      </g>
+      <!-- Open endpoint rings -->
+      <g fill="none" stroke="rgba(255,77,0,0.55)" stroke-width="1.5">
+        <circle cx="50" cy="595" r="3.5"/>
+        <circle cx="578" cy="505" r="3"/>
+        <circle cx="902" cy="618" r="3.5"/>
+        <circle cx="1122" cy="92" r="3"/>
+      </g>
+      <!-- Small glow dots on trace midpoints -->
+      <g fill="rgba(255,77,0,0.7)">
+        <circle cx="80" cy="558" r="2.5"/>
+        <circle cx="580" cy="565" r="2"/>
+        <circle cx="618" cy="588" r="2"/>
+        <circle cx="962" cy="602" r="2"/>
+        <circle cx="1152" cy="58" r="2"/>
+        <circle cx="1168" cy="128" r="2"/>
+      </g>
+    </svg>
     <div class="hero-bg-text" data-parallax-y="60" data-mouse-div="14">IQ</div>
     <div class="geo geo-diamond" data-parallax-y="40" data-mouse-div="8"></div>
     <div class="geo geo-diamond-sm" data-parallax-y="50" data-mouse-div="6"></div>
