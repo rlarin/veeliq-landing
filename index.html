@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VeelIQ — Skills as a Service for your AI</title>
-  <meta name="description" content="Subscribe to expert skills that appear as native tools inside Claude.ai, Cursor, or any MCP-compatible AI client. No code. No setup. Just more intelligence." />
+  <title>VeelIQ - Expert AI Skills via MCP | Claude.ai & Cursor</title>
+  <meta name="description" content="VeelIQ gives your AI expert skills via MCP. Subscribe to 50+ on-demand skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup.">
+  <link rel="canonical" href="https://www.veeliq.com/">
+  <meta property="og:title" content="VeelIQ - Skills as a Service for your AI">
+  <meta property="og:description" content="Subscribe to expert AI skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup.">
+  <meta property="og:url" content="https://www.veeliq.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.veeliq.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VeelIQ - Skills as a Service for your AI">
+  <meta name="twitter:description" content="Subscribe to expert AI skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client.">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -54,29 +63,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 100;
-    }
-
-    /* ── Custom cursor ── */
-    .cursor {
-      position: fixed;
-      width: 12px; height: 12px;
-      background: var(--orange);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s;
-      mix-blend-mode: multiply;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid var(--orange);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      opacity: 0.4;
     }
 
     /* ── Particle canvas ── */
@@ -172,10 +158,6 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* ── Entrance animations ── */
@@ -767,7 +749,6 @@
     @media (max-width: 800px) {
 
       body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
       /* Nav */
       .nav-inner { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -881,7 +862,7 @@
       display: flex;
       align-items: center;
       gap: 0.3rem;
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
     }
     .t-connected::before {
       content: '';
@@ -941,7 +922,7 @@
     }
     .stat-item:last-child { border-right: none; }
     .stat-num {
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-size: clamp(3rem, 4.5vw, 5rem);
       font-weight: 900;
       color: var(--orange);
@@ -965,7 +946,7 @@
       position: absolute;
       top: -0.6rem;
       right: 0.8rem;
-      font-family: var(--font-d);
+      font-family: var(--font-d),sans-serif;
       font-size: 5.5rem;
       font-weight: 900;
       letter-spacing: -0.06em;
@@ -1396,6 +1377,35 @@
     </div>
   </section>
 
+  <section id="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+    <details>
+      <summary>What is VeelIQ?</summary>
+      <p>VeelIQ is a Skills as a Service platform. Subscribe to expert AI skills that appear as native tools inside Claude.ai, Cursor, or any MCP-compatible client - no code or setup required.</p>
+    </details>
+
+    <details>
+      <summary>How does VeelIQ work with Claude.ai?</summary>
+      <p>VeelIQ gives you a personal MCP server URL. Paste it into Claude.ai's connector settings and your subscribed skills instantly appear as native tools in every conversation.</p>
+    </details>
+
+    <details>
+      <summary>Do I need to write code to use VeelIQ?</summary>
+      <p>No. Zero lines of code required. Just paste one MCP URL into your AI client and you're set up in under a minute.</p>
+    </details>
+
+    <details>
+      <summary>Which AI clients does VeelIQ support?</summary>
+      <p>VeelIQ works with Claude.ai, Cursor, and any MCP-compatible AI client. One subscription, any client.</p>
+    </details>
+
+    <details>
+      <summary>How many skills are available?</summary>
+      <p>VeelIQ launches with 50+ expert skills covering CRM intelligence, email, code review, data analysis, SEO, research, and more.</p>
+    </details>
+  </section>
+
   <section class="footer-cta">
     <svg class="circuit-traces" aria-hidden="true" focusable="false"
          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
@@ -1654,5 +1664,75 @@
       groups.forEach(({ section }) => io.observe(section));
     })();
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.veeliq.com/#organization",
+      "name": "VeelIQ",
+      "url": "https://www.veeliq.com/",
+      "logo": "https://www.veeliq.com/logo.png",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.veeliq.com/#website",
+      "url": "https://www.veeliq.com/",
+      "name": "VeelIQ",
+      "publisher": { "@id": "https://www.veeliq.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://app.veeliq.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "VeelIQ",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Skills as a Service for AI. Subscribe to expert skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible AI client.",
+      "url": "https://www.veeliq.com/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free to explore, no credit card required"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VeelIQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VeelIQ is a Skills as a Service platform. You subscribe to expert skills that appear as native tools inside Claude.ai, Cursor, or any MCP-compatible AI client - no code or setup required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does VeelIQ work with Claude.ai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VeelIQ provides a personal MCP server URL. You paste it into Claude.ai's connector settings, and your subscribed skills instantly appear as native tools in every conversation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to write code to use VeelIQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. VeelIQ requires zero lines of code. You connect by pasting one MCP server URL into your AI client."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </body>
 </html>
