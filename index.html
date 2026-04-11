@@ -159,6 +159,10 @@
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── Entrance animations ── */
     @keyframes fadeSlideDown {
@@ -993,6 +997,78 @@
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,77,0,0.1); }
       .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* ── FAQ Section ── */
+    #faq {
+      background: var(--bg-alt);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    #faq-heading {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.05em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 2.5rem;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+    }
+    #faq details {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    #faq details:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+    #faq summary {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      padding: 1.4rem 0;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+      user-select: none;
+    }
+    #faq summary::-webkit-details-marker { display: none; }
+    #faq summary::after {
+      content: '+';
+      font-family: var(--font-b), sans-serif;
+      font-weight: 300;
+      font-size: 1.4rem;
+      color: var(--orange);
+      line-height: 1;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    #faq details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    #faq summary:hover { color: var(--orange); }
+    #faq details p {
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-weight: 300;
+      padding-bottom: 1.4rem;
+      max-width: 64ch;
+    }
+    @media (max-width: 800px) {
+      #faq { padding: 3.5rem 0; }
+      #faq-heading { padding-inline: 1.5rem; font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      #faq details { padding-inline: 1.5rem; }
     }
 
   </style>
