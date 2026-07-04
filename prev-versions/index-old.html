@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeelIQ - Expert AI Skills via MCP | Claude.ai & Cursor</title>
+  <meta name="description" content="VeelIQ gives your AI expert skills via MCP. Subscribe to 50+ on-demand skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup.">
+  <link rel="canonical" href="https://www.veeliq.com/">
+  <meta property="og:title" content="VeelIQ - Skills as a Service for your AI">
+  <meta property="og:description" content="Subscribe to expert AI skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup.">
+  <meta property="og:url" content="https://www.veeliq.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.veeliq.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VeelIQ - Skills as a Service for your AI">
+  <meta name="twitter:description" content="Subscribe to expert AI skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible client.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../coming-soon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../coming-soon/favicon.svg" />
+  <link rel="shortcut icon" href="../coming-soon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../coming-soon/apple-touch-icon.png" />
+  <link rel="manifest" href="../coming-soon/site.webmanifest" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #f0ebe2;
+      --bg-alt:      #f8f6f1;
+      --bg-dark:     #0c0b09;
+      --bg-dark-2:   #141310;
+      --surface:     #ffffff;
+      --orange:      #ff4d00;
+      --orange-2:    #ff7733;
+      --orange-dim:  rgba(255,77,0,0.1);
+      --orange-glow: rgba(255,77,0,0.25);
+      --text:        #0c0b09;
+      --muted:       rgba(12,11,9,0.45);
+      --border:      rgba(12,11,9,0.1);
+      --border-dark: rgba(255,77,0,0.14);
+      --font-d:      'Unbounded', sans-serif;
+      --font-b:      'Epilogue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b), sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Grain overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ── Particle canvas ── */
+    /* ── Top scan line ── */
+    .top-line {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), var(--orange-2), var(--orange), transparent);
+      background-size: 200% 100%;
+      animation: scanline 15s linear infinite;
+      z-index: 200;
+    }
+    @keyframes scanline {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ── Ticker ── */
+    .ticker-wrap {
+      position: relative;
+      height: 20px;
+      background: var(--orange);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerMove 40s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bg-dark);
+      padding: 0 2rem;
+    }
+    .ticker-sep { color: rgba(12,11,9,0.35); padding: 0 0.5rem; }
+    @keyframes tickerMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Circuit traces ── */
+    .circuit-traces {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
+    /* ── Geometric decorations ── */
+    .geo { position: absolute; pointer-events: none; }
+    .geo-diamond {
+      width: 260px; height: 260px;
+      border: 1.5px solid rgba(255,77,0,0.35);
+      transform: rotate(45deg);
+      top: 8%; right: 6%;
+      animation: rotateSlow 45s linear infinite;
+      box-shadow: 0 0 32px rgba(255,77,0,0.06) inset;
+    }
+    .geo-diamond-sm {
+      width: 130px; height: 130px;
+      border: 1.5px solid rgba(255,77,0,0.22);
+      transform: rotate(45deg);
+      top: calc(8% + 65px); right: calc(6% + 65px);
+      animation: rotateSlow 28s linear infinite reverse;
+    }
+    .geo-dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      opacity: 0.7;
+      top: 50%; right: 8%;
+      animation: pulseDot 3s ease infinite;
+    }
+    @keyframes rotateSlow { to { transform: rotate(405deg); } }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50%       { opacity: 0.9; transform: scale(1.8); }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideRight {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes lineReveal {
+      from { transform: translateY(110%); }
+      to   { transform: translateY(0); }
+    }
+
+    /* ── Section shared helpers ── */
+    .section-wrap {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+    }
+    .eyebrow {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .eyebrow-line { width: 28px; height: 1px; background: var(--orange); flex-shrink: 0; }
+    .section-title {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    /* ── Full-viewport sections ── */
+    .hero,
+    .what-it-is,
+    .how-it-works,
+    .skill-catalog {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Parallax performance hint */
+    [data-parallax-y] {
+      will-change: translate;
+    }
+
+    /* Disable parallax on mobile — layout still 100vh */
+    @media (max-width: 767px) {
+      [data-parallax-y] { will-change: auto; }
+    }
+
+    /* Disable parallax animations for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      [data-parallax-y] { will-change: auto; }
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 150;
+      background: rgba(240, 235, 226, 0.65);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid rgba(12, 11, 9, 0.07);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 2px 12px rgba(12, 11, 9, 0.06);
+      opacity: 0;
+      animation: fadeSlideDown 1s ease 0.2s forwards;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 1.2rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .nav-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+    .btn-nav {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.4rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--orange-2); }
+
+    /* Hamburger — hidden on desktop */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(240, 235, 226, 0.85);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(18px) saturate(160%);
+      border-top: 1px solid rgba(12, 11, 9, 0.07);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .nav-drawer.open {
+      max-height: 300px;
+      padding: 1rem 0;
+    }
+    .nav-drawer .nav-link {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.78rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer .btn-nav {
+      margin: 0.75rem 1.5rem 0;
+      display: inline-block;
+      width: calc(100% - 3rem);
+      text-align: center;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0 4rem;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BG watermark */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; right: -2rem;
+      transform: translateY(-52%);
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(18vw, 22vw, 28vw);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,77,0,0.055);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      letter-spacing: -0.06em;
+    }
+
+    /* Hero left — eyebrow + headline */
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideRight 1.2s ease 0.9s forwards;
+    }
+    .hero-eyebrow .eyebrow-line { width: 36px; }
+
+    .hero h1 {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 6.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+    }
+    .line-mask {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.08em;
+    }
+    .line-inner {
+      display: block;
+      transform: translateY(110%);
+      animation: lineReveal 1.4s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .line-mask:nth-child(1) .line-inner { animation-delay: 1.4s; }
+    .line-mask:nth-child(2) .line-inner { animation-delay: 1.75s; color: var(--orange); }
+    .line-mask:nth-child(3) .line-inner {
+      animation-delay: 2.1s;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--orange);
+    }
+
+    /* Hero right — subtitle, CTAs, badges */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--muted);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeSlideUp 1.4s ease 2.2s forwards;
+    }
+    .hero-cta-wrap {
+      opacity: 0;
+      animation: fadeSlideUp 1.4s ease 2.8s forwards;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--orange-2); }
+    .btn-ghost {
+      font-size: 0.68rem;
+      color: var(--orange);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,77,0,0.4);
+      transition: text-decoration-color 0.2s;
+    }
+    .btn-ghost:hover { text-decoration-color: var(--orange); }
+    .hero-note {
+      font-size: 0.64rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+    .client-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .client-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .client-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: rgba(12,11,9,0.65);
+      letter-spacing: 0.02em;
+    }
+
+
+    /* ── What It Is ── */
+    .what-it-is {
+      background: var(--bg-alt);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .what-header {
+      margin-bottom: 3rem;
+    }
+    .what-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--text);
+      margin-top: 0.4rem;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--orange);
+      border-radius: 3px;
+      padding: 2rem 1.8rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .pillar:hover {
+      box-shadow: 0 8px 40px rgba(255,77,0,0.08);
+      transform: translateY(-2px);
+    }
+    .pillar-title {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .pillar-body {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ── How It Works ── */
+    .how-it-works {
+      background: var(--bg-dark);
+      padding: 5rem 0;
+      border-top: 2px solid var(--orange);
+      position: relative;
+      overflow: hidden;
+    }
+    .how-it-works .eyebrow { color: var(--orange); }
+    .how-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #f0ebe2;
+      margin-top: 0.4rem;
+      margin-bottom: 3rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: start;
+      gap: 0;
+    }
+    .step {
+      background: rgba(255,77,0,0.05);
+      border: 1px solid rgba(255,77,0,0.16);
+      border-radius: 3px;
+      padding: 2rem 1.8rem;
+      transition: background 0.3s;
+    }
+    .step:hover { background: rgba(255,77,0,0.09); }
+    .step-num {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.8rem;
+    }
+    .step-title {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: -0.02em;
+      color: #f0ebe2;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .step-body {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: rgba(240,235,226,0.5);
+      font-weight: 300;
+    }
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 1.2rem;
+      margin-top: 2rem;
+      color: var(--orange);
+      font-size: 1.4rem;
+      opacity: 0.5;
+    }
+
+    /* ── Skill Catalog ── */
+    .skill-catalog {
+      background: var(--bg);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .catalog-header {
+      margin-bottom: 0.4rem;
+    }
+    .catalog-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--text);
+      margin-top: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+    .catalog-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .skill-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
+      color: rgba(12,11,9,0.55);
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      border-color: var(--orange);
+      color: var(--text);
+      background: rgba(255,77,0,0.04);
+    }
+    .skill-tag.featured {
+      background: rgba(255,77,0,0.07);
+      border-color: rgba(255,77,0,0.3);
+      color: var(--orange);
+    }
+    .skill-tag.featured:hover {
+      background: rgba(255,77,0,0.12);
+      border-color: var(--orange);
+    }
+    .catalog-link {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,77,0,0.35);
+      transition: text-decoration-color 0.2s;
+    }
+    .catalog-link:hover { text-decoration-color: var(--orange); }
+
+    /* ── Footer CTA ── */
+    .footer-cta {
+      background: var(--bg-dark-2);
+      padding: 6rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,77,0,0.12);
+    }
+    .footer-cta-headline {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.05em;
+      color: #f0ebe2;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .footer-cta-headline .c-orange { color: var(--orange); }
+    .footer-cta-sub {
+      font-size: 0.84rem;
+      color: rgba(240,235,226,0.4);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+    .btn-cta-large {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.4rem;
+      border-radius: 2px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-cta-large:hover {
+      background: var(--orange-2);
+      box-shadow: 0 0 40px rgba(255,77,0,0.3);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-dark);
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,77,0,0.08);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-link {
+      font-size: 0.62rem;
+      color: rgba(240,235,226,0.3);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(240,235,226,0.7); }
+    .footer-copy {
+      font-size: 0.6rem;
+      color: rgba(240,235,226,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE — 800px
+       ════════════════════════════════ */
+    @media (max-width: 800px) {
+
+      body { cursor: auto; }
+      /* Nav */
+      .nav-inner { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-drawer { display: flex; }
+
+      /* Hero */
+      .hero { padding: 3rem 0 2.5rem; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-inline: 1.5rem;
+      }
+      .hero-bg-text { font-size: 38vw; right: -1rem; }
+      .geo-diamond, .geo-diamond-sm { display: none; }
+      .hero h1 {
+        font-size: clamp(2.8rem, 13vw, 4.5rem);
+        letter-spacing: -0.05em;
+      }
+      .line-mask:nth-child(3) .line-inner { -webkit-text-stroke-width: 1.5px; }
+      .hero-subtitle { font-size: 0.84rem; }
+      .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .btn-primary { width: 100%; text-align: center; }
+
+      /* Section padding */
+      .section-wrap { padding-inline: 1.5rem; }
+      .what-it-is, .how-it-works, .skill-catalog, .footer-cta { padding: 3.5rem 0; }
+
+      /* What It Is */
+      .pillars { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* How It Works */
+      .steps { grid-template-columns: 1fr; }
+      .step-arrow { display: none; }
+
+      /* Footer CTA */
+      .footer-cta-headline { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+      .btn-cta-large { width: 100%; text-align: center; }
+
+      /* Footer */
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-inline: 1.5rem;
+        gap: 0.8rem;
+      }
+
+      /* Ticker */
+      .ticker-item { font-size: 0.55rem; padding: 0 1.2rem; }
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE — 400px
+       ════════════════════════════════ */
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-bg-text { display: none; }
+    }
+
+    /* ══════════════════════════════════════
+       CREATIVE ENHANCEMENTS
+       ══════════════════════════════════════ */
+
+    /* ── Button shine sweep ── */
+    .btn-primary, .btn-nav, .btn-cta-large { position: relative; overflow: hidden; }
+    .btn-primary::after, .btn-nav::after, .btn-cta-large::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.16) 50%, transparent 70%);
+      transform: translateX(-160%);
+      transition: transform 0.55s ease;
+      pointer-events: none;
+    }
+    .btn-primary:hover::after, .btn-nav:hover::after, .btn-cta-large:hover::after {
+      transform: translateX(160%);
+    }
+
+    /* ── Hero terminal mock ── */
+    .hero-terminal {
+      background: var(--bg);
+      border: 1px solid rgba(12,11,9,0.14);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 28px rgba(12,11,9,0.09), 0 1px 0 rgba(255,255,255,0.8) inset;
+      opacity: 0;
+      animation: fadeSlideUp 1.2s ease 2.4s forwards;
+    }
+    .terminal-bar {
+      background: rgba(12,11,9,0.05);
+      border-bottom: 1px solid rgba(12,11,9,0.09);
+      padding: 0.55rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.38rem;
+    }
+    .t-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .t-dot:nth-child(1) { background: #ff5f57; }
+    .t-dot:nth-child(2) { background: #febc2e; }
+    .t-dot:nth-child(3) { background: #28c840; }
+    .t-title { font-family: var(--font-b); font-size: 0.57rem; color: var(--muted); letter-spacing: 0.04em; margin-left: 0.6rem; }
+    .terminal-body { padding: 1rem 1.1rem; }
+    .t-url-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+    .t-url-label { font-size: 0.6rem; color: var(--muted); font-family: 'Courier New', monospace; }
+    .t-url-label .t-accent { color: var(--orange); }
+    .t-connected {
+      font-size: 0.52rem;
+      color: #22c55e;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-d),sans-serif;
+    }
+    .t-connected::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      animation: pulseDot 2s ease infinite;
+    }
+    .t-rule { height: 1px; background: rgba(12,11,9,0.08); margin-bottom: 0.8rem; }
+    .t-tool-list { display: flex; flex-direction: column; gap: 0.52rem; margin-bottom: 0.85rem; }
+    .t-tool {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.63rem;
+      opacity: 0;
+      animation: toolAppear 0.5s cubic-bezier(0.16,1,0.3,1) calc(3.2s + var(--ti, 0) * 0.32s) forwards;
+    }
+    .t-tool-icon { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); opacity: 0.65; flex-shrink: 0; }
+    .t-tool-name { flex: 1; color: var(--text); }
+    .t-check { font-size: 0.6rem; color: #22c55e; font-weight: 700; }
+    .t-tool.is-loading .t-check { color: var(--orange); animation: loadingDots 1.2s ease infinite; letter-spacing: 0.1em; }
+    .t-cursor-line {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.62rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(12,11,9,0.08);
+    }
+    .t-prompt-sym { color: var(--orange); font-weight: 700; }
+    .t-blink { color: var(--orange); animation: blinkCursor 1s step-end infinite; }
+    @keyframes toolAppear {
+      from { opacity: 0; transform: translateX(-6px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes loadingDots {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+    @keyframes blinkCursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255,77,0,0.18);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat-item {
+      padding: 2.8rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,77,0,0.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-d),sans-serif;
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      display: block;
+    }
+    .stat-plus { font-size: 0.55em; color: rgba(255,77,0,0.65); }
+    .stat-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(240,235,226,0.3);
+      margin-top: 0.6rem;
+      display: block;
+    }
+
+    /* ── Pillar number watermark ── */
+    .pillar { position: relative; overflow: hidden; }
+    .pillar-num {
+      position: absolute;
+      top: -0.6rem;
+      right: 0.8rem;
+      font-family: var(--font-d),sans-serif;
+      font-size: 5.5rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(255,77,0,0.052);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Nav active indicator ── */
+    .nav-link { position: relative; }
+    .nav-link.is-active { color: var(--text); }
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 1px;
+    }
+
+    /* ── Footer CTA positioning ── */
+    .footer-cta { position: relative; overflow: hidden; }
+    .footer-cta .section-wrap { position: relative; z-index: 1; }
+
+    /* ── Circuit SVG scroll fade-in ── */
+    @media (prefers-reduced-motion: no-preference) {
+      section .circuit-traces {
+        opacity: 0;
+        transition: opacity 1.4s ease;
+      }
+      section .circuit-traces.is-lit {
+        opacity: 1;
+      }
+    }
+
+    /* ── Additional mobile responsive ── */
+    @media (max-width: 800px) {
+      .hero-terminal { margin-bottom: 1.4rem; }
+      .stat-item { padding: 1.8rem 1rem; }
+      .stat-num { font-size: clamp(2rem, 8vw, 3rem); }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,77,0,0.1); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* ── FAQ Section ── */
+    #faq {
+      background: var(--bg-alt);
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    #faq-heading {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.05em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 2.5rem;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+    }
+    #faq details {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    #faq details:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+    #faq summary {
+      font-family: var(--font-d), sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      padding: 1.4rem 0;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+      user-select: none;
+    }
+    #faq summary::-webkit-details-marker { display: none; }
+    #faq summary::after {
+      content: '+';
+      font-family: var(--font-b), sans-serif;
+      font-weight: 300;
+      font-size: 1.4rem;
+      color: var(--orange);
+      line-height: 1;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    #faq details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    #faq summary:hover { color: var(--orange); }
+    #faq details p {
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-weight: 300;
+      padding-bottom: 1.4rem;
+      max-width: 64ch;
+    }
+    @media (max-width: 800px) {
+      #faq { padding: 3.5rem 0; }
+      #faq-heading { padding-inline: 1.5rem; font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      #faq details { padding-inline: 1.5rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="top-line"></div>
+
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <svg width="120" height="28" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#0c0b09"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#0c0b09">Veel</tspan><tspan fill="#ff4d00">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="nav-links" id="nav-links-desktop">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="https://app.veeliq.com/" class="btn-nav" target="_blank" rel="noopener">Get Started →</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Left cluster -->
+        <polyline points="80,700 80,580 120,580 120,540"/>
+        <polyline points="80,625 50,625 50,595"/>
+        <polyline points="120,580 155,580 155,552 190,552"/>
+        <line x1="80" y1="580" x2="80" y2="558"/>
+        <!-- Center cluster -->
+        <polyline points="580,700 580,565 545,565 545,508 510,508 510,462"/>
+        <polyline points="580,620 618,620 618,588 655,588 655,552"/>
+        <polyline points="545,535 578,535 578,505"/>
+        <polyline points="580,648 610,648 610,668 642,668"/>
+        <!-- Right cluster -->
+        <polyline points="962,700 962,602 998,602 998,562"/>
+        <polyline points="962,652 928,652 928,618 902,618"/>
+        <polyline points="998,582 1028,582 1028,550 1058,550"/>
+        <!-- Top-right accent -->
+        <polyline points="1200,58 1152,58 1152,92 1122,92"/>
+        <polyline points="1178,0 1178,42 1145,42"/>
+        <polyline points="1200,105 1168,105 1168,128 1140,128 1140,155"/>
+      </g>
+      <!-- Filled nodes at key junctions -->
+      <g fill="rgba(255,77,0,0.55)">
+        <circle cx="120" cy="540" r="4"/>
+        <circle cx="190" cy="552" r="3.5"/>
+        <circle cx="510" cy="462" r="4.5"/>
+        <circle cx="655" cy="552" r="4"/>
+        <circle cx="642" cy="668" r="3"/>
+        <circle cx="998" cy="562" r="4"/>
+        <circle cx="1058" cy="550" r="3.5"/>
+        <circle cx="1145" cy="42" r="3.5"/>
+        <circle cx="1140" cy="155" r="3"/>
+      </g>
+      <!-- Open endpoint rings -->
+      <g fill="none" stroke="rgba(255,77,0,0.55)" stroke-width="1.5">
+        <circle cx="50" cy="595" r="3.5"/>
+        <circle cx="578" cy="505" r="3"/>
+        <circle cx="902" cy="618" r="3.5"/>
+        <circle cx="1122" cy="92" r="3"/>
+      </g>
+      <!-- Small glow dots on trace midpoints -->
+      <g fill="rgba(255,77,0,0.7)">
+        <circle cx="80" cy="558" r="2.5"/>
+        <circle cx="580" cy="565" r="2"/>
+        <circle cx="618" cy="588" r="2"/>
+        <circle cx="962" cy="602" r="2"/>
+        <circle cx="1152" cy="58" r="2"/>
+        <circle cx="1168" cy="128" r="2"/>
+      </g>
+    </svg>
+    <div class="hero-bg-text" data-parallax-y="60" data-mouse-div="14">IQ</div>
+    <div class="geo geo-diamond" data-parallax-y="40" data-mouse-div="8"></div>
+    <div class="geo geo-diamond-sm" data-parallax-y="50" data-mouse-div="6"></div>
+    <div class="geo geo-dot" data-parallax-y="45" data-mouse-div="10"></div>
+    <div class="hero-inner">
+      <!-- Left: eyebrow + headline -->
+      <div class="hero-left" data-parallax-y="20" data-mouse-div="24">
+        <div class="hero-eyebrow eyebrow">
+          <div class="eyebrow-line"></div>
+          <span>Skills as a Service</span>
+        </div>
+        <h1>
+          <span class="line-mask"><span class="line-inner">Give your</span></span>
+          <span class="line-mask"><span class="line-inner">AI more</span></span>
+          <span class="line-mask"><span class="line-inner">IQ.</span></span>
+        </h1>
+      </div>
+      <!-- Right: terminal mock + subtitle + CTAs -->
+      <div class="hero-right" data-parallax-y="25" data-mouse-div="28">
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="terminal-bar">
+            <span class="t-dot"></span>
+            <span class="t-dot"></span>
+            <span class="t-dot"></span>
+            <span class="t-title">claude.ai — MCP Tools</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-url-row">
+              <span class="t-url-label">mcp.veeliq.com/<span class="t-accent">mcp</span></span>
+              <span class="t-connected">connected</span>
+            </div>
+            <div class="t-rule"></div>
+            <div class="t-tool-list">
+              <div class="t-tool" style="--ti:0">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">CRM Intelligence</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool" style="--ti:1">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">GenAI Safety Expert</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool" style="--ti:2">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">Code Reviewer</span>
+                <span class="t-check">✓</span>
+              </div>
+              <div class="t-tool is-loading" style="--ti:3">
+                <span class="t-tool-icon"></span>
+                <span class="t-tool-name">Expert RBT assistant grounded in ABA</span>
+                <span class="t-check">◯</span>
+              </div>
+            </div>
+            <div class="t-cursor-line">
+              <span class="t-prompt-sym">›</span>
+              <span class="t-blink">▋</span>
+            </div>
+          </div>
+        </div>
+        <p class="hero-subtitle">
+          Subscribe to expert skills that appear as native tools inside Claude.ai,
+          Cursor, or any MCP-compatible AI client. No code. No setup. Just more intelligence.
+        </p>
+        <div class="hero-cta-wrap">
+          <div class="hero-cta-row">
+            <a href="https://app.veeliq.com/" class="btn-primary" target="_blank" rel="noopener">Get Started →</a>
+            <a href="#skills" class="btn-ghost">See all skills</a>
+          </div>
+          <p class="hero-note">No AI model needed. No API keys. Just one MCP URL.</p>
+          <div class="client-row">
+            <span class="client-label">Works with</span>
+            <span class="client-badge">Claude.ai</span>
+            <span class="client-badge">Cursor</span>
+            <span class="client-badge">+ any MCP client</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-strip" aria-label="Key stats">
+    <div class="section-wrap">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num">50<span class="stat-plus">+</span></span>
+          <span class="stat-label">Expert Skills</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">1</span>
+          <span class="stat-label">Minute to get started</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0</span>
+          <span class="stat-label">Lines of code required</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="what-it-is">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Top-left -->
+        <polyline points="0,38 42,38 42,75 72,75"/>
+        <polyline points="22,0 22,28 52,28 52,58 80,58"/>
+        <!-- Top-right -->
+        <polyline points="1200,32 1158,32 1158,68 1128,68"/>
+        <polyline points="1178,0 1178,48 1148,48"/>
+        <!-- Left mid -->
+        <polyline points="0,285 32,285 32,322 62,322"/>
+        <polyline points="0,345 22,345 22,378 48,378 48,408"/>
+        <!-- Right mid -->
+        <polyline points="1200,255 1168,255 1168,292 1138,292"/>
+        <polyline points="1200,318 1180,318 1180,355 1152,355 1152,385"/>
+        <!-- Bottom-left -->
+        <polyline points="58,700 58,652 88,652 88,618 118,618"/>
+        <polyline points="28,700 28,668 8,668 8,638"/>
+        <!-- Bottom-right -->
+        <polyline points="1142,700 1142,648 1112,648 1112,612 1082,612"/>
+        <polyline points="1172,700 1172,662 1192,662 1192,630"/>
+      </g>
+      <g fill="rgba(255,77,0,0.45)">
+        <circle cx="72" cy="75" r="3.5"/>
+        <circle cx="80" cy="58" r="3"/>
+        <circle cx="62" cy="322" r="3.5"/>
+        <circle cx="48" cy="408" r="3"/>
+        <circle cx="118" cy="618" r="3.5"/>
+        <circle cx="1128" cy="68" r="3.5"/>
+        <circle cx="1148" cy="48" r="3"/>
+        <circle cx="1138" cy="292" r="3.5"/>
+        <circle cx="1152" cy="385" r="3"/>
+        <circle cx="1082" cy="612" r="3.5"/>
+      </g>
+      <g fill="none" stroke="rgba(255,77,0,0.45)" stroke-width="1.5">
+        <circle cx="8" cy="638" r="3"/>
+        <circle cx="1192" cy="630" r="3"/>
+      </g>
+    </svg>
+    <div class="section-wrap">
+      <div class="what-header" data-parallax-y="20">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span>What is VeelIQ?</span></div>
+        <h2 class="section-title what-title">Not another AI.<br>An upgrade for yours.</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar" data-parallax-y="15">
+          <div class="pillar-num" aria-hidden="true">01</div>
+          <div class="pillar-title">No new AI. No new app.</div>
+          <p class="pillar-body">VeelIQ upgrades the AI you already have — it doesn't replace it. Keep using Claude.ai, Cursor, or whatever you love.</p>
+        </div>
+        <div class="pillar" data-parallax-y="22">
+          <div class="pillar-num" aria-hidden="true">02</div>
+          <div class="pillar-title">Expert skills, on demand.</div>
+          <p class="pillar-body">CRM analyst, email agent, code reviewer — subscribe to only the skills you need. Add more anytime, cancel anytime.</p>
+        </div>
+        <div class="pillar" data-parallax-y="30">
+          <div class="pillar-num" aria-hidden="true">03</div>
+          <div class="pillar-title">MCP-native. Works everywhere.</div>
+          <p class="pillar-body">One MCP server URL. Works with Claude.ai, Cursor, and any MCP-compatible client. No lock-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Top-left -->
+        <polyline points="0,42 45,42 45,78 78,78"/>
+        <polyline points="25,0 25,32 58,32 58,62 88,62"/>
+        <!-- Top-right -->
+        <polyline points="1200,35 1155,35 1155,72 1122,72"/>
+        <polyline points="1175,0 1175,50 1142,50"/>
+        <!-- Left mid -->
+        <polyline points="0,290 35,290 35,328 68,328"/>
+        <polyline points="0,352 25,352 25,385 52,385 52,415"/>
+        <!-- Right mid -->
+        <polyline points="1200,262 1165,262 1165,298 1132,298"/>
+        <polyline points="1200,325 1178,325 1178,360 1148,360 1148,392"/>
+        <!-- Bottom-left -->
+        <polyline points="62,700 62,655 95,655 95,620 128,620"/>
+        <polyline points="32,700 32,672 12,672 12,642"/>
+        <!-- Bottom-right -->
+        <polyline points="1138,700 1138,652 1105,652 1105,615 1072,615"/>
+        <polyline points="1168,700 1168,665 1188,665 1188,632"/>
+      </g>
+      <g fill="rgba(255,77,0,0.65)">
+        <circle cx="78" cy="78" r="4"/>
+        <circle cx="88" cy="62" r="3.5"/>
+        <circle cx="68" cy="328" r="4"/>
+        <circle cx="52" cy="415" r="3.5"/>
+        <circle cx="128" cy="620" r="4"/>
+        <circle cx="1122" cy="72" r="4"/>
+        <circle cx="1142" cy="50" r="3.5"/>
+        <circle cx="1132" cy="298" r="4"/>
+        <circle cx="1148" cy="392" r="3.5"/>
+        <circle cx="1072" cy="615" r="4"/>
+      </g>
+      <g fill="none" stroke="rgba(255,77,0,0.65)" stroke-width="1.5">
+        <circle cx="12" cy="642" r="3.5"/>
+        <circle cx="1188" cy="632" r="3.5"/>
+      </g>
+    </svg>
+    <div class="section-wrap">
+      <div class="eyebrow" data-parallax-y="20"><div class="eyebrow-line"></div><span>How It Works</span></div>
+      <h2 class="section-title how-title" data-parallax-y="20">Three steps. That's it.</h2>
+      <div class="steps">
+        <div class="step" data-parallax-y="18">
+          <div class="step-num">Step 01</div>
+          <div class="step-title">Browse &amp; Subscribe</div>
+          <p class="step-body">Pick skills from the VeelIQ catalog. CRM, email, research, code — subscribe to what fits your workflow.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step" data-parallax-y="26">
+          <div class="step-num">Step 02</div>
+          <div class="step-title">Connect Your AI Client</div>
+          <p class="step-body">Paste your personal MCP server URL into Claude.ai, Cursor, or any MCP-compatible AI client.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step" data-parallax-y="34">
+          <div class="step-num">Step 03</div>
+          <div class="step-title">Skills Appear as Tools</div>
+          <p class="step-body">Your subscribed skills instantly appear as native tools inside your AI. Use them in any conversation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skill-catalog" id="skills">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Top-left -->
+        <polyline points="0,38 42,38 42,75 72,75"/>
+        <polyline points="22,0 22,28 52,28 52,58 80,58"/>
+        <!-- Top-right -->
+        <polyline points="1200,32 1158,32 1158,68 1128,68"/>
+        <polyline points="1178,0 1178,48 1148,48"/>
+        <!-- Left mid -->
+        <polyline points="0,285 32,285 32,322 62,322"/>
+        <polyline points="0,345 22,345 22,378 48,378 48,408"/>
+        <!-- Right mid -->
+        <polyline points="1200,255 1168,255 1168,292 1138,292"/>
+        <polyline points="1200,318 1180,318 1180,355 1152,355 1152,385"/>
+        <!-- Bottom-left -->
+        <polyline points="58,700 58,652 88,652 88,618 118,618"/>
+        <polyline points="28,700 28,668 8,668 8,638"/>
+        <!-- Bottom-right -->
+        <polyline points="1142,700 1142,648 1112,648 1112,612 1082,612"/>
+        <polyline points="1172,700 1172,662 1192,662 1192,630"/>
+      </g>
+      <g fill="rgba(255,77,0,0.45)">
+        <circle cx="72" cy="75" r="3.5"/>
+        <circle cx="80" cy="58" r="3"/>
+        <circle cx="62" cy="322" r="3.5"/>
+        <circle cx="48" cy="408" r="3"/>
+        <circle cx="118" cy="618" r="3.5"/>
+        <circle cx="1128" cy="68" r="3.5"/>
+        <circle cx="1148" cy="48" r="3"/>
+        <circle cx="1138" cy="292" r="3.5"/>
+        <circle cx="1152" cy="385" r="3"/>
+        <circle cx="1082" cy="612" r="3.5"/>
+      </g>
+      <g fill="none" stroke="rgba(255,77,0,0.45)" stroke-width="1.5">
+        <circle cx="8" cy="638" r="3"/>
+        <circle cx="1192" cy="630" r="3"/>
+      </g>
+    </svg>
+    <div class="section-wrap">
+      <div class="catalog-header eyebrow" data-parallax-y="20"><div class="eyebrow-line"></div><span>Skill Catalog</span></div>
+      <h2 class="section-title catalog-title" data-parallax-y="20">50+ skills at launch.</h2>
+      <p class="catalog-sub" data-parallax-y="25">From CRM intelligence to research agents — one subscription unlocks them all.</p>
+      <div class="skill-tags" data-parallax-y="15">
+        <span class="skill-tag featured">CRM Intelligence</span>
+        <span class="skill-tag featured">Email Agent</span>
+        <span class="skill-tag featured">Code Reviewer</span>
+        <span class="skill-tag featured">Research Agent</span>
+        <span class="skill-tag featured">Data Analyst</span>
+        <span class="skill-tag">SEO Optimizer</span>
+        <span class="skill-tag">Contract Reviewer</span>
+        <span class="skill-tag">Meeting Summarizer</span>
+        <span class="skill-tag">Social Media Writer</span>
+        <span class="skill-tag">Lead Qualifier</span>
+        <span class="skill-tag">Invoice Extractor</span>
+        <span class="skill-tag">Support Triage</span>
+        <span class="skill-tag">+ 40 more</span>
+      </div>
+      <a href="https://app.veeliq.com/" class="catalog-link" target="_blank" rel="noopener">Browse all skills →</a>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+    <details>
+      <summary>What is VeelIQ?</summary>
+      <p>VeelIQ is a Skills as a Service platform. Subscribe to expert AI skills that appear as native tools inside Claude.ai, Cursor, or any MCP-compatible client - no code or setup required.</p>
+    </details>
+
+    <details>
+      <summary>How does VeelIQ work with Claude.ai?</summary>
+      <p>VeelIQ gives you a personal MCP server URL. Paste it into Claude.ai's connector settings and your subscribed skills instantly appear as native tools in every conversation.</p>
+    </details>
+
+    <details>
+      <summary>Do I need to write code to use VeelIQ?</summary>
+      <p>No. Zero lines of code required. Just paste one MCP URL into your AI client and you're set up in under a minute.</p>
+    </details>
+
+    <details>
+      <summary>Which AI clients does VeelIQ support?</summary>
+      <p>VeelIQ works with Claude.ai, Cursor, and any MCP-compatible AI client. One subscription, any client.</p>
+    </details>
+
+    <details>
+      <summary>How many skills are available?</summary>
+      <p>VeelIQ launches with 50+ expert skills covering CRM intelligence, email, code review, data analysis, SEO, research, and more.</p>
+    </details>
+  </section>
+
+  <section class="footer-cta">
+    <svg class="circuit-traces" aria-hidden="true" focusable="false"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"
+         preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,77,0,0.38)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Left cluster -->
+        <polyline points="0,245 48,245 48,278 85,278"/>
+        <polyline points="0,308 32,308 32,345 62,345 62,378"/>
+        <polyline points="48,278 48,255"/>
+        <!-- Right cluster -->
+        <polyline points="1200,245 1152,245 1152,278 1115,278"/>
+        <polyline points="1200,308 1168,308 1168,345 1138,345 1138,378"/>
+        <polyline points="1152,278 1152,255"/>
+        <!-- Top center -->
+        <polyline points="480,0 480,48 518,48 518,72"/>
+        <polyline points="555,0 555,35 522,35"/>
+        <!-- Bottom center -->
+        <polyline points="645,700 645,652 680,652 680,625"/>
+        <polyline points="720,700 720,665 755,665 755,638"/>
+      </g>
+      <g fill="rgba(255,77,0,0.6)">
+        <circle cx="85" cy="278" r="3.5"/>
+        <circle cx="62" cy="378" r="3"/>
+        <circle cx="1115" cy="278" r="3.5"/>
+        <circle cx="1138" cy="378" r="3"/>
+        <circle cx="518" cy="72" r="3.5"/>
+        <circle cx="680" cy="625" r="3.5"/>
+        <circle cx="48" cy="255" r="2.5"/>
+        <circle cx="1152" cy="255" r="2.5"/>
+      </g>
+      <g fill="none" stroke="rgba(255,77,0,0.6)" stroke-width="1.5">
+        <circle cx="522" cy="35" r="3"/>
+        <circle cx="755" cy="638" r="3"/>
+      </g>
+    </svg>
+    <div class="section-wrap">
+      <h2 class="footer-cta-headline">More <span class="c-orange">IQ.</span><br>Instantly.</h2>
+      <p class="footer-cta-sub">Get started in under a minute. No credit card required to explore.</p>
+      <a href="https://app.veeliq.com/" class="btn-cta-large" target="_blank" rel="noopener">Get Started at app.veeliq.com →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="../index.html" class="logo footer-logo">
+        <svg width="100" height="24" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 14,0 20,56 6,56" fill="#f0ebe2"/>
+          <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
+          <text x="58" y="50" font-family="Unbounded, sans-serif" font-weight="900" font-size="46" letter-spacing="-2">
+            <tspan fill="#f0ebe2">Veel</tspan><tspan fill="#ff4d00">IQ</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="footer-links">
+        <a href="../privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="../terms-of-service.html" class="footer-link">Terms of Service</a>
+      </div>
+      <span class="footer-copy">© 2026 VeelIQ</span>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navDrawer = document.getElementById('nav-drawer');
+    if (hamburger && navDrawer) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        navDrawer.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+      // Close drawer when a link is clicked
+      navDrawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          navDrawer.classList.remove('open');
+        });
+      });
+    }
+
+    // ── Parallax System (scroll + mouse drift + hero fade) ──
+    (function () {
+      // Guards
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const mobileQuery = window.matchMedia('(max-width: 767px)');
+      if (mobileQuery.matches) return;
+      mobileQuery.addEventListener('change', e => { if (e.matches) cancelAnimationFrame(rafId); });
+
+      const SCROLL_LERP = 0.10;
+      const MOUSE_LERP  = 0.08;
+      const MOUSE_SENS  = 0.018;
+
+      // Build layer registry — group parallax elements by parent section
+      const sections = [];
+      document.querySelectorAll('.hero, .what-it-is, .how-it-works, .skill-catalog').forEach(section => {
+        const isHero = section.classList.contains('hero');
+        const items  = Array.from(section.querySelectorAll('[data-parallax-y]')).map(el => ({
+          el,
+          speed:    parseFloat(el.dataset.parallaxY),
+          mouseDiv: parseFloat(el.dataset.mouseDiv || 0),
+          scrollY:  0,   // current lerped scroll offset
+          mouseX:   0,   // current lerped mouse X offset
+          mouseY:   0,   // current lerped mouse Y offset
+        }));
+        if (items.length) sections.push({ section, items, isHero, active: false });
+      });
+
+      // Hero fade targets
+      const hero      = document.querySelector('.hero');
+      const heroInner = hero && hero.querySelector('.hero-inner');
+      const heroBgEls = hero ? [
+        hero.querySelector('.hero-bg-text'),
+        hero.querySelector('.geo-diamond'),
+        hero.querySelector('.geo-diamond-sm'),
+        // .geo-dot excluded: pulseDot CSS animation drives its opacity independently
+      ].filter(Boolean) : [];
+
+      // IntersectionObserver — activate sections within ±1 viewport of edge
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const s = sections.find(s => s.section === target);
+          if (s) s.active = isIntersecting;
+        });
+      }, { rootMargin: '100% 0px 100% 0px' });
+      sections.forEach(s => io.observe(s.section));
+
+      // Mouse state — updated on mousemove, consumed in rAF loop
+      let rawMouseX = 0, rawMouseY = 0;
+      const heroSection = sections.find(s => s.isHero);
+      if (hero) {
+        document.addEventListener('mousemove', e => {
+          if (!heroSection || !heroSection.active) return;
+          const r = hero.getBoundingClientRect();
+          rawMouseX = (e.clientX - (r.left + r.width  / 2)) * MOUSE_SENS;
+          rawMouseY = (e.clientY - (r.top  + r.height / 2)) * MOUSE_SENS;
+        });
+      }
+
+      // Main rAF loop — runs continuously; skips inactive sections
+      let rafId;
+      function tick() {
+        const vh = window.innerHeight;
+
+        sections.forEach(({ section, items, isHero, active }) => {
+          if (!active) return;
+          const rect     = section.getBoundingClientRect();
+          const progress = -rect.top / vh; // -1 entering, 0 at top, +1 exited
+
+          items.forEach(item => {
+            // Scroll parallax — lerp toward target
+            item.scrollY += (progress * item.speed - item.scrollY) * SCROLL_LERP;
+
+            // Mouse drift — hero elements only, when data-mouse-div is set
+            if (isHero && item.mouseDiv) {
+              item.mouseX += (rawMouseX / item.mouseDiv - item.mouseX) * MOUSE_LERP;
+              item.mouseY += (rawMouseY / item.mouseDiv - item.mouseY) * MOUSE_LERP;
+            }
+
+            // Write via CSS `translate` property — does NOT conflict with
+            // CSS `transform` animations (e.g. rotateSlow on geo-diamond)
+            item.el.style.translate = `${item.mouseX}px ${item.scrollY + item.mouseY}px`;
+          });
+
+          // Hero scroll fade — applied when hero exits upward
+          if (isHero) {
+            const p = Math.max(0, Math.min(1, progress));
+            if (heroInner) {
+              heroInner.style.opacity   = String(Math.max(0, 1 - p * 1.2));
+              heroInner.style.transform = `scale(${Math.max(0.96, 1 - p * 0.04)})`;
+            }
+            heroBgEls.forEach(el => {
+              el.style.opacity = String(Math.max(0, 1 - p * 1.6));
+            });
+          }
+        });
+
+        rafId = requestAnimationFrame(tick);
+      }
+
+      tick(); // start loop immediately
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          cancelAnimationFrame(rafId);
+        } else {
+          tick();
+        }
+      });
+    })();
+
+    // ── Nav Scroll Spy ──
+    (function () {
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      if (!navLinks.length) return;
+      const sections = Array.from(navLinks)
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+      const spy = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          navLinks.forEach(l => l.classList.remove('is-active'));
+          const link = document.querySelector(`.nav-link[href="#${target.id}"]`);
+          if (link) link.classList.add('is-active');
+        });
+      }, { threshold: 0.45 });
+      sections.forEach(s => spy.observe(s));
+    })();
+
+    // ── Circuit SVG fade-in on scroll ──
+    (function () {
+      const svgs = document.querySelectorAll('section .circuit-traces');
+      if (!svgs.length) return;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          target.classList.add('is-lit');
+          io.unobserve(target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      svgs.forEach(s => io.observe(s));
+    })();
+
+    // ── Scroll Reveal ──
+    (function () {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealSections = document.querySelectorAll('.stats-strip, .what-it-is, .how-it-works, .skill-catalog');
+
+      // Collect reveal elements per section (parallax elements + cards)
+      const groups = Array.from(revealSections).map(section => ({
+        section,
+        els: Array.from(section.querySelectorAll('[data-parallax-y], .pillar, .step, .stat-item')),
+      }));
+
+      // Respect reduced motion — leave elements fully visible, skip animation
+      if (reducedMotion) return;
+
+      // Mark elements hidden before first paint
+      groups.forEach(({ els }) => {
+        els.forEach(el => el.classList.add('reveal-up'));
+      });
+
+      // Reveal on section entry — fires once per section, then unobserves
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          const group = groups.find(g => g.section === target);
+          if (!group) return;
+          group.els.forEach((el, i) => {
+            el.style.transitionDelay = `${i * 80}ms`;
+            el.classList.add('is-visible');
+          });
+          observer.unobserve(target);
+        });
+      }, { threshold: 0.15 });
+
+      groups.forEach(({ section }) => io.observe(section));
+    })();
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.veeliq.com/#organization",
+      "name": "VeelIQ",
+      "url": "https://www.veeliq.com/",
+      "logo": "https://www.veeliq.com/logo.png",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.veeliq.com/#website",
+      "url": "https://www.veeliq.com/",
+      "name": "VeelIQ",
+      "publisher": { "@id": "https://www.veeliq.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://app.veeliq.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "VeelIQ",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Skills as a Service for AI. Subscribe to expert skills that appear as native tools in Claude.ai, Cursor, or any MCP-compatible AI client.",
+      "url": "https://www.veeliq.com/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free to explore, no credit card required"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VeelIQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VeelIQ is a Skills as a Service platform. You subscribe to expert skills that appear as native tools inside Claude.ai, Cursor, or any MCP-compatible AI client - no code or setup required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does VeelIQ work with Claude.ai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VeelIQ provides a personal MCP server URL. You paste it into Claude.ai's connector settings, and your subscribed skills instantly appear as native tools in every conversation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to write code to use VeelIQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. VeelIQ requires zero lines of code. You connect by pasting one MCP server URL into your AI client."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

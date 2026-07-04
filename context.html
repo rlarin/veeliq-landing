@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VeelIQ — AI Solutions for the tools you already use</title>
-<meta name="description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Skills Marketplace is coming soon." />
-<link rel="canonical" href="https://www.veeliq.com/" />
-<meta property="og:title" content="VeelIQ — AI Solutions for the tools you already use" />
-<meta property="og:description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Skills Marketplace is coming soon." />
-<meta property="og:url" content="https://www.veeliq.com/" />
+<title>VeelIQ Context — Private knowledge and memory for your AI</title>
+<meta name="description" content="Context gives your AI a private, persistent context layer via MCP. Upload documents, let your agent search them and remember facts between sessions. Now in Beta with a free plan." />
+<link rel="canonical" href="https://www.veeliq.com/context.html" />
+<meta property="og:title" content="VeelIQ Context — Private knowledge and memory for your AI" />
+<meta property="og:description" content="Context gives your AI a private, persistent context layer via MCP. Upload documents, let your agent search them and remember facts between sessions. Now in Beta with a free plan." />
+<meta property="og:url" content="https://www.veeliq.com/context.html" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="coming-soon/favicon-96x96.png" sizes="96x96" />
@@ -245,22 +245,6 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .mcp-foot .live .d{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:livePulse 1.6s infinite}
 @keyframes livePulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 
-/* ===== STATS ===== */
-.stats{position:relative;padding:48px 0;border-block:1px solid var(--line);background:var(--bg-2)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:start}
-@media(max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
-.stat{display:flex;flex-direction:column;gap:4px}
-.stat .num{font-family:var(--font-display);font-size:44px;font-weight:900;letter-spacing:-.05em;color:var(--ink);line-height:1}
-.stat .num .o{color:var(--orange)}
-.stat .lbl{font-size:13px;color:var(--muted);font-weight:500}
-
-/* ===== TICKER ===== */
-.ticker{padding:18px 0;border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.ticker-track{display:flex;gap:48px;white-space:nowrap;animation:tickerMove 45s linear infinite;font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
-.ticker-track .o{color:var(--orange)}
-.ticker-track .sep{color:var(--muted-2);font-family:var(--font-mono);font-weight:400}
-@keyframes tickerMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
 /* ===== HOW IT WORKS ===== */
 .how{position:relative}
 .how-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
@@ -289,10 +273,10 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .sv-tool .spark{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 2px var(--orange-50);flex-shrink:0}
 [data-theme="dark"] .sv-tool .spark{box-shadow:0 0 0 2px rgba(255,77,0,.12)}
 
-/* ===== SOLUTIONS ===== */
+/* ===== SOLUTIONS / CAPABILITY CARDS ===== */
 .sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
 @media(max-width:900px){.sol-grid{grid-template-columns:1fr}}
-.sol-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:all .25s cubic-bezier(.16,1,.3,1)}
+.sol-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:all .25s cubic-bezier(.16,1,.3,1)}
 .sol-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .sol-card::before{content:'';position:absolute;top:0;left:0;height:3px;width:32px;background:var(--line-2);border-radius:0 0 3px 0}
 .sol-card.sol-hi::before{background:var(--orange)}
@@ -307,10 +291,43 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .sol-feat .bullet{width:20px;height:20px;border-radius:5px;background:var(--orange-50);color:var(--orange);display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px}
 [data-theme="dark"] .sol-feat .bullet{background:rgba(255,77,0,.12)}
 .sol-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sol-note{margin-top:24px;font-size:13.5px;color:var(--muted);text-align:center;font-style:normal}
 
-/* ===== WHY ===== */
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
-@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
+/* ===== BUILD / UNDER THE HOOD ===== */
+.byo{background:var(--ink);color:var(--bg);border-radius:24px;padding:64px 56px;position:relative;overflow:hidden}
+[data-theme="dark"] .byo{background:var(--bg-2);border:1px solid var(--line)}
+.byo::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,77,0,.35),transparent 60%);pointer-events:none}
+.byo-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.byo-grid{grid-template-columns:1fr;gap:32px}}
+.byo h2{font-family:var(--font-display);font-weight:900;font-size:clamp(32px,4.5vw,52px);letter-spacing:-.045em;line-height:.98;margin:16px 0 20px;color:#f5f2ea}
+.byo h2 .o{color:var(--orange)}
+.byo-sub{font-size:16px;line-height:1.6;color:rgba(245,242,234,.7);margin-bottom:28px;max-width:48ch}
+.byo-features{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.byo-feat{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(245,242,234,.85)}
+.byo-feat .bullet{width:20px;height:20px;border-radius:5px;background:rgba(255,77,0,.18);color:var(--orange);display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px}
+.byo-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.byo .btn-ghost{border-color:rgba(245,242,234,.2);color:#f5f2ea}
+.byo .btn-ghost:hover{background:rgba(245,242,234,.06);border-color:rgba(245,242,234,.4)}
+[data-theme="dark"] .byo h2{color:var(--ink)}
+[data-theme="dark"] .byo-sub{color:var(--muted)}
+[data-theme="dark"] .byo-feat{color:var(--ink-2)}
+[data-theme="dark"] .byo .btn-ghost{color:var(--ink);border-color:var(--line-2)}
+[data-theme="dark"] .byo .btn-ghost:hover{background:var(--bg-3);border-color:var(--ink-2)}
+.builder{background:#0a0908;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;box-shadow:0 20px 80px -30px rgba(0,0,0,.6)}
+[data-theme="dark"] .builder{background:#050504;border-color:rgba(255,255,255,.06)}
+.builder-bar{padding:10px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px}
+.builder-bar .d{width:10px;height:10px;border-radius:50%}
+.builder-bar .d1{background:#ff5f57}
+.builder-bar .d2{background:#febc2e}
+.builder-bar .d3{background:#28c840}
+.builder-bar .t{margin-left:10px;font-family:var(--font-mono);font-size:10.5px;color:rgba(245,242,234,.5)}
+.builder-body{padding:20px;font-family:var(--font-mono);font-size:12px;line-height:1.8;color:rgba(245,242,234,.85)}
+.builder-body .kw{color:#ff9d6b}
+.builder-body .st{color:#9ec5ff}
+.builder-body .cm{color:rgba(245,242,234,.4);font-style:italic}
+.builder-body .pn{color:#c0b8a9}
+.builder-body .ln{display:flex}
+.builder-body .ln .ix{color:rgba(245,242,234,.25);width:22px;flex-shrink:0;user-select:none}
 
 /* ===== FAQ ===== */
 .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
@@ -335,7 +352,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){.wrap{padding-inline:20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.sol-card{padding:28px}}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.byo{padding:40px 28px}.sol-card{padding:28px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -347,10 +364,11 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 <aside class="sidenav" aria-label="Section nav">
   <ul>
     <li><a href="#top" data-sec="top" class="is-active">01 · Start</a></li>
-    <li><a href="#solutions" data-sec="solutions">02 · Solutions</a></li>
-    <li><a href="#why" data-sec="why">03 · Why</a></li>
-    <li><a href="#how" data-sec="how">04 · How</a></li>
-    <li><a href="#faq" data-sec="faq">05 · FAQ</a></li>
+    <li><a href="#what" data-sec="what">02 · What you get</a></li>
+    <li><a href="#how" data-sec="how">03 · How</a></li>
+    <li><a href="#privacy" data-sec="privacy">04 · Privacy</a></li>
+    <li><a href="#pricing" data-sec="pricing">05 · Pricing</a></li>
+    <li><a href="#faq" data-sec="faq">06 · FAQ</a></li>
   </ul>
 </aside>
 
@@ -366,29 +384,29 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     </a>
     <div class="nav-spacer"></div>
     <div class="nav-links">
-      <a class="nav-link" href="#solutions">Solutions</a>
-      <a class="nav-link" href="./context.html">Context</a>
-      <a class="nav-link" href="./skills.html">Skills</a>
-      <a class="nav-link" href="#why">Why VeelIQ</a>
+      <a class="nav-link" href="./index.html#solutions">← All solutions</a>
+      <a class="nav-link" href="#what">What you get</a>
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
       <a class="nav-link" href="#faq">FAQ</a>
     </div>
     <div class="nav-actions">
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
-      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-drawer" id="nav-drawer">
-    <a href="#solutions" class="nav-link">Solutions</a>
-    <a href="./context.html" class="nav-link">Context</a>
-    <a href="./skills.html" class="nav-link">Skills</a>
-    <a href="#why" class="nav-link">Why VeelIQ</a>
+    <a href="./index.html#solutions" class="nav-link">← All solutions</a>
+    <a href="#what" class="nav-link">What you get</a>
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#faq" class="nav-link">FAQ</a>
-    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" style="margin:12px 20px 0">Try Context free →</a>
+    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" style="margin:12px 20px 0">Start free →</a>
   </div>
 </nav>
 
@@ -398,20 +416,20 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-left reveal">
-        <span class="pill pill-orange"><span class="dot"></span> AI solutions · built on MCP</span>
+        <span class="pill pill-orange"><span class="dot"></span> Now in Beta · Free plan</span>
         <h1 class="display hero-title">
-          <span class="line"><span>Intelligence,</span></span>
-          <span class="line"><span class="o">delivered.</span></span>
-          <span class="line"><span class="outline">Where you already work.</span></span>
+          <span class="line"><span>Your AI</span></span>
+          <span class="line"><span>finally <span class="o">remembers.</span></span></span>
+          <span class="line"><span class="outline">And reads your docs.</span></span>
         </h1>
         <p class="hero-sub">
-          VeelIQ builds AI solutions that plug directly into the AI you already use.
-          Private knowledge, persistent memory, and expert skills, delivered as native tools
-          inside Claude, Cursor, ChatGPT, or any MCP client. One URL. No code.
+          Context is a private context layer for the AI you already use. Upload your documents,
+          and your agent answers from them. Ask it to remember something, and it recalls it
+          next session, in any client. One personal MCP URL. No code.
         </p>
         <div class="hero-cta-row">
-          <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
-          <a class="btn btn-lg btn-ghost" href="#solutions">Explore solutions</a>
+          <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
+          <a class="btn btn-lg btn-ghost" href="#how">See how it works</a>
         </div>
         <div class="hero-trust">
           <span class="hero-trust-label">Plugs into</span>
@@ -429,7 +447,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <div class="mcp-diagram">
           <div class="mcp-head">
             <span class="mcp-title">mcp bridge · live</span>
-            <span class="mcp-url">mcp.veeliq.com/<span class="ac">u_8f2a</span></span>
+            <span class="mcp-url">context.veeliq.com/<span class="ac">your-token</span>/mcp</span>
           </div>
           <div class="mcp-stage">
             <div class="mcp-client">
@@ -453,17 +471,17 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
                   <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
                 </svg>
               </div>
-              <span class="mcp-server-label">VeelIQ</span>
+              <span class="mcp-server-label">Context</span>
             </div>
             <div class="mcp-skills" id="mcp-skills">
-              <div class="mcp-skill" data-delay="300"><span class="icon">KN</span><span class="name">Knowledge Search</span><span class="ok">✓</span></div>
-              <div class="mcp-skill" data-delay="600"><span class="icon">ME</span><span class="name">Memory Recall</span><span class="ok">✓</span></div>
-              <div class="mcp-skill loading" data-delay="900"><span class="icon">CR</span><span class="name">CRM Intelligence</span><span class="ok">·</span></div>
-              <div class="mcp-skill" data-delay="1200"><span class="icon">CO</span><span class="name">Code Reviewer</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="300"><span class="icon">SK</span><span class="name">search_knowledge</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="600"><span class="icon">RC</span><span class="name">recall</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="900"><span class="icon">RM</span><span class="name">remember</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="1200"><span class="icon">LS</span><span class="name">list_sources</span><span class="ok">✓</span></div>
             </div>
           </div>
           <div class="mcp-foot">
-            <span class="live"><span class="d"></span> 2 solutions · 1 endpoint</span>
+            <span class="live"><span class="d"></span> knowledge + memory · 1 endpoint</span>
             <span>latency · <span id="mcp-latency">68ms</span></span>
           </div>
         </div>
@@ -472,146 +490,76 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat reveal"><span class="num">2</span><span class="lbl">AI solutions on one platform</span></div>
-      <div class="stat reveal"><span class="num">1</span><span class="lbl">MCP URL, works in every client</span></div>
-      <div class="stat reveal"><span class="num">0</span><span class="lbl">Lines of code required</span></div>
-      <div class="stat reveal"><span class="num">60<span class="o">s</span></span><span class="lbl">From signup to first tool call</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Private Knowledge</span><span class="sep">/</span>
-    <span class="o">Persistent Memory</span><span class="sep">/</span>
-    <span>Expert Skills</span><span class="sep">/</span>
-    <span class="o">One MCP URL</span><span class="sep">/</span>
-    <span>Zero Code</span><span class="sep">/</span>
-    <span>Any Client</span><span class="sep">/</span>
-    <span class="o">Private by Design</span><span class="sep">/</span>
-    <span>Grounded Answers</span><span class="sep">/</span>
-    <span>Private Knowledge</span><span class="sep">/</span>
-    <span class="o">Persistent Memory</span><span class="sep">/</span>
-    <span>Expert Skills</span><span class="sep">/</span>
-    <span class="o">One MCP URL</span><span class="sep">/</span>
-    <span>Zero Code</span><span class="sep">/</span>
-    <span>Any Client</span><span class="sep">/</span>
-    <span class="o">Private by Design</span><span class="sep">/</span>
-    <span>Grounded Answers</span><span class="sep">/</span>
-  </div>
-</div>
-
-<!-- SOLUTIONS -->
-<section class="sec sec-dark" id="solutions">
+<!-- WHAT YOU GET -->
+<section class="sec sec-dark" id="what">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow"><span class="bar"></span> 01 · Solutions</div>
-      <h2 class="section-title" style="margin-top:14px">Two solutions. One <span class="o">platform.</span></h2>
-      <p class="section-lede">Everything VeelIQ ships works the same way: subscribe, paste one URL into your AI client, done.</p>
+      <div class="eyebrow"><span class="bar"></span> 01 · What you get</div>
+      <h2 class="section-title" style="margin-top:14px">Knowledge and Memory. <span class="o">One endpoint.</span></h2>
+      <p class="section-lede">Two capabilities, one private store, one URL. Your AI reads what you upload and remembers what you tell it.</p>
     </div>
     <div class="sol-grid">
-      <article class="sol-card sol-hi reveal" data-href="./context.html">
+      <article class="sol-card sol-hi reveal">
         <div>
-          <span class="pill pill-orange"><span class="dot"></span> Beta · Free plan available</span>
+          <span class="pill pill-orange"><span class="dot"></span> Knowledge · RAG</span>
         </div>
-        <h3 class="sol-title">Context</h3>
-        <div class="sol-tagline">Private knowledge and memory for your AI.</div>
-        <p class="sol-desc">Upload your documents and let your AI answer from them. Let it remember facts between sessions. Your own private MCP endpoint, ready in a minute.</p>
+        <h3 class="sol-title">Knowledge</h3>
+        <div class="sol-tagline">Your docs, searchable by your AI.</div>
+        <p class="sol-desc">You upload documents from the dashboard: specs, contracts, notes, manuals. Your AI searches them and answers with your facts, not guesses.</p>
         <div class="sol-feats">
-          <div class="sol-feat"><span class="bullet">✓</span> Knowledge: your docs, searchable by your AI</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Memory: facts that persist across sessions</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Private per-user endpoint, RLS isolated</div>
-        </div>
-        <div class="sol-cta-row">
-          <a class="btn btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="./context.html">Learn more <span class="arr">→</span></a>
+          <div class="sol-feat"><span class="bullet">✓</span> PDF and docs upload</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Semantic search, grounded answers</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Sources listed and inspectable</div>
         </div>
       </article>
-      <article class="sol-card reveal" data-href="./skills.html">
+      <article class="sol-card sol-hi reveal">
         <div>
-          <span class="pill"><span class="dot"></span> Coming soon</span>
+          <span class="pill pill-orange"><span class="dot"></span> Memory · Persistent</span>
         </div>
-        <h3 class="sol-title">Skills Marketplace</h3>
-        <div class="sol-tagline">Expert skills, on demand.</div>
-        <p class="sol-desc">Subscribe to expert skills, CRM analyst, code reviewer, research agent, and they appear as native tools inside your AI client. Hand-crafted prompts, retrieval, and guardrails.</p>
+        <h3 class="sol-title">Memory</h3>
+        <div class="sol-tagline">Facts that persist across sessions.</div>
+        <p class="sol-desc">Your agent saves facts as you work: decisions, preferences, project state. Next session, in any client, it remembers.</p>
         <div class="sol-feats">
-          <div class="sol-feat"><span class="bullet">✓</span> 50+ expert skills at launch</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Curated prompts and guardrails</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Add or cancel anytime</div>
-        </div>
-        <div class="sol-cta-row">
-          <a class="btn btn-ghost" href="https://app.veeliq.com/" target="_blank" rel="noopener">Join the waitlist</a>
-          <a class="btn btn-ghost" href="./skills.html">Learn more <span class="arr">→</span></a>
+          <div class="sol-feat"><span class="bullet">✓</span> Agent writes, you stay in control</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Recall across sessions and clients</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Delete anything, anytime</div>
         </div>
       </article>
     </div>
-  </div>
-</section>
-
-<!-- WHY VEELIQ -->
-<section class="sec" id="why">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow"><span class="bar"></span> 02 · Why VeelIQ</div>
-      <h2 class="section-title" style="margin-top:14px">Your AI is smart. <span class="o">Ours is yours.</span></h2>
-      <p class="section-lede">VeelIQ is not another chat window. It is a set of abilities that follow you into every AI client you already use.</p>
-    </div>
-    <div class="why-grid">
-      <div class="step-card reveal">
-        <div class="step-title">One URL, every client.</div>
-        <p class="step-body" style="margin-bottom:0">No SDKs, no API keys, no deployment. Paste an MCP URL and your AI gains new abilities in seconds.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-title">Private by design.</div>
-        <p class="step-body" style="margin-bottom:0">Your data lives in your own isolated space. Row level security on every table. We never train on your content.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-title">You own the intelligence.</div>
-        <p class="step-body" style="margin-bottom:0">Knowledge, memory, and skills stay attached to you, not to a single chat window or vendor.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-title">Built on open standards.</div>
-        <p class="step-body" style="margin-bottom:0">MCP is the USB-C of AI tools. VeelIQ works wherever MCP works: Claude, Cursor, ChatGPT, Zed, Windsurf, and more.</p>
-      </div>
-    </div>
+    <p class="sol-note reveal">Same private store, same endpoint. The only difference is who writes: you upload knowledge, your agent saves memories.</p>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="sec sec-dark how" id="how">
+<section class="sec how" id="how">
   <div class="wrap">
     <div class="how-head reveal">
       <div>
-        <div class="eyebrow"><span class="bar"></span> 03 · How it works</div>
-        <h2 class="section-title" style="margin-top:14px">Three steps. Under a <span class="o">minute.</span></h2>
+        <div class="eyebrow"><span class="bar"></span> 02 · How it works</div>
+        <h2 class="section-title" style="margin-top:14px">Three steps. About a <span class="o">minute.</span></h2>
       </div>
       <p class="section-lede" style="margin:0">No SDK. No API keys. No deployment. The only thing you install is a URL.</p>
     </div>
     <div class="how-steps">
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">01</span></div>
-        <div class="step-title">Pick a solution</div>
-        <p class="step-body">Start with Context (free) or join the Skills waitlist.</p>
+        <div class="step-title">Create your account</div>
+        <p class="step-body">Sign up free at app.context.veeliq.com. No credit card.</p>
         <div class="step-visual">
           <div class="sv-chips">
-            <span class="or">Context · Beta ✓</span>
-            <span>Skills Marketplace · soon</span>
-            <span class="sel">Free plan ✓</span>
+            <span class="or">Free plan ✓</span>
+            <span class="sel">Beta ✓</span>
+            <span>No credit card</span>
             <span>Knowledge</span>
             <span>Memory</span>
-            <span>Expert skills</span>
+            <span>1 endpoint</span>
           </div>
         </div>
       </div>
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">02</span></div>
-        <div class="step-title">Paste your URL</div>
-        <p class="step-body">Copy your personal MCP endpoint into Claude, Cursor, or ChatGPT.</p>
+        <div class="step-title">Upload and connect</div>
+        <p class="step-body">Drop in your documents, copy your personal MCP URL into Claude, Cursor, or ChatGPT.</p>
         <div class="step-visual">
           <div class="sv-url"><span class="prefix">https://</span><span class="path">context.veeliq.com/your-token/mcp</span><span class="cursor"></span></div>
           <div class="sv-copy">⎘ copied to clipboard · connector added</div>
@@ -619,17 +567,98 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       </div>
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">03</span></div>
-        <div class="step-title">Just ask</div>
-        <p class="step-body">Your AI now knows your docs, remembers your facts, and calls expert tools.</p>
+        <div class="step-title">Ask and remember</div>
+        <p class="step-body">Your AI now cites your docs and keeps memory between sessions.</p>
         <div class="step-visual">
           <div class="sv-tools">
-            <div class="sv-tool"><span class="spark"></span>veeliq.context.search_knowledge</div>
-            <div class="sv-tool"><span class="spark"></span>veeliq.context.recall</div>
-            <div class="sv-tool"><span class="spark"></span>veeliq.context.remember</div>
-            <div class="sv-tool"><span class="spark"></span>veeliq.skills.crm.recap_deals</div>
+            <div class="sv-tool"><span class="spark"></span>context.search_knowledge</div>
+            <div class="sv-tool"><span class="spark"></span>context.recall</div>
+            <div class="sv-tool"><span class="spark"></span>context.remember</div>
+            <div class="sv-tool"><span class="spark"></span>context.list_sources</div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="sec" id="privacy">
+  <div class="wrap">
+    <div class="byo reveal">
+      <div class="byo-grid">
+        <div>
+          <span class="pill pill-orange" style="background:rgba(255,77,0,.12);border-color:rgba(255,77,0,.25);color:#ffb896"><span class="dot"></span> Privacy</span>
+          <h2>Private by <span class="o">design.</span></h2>
+          <p class="byo-sub">Context is your data working for your AI, and nobody else's. Isolation is enforced at the database level, not promised in a policy page.</p>
+          <div class="byo-features">
+            <div class="byo-feat"><span class="bullet">✓</span> Your data lives in your own isolated space, enforced with row level security</div>
+            <div class="byo-feat"><span class="bullet">✓</span> We never train models on your content</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Delete a source or a memory and it is gone from retrieval</div>
+          </div>
+          <div class="byo-cta-row">
+            <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
+            <a class="btn btn-lg btn-ghost" href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Read the docs</a>
+          </div>
+        </div>
+        <div class="builder">
+          <div class="builder-bar">
+            <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+            <span class="t">context.search_knowledge · invoked</span>
+          </div>
+          <div class="builder-body">
+            <div class="ln"><span class="ix">1</span><span class="cm"># Tool: search_knowledge</span></div>
+            <div class="ln"><span class="ix">2</span><span class="kw">query</span>: <span class="st">"pricing decision"</span></div>
+            <div class="ln"><span class="ix">3</span>&nbsp;</div>
+            <div class="ln"><span class="ix">4</span><span class="kw">results</span>:</div>
+            <div class="ln"><span class="ix">5</span>&nbsp;&nbsp;- <span class="kw">source</span>: <span class="st">"pricing-notes.pdf"</span></div>
+            <div class="ln"><span class="ix">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">score</span>: <span class="pn">0.92</span></div>
+            <div class="ln"><span class="ix">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">chunk</span>: <span class="st">"Free tier stays at $0..."</span></div>
+            <div class="ln"><span class="ix">8</span>&nbsp;&nbsp;- <span class="kw">source</span>: <span class="st">"meeting-06-28.md"</span></div>
+            <div class="ln"><span class="ix">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">score</span>: <span class="pn">0.87</span></div>
+            <div class="ln"><span class="ix">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">chunk</span>: <span class="st">"Pro plan waits for GA..."</span></div>
+            <div class="ln"><span class="ix">11</span>&nbsp;</div>
+            <div class="ln"><span class="ix">12</span><span class="kw">isolation</span>: <span class="st">"rls · per-user"</span></div>
+            <div class="ln"><span class="ix">13</span>&nbsp;</div>
+            <div class="ln"><span class="ix">14</span><span class="cm"># → returned in 42ms · 2 chunks grounded</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec sec-dark" id="pricing">
+  <div class="wrap wrap-narrow">
+    <div class="reveal">
+      <div class="eyebrow"><span class="bar"></span> 04 · Pricing</div>
+      <h2 class="section-title" style="margin-top:14px">Start free. <span class="o">Stay free</span> while you try it.</h2>
+      <p class="section-lede">The Beta free plan covers everything you need to put Context to work.</p>
+    </div>
+    <div class="sol-grid">
+      <article class="sol-card sol-hi reveal">
+        <div>
+          <span class="pill pill-orange"><span class="dot"></span> Beta</span>
+        </div>
+        <h3 class="sol-title">Free</h3>
+        <div class="sol-tagline">$0</div>
+        <p class="sol-desc">Everything you need to try Context: document uploads, knowledge search, memory. Fair usage limits.</p>
+        <div class="sol-cta-row">
+          <a class="btn btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
+        </div>
+      </article>
+      <article class="sol-card reveal">
+        <div>
+          <span class="pill"><span class="dot"></span> Coming soon</span>
+        </div>
+        <h3 class="sol-title">Pro</h3>
+        <div class="sol-tagline">Coming soon</div>
+        <p class="sol-desc">Higher limits, more sources, priority ingestion. Upgrade from the dashboard when you need it.</p>
+        <div class="sol-cta-row">
+          <a class="btn btn-ghost" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Open the dashboard</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -639,34 +668,34 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="wrap">
     <div class="faq-grid">
       <div class="reveal">
-        <div class="eyebrow"><span class="bar"></span> 04 · FAQ</div>
+        <div class="eyebrow"><span class="bar"></span> 05 · FAQ</div>
         <h2 class="section-title" style="margin-top:14px">Questions,<br><span class="o">answered.</span></h2>
         <p class="section-lede">Still curious? Our docs go deeper — or start free at <a href="https://app.context.veeliq.com/" style="color:var(--orange);border-bottom:1px solid currentColor">app.context.veeliq.com</a>.</p>
       </div>
       <div class="faq-list reveal">
         <details class="faq-item" open>
-          <summary>What is VeelIQ? <span class="plus">+</span></summary>
-          <p>VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Skills Marketplace, a subscription catalog of expert skills (coming soon). Both plug into the AI you already use through one URL.</p>
-        </details>
-        <details class="faq-item">
           <summary>What is Context? <span class="plus">+</span></summary>
-          <p>Context is a private context layer for your AI. Upload your documents and your agent answers from them; ask it to remember something and it recalls it next session, in any client. It is live in Beta with a free plan.</p>
-        </details>
-        <details class="faq-item">
-          <summary>When does the Skills Marketplace launch? <span class="plus">+</span></summary>
-          <p>Coming soon. The waitlist is open, and Context subscribers will see it first.</p>
+          <p>Context is a private knowledge and memory layer for the AI you already use. Upload documents and your agent answers from them; ask it to remember something and it recalls it next session, in any MCP client. It is live in Beta with a free plan.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an API key or AI model? <span class="plus">+</span></summary>
-          <p>No. VeelIQ rides on top of the AI you already use — Claude, Cursor, ChatGPT. You never provide a model key. We only act as a tool provider over MCP.</p>
+          <p>No. Context rides on top of the AI you already use — Claude, Cursor, ChatGPT. You never provide a model key. We only act as a tool provider over MCP.</p>
         </details>
         <details class="faq-item">
           <summary>Which clients are supported? <span class="plus">+</span></summary>
           <p>Any MCP-compatible client. That includes Claude.ai, Cursor, ChatGPT, Zed, Windsurf, and growing. One URL covers all of them.</p>
         </details>
         <details class="faq-item">
-          <summary>Is my data private? <span class="plus">+</span></summary>
-          <p>Yes. Your data lives in your own isolated space, enforced with row level security. We never retain the content of your AI conversations; tool calls are logged with metadata only (tool, timestamp, latency) for reliability and billing.</p>
+          <summary>What happens with my data? <span class="plus">+</span></summary>
+          <p>Your documents and memories live in your own isolated space, enforced with row level security. We never train models on your content, and deleting a source or memory removes it from retrieval immediately.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are the free plan limits? <span class="plus">+</span></summary>
+          <p>The Beta free plan includes document uploads, knowledge search, and memory under fair usage limits. Current limits are always listed in the dashboard at app.context.veeliq.com.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does Context relate to the Skills Marketplace? <span class="plus">+</span></summary>
+          <p>Same platform, same one-URL philosophy. Context gives your AI private knowledge and memory today; the Skills Marketplace adds expert skills next. Context subscribers will see it first.</p>
         </details>
       </div>
     </div>
@@ -677,11 +706,11 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 <section class="final" id="final">
   <div class="wrap">
     <div class="reveal">
-      <h2>More <span class="o">IQ.</span><br><span class="outline">Instantly.</span></h2>
-      <p>Context is live in Beta. Free plan, no credit card.<br>The Skills Marketplace is next.</p>
+      <h2>Give your AI <span class="o">context.</span><br><span class="outline">Today.</span></h2>
+      <p>Free Beta plan. No credit card. Set up in about a minute.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
-        <a class="btn btn-lg btn-ghost" href="#solutions">Explore solutions</a>
+        <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
+        <a class="btn btn-lg btn-ghost" href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Read the docs</a>
       </div>
       <div class="final-url">paste <span>context.veeliq.com/&lt;your-token&gt;/mcp</span> into your AI client</div>
     </div>
@@ -705,7 +734,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       <div class="foot-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="./context.html">Context</a></li>
+          <li><a href="./index.html">All solutions</a></li>
           <li><a href="./skills.html">Skills Marketplace</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -716,7 +745,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <ul>
           <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
           <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
-          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="#pricing">Pricing</a></li>
           <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Changelog</a></li>
         </ul>
       </div>
@@ -738,14 +767,6 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 </footer>
 
 <script>
-/* ===== Solution cards: whole card clickable ===== */
-document.querySelectorAll('.sol-card[data-href]').forEach(card=>{
-  card.addEventListener('click',e=>{
-    if(e.target.closest('a')) return;
-    location.href = card.dataset.href;
-  });
-});
-
 /* ===== Scroll reveals ===== */
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -758,7 +779,7 @@ addEventListener('scroll',()=>nav.classList.toggle('is-scrolled',scrollY>10),{pa
 
 /* ===== Side rail spy ===== */
 const sideLinks = document.querySelectorAll('.sidenav a');
-const sections = ['top','solutions','why','how','faq'].map(id=>document.getElementById(id)).filter(Boolean);
+const sections = ['top','what','how','privacy','pricing','faq'].map(id=>document.getElementById(id)).filter(Boolean);
 const spy = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting) sideLinks.forEach(a=>a.classList.toggle('is-active',a.dataset.sec===e.target.id));
@@ -773,13 +794,13 @@ function cycleMcp(){
     setTimeout(()=>s.classList.add('in'), parseInt(s.dataset.delay||0));
   });
   const replyEl = document.getElementById('chat-reply');
-  const reply = "Found the decision in pricing-notes.pdf plus a saved memory from last Tuesday. Summarizing...";
+  const reply = "We kept the free tier at $0 for Beta. Source: pricing-notes.pdf, plus a memory saved June 28.";
   setTimeout(()=>{
     replyEl.innerHTML=''; let i=0;
     const t = setInterval(()=>{ replyEl.textContent=reply.slice(0,i++); if(i>reply.length) clearInterval(t); },24);
   },1400);
   const lat = document.getElementById('mcp-latency');
-  setTimeout(()=>{ if(lat) lat.textContent=(50+Math.floor(Math.random()*40))+'ms'; },1200);
+  setTimeout(()=>{ if(lat) lat.textContent=(30+Math.floor(Math.random()*40))+'ms'; },1200);
 }
 const mcpIO = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ cycleMcp(); setInterval(cycleMcp,8000); mcpIO.disconnect(); } });
@@ -822,8 +843,7 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   "@context": "https://schema.org",
   "@graph": [
     {"@type":"Organization","@id":"https://www.veeliq.com/#organization","name":"VeelIQ","url":"https://www.veeliq.com/"},
-    {"@type":"WebSite","@id":"https://www.veeliq.com/#website","url":"https://www.veeliq.com/","name":"VeelIQ"},
-    {"@type":"SoftwareApplication","name":"VeelIQ Context","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Private knowledge and memory for your AI via MCP. Upload documents, let your agent search them and remember facts between sessions. In Beta with a free plan.","url":"https://www.veeliq.com/context.html"}
+    {"@type":"SoftwareApplication","name":"VeelIQ Context","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Private knowledge and memory for your AI via MCP. Upload documents, let your agent search them and remember facts between sessions. In Beta with a free plan.","url":"https://www.veeliq.com/context.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free Beta plan"}}
   ]
 }
 </script>

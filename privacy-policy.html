@@ -174,7 +174,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
-      <a href="https://app.veeliq.com/" class="btn btn-sm btn-orange" target="_blank" rel="noopener">Get started →</a>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-orange" target="_blank" rel="noopener">Try Context free →</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -196,7 +196,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     </div>
 
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: March 27, 2026</p>
+    <p class="page-meta">Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: July 4, 2026</p>
 
     <nav class="legal-nav" aria-label="Legal documents">
       <a href="privacy-policy.html" class="active">Privacy Policy</a>
@@ -223,7 +223,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     <section class="policy-section" id="s1">
       <p class="section-number">01</p>
       <h2 class="section-title">Who We Are</h2>
-      <p>VeelIQ ("VeelIQ", "we", "our", or "us") is the company operating this website and the VeelIQ platform — a Skills-as-a-Service product that provides plug-and-play AI skills for individuals and businesses via the Model Context Protocol (MCP).</p>
+      <p>VeelIQ ("VeelIQ", "we", "our", or "us") is the company operating this website and the VeelIQ platform — an AI solutions provider that delivers tools for individuals and businesses via the Model Context Protocol (MCP). Our solutions currently include <strong>Context</strong>, a private knowledge and memory layer for your AI (in Beta), and the <strong>Skills Marketplace</strong>, a subscription catalog of expert AI skills (coming soon).</p>
       <p>This Privacy Policy explains how we handle the personal data we collect through this website and our platform.</p>
     </section>
 
@@ -237,6 +237,8 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li><strong>User agent string</strong> — your browser and operating system, collected to understand our audience.</li>
         <li><strong>Sign-up timestamp</strong> — the date and time your submission was recorded.</li>
         <li><strong>Subscription and billing data</strong> — managed by our payment processor; we do not store full card details.</li>
+        <li><strong>Content you provide (Context)</strong> — documents you upload to your Context knowledge base and memories your AI agent saves on your behalf. This content is stored solely to deliver the service back to you and is never used for any other purpose.</li>
+        <li><strong>Tool call metadata</strong> — when your AI client calls a VeelIQ tool, we log the tool name, timestamp, and latency for reliability and billing. We do not retain the content of your AI conversations.</li>
       </ul>
       <div class="callout">
         We do <strong>not</strong> collect your name, phone number, or any sensitive personal data beyond what is listed above. We do not use tracking pixels or third-party advertising networks.
@@ -249,18 +251,20 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <p>We use the information we collect solely for the following purposes:</p>
       <ul>
         <li>To create and manage your VeelIQ account and subscription.</li>
-        <li>To deliver the skills and tools you have subscribed to via your MCP server URL.</li>
+        <li>To deliver the solutions and tools you have subscribed to via your personal MCP server URL.</li>
+        <li>To store and retrieve your Context content — the documents you upload and the memories your agent saves — so your AI can search and recall them when you ask.</li>
         <li>To send transactional emails (account confirmation, billing receipts, subscription changes).</li>
         <li>To understand where our audience is coming from and improve the product experience.</li>
         <li>To prevent fraud and maintain the integrity of the service.</li>
       </ul>
-      <p>We will never sell your data or use it for purposes incompatible with those listed above.</p>
+      <p>We will never sell your data or use it for purposes incompatible with those listed above. We <strong>never train AI models on your content</strong> — your documents and memories exist only to serve your own AI.</p>
     </section>
 
     <section class="policy-section" id="s4">
       <p class="section-number">04</p>
       <h2 class="section-title">Data Storage &amp; Security</h2>
-      <p>Account data is stored in <a href="https://supabase.com" class="inline-link" target="_blank" rel="noopener">Supabase</a>, a managed PostgreSQL platform with industry-standard security practices, including encryption at rest and in transit (TLS 1.2+).</p>
+      <p>Account data and Context content are stored in <a href="https://supabase.com" class="inline-link" target="_blank" rel="noopener">Supabase</a>, a managed PostgreSQL platform with industry-standard security practices, including encryption at rest and in transit (TLS 1.2+).</p>
+      <p>Your Context data lives in your own isolated space: row level security (RLS) is enforced on every table, so your documents and memories are only ever accessible through your own authenticated endpoint.</p>
       <p>Supabase infrastructure is hosted on AWS and is SOC 2 Type II compliant. Data is stored in the EU (Frankfurt) region.</p>
       <p>While we take reasonable precautions to protect your data, no method of transmission over the internet is 100% secure. We encourage you to use a strong, unique password for your account.</p>
     </section>
@@ -289,6 +293,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <p class="section-number">07</p>
       <h2 class="section-title">Data Retention</h2>
       <p>We retain account data for as long as your account is active. If you cancel your subscription, we retain minimal data for billing and legal compliance purposes for up to <strong>3 years</strong> as required by applicable law.</p>
+      <p>You control your Context content directly: deleting a document source or a memory from your dashboard removes it from retrieval immediately.</p>
       <p>Upon your request for deletion, your personal data will be permanently removed from our systems within <strong>30 days</strong>, subject to legal retention requirements.</p>
     </section>
 
