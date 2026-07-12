@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Private AI Knowledge Base for Your Documents | VeelIQ</title>
+<meta name="description" content="Turn your documents into a private, searchable knowledge base your AI can query from any client. Hosted RAG with per-user isolation, source citations, and no code required." />
+<link rel="canonical" href="https://www.veeliq.com/use-cases/private-ai-knowledge-base/" />
+<meta property="og:title" content="Private AI Knowledge Base for Your Documents | VeelIQ" />
+<meta property="og:description" content="Turn your documents into a private, searchable knowledge base your AI can query from any client. Hosted RAG with per-user isolation, source citations, and no code required." />
+<meta property="og:url" content="https://www.veeliq.com/use-cases/private-ai-knowledge-base/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Private AI Knowledge Base for Your Documents | VeelIQ" />
+<meta name="twitter:description" content="Turn your documents into a private, searchable knowledge base your AI can query from any client. Hosted RAG with per-user isolation, source citations, and no code required." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Use cases",
+     "item": "https://www.veeliq.com/use-cases/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Private AI knowledge base"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.veeliq.com/use-cases/private-ai-knowledge-base/#webpage",
+   "url": "https://www.veeliq.com/use-cases/private-ai-knowledge-base/",
+   "name": "Private AI Knowledge Base for Your Documents | VeelIQ",
+   "description": "Turn your documents into a private, searchable knowledge base your AI can query from any client. Hosted RAG with per-user isolation, source citations, and no code required.",
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/#website"
+   },
+   "about": {
+    "@id": "https://www.veeliq.com/#organization"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.veeliq.com/use-cases/private-ai-knowledge-base/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How is this different from NotebookLM?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use — Claude, ChatGPT, your IDE — via MCP. See the full comparison."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What can go into the knowledge base?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Documents such as PDFs; supported formats are listed in the app. Content is chunked and embedded for semantic search."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is the knowledge base really private?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes: per-user isolation with row-level security, no training on your content, and deletable sources. Only your authenticated endpoint can query it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will answers cite my documents?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Retrieval returns chunks with source names and metadata, so the assistant can say which file (and where) an answer came from."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much can I store?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Beta free plan includes fair-usage limits displayed in the dashboard; larger tiers arrive with general availability."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can my team query the same knowledge base?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A shared context layer across a team's AI tools is a core use case; workspaces keep personal and shared corpora separate."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Private AI knowledge base</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 04</div>
+    <h1>Your documents, answering <span class="o">back.</span></h1>
+    <p class="page-lede">A private AI knowledge base turns your files into something your assistant can search, cite, and reason over — from any AI client, with your data isolated in your own space.</p>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">Most of what you know isn't in any AI model. It's in your PDFs, reports, research papers, meeting notes, and manuals. Generic assistants can't see any of it, so they answer your specific questions with general knowledge — confidently, and often wrong.</p>
+    <p class="lead">VeelIQ Context turns those documents into a private knowledge base. Upload once; the content is chunked and indexed. From then on, any connected AI client can search it semantically, quote it, and cite exactly which file an answer came from.</p>
+
+    <h2>Problem</h2>
+    <ul>
+      <li>Your AI can't answer questions about your documents because it has never seen them.</li>
+      <li>Pasting documents into chats is manual, hits context limits, and leaks nothing back to future sessions.</li>
+      <li>Uploading to one AI product locks the knowledge inside that product.</li>
+      <li>Building your own RAG stack means running vector databases and embedding pipelines.</li>
+      <li>Many hosted options are unclear about training on your data or isolating it from other tenants.</li>
+    </ul>
+
+    <h2>Solution</h2>
+    <p>Upload documents to your Context workspace at <a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">app.context.veeliq.com</a>. Each file is split into chunks and embedded for semantic search. When your assistant needs information, it calls <code>search_knowledge</code>; VeelIQ returns the most relevant chunks with similarity scores and source metadata, and the assistant composes a grounded, cited answer.</p>
+    <p>The knowledge base lives behind your personal MCP URL, so it works identically in Claude, ChatGPT, Cursor, or any MCP client — one corpus, every tool. Isolation is per-user with row-level security, and your content is never used for model training. For evaluation criteria, see <a href="/blog/private-knowledge-bases-for-ai/">private knowledge bases for AI</a>.</p>
+
+    <h2>Benefits</h2>
+    <ul>
+      <li>Specific answers with citations instead of confident guesses.</li>
+      <li>Upload once, query from everywhere — no per-app re-uploading.</li>
+      <li>No infrastructure: chunking, embeddings, and retrieval are managed.</li>
+      <li>Sources are listable and deletable; the corpus stays under your control.</li>
+      <li>Workspaces separate corpora that shouldn't mix (clients, teams, personal).</li>
+    </ul>
+
+    <h2>Features used</h2>
+    <p>Knowledge upload and semantic search from <a href="/context.html">Context</a>, with workspaces for separation and memory for the facts that emerge from your reading.</p>
+
+    <h2>Examples</h2>
+    <ul>
+      <li><strong>Researcher</strong> — 40 papers in a workspace; asks comparative questions and gets chunk-level citations.</li>
+      <li><strong>Owner's manuals</strong> — upload the PDF once, then ask "what does this dashboard light mean?" from any device's AI.</li>
+      <li><strong>Team handbook</strong> — policies uploaded once; every teammate's assistant quotes the same source of truth.</li>
+    </ul>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-list">
+<details class="faq-item" id="uc-kb-vs-notebooklm">
+  <summary><span>How is this different from NotebookLM? <a class="anchor-link" href="#uc-kb-vs-notebooklm" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use — Claude, ChatGPT, your IDE — via MCP. See the <a href="/comparisons/veeliq-vs-notebooklm/">full comparison</a>.</div>
+</details>
+<details class="faq-item" id="uc-kb-formats">
+  <summary><span>What can go into the knowledge base? <a class="anchor-link" href="#uc-kb-formats" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Documents such as PDFs; supported formats are listed in the app. Content is chunked and embedded for semantic search.</div>
+</details>
+<details class="faq-item" id="uc-kb-privacy">
+  <summary><span>Is the knowledge base really private? <a class="anchor-link" href="#uc-kb-privacy" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Yes: per-user isolation with row-level security, no training on your content, and deletable sources. Only your authenticated endpoint can query it.</div>
+</details>
+<details class="faq-item" id="uc-kb-citations">
+  <summary><span>Will answers cite my documents? <a class="anchor-link" href="#uc-kb-citations" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Yes. Retrieval returns chunks with source names and metadata, so the assistant can say which file (and where) an answer came from.</div>
+</details>
+<details class="faq-item" id="uc-kb-size">
+  <summary><span>How much can I store? <a class="anchor-link" href="#uc-kb-size" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">The Beta free plan includes fair-usage limits displayed in the dashboard; larger tiers arrive with general availability.</div>
+</details>
+<details class="faq-item" id="uc-kb-team">
+  <summary><span>Can my team query the same knowledge base? <a class="anchor-link" href="#uc-kb-team" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">A shared context layer across a team's AI tools is a core use case; workspaces keep personal and shared corpora separate.</div>
+</details>
+</div>
+
+    <h2>Related</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/blog/private-knowledge-bases-for-ai/">
+        <span class="lc-kicker">Blog</span>
+        <span class="lc-title">Private knowledge bases for AI</span>
+        <span class="lc-desc">Privacy models and how to evaluate providers.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/comparisons/veeliq-vs-notebooklm/">
+        <span class="lc-kicker">Comparison</span>
+        <span class="lc-title">VeelIQ vs NotebookLM</span>
+        <span class="lc-desc">Destination app vs portable context layer.</span>
+        <span class="lc-arr">Compare →</span>
+      </a>
+      <a class="link-card" href="/blog/how-retrieval-works-in-modern-ai/">
+        <span class="lc-kicker">Blog</span>
+        <span class="lc-title">How retrieval works</span>
+        <span class="lc-desc">What actually happens when your AI searches your files.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Make your documents <span class="o">searchable.</span></div>
+        <p>Upload your first PDF free and ask your AI about it a minute later.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

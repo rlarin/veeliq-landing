@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Private Knowledge Bases for AI: Design & Security | VeelIQ</title>
+<meta name="description" content="What makes an AI knowledge base actually private: isolation models, training-data policies, retrieval security, and how to evaluate providers before uploading your documents." />
+<link rel="canonical" href="https://www.veeliq.com/blog/private-knowledge-bases-for-ai/" />
+<meta property="og:title" content="Private Knowledge Bases for AI: Design & Security | VeelIQ" />
+<meta property="og:description" content="What makes an AI knowledge base actually private: isolation models, training-data policies, retrieval security, and how to evaluate providers before uploading your documents." />
+<meta property="og:url" content="https://www.veeliq.com/blog/private-knowledge-bases-for-ai/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Private Knowledge Bases for AI: Design & Security | VeelIQ" />
+<meta name="twitter:description" content="What makes an AI knowledge base actually private: isolation models, training-data policies, retrieval security, and how to evaluate providers before uploading your documents." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.veeliq.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Private knowledge bases for AI"
+    }
+   ]
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.veeliq.com/blog/private-knowledge-bases-for-ai/#article",
+   "headline": "Private Knowledge Bases for AI",
+   "description": "What makes an AI knowledge base actually private: isolation models, training-data policies, retrieval security, and how to evaluate providers before uploading your documents.",
+   "url": "https://www.veeliq.com/blog/private-knowledge-bases-for-ai/",
+   "datePublished": "2026-07-12",
+   "dateModified": "2026-07-12",
+   "author": {
+    "@type": "Organization",
+    "name": "VeelIQ",
+    "url": "https://www.veeliq.com/"
+   },
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   },
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/blog/#blog"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Private knowledge bases for AI</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Privacy</div>
+    <h1>Private knowledge bases <span class="o">for AI.</span></h1>
+    <p class="page-lede">"Upload your documents and chat with them" is now a commodity pitch. What separates offerings is the word before "knowledge base" — and most people never check what <em>private</em> actually means.</p>
+    <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~7 min read</span><span>·</span><span>VeelIQ</span></div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">The value proposition is obvious: your documents hold answers no general model has, so indexing them for AI retrieval makes every assistant dramatically more useful. The risk is equally obvious: those documents are contracts, research, client records, personal files. Before any of them leave your disk, "private" needs a definition sharper than a marketing adjective.</p>
+
+    <h2>What "private" must mean, concretely</h2>
+    <h3>1. No training on your content</h3>
+    <p>The first question for any provider: <strong>is my content ever used to train or fine-tune models?</strong> The acceptable answer is an unqualified no, stated in the privacy policy, not in a FAQ that can change. Training is how private data becomes public behavior.</p>
+    <h3>2. Tenant isolation with teeth</h3>
+    <p>Multi-tenant services store many users' data on shared infrastructure; the question is what enforces separation. Application-level filtering ("we add a WHERE clause") fails open — one bug and queries cross tenants. Database-enforced <strong>row-level security (RLS)</strong> fails closed: the database itself refuses to return rows that don't belong to the authenticated user, no matter what the application layer does. Ask which model your provider uses.</p>
+    <h3>3. Scoped, revocable access</h3>
+    <p>Retrieval endpoints should be per-user and token-scoped, so possession of a URL grants access to exactly one tenant's corpus — and revoking the token kills access without a migration.</p>
+    <h3>4. Deletion that deletes</h3>
+    <p>Removing a source should remove its chunks and embeddings from the index, not just hide the filename. You should be able to enumerate every source the system holds for you.</p>
+    <h3>5. Conversation boundaries</h3>
+    <p>Subtle but important for AI knowledge bases specifically: does the provider see your conversations, or only the retrieval queries? A tool-provider architecture — where the knowledge base answers discrete tool calls and never receives the surrounding chat — structurally limits what the provider can know. Metadata-only logging (tool name, timestamp, latency) is the right posture.</p>
+
+    <h2>The architecture spectrum</h2>
+    <div class="table-scroll"><table class="cmp">
+      <thead><tr><th>Approach</th><th>Privacy model</th><th>Trade-off</th></tr></thead>
+      <tbody>
+        <tr><td>Local-only (e.g. notes app + local index)</td><td>Data never leaves your machine</td><td>Per-device setup; no cross-client access; you run the pipeline</td></tr>
+        <tr><td>Self-hosted RAG stack</td><td>Your infrastructure, your rules</td><td>Real engineering and ops burden; you own every failure</td></tr>
+        <tr><td>Hosted context layer (e.g. <a href="/context.html">VeelIQ Context</a>)</td><td>Provider-enforced isolation (RLS), no-training policy, tool-call-only visibility</td><td>Trust shifts to the provider's stated and audited posture</td></tr>
+        <tr><td>Upload-to-chatbot (files into a chat app)</td><td>Varies by vendor and plan; often entangled with product improvement clauses</td><td>Knowledge locked to one vendor; least user control</td></tr>
+      </tbody>
+    </table></div>
+    <p>There is no universally correct row — a hospital's constraints aren't a freelancer's. The failure is not choosing consciously. The <a href="/comparisons/veeliq-vs-obsidian/">VeelIQ vs Obsidian comparison</a> walks the local-vs-hosted trade-off in detail.</p>
+
+    <h2>Retrieval-specific risks people miss</h2>
+    <ul>
+      <li><strong>Cross-context bleed.</strong> One undifferentiated corpus means client A's strategy can surface while you work for client B. Fix: separate workspaces per context, enforced at the store level — not prompt discipline.</li>
+      <li><strong>Over-retrieval.</strong> Retrieval injects document content into prompts. Only the top-matching chunks should travel, not whole files; chunk-level granularity is a privacy control, not just a relevance one.</li>
+      <li><strong>Citation leakage.</strong> Source names appear in answers (that's the point), so name files with the sensitivity they'll carry into conversations.</li>
+      <li><strong>Stale embeddings.</strong> Deleting a document must delete its vectors. Embeddings can reconstruct content approximately; they are the data, legally and practically.</li>
+    </ul>
+
+    <h2>An evaluation checklist</h2>
+    <ol>
+      <li>Written no-training commitment covering documents, memories, and queries?</li>
+      <li>Isolation enforced in the database (RLS) rather than only in application code?</li>
+      <li>Per-user scoped endpoints with revocable tokens?</li>
+      <li>Full source listing plus true deletion of chunks and vectors?</li>
+      <li>Provider sees tool calls only — never full conversations?</li>
+      <li>Workspace separation for contexts that must not mix?</li>
+      <li>Open-standard access (MCP), so leaving doesn't strand your corpus inside one app?</li>
+    </ol>
+    <p>For the record, this checklist is VeelIQ Context's design brief: RLS isolation on every table, no training on content, metadata-only logging, per-token endpoints, deletable sources, workspaces, and MCP as the only interface. Details in the <a href="/faq/#g-privacy">privacy FAQ</a> and <a href="/privacy-policy.html">privacy policy</a>.</p>
+
+    <h2>Key takeaways</h2>
+    <ul>
+      <li>"Private" decomposes into training policy, isolation mechanism, access scoping, deletion semantics, and conversation boundaries — verify each, don't assume the bundle.</li>
+      <li>Database-enforced RLS fails closed; application-level filtering fails open.</li>
+      <li>Retrieval adds its own risks: context bleed, over-retrieval, and embeddings that outlive deleted files.</li>
+      <li>Choose your point on the local↔hosted spectrum consciously; any conscious choice beats the default of pasting files into whatever chat window is open.</li>
+    </ul>
+
+    <h2>Related reading</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/use-cases/private-ai-knowledge-base/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Private AI knowledge base</span>
+        <span class="lc-desc">The product pattern this article evaluates.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/how-retrieval-works-in-modern-ai/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">How retrieval works</span>
+        <span class="lc-desc">Chunks, embeddings, and what actually gets stored.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/faq/#g-privacy">
+        <span class="lc-kicker">FAQ</span>
+        <span class="lc-title">Privacy &amp; security questions</span>
+        <span class="lc-desc">VeelIQ's answers to this checklist.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Private, <span class="o">verified.</span></div>
+        <p>RLS isolation, no training on your content, tool calls only. Try it with a non-sensitive document first — we'd do the same.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

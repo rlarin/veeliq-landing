@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Is Context Engineering? A Practical Guide | VeelIQ</title>
+<meta name="description" content="Context engineering is the discipline of controlling what an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. What it is, why it replaced prompt engineering, and how to practice it." />
+<link rel="canonical" href="https://www.veeliq.com/blog/what-is-context-engineering/" />
+<meta property="og:title" content="What Is Context Engineering? A Practical Guide | VeelIQ" />
+<meta property="og:description" content="Context engineering is the discipline of controlling what an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. What it is, why it replaced prompt engineering, and how to practice it." />
+<meta property="og:url" content="https://www.veeliq.com/blog/what-is-context-engineering/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What Is Context Engineering? A Practical Guide | VeelIQ" />
+<meta name="twitter:description" content="Context engineering is the discipline of controlling what an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. What it is, why it replaced prompt engineering, and how to practice it." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.veeliq.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "What is context engineering?"
+    }
+   ]
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.veeliq.com/blog/what-is-context-engineering/#article",
+   "headline": "What Is Context Engineering?",
+   "description": "Context engineering is the discipline of controlling what an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. What it is, why it replaced prompt engineering, and how to practice it.",
+   "url": "https://www.veeliq.com/blog/what-is-context-engineering/",
+   "datePublished": "2026-07-12",
+   "dateModified": "2026-07-12",
+   "author": {
+    "@type": "Organization",
+    "name": "VeelIQ",
+    "url": "https://www.veeliq.com/"
+   },
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   },
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/blog/#blog"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>What is context engineering?</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Fundamentals</div>
+    <h1>What is context <span class="o">engineering?</span></h1>
+    <p class="page-lede">The highest-leverage skill in applied AI is no longer writing clever prompts. It is deciding, systematically, what information a model sees at the moment it answers.</p>
+    <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~7 min read</span><span>·</span><span>VeelIQ</span></div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <div class="defbox">
+      <div class="defterm">Definition</div>
+      <p><strong>Context engineering</strong> is the practice of designing and controlling everything an AI model receives at inference time — instructions, retrieved documents, memories, conversation history, and tool results — so that the model produces accurate, relevant, grounded output.</p>
+    </div>
+
+    <p class="lead">A large language model is a function of its input. The weights are fixed at training time; the only thing you control at run time is the context. That makes context the entire interface between your world and the model's capabilities — and engineering it well is the difference between an assistant that knows your project and one that produces plausible generalities.</p>
+
+    <h2>From prompt engineering to context engineering</h2>
+    <p>In 2023, "prompt engineering" meant hand-crafting magic words: role-play framings, chain-of-thought incantations, exotic formatting. Some of it worked, much of it was folklore, and nearly all of it aged badly as models improved. What didn't age is a simpler observation: models answer better when the right information is in front of them.</p>
+    <p>Context engineering generalizes the prompt into a <strong>pipeline</strong>. Instead of asking "what should I type?", it asks:</p>
+    <ul>
+      <li>What stable <strong>instructions</strong> should govern this task?</li>
+      <li>Which <strong>documents</strong> should be retrievable, and how should they be chunked and indexed?</li>
+      <li>What <strong>memories</strong> — durable facts about the user or project — should be recallable?</li>
+      <li>Which <strong>tools</strong> can the model call to fetch what it doesn't have?</li>
+      <li>What <strong>doesn't</strong> belong in context, because it dilutes attention or leaks information?</li>
+    </ul>
+    <p>The shift matters because context is a scarce resource. Even huge context windows degrade in practice — models attend unevenly across very long inputs, and every irrelevant token you include competes with the relevant ones (see <a href="/blog/ai-context-windows-explained/">AI context windows explained</a>). Good context engineering is as much about exclusion as inclusion.</p>
+
+    <h2>The four pillars</h2>
+    <h3>1. Instructions</h3>
+    <p>Standing guidance: who the assistant is, what conventions to follow, what a good answer looks like. The failure mode is bloat — pasting an ever-growing "system prompt" into every conversation. The engineering move is to store procedures separately and load them on demand: a deployment checklist when deploying, a style guide when writing, nothing when neither applies.</p>
+    <h3>2. Knowledge</h3>
+    <p>The documents that define your world: specs, reports, research, manuals. Models can't know them, so systems retrieve them — chunked, embedded, and searched by semantic similarity at query time. This is retrieval-augmented generation, and the retrieval quality ceiling is set by corpus curation: what you uploaded, how current it is, and whether near-duplicates are polluting results (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</p>
+    <h3>3. Memory</h3>
+    <p>Discrete facts that accumulate over time: decisions, preferences, names, constraints. Unlike knowledge, memory is written by the AI itself during use — "remember that we chose PostgreSQL" — and recalled semantically later. Memory answers "what do we know about <em>us</em>?" where knowledge answers "what do the documents say?" The distinction is worth internalizing: we compare them fully in <a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a>.</p>
+    <h3>4. Tool results</h3>
+    <p>Live context fetched during the conversation: search results, database rows, API responses. The engineering questions are which tools to expose, how to describe them so the model calls them appropriately, and how much of their output to admit into the window.</p>
+
+    <h2>Why it decides output quality</h2>
+    <p>Consider the same question — "Should we support SSO in the beta?" — posed to two assistants. The first has generic context and answers with a balanced essay about SSO trade-offs. The second retrieves your product spec (knowledge), recalls that enterprise deals were deprioritized in May (memory), and loads your decision-log template (instructions). Its answer cites the spec, references the May decision, and formats the recommendation the way your team records decisions. Same model. Different context. Only one of the answers is useful.</p>
+    <p>This is the general pattern: <strong>hallucination is usually a context deficit</strong>. Models guess when they lack grounding. Fill the gap with retrievable facts and the guessing largely stops — along with the re-explaining, the generic advice, and the "as an AI, I don't have access to..." dead ends.</p>
+
+    <h2>Context engineering without infrastructure</h2>
+    <p>Historically, practicing this meant building: a vector database, an embedding pipeline, chunking heuristics, a retrieval API, and integration code per AI client. That's a real engineering project, which is why context engineering stayed the domain of AI teams.</p>
+    <p>The Model Context Protocol (MCP) changed the integration half: any compliant client can consume any compliant tool server. Hosted context layers changed the pipeline half. <a href="/context.html">VeelIQ Context</a>, for example, packages the whole stack — upload, chunking, embeddings, semantic search, memory, instructions — behind one personal MCP URL. Curating context becomes an editorial act: upload the right documents, save the right facts, organize <a href="/use-cases/context-engineering/">workspaces</a> that keep contexts from bleeding into each other.</p>
+
+    <h2>A starter practice</h2>
+    <ol>
+      <li><strong>Inventory</strong> — list the 10 documents you reference most and the 20 facts you keep re-explaining to AI tools.</li>
+      <li><strong>Load</strong> — upload the documents to a knowledge layer; save the facts as memories.</li>
+      <li><strong>Separate</strong> — split contexts that shouldn't mix (clients, projects, personal) into workspaces.</li>
+      <li><strong>Observe</strong> — watch whether answers start citing your sources. Grounded citations are the success signal.</li>
+      <li><strong>Prune</strong> — remove stale documents and dead facts monthly. Retrieval quality is corpus hygiene.</li>
+    </ol>
+
+    <h2>Key takeaways</h2>
+    <ul>
+      <li>Context engineering is the run-time discipline of deciding what a model sees; it has largely superseded prompt tricks as the quality lever.</li>
+      <li>Its four pillars are instructions, knowledge, memory, and tool results — each with distinct storage and retrieval patterns.</li>
+      <li>Exclusion matters as much as inclusion: irrelevant context degrades attention and wastes tokens.</li>
+      <li>MCP and hosted context layers have made the practice accessible without building retrieval infrastructure.</li>
+    </ul>
+
+    <h2>Related reading</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/blog/ai-memory-vs-rag/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI memory vs RAG</span>
+        <span class="lc-desc">The two retrieval mechanisms, disentangled.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/use-cases/context-engineering/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Context engineering with VeelIQ</span>
+        <span class="lc-desc">The no-code version of everything above.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/ai-context-windows-explained/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI context windows explained</span>
+        <span class="lc-desc">Why the window is scarce even when it's huge.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Practice on your own <span class="o">context.</span></div>
+        <p>Upload a document, save a fact, and watch your AI's answers sharpen. Free in Beta.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Building Persistent AI Assistants: A Practical Guide | VeelIQ</title>
+<meta name="description" content="A persistent assistant remembers you between sessions. This guide covers the persistence stack — identity, memory, knowledge, and procedures — and how to build it with or without code." />
+<link rel="canonical" href="https://www.veeliq.com/blog/building-persistent-ai-assistants/" />
+<meta property="og:title" content="Building Persistent AI Assistants: A Practical Guide | VeelIQ" />
+<meta property="og:description" content="A persistent assistant remembers you between sessions. This guide covers the persistence stack — identity, memory, knowledge, and procedures — and how to build it with or without code." />
+<meta property="og:url" content="https://www.veeliq.com/blog/building-persistent-ai-assistants/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Building Persistent AI Assistants: A Practical Guide | VeelIQ" />
+<meta name="twitter:description" content="A persistent assistant remembers you between sessions. This guide covers the persistence stack — identity, memory, knowledge, and procedures — and how to build it with or without code." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.veeliq.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Building persistent AI assistants"
+    }
+   ]
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.veeliq.com/blog/building-persistent-ai-assistants/#article",
+   "headline": "Building Persistent AI Assistants",
+   "description": "A persistent assistant remembers you between sessions. This guide covers the persistence stack — identity, memory, knowledge, and procedures — and how to build it with or without code.",
+   "url": "https://www.veeliq.com/blog/building-persistent-ai-assistants/",
+   "datePublished": "2026-07-12",
+   "dateModified": "2026-07-12",
+   "author": {
+    "@type": "Organization",
+    "name": "VeelIQ",
+    "url": "https://www.veeliq.com/"
+   },
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   },
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/blog/#blog"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Building persistent AI assistants</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Guides</div>
+    <h1>Building persistent AI <span class="o">assistants.</span></h1>
+    <p class="page-lede">A persistent assistant is one that knows you on Tuesday what it learned on Monday — in whichever app you open. Here is the full stack that makes that true, and two ways to build it.</p>
+    <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~8 min read</span><span>·</span><span>VeelIQ</span></div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">"Persistent" is doing precise work in that title. Not "smarter," not "more agentic" — simply an assistant whose understanding of you survives the end of a session. It sounds modest. It changes everything about daily AI use, because the tax on every session today is re-establishing who you are, what you're doing, and how you like things done.</p>
+
+    <h2>The persistence stack</h2>
+    <p>Four layers, each answering a different question:</p>
+    <h3>1. Identity — "how should I behave?"</h3>
+    <p>Stable preferences and conventions: tone, formats, defaults, standing rules ("always metric," "never em-dashes," "answers in Spanish"). Small in volume, loaded often. Failure mode when missing: the assistant's personality resets every session.</p>
+    <h3>2. Memory — "what do we know?"</h3>
+    <p>The accumulating record of facts and decisions: projects, people, deadlines, choices made. Written continuously during use, recalled semantically when relevant. This layer is the heart of persistence — without it there is no continuity to speak of (<a href="/use-cases/persistent-memory/">how persistent memory works</a>).</p>
+    <h3>3. Knowledge — "what do the sources say?"</h3>
+    <p>Your documents, indexed for retrieval: specs, contracts, research, manuals. Distinct from memory in authorship and lifecycle — the split matters enough that we wrote <a href="/blog/ai-memory-vs-rag/">a whole article about it</a>.</p>
+    <h3>4. Procedures — "how do we do this task?"</h3>
+    <p>Reusable playbooks: the release checklist, the client-onboarding sequence, the review rubric. Loaded on demand rather than pasted into every prompt, which keeps the identity layer lean.</p>
+
+    <h2>The property that makes it real: portability</h2>
+    <p>Here's the test that separates genuine persistence from a vendor feature: <strong>open a different AI client and ask what it knows about you.</strong> If the answer is "nothing," you don't have a persistent assistant — you have a persistent account with one vendor.</p>
+    <p>True persistence requires the stack to live <em>outside</em> every client, exposed through a standard interface all of them speak. That interface now exists: the Model Context Protocol (MCP). An external store with MCP tools for each layer means Claude, ChatGPT, Cursor, and your scheduled agents all read and write the same assistant-state. The assistant isn't an app anymore; it's a layer your apps share.</p>
+
+    <h2>Path A: build it</h2>
+    <p>For engineers who want full control, the components are well understood:</p>
+    <ul>
+      <li>A database for facts (with user scoping and timestamps), plus a vector index for semantic recall.</li>
+      <li>An ingestion pipeline for documents: parsing, chunking, embedding, indexing (<a href="/blog/how-retrieval-works-in-modern-ai/">the retrieval pipeline</a>).</li>
+      <li>An MCP server exposing <code>remember</code>, <code>recall</code>, and <code>search</code> tools with clear descriptions so models call them well.</li>
+      <li>An admin surface to audit and delete stored state — non-negotiable for trust.</li>
+      <li>Hygiene jobs: deduplication, contradiction detection, retention policies.</li>
+    </ul>
+    <p>Budget realistically: this is a small product, not a weekend script — the pipeline pieces are days each, and the hygiene layer is where most homegrown builds quietly fail (see the <a href="/blog/best-practices-for-ai-memory-systems/">practices they skip</a>).</p>
+
+    <h2>Path B: use a hosted context layer</h2>
+    <p>For everyone else, hosted layers package the stack behind one MCP URL. <a href="/context.html">VeelIQ Context</a> maps to the four layers directly: memory via <code>remember</code>/<code>recall</code>, knowledge via document upload and <code>search_knowledge</code>, procedures via the instructions library, and identity as pinned memories — with workspaces to keep personal and work assistants separate, and a dashboard for the audit surface. Setup is pasting a URL into each client; the free Beta plan covers the whole stack.</p>
+    <p>The trade-off is the classic one: Path A gives you control and locality; Path B gives you a working assistant this afternoon. The <a href="/comparisons/veeliq-vs-mem0/">VeelIQ vs Mem0 comparison</a> maps the same divide for the memory layer specifically.</p>
+
+    <h2>Bootstrapping: the first week</h2>
+    <ol>
+      <li><strong>Day 1 — seed identity.</strong> Save 5–10 standing preferences as memories. Instant tone improvement.</li>
+      <li><strong>Day 1 — seed knowledge.</strong> Upload the 5 documents you reference most.</li>
+      <li><strong>Days 2–5 — capture in flow.</strong> End sessions with "remember the decisions we made." Correct the assistant once, then "remember that correction."</li>
+      <li><strong>Day 3 — connect a second client.</strong> This is the moment persistence becomes visible: your IDE agent knows what your chat assistant learned.</li>
+      <li><strong>Day 7 — audit.</strong> Read the memory list. Delete noise, sharpen vague facts. Ten minutes that pay for themselves for months.</li>
+    </ol>
+
+    <h2>What good looks like</h2>
+    <p>Within two weeks, sessions start mid-conversation: "Given the August 14 deadline moved, should we cut the SSO scope?" — no preamble, and the assistant already knows both facts. Drafts arrive in your voice. Your coding agent stops proposing the architecture you rejected in May. The compound interest is real: every fact captured once is context you never re-type again, in any client, indefinitely.</p>
+
+    <h2>Key takeaways</h2>
+    <ul>
+      <li>Persistence = identity + memory + knowledge + procedures, living outside any single client.</li>
+      <li>The portability test: a different client should know you too. MCP is what makes that possible.</li>
+      <li>Build the stack if state locality is a hard requirement; otherwise a hosted context layer delivers it in minutes.</li>
+      <li>Seed deliberately, capture in flow, audit weekly — the habits matter more than the infrastructure.</li>
+    </ul>
+
+    <h2>Related reading</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/use-cases/ai-assistant-memory/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">AI assistant memory</span>
+        <span class="lc-desc">The multi-client memory pattern in practice.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/long-term-memory-for-ai-agents/">
+        <span class="lc-kicker">Agents</span>
+        <span class="lc-title">Long-term memory for AI agents</span>
+        <span class="lc-desc">The same stack, unattended.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/what-is-context-engineering/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">What is context engineering?</span>
+        <span class="lc-desc">The discipline this guide applies.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Your assistant, <span class="o">persistent</span> by Friday.</div>
+        <p>The whole stack behind one URL. Free Beta plan, no credit card.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

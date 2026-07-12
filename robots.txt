@@ -1,4 +1,60 @@
+# VeelIQ — robots.txt
+# All crawlers, including AI crawlers, are welcome.
+# AI-readable summaries: https://www.veeliq.com/llms.txt
+#                        https://www.veeliq.com/llms-full.txt
+
 User-agent: *
+Allow: /
+
+# --- Search engine crawlers ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# --- OpenAI crawlers ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# --- Anthropic crawlers ---
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# --- Perplexity crawlers ---
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google AI (Gemini) ---
+User-agent: Google-Extended
+Allow: /
+
+# --- Other AI crawlers ---
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.veeliq.com/sitemap.xml
