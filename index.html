@@ -712,21 +712,23 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         </ul>
       </div>
       <div class="foot-col">
-        <h4>Product</h4>
+        <h4>Resources</h4>
         <ul>
-          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="./faq/">FAQ hub</a></li>
+          <li><a href="./use-cases/">Use cases</a></li>
+          <li><a href="./comparisons/">Comparisons</a></li>
+          <li><a href="./blog/">Blog</a></li>
           <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
-          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
-          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Changelog</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">About</a></li>
+          <li><a href="./about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
           <li><a href="terms-of-service.html">Terms of Service</a></li>
-          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Status</a></li>
         </ul>
       </div>
     </div>
@@ -821,9 +823,95 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 {
   "@context": "https://schema.org",
   "@graph": [
-    {"@type":"Organization","@id":"https://www.veeliq.com/#organization","name":"VeelIQ","url":"https://www.veeliq.com/"},
-    {"@type":"WebSite","@id":"https://www.veeliq.com/#website","url":"https://www.veeliq.com/","name":"VeelIQ"},
-    {"@type":"SoftwareApplication","name":"VeelIQ Context","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Private knowledge and memory for your AI via MCP. Upload documents, let your agent search them and remember facts between sessions. In Beta with a free plan.","url":"https://www.veeliq.com/context.html"}
+    {
+      "@type": "Organization",
+      "@id": "https://www.veeliq.com/#organization",
+      "name": "VeelIQ",
+      "url": "https://www.veeliq.com/",
+      "description": "VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). Its products give AI assistants private knowledge, persistent memory, and expert skills through a single endpoint URL.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.veeliq.com/coming-soon/web-app-manifest-512x512.png"
+      },
+      "sameAs": ["https://app.context.veeliq.com/"],
+      "knowsAbout": ["AI memory", "Model Context Protocol", "retrieval-augmented generation", "context engineering", "private AI knowledge bases"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.veeliq.com/#website",
+      "url": "https://www.veeliq.com/",
+      "name": "VeelIQ",
+      "inLanguage": "en",
+      "publisher": {"@id": "https://www.veeliq.com/#organization"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.veeliq.com/context.html#app",
+      "name": "VeelIQ Context",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Private knowledge and memory for your AI via MCP. Upload documents, let your agent search them and remember facts between sessions. In Beta with a free plan.",
+      "url": "https://www.veeliq.com/context.html",
+      "publisher": {"@id": "https://www.veeliq.com/#organization"},
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free Beta plan, no credit card required"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.veeliq.com/#product",
+      "name": "VeelIQ Context",
+      "description": "A private context layer for AI assistants: document knowledge, persistent memory, and an instructions library, delivered to any MCP-compatible client through one URL.",
+      "url": "https://www.veeliq.com/context.html",
+      "brand": {"@id": "https://www.veeliq.com/#organization"},
+      "category": "AI context and memory platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://app.context.veeliq.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.veeliq.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VeelIQ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Skills Marketplace, a subscription catalog of expert skills (coming soon). Both plug into the AI you already use through one URL."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is Context?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Context is a private context layer for your AI. Upload your documents and your agent answers from them; ask it to remember something and it recalls it next session, in any client. It is live in Beta with a free plan."}
+        },
+        {
+          "@type": "Question",
+          "name": "When does the Skills Marketplace launch?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Coming soon. The waitlist is open, and Context subscribers will see it first."}
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an API key or AI model?",
+          "acceptedAnswer": {"@type": "Answer", "text": "No. VeelIQ rides on top of the AI you already use — Claude, Cursor, ChatGPT. You never provide a model key. We only act as a tool provider over MCP."}
+        },
+        {
+          "@type": "Question",
+          "name": "Which clients are supported?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Any MCP-compatible client. That includes Claude.ai, Cursor, ChatGPT, Zed, Windsurf, and growing. One URL covers all of them."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data private?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your data lives in your own isolated space, enforced with row level security. We never retain the content of your AI conversations; tool calls are logged with metadata only (tool, timestamp, latency) for reliability and billing."}
+        }
+      ]
+    }
   ]
 }
 </script>

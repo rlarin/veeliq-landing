@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Context Engineering Platform for Your AI Tools | VeelIQ</title>
+<meta name="description" content="Context engineering means controlling exactly what your AI sees: knowledge, memory, and instructions. VeelIQ is a no-code context engineering layer that works in any MCP client." />
+<link rel="canonical" href="https://www.veeliq.com/use-cases/context-engineering/" />
+<meta property="og:title" content="Context Engineering Platform for Your AI Tools | VeelIQ" />
+<meta property="og:description" content="Context engineering means controlling exactly what your AI sees: knowledge, memory, and instructions. VeelIQ is a no-code context engineering layer that works in any MCP client." />
+<meta property="og:url" content="https://www.veeliq.com/use-cases/context-engineering/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Context Engineering Platform for Your AI Tools | VeelIQ" />
+<meta name="twitter:description" content="Context engineering means controlling exactly what your AI sees: knowledge, memory, and instructions. VeelIQ is a no-code context engineering layer that works in any MCP client." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Use cases",
+     "item": "https://www.veeliq.com/use-cases/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Context engineering"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.veeliq.com/use-cases/context-engineering/#webpage",
+   "url": "https://www.veeliq.com/use-cases/context-engineering/",
+   "name": "Context Engineering Platform for Your AI Tools | VeelIQ",
+   "description": "Context engineering means controlling exactly what your AI sees: knowledge, memory, and instructions. VeelIQ is a no-code context engineering layer that works in any MCP client.",
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/#website"
+   },
+   "about": {
+    "@id": "https://www.veeliq.com/#organization"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.veeliq.com/use-cases/context-engineering/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What exactly is context engineering?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The discipline of deciding what information an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. It has largely superseded prompt-tweaking as the highest-leverage way to improve AI output."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I need to write code to do context engineering?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering — the retrieval pipeline is handled for you."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where do reusable procedures fit in?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "VeelIQ's instructions library stores procedures separately from facts, so your AI can load a playbook (a deployment guide, a review checklist) exactly when it is needed instead of bloating every prompt."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can teams practice context engineering together?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. A shared knowledge layer means every teammate's AI retrieves from the same curated corpus, keeping answers consistent across the team."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I know it's working?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Grounded answers cite your sources. If your assistant starts referencing your actual documents and decisions instead of generic knowledge, your context engineering is paying off."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Context engineering</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 03</div>
+    <h1>Context engineering, without the <span class="o">engineering.</span></h1>
+    <p class="page-lede">The quality of an AI's output is mostly determined by the context it sees. VeelIQ lets you curate that context — knowledge, memory, and instructions — with zero code.</p>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">The AI industry has converged on a lesson: past a certain point, better prompts matter less than better context. What documents can the model retrieve? What does it remember about you? Which procedures does it load for this task? Managing those inputs deliberately is called <strong>context engineering</strong> — we cover the discipline in depth in <a href="/blog/what-is-context-engineering/">our guide</a>.</p>
+    <p class="lead">Until recently, practicing it meant building infrastructure: vector databases, chunking pipelines, embedding jobs, and glue code. VeelIQ packages that pipeline behind one MCP URL, so curating your AI's context becomes an editorial task instead of an engineering project.</p>
+
+    <h2>Problem</h2>
+    <ul>
+      <li>Generic AI answers: the model knows the world but not your world.</li>
+      <li>Prompt bloat: people paste the same background into every conversation, wasting tokens and patience.</li>
+      <li>DIY RAG is real infrastructure — most individuals and small teams will never build it.</li>
+      <li>Context scattered across apps: notes here, decisions there, none of it reachable by your AI.</li>
+    </ul>
+
+    <h2>Solution</h2>
+    <p>VeelIQ gives you the three levers of context engineering as managed primitives:</p>
+    <ul>
+      <li><strong>Knowledge</strong> — upload the documents that define your world; retrieval brings in the relevant chunks per query, with citations.</li>
+      <li><strong>Memory</strong> — durable facts saved once, recalled semantically whenever relevant.</li>
+      <li><strong>Instructions</strong> — reusable procedures stored in a library, loaded on demand instead of pasted into every prompt.</li>
+    </ul>
+    <p>Workspaces keep separate contexts (clients, projects, personal) cleanly apart. Every MCP client you connect — Claude, ChatGPT, Cursor — draws from the same curated context.</p>
+
+    <h2>Benefits</h2>
+    <ul>
+      <li>Answers grounded in your documents and decisions, not statistical averages.</li>
+      <li>Shorter prompts: stable context lives outside the conversation and loads on demand.</li>
+      <li>One curation effort serves every AI tool you use, now and later.</li>
+      <li>No pipeline to maintain — chunking, embedding, and retrieval are handled.</li>
+    </ul>
+
+    <h2>Features used</h2>
+    <p>All of <a href="/context.html">Context</a>: knowledge search, memory, the instructions library, and workspaces. The <a href="/use-cases/private-ai-knowledge-base/">private knowledge base</a> use case covers the document side in more depth.</p>
+
+    <h2>Example</h2>
+    <p>A freelance consultant maintains one workspace per client. Each holds the client's briefs and reports (knowledge), the running log of decisions (memory), and the consultant's delivery checklist (instructions). Opening any AI client, they ask "Draft the kickoff email for Acme following my checklist" — the assistant loads the checklist, recalls Acme's decisions, cites the brief, and drafts in one pass.</p>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-list">
+<details class="faq-item" id="uc-ce-definition">
+  <summary><span>What exactly is context engineering? <a class="anchor-link" href="#uc-ce-definition" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">The discipline of deciding what information an LLM sees at inference time: instructions, retrieved knowledge, memory, and tool results. It has largely superseded prompt-tweaking as the highest-leverage way to improve AI output.</div>
+</details>
+<details class="faq-item" id="uc-ce-code">
+  <summary><span>Do I need to write code to do context engineering? <a class="anchor-link" href="#uc-ce-code" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering — the retrieval pipeline is handled for you.</div>
+</details>
+<details class="faq-item" id="uc-ce-instructions">
+  <summary><span>Where do reusable procedures fit in? <a class="anchor-link" href="#uc-ce-instructions" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">VeelIQ's instructions library stores procedures separately from facts, so your AI can load a playbook (a deployment guide, a review checklist) exactly when it is needed instead of bloating every prompt.</div>
+</details>
+<details class="faq-item" id="uc-ce-teams">
+  <summary><span>Can teams practice context engineering together? <a class="anchor-link" href="#uc-ce-teams" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Yes. A shared knowledge layer means every teammate's AI retrieves from the same curated corpus, keeping answers consistent across the team.</div>
+</details>
+<details class="faq-item" id="uc-ce-measure">
+  <summary><span>How do I know it's working? <a class="anchor-link" href="#uc-ce-measure" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Grounded answers cite your sources. If your assistant starts referencing your actual documents and decisions instead of generic knowledge, your context engineering is paying off.</div>
+</details>
+</div>
+
+    <h2>Related</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/blog/what-is-context-engineering/">
+        <span class="lc-kicker">Blog</span>
+        <span class="lc-title">What is context engineering?</span>
+        <span class="lc-desc">The full guide to the discipline.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/use-cases/private-ai-knowledge-base/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Private AI knowledge base</span>
+        <span class="lc-desc">The knowledge half of context engineering.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/how-retrieval-works-in-modern-ai/">
+        <span class="lc-kicker">Blog</span>
+        <span class="lc-title">How retrieval works</span>
+        <span class="lc-desc">Embeddings, chunking, and similarity search, explained.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Engineer your AI's <span class="o">context.</span></div>
+        <p>Upload one document, save one memory, and watch your AI's answers change. Free in Beta.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

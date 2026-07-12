@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Long-Term Memory for AI Agents: Architecture & Patterns | VeelIQ</title>
+<meta name="description" content="How to give AI agents durable memory: write policies, retrieval strategies, memory hygiene, and the architecture patterns that separate agents that learn from agents that repeat themselves." />
+<link rel="canonical" href="https://www.veeliq.com/blog/long-term-memory-for-ai-agents/" />
+<meta property="og:title" content="Long-Term Memory for AI Agents: Architecture & Patterns | VeelIQ" />
+<meta property="og:description" content="How to give AI agents durable memory: write policies, retrieval strategies, memory hygiene, and the architecture patterns that separate agents that learn from agents that repeat themselves." />
+<meta property="og:url" content="https://www.veeliq.com/blog/long-term-memory-for-ai-agents/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Long-Term Memory for AI Agents: Architecture & Patterns | VeelIQ" />
+<meta name="twitter:description" content="How to give AI agents durable memory: write policies, retrieval strategies, memory hygiene, and the architecture patterns that separate agents that learn from agents that repeat themselves." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.veeliq.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Long-term memory for AI agents"
+    }
+   ]
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.veeliq.com/blog/long-term-memory-for-ai-agents/#article",
+   "headline": "Long-Term Memory for AI Agents",
+   "description": "How to give AI agents durable memory: write policies, retrieval strategies, memory hygiene, and the architecture patterns that separate agents that learn from agents that repeat themselves.",
+   "url": "https://www.veeliq.com/blog/long-term-memory-for-ai-agents/",
+   "datePublished": "2026-07-12",
+   "dateModified": "2026-07-12",
+   "author": {
+    "@type": "Organization",
+    "name": "VeelIQ",
+    "url": "https://www.veeliq.com/"
+   },
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   },
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/blog/#blog"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Long-term memory for AI agents</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Agents</div>
+    <h1>Long-term memory for AI <span class="o">agents.</span></h1>
+    <p class="page-lede">An agent without memory is a very fast intern with amnesia. This is the architecture that turns repeated runs into accumulated competence.</p>
+    <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~8 min read</span><span>·</span><span>VeelIQ</span></div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">Interactive assistants forget between chats; agents forget between <em>runs</em> — and agents run constantly. A nightly report generator, a PR-review bot, a research agent on a weekly schedule: each invocation is a fresh process with a fresh context window. Without an external memory, every run repeats the discoveries, mistakes, and clarifying questions of the last one. With one, runs compound.</p>
+
+    <h2>Why agents need memory more than chatbots do</h2>
+    <ul>
+      <li><strong>No human in the loop to compensate.</strong> In chat, you paste the missing context. An unattended agent has nobody to do that.</li>
+      <li><strong>Repetition amplifies waste.</strong> A forgotten preference costs one user one correction; an agent repeats the error on every scheduled run.</li>
+      <li><strong>State is the product.</strong> Many agent tasks — track this, monitor that, continue yesterday's work — are literally definitions of memory.</li>
+      <li><strong>Multi-agent coordination.</strong> When several agents (or an agent plus its human) collaborate, a shared store is the only sane communication channel across time.</li>
+    </ul>
+
+    <h2>The three-layer architecture</h2>
+    <h3>Layer 1: Working memory (the context window)</h3>
+    <p>Everything the model sees during a single run: the task prompt, tool results, intermediate reasoning. It's fast, rich — and gone at process exit. Design principle: treat it as a cache, never as the system of record (<a href="/blog/ai-context-windows-explained/">why the window can't be the store</a>).</p>
+    <h3>Layer 2: Episodic memory (facts across runs)</h3>
+    <p>Durable, atomic facts written during runs and recalled in later ones: decisions made, obstacles found, preferences learned, state reached. This is the layer people mean by "long-term memory." It needs four operations: <strong>write</strong> (<code>remember</code>), <strong>semantic read</strong> (<code>recall</code>), <strong>revise</strong>, and <strong>delete</strong>.</p>
+    <h3>Layer 3: Reference knowledge (documents)</h3>
+    <p>The corpus the agent grounds its work in: specs, changelogs, policies, prior reports. Retrieved by similarity, cited by source — classic RAG, distinct from episodic facts (<a href="/blog/ai-memory-vs-rag/">memory vs RAG</a>).</p>
+    <p>The practical question is where layers 2 and 3 live. Building them per-agent means a vector store, embeddings, and CRUD plumbing per project. The emerging alternative: a hosted context layer speaking MCP, so any agent runtime that supports the protocol — Claude Code, API-built agents, custom loops — gets all three operations without infrastructure. <a href="/context.html">VeelIQ Context</a> is exactly this: <code>remember</code>, <code>recall</code>, and <code>search_knowledge</code> behind one endpoint URL.</p>
+
+    <h2>Write policy: what should an agent remember?</h2>
+    <p>The classic failure is writing too much. An agent that remembers everything drowns its own retrieval in noise. A workable policy:</p>
+    <ul>
+      <li><strong>Decisions with rationale</strong> — "Chose polling over webhooks; the vendor API drops events."</li>
+      <li><strong>Durable environment facts</strong> — "Staging deploys require the VPN; prod deploys don't."</li>
+      <li><strong>Human corrections</strong> — the highest-value writes an agent can make. Every correction remembered is a correction never repeated.</li>
+      <li><strong>Progress markers</strong> — "Migrated tables A–F; G blocked on legacy auth."</li>
+      <li><strong>Not</strong>: raw tool output, transcripts, or anything reconstructible from the corpus. Store the conclusion, link the source.</li>
+    </ul>
+
+    <h2>Read policy: recall at the right moments</h2>
+    <ol>
+      <li><strong>Run start</strong> — recall against the task description: "What do I already know about tonight's release-notes job?"</li>
+      <li><strong>Before decisions</strong> — recall against the decision topic, so past rationale (and past failures) inform the choice.</li>
+      <li><strong>On surprise</strong> — when a tool call fails or output looks unexpected, recall the anomaly; the workaround is often already stored.</li>
+    </ol>
+    <p>Semantic recall is what makes this cheap: the agent doesn't enumerate its memory, it asks for what's relevant and gets the top matches injected as a few hundred tokens.</p>
+
+    <h2>Memory hygiene for unattended systems</h2>
+    <p>Because agents write autonomously, hygiene is a safety property, not just a quality one:</p>
+    <ul>
+      <li><strong>Auditability</strong> — a human must be able to list, edit, and delete everything the agent stored. A dashboard beats a database dump.</li>
+      <li><strong>Contradiction handling</strong> — new facts should supersede old ones explicitly ("deadline moved to Aug 14, was Jul 30"), not coexist with them.</li>
+      <li><strong>Scoping</strong> — separate stores per project or client (workspaces) prevent cross-contamination between unrelated agents.</li>
+      <li><strong>Retention</strong> — progress markers can expire; decisions and corrections should persist. Time-to-live per category works well.</li>
+    </ul>
+    <p>The fuller checklist lives in <a href="/blog/best-practices-for-ai-memory-systems/">best practices for AI memory systems</a>.</p>
+
+    <h2>A worked example</h2>
+    <p>A weekly competitive-research agent, over four runs:</p>
+    <ol>
+      <li><strong>Run 1</strong> — cold start. Asks its owner two clarifying questions; remembers both answers and the report format that was approved.</li>
+      <li><strong>Run 2</strong> — recalls format and preferences; produces the report unaided. Owner corrects one competitor's name; the correction is remembered.</li>
+      <li><strong>Run 3</strong> — recalls the correction; searches the knowledge corpus (last quarter's strategy PDF) to frame findings against company goals; remembers a new competitor it discovered.</li>
+      <li><strong>Run 4</strong> — the new competitor is now tracked automatically. Zero questions, zero corrections, grounded citations.</li>
+    </ol>
+    <p>Nothing about the model changed. The agent got better because its memory did — the pattern detailed in the <a href="/use-cases/long-term-memory-for-ai/">long-term memory use case</a>.</p>
+
+    <h2>Key takeaways</h2>
+    <ul>
+      <li>Agents need memory more than chatbots: no human compensates, and repetition amplifies every gap.</li>
+      <li>Three layers: context window (cache), episodic facts (remember/recall), reference knowledge (RAG). Only the first is free; the other two need a store.</li>
+      <li>Write conclusions and corrections, not transcripts; recall at run start, before decisions, and on surprise.</li>
+      <li>Auditability and scoping are non-negotiable when software writes to its own memory.</li>
+    </ul>
+
+    <h2>Related reading</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/use-cases/long-term-memory-for-ai/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Long-term memory for AI</span>
+        <span class="lc-desc">The productized version of this architecture.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/building-persistent-ai-assistants/">
+        <span class="lc-kicker">Guides</span>
+        <span class="lc-title">Building persistent AI assistants</span>
+        <span class="lc-desc">The same stack for interactive assistants.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/best-practices-for-ai-memory-systems/">
+        <span class="lc-kicker">Guides</span>
+        <span class="lc-title">Best practices for AI memory</span>
+        <span class="lc-desc">Hygiene rules for stores that write themselves.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Memory infrastructure: <span class="o">one URL.</span></div>
+        <p>Point your agent at a VeelIQ endpoint and layers 2 and 3 are done. Free in Beta.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

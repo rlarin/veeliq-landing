@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Persistent AI Memory Across Sessions and Clients | VeelIQ</title>
+<meta name="description" content="Persistent memory lets your AI keep facts, preferences, and decisions between conversations. How VeelIQ stores memories outside the context window and shares them across every MCP client." />
+<link rel="canonical" href="https://www.veeliq.com/use-cases/persistent-memory/" />
+<meta property="og:title" content="Persistent AI Memory Across Sessions and Clients | VeelIQ" />
+<meta property="og:description" content="Persistent memory lets your AI keep facts, preferences, and decisions between conversations. How VeelIQ stores memories outside the context window and shares them across every MCP client." />
+<meta property="og:url" content="https://www.veeliq.com/use-cases/persistent-memory/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Persistent AI Memory Across Sessions and Clients | VeelIQ" />
+<meta name="twitter:description" content="Persistent memory lets your AI keep facts, preferences, and decisions between conversations. How VeelIQ stores memories outside the context window and shares them across every MCP client." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Use cases",
+     "item": "https://www.veeliq.com/use-cases/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Persistent memory"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.veeliq.com/use-cases/persistent-memory/#webpage",
+   "url": "https://www.veeliq.com/use-cases/persistent-memory/",
+   "name": "Persistent AI Memory Across Sessions and Clients | VeelIQ",
+   "description": "Persistent memory lets your AI keep facts, preferences, and decisions between conversations. How VeelIQ stores memories outside the context window and shares them across every MCP client.",
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/#website"
+   },
+   "about": {
+    "@id": "https://www.veeliq.com/#organization"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.veeliq.com/use-cases/persistent-memory/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Isn't a bigger context window enough?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Even million-token windows reset when the conversation ends, and stuffing them is slow and expensive. Persistent memory survives across sessions and injects only the relevant facts per query."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What kinds of things should be remembered?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Stable, reusable facts: preferences, decisions, project constraints, people, terminology. Ephemeral chit-chat should stay in the conversation."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I control what gets saved?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Memories are saved when you ask (or when your agent's policy says so), and every fact is visible and deletable in your dashboard."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does persistent memory work across different AI apps?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Because memory lives behind an MCP endpoint rather than inside one vendor's app, every connected client shares the same memory."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How does the AI find the right memory later?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Recall is semantic: the assistant queries with meaning, not keywords, and the most relevant stored facts are returned and used as context."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Persistent memory</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 02</div>
+    <h1>Memory that outlives the <span class="o">conversation.</span></h1>
+    <p class="page-lede">Persistent AI memory means facts, preferences, and decisions survive the end of a chat — and reappear exactly when they're relevant, in any session, in any client.</p>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">Large language models are stateless. Whatever you tell them lives in the context window of the current conversation and evaporates when it ends. That's a reasonable design for a model — and a terrible experience for a user who works with AI every day.</p>
+    <p class="lead">Persistent memory fixes the experience without changing the model: an external store holds durable facts, and the assistant reads from and writes to it through tools. VeelIQ provides that store as a service, reachable from every MCP-compatible client through one URL.</p>
+
+    <h2>Problem</h2>
+    <p>Without persistence, daily AI use accumulates friction:</p>
+    <ul>
+      <li>You repeat your role, stack, constraints, and preferences in every session.</li>
+      <li>Decisions made in one chat are invisible to the next — and to your other AI tools.</li>
+      <li>Long-running projects fragment across dozens of conversations nobody can search.</li>
+      <li>Bigger context windows don't help: they still reset to zero at the end of the session.</li>
+    </ul>
+
+    <h2>Solution</h2>
+    <p>VeelIQ Context adds two tools to your assistant:</p>
+    <ul>
+      <li><strong><code>remember</code></strong> — saves a discrete fact to your private store ("Prefers TypeScript strict mode", "Launch date: Oct 3", "Client X's decision-maker is Marta").</li>
+      <li><strong><code>recall</code></strong> — retrieves the facts relevant to the current question by semantic similarity, not keywords.</li>
+    </ul>
+    <p>Memories are stored outside the context window, so they don't consume tokens until they're actually needed — recall injects only the relevant slice. The store is shared by every client you connect, which makes the memory truly yours rather than an artifact of one app. For the theory, read <a href="/blog/best-practices-for-ai-memory-systems/">best practices for AI memory systems</a>.</p>
+
+    <h2>Benefits</h2>
+    <ul>
+      <li>Zero re-explaining: assistants start each session already knowing the stable facts.</li>
+      <li>Consistency across tools: Claude, ChatGPT, and your IDE agree on what was decided.</li>
+      <li>Token efficiency: only relevant memories enter the prompt, keeping costs flat.</li>
+      <li>Full auditability: every fact is listed in your dashboard, editable and deletable.</li>
+    </ul>
+
+    <h2>Features used</h2>
+    <p>Memory (remember / recall) from <a href="/context.html">Context</a>, plus workspaces to keep personal and professional memories apart, and the instructions library for procedures that are more like playbooks than facts.</p>
+
+    <h2>Examples</h2>
+    <ul>
+      <li><strong>Consultant</strong> — saves one fact per client decision; recall reconstructs any account's history on demand.</li>
+      <li><strong>Developer</strong> — the coding agent remembers architecture decisions and stops proposing rejected patterns.</li>
+      <li><strong>Writer</strong> — style preferences persist, so every draft starts in the right voice.</li>
+    </ul>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-list">
+<details class="faq-item" id="uc-pm-vs-window">
+  <summary><span>Isn't a bigger context window enough? <a class="anchor-link" href="#uc-pm-vs-window" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">No. Even million-token windows reset when the conversation ends, and stuffing them is slow and expensive. Persistent memory survives across sessions and injects only the relevant facts per query.</div>
+</details>
+<details class="faq-item" id="uc-pm-what-saved">
+  <summary><span>What kinds of things should be remembered? <a class="anchor-link" href="#uc-pm-what-saved" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Stable, reusable facts: preferences, decisions, project constraints, people, terminology. Ephemeral chit-chat should stay in the conversation.</div>
+</details>
+<details class="faq-item" id="uc-pm-control">
+  <summary><span>Do I control what gets saved? <a class="anchor-link" href="#uc-pm-control" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Yes. Memories are saved when you ask (or when your agent's policy says so), and every fact is visible and deletable in your dashboard.</div>
+</details>
+<details class="faq-item" id="uc-pm-multi">
+  <summary><span>Does persistent memory work across different AI apps? <a class="anchor-link" href="#uc-pm-multi" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Yes. Because memory lives behind an MCP endpoint rather than inside one vendor's app, every connected client shares the same memory.</div>
+</details>
+<details class="faq-item" id="uc-pm-recall">
+  <summary><span>How does the AI find the right memory later? <a class="anchor-link" href="#uc-pm-recall" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
+  <div class="faq-a">Recall is semantic: the assistant queries with meaning, not keywords, and the most relevant stored facts are returned and used as context.</div>
+</details>
+</div>
+
+    <h2>Related</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/use-cases/long-term-memory-for-ai/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Long-term memory for AI agents</span>
+        <span class="lc-desc">The same mechanism, applied to autonomous agents.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/ai-context-windows-explained/">
+        <span class="lc-kicker">Blog</span>
+        <span class="lc-title">AI context windows explained</span>
+        <span class="lc-desc">Why bigger windows don't solve forgetting.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/comparisons/veeliq-vs-mem0/">
+        <span class="lc-kicker">Comparison</span>
+        <span class="lc-title">VeelIQ vs Mem0</span>
+        <span class="lc-desc">No-code memory vs developer memory infrastructure.</span>
+        <span class="lc-arr">Compare →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Stop <span class="o">re-explaining</span> yourself.</div>
+        <p>Save your first memory in the next five minutes. Free Beta plan, works in every MCP client.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

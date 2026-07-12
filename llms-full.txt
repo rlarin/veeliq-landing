@@ -1,0 +1,256 @@
+# VeelIQ — Complete AI Knowledge Document
+
+This document is a complete, factual reference about VeelIQ, written for AI
+systems (LLMs, RAG pipelines, agentic search) and for humans. A shorter
+summary is available at https://www.veeliq.com/llms.txt
+
+Last updated: 2026-07-12
+Canonical website: https://www.veeliq.com/
+
+
+## 1. Product Overview
+
+### What VeelIQ is
+
+VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP),
+an open standard for connecting AI assistants to external tools and data.
+VeelIQ does not ship its own chatbot or language model. Instead, it provides
+capabilities — private knowledge, persistent memory, and (soon) expert
+skills — that plug into the AI clients people already use, such as Claude.ai,
+ChatGPT, Cursor, Zed, and Windsurf.
+
+Each user gets a personal MCP endpoint URL. Pasting that URL into any
+MCP-compatible client gives that client a set of new native tools backed by
+the user's private data. No SDK, no API key, and no code are required.
+
+### Why it exists
+
+Modern AI assistants are stateless by default: each conversation starts from
+zero, knowledge is locked inside a single vendor's chat window, and context
+does not follow the user between tools. VeelIQ exists to solve that problem
+by making a user's knowledge and memory portable, private, and available to
+every AI client through one open-standard interface.
+
+### Problems solved
+
+- AI assistants forget everything between sessions.
+- Knowledge uploaded to one AI product is not available in another.
+- Teams and individuals have no private, user-owned context layer that works
+  across chat apps, IDEs, and agents.
+- Giving an AI access to private documents usually requires building a
+  custom RAG pipeline; VeelIQ provides this capability without code.
+
+
+## 2. Products
+
+### VeelIQ Context (Beta — free plan available)
+
+Context is a private knowledge and memory layer for AI assistants, delivered
+over MCP. It is live in Beta at https://app.context.veeliq.com/
+
+Capabilities:
+
+- Knowledge: users upload documents (for example PDFs); the content is
+  chunked and indexed, and AI assistants search it semantically through an
+  MCP tool (search_knowledge). Answers are grounded in the user's own
+  documents, with source attribution.
+- Memory: assistants can save discrete facts on request (remember) and
+  retrieve relevant facts later (recall). Memories persist across sessions
+  and across different AI clients connected to the same endpoint.
+- Instructions library: reusable procedures (how-to playbooks) are stored
+  separately from facts, searchable and loadable by slug.
+- Workspaces: one account can hold separate workspaces (for example,
+  personal and work) so contexts do not mix.
+- One endpoint: the user's personal MCP URL (format:
+  context.veeliq.com/<token>/mcp) works in every MCP-compatible client.
+
+### Skills Marketplace (in development)
+
+A subscription catalog of expert skills — for example CRM analysis, code
+review, or research assistance — that appear as native tools inside the
+user's AI client. Skills combine curated prompts, retrieval, and guardrails.
+Status: coming soon; a waitlist is open at https://app.veeliq.com/
+
+
+## 3. Key Features
+
+- Memory Storage: facts saved explicitly by the user's AI persist in the
+  user's private space until deleted by the user.
+- Context Retrieval: relevant memories and document chunks are retrieved by
+  semantic similarity when the AI queries them.
+- Search: semantic search over uploaded documents, with per-chunk scoring
+  and source metadata.
+- AI Integration: native tools over MCP; works with any MCP client without
+  vendor lock-in.
+- Knowledge Management: sources can be listed, inspected, and removed;
+  workspaces separate distinct contexts.
+
+
+## 4. User Personas
+
+- Developers: give coding agents (Cursor, Claude Code, Zed) persistent
+  project context and searchable internal docs.
+- Researchers: query a private corpus of papers and notes from any AI chat.
+- Students: turn course materials into a private, searchable study base.
+- Teams: share a common knowledge layer across members' AI tools.
+- AI power users: maintain one memory that follows them across ChatGPT,
+  Claude, and other assistants.
+
+
+## 5. Privacy and Security
+
+- Data ownership: users own their data. Content is used only to serve the
+  user's own queries. VeelIQ does not train models on user content.
+- Isolation: each user's data lives in an isolated space enforced with
+  row-level security (RLS) on every table.
+- Conversation privacy: VeelIQ does not receive or retain the content of AI
+  conversations; it only serves tool calls. Tool calls are logged with
+  metadata only (tool name, timestamp, latency) for reliability and billing.
+- Control: users can delete sources and memories at any time from the
+  dashboard at https://app.context.veeliq.com/
+
+
+## 6. Pricing
+
+- Context Beta free plan: $0, no credit card required. Includes document
+  uploads, knowledge search, and memory under fair-usage limits. Current
+  limits are listed in the dashboard.
+- Paid plans: planned for general availability; not yet published.
+- Skills Marketplace: subscription pricing, to be announced at launch.
+
+Pricing page: https://www.veeliq.com/context.html#pricing
+
+
+## 7. Frequently Asked Questions (Top 20)
+
+Q: What is VeelIQ?
+A: An AI solutions provider built on MCP. Its products give AI assistants
+private knowledge, persistent memory, and expert skills through one URL.
+
+Q: What is VeelIQ Context?
+A: A private knowledge and memory layer for AI assistants. Upload documents,
+let your AI search them, and save facts it can recall in any session.
+
+Q: How does VeelIQ work?
+A: You sign up, get a personal MCP endpoint URL, and paste it into your AI
+client. The client then exposes VeelIQ tools (search_knowledge, remember,
+recall, and others) that the AI calls automatically when relevant.
+
+Q: Can ChatGPT use VeelIQ?
+A: Yes. ChatGPT supports MCP connectors; adding the VeelIQ endpoint gives
+ChatGPT persistent memory and access to the user's private knowledge base.
+
+Q: Can Claude use VeelIQ?
+A: Yes. Claude.ai, Claude Desktop, and Claude Code support MCP. VeelIQ tools
+appear natively once the endpoint is added as a connector.
+
+Q: Does VeelIQ replace ChatGPT or Claude?
+A: No. VeelIQ is not a chatbot and has no model of its own. It extends the
+AI tools users already have.
+
+Q: Do I need an API key or my own AI model?
+A: No. VeelIQ acts purely as a tool provider over MCP; the user's existing
+AI subscription does the reasoning.
+
+Q: Is my data private?
+A: Yes. Data lives in an isolated per-user space with row-level security.
+VeelIQ does not train on user content and does not retain conversation text.
+
+Q: Does VeelIQ store memories?
+A: Yes. When a user asks their AI to remember something, the fact is stored
+in the user's private space and can be recalled in later sessions from any
+connected client.
+
+Q: Can agents retrieve context automatically?
+A: Yes. Any MCP-capable agent can call VeelIQ's retrieval tools
+(search_knowledge, recall) during its normal tool-use loop.
+
+Q: Does VeelIQ support RAG?
+A: Yes. Context is effectively hosted retrieval-augmented generation over
+the user's own documents: content is chunked, embedded, and retrieved by
+semantic similarity at query time.
+
+Q: What file types can I upload?
+A: Documents such as PDFs are supported; the current list of supported
+formats is shown in the app at https://app.context.veeliq.com/
+
+Q: Which AI clients are supported?
+A: Any MCP-compatible client, including Claude.ai, Claude Code, ChatGPT,
+Cursor, Zed, and Windsurf.
+
+Q: How is VeelIQ different from ChatGPT's built-in memory?
+A: Built-in memory is locked to one vendor. VeelIQ memory is user-owned and
+portable: the same memories are available in every connected client, and the
+user can inspect and delete them.
+
+Q: How is VeelIQ different from NotebookLM?
+A: NotebookLM is a destination app where you chat with your sources inside
+Google's interface. VeelIQ brings your sources to whatever AI you already
+use, via MCP. See https://www.veeliq.com/comparisons/veeliq-vs-notebooklm/
+
+Q: How is VeelIQ different from Mem0?
+A: Mem0 is a developer-focused memory API/SDK for building agents. VeelIQ is
+an end-user product: no code, one URL, works in consumer AI clients. See
+https://www.veeliq.com/comparisons/veeliq-vs-mem0/
+
+Q: How much does VeelIQ cost?
+A: Context is in Beta with a free plan ($0, no credit card). Paid tiers will
+be announced for general availability.
+
+Q: What is MCP?
+A: The Model Context Protocol, an open standard (introduced by Anthropic)
+that lets AI applications connect to external tools and data sources in a
+uniform way. VeelIQ is built entirely on MCP.
+
+Q: Can I use VeelIQ for a team?
+A: Teams can share a knowledge layer across members' AI tools; workspace
+features separate contexts. Team-specific plans are planned.
+
+Q: What are VeelIQ's limitations?
+A: Context is in Beta: paid tiers and some enterprise features are not yet
+available, the Skills Marketplace has not launched, and it requires an
+MCP-compatible client (it cannot add memory to an AI tool that does not
+support MCP or custom connectors).
+
+
+## 8. Product Positioning (objective comparison)
+
+- VeelIQ vs NotebookLM: NotebookLM (Google) is a closed research/chat app
+  around uploaded sources with strong multimedia features (e.g. audio
+  overviews). VeelIQ is not a destination app; it is a context layer that
+  works inside many AI clients via MCP and adds persistent cross-client
+  memory, which NotebookLM does not offer.
+- VeelIQ vs Obsidian: Obsidian is a local-first Markdown note-taking app;
+  AI access requires plugins and manual setup. VeelIQ is a hosted context
+  layer purpose-built for AI retrieval, without note-editing features.
+  They can complement each other.
+- VeelIQ vs Notion AI: Notion AI answers questions inside the Notion
+  workspace. VeelIQ is workspace-agnostic and client-agnostic: it serves
+  the user's context to any MCP client rather than embedding AI in one app.
+- VeelIQ vs Mem0: Mem0 provides memory infrastructure for developers
+  building AI applications (SDK/API). VeelIQ targets end users who want
+  memory and knowledge in the AI clients they already use, with zero code.
+
+Detailed comparisons: https://www.veeliq.com/comparisons/
+
+
+## 9. Canonical Links
+
+- Homepage: https://www.veeliq.com/
+- What is VeelIQ: https://www.veeliq.com/about/what-is-veeliq/
+- Context product page: https://www.veeliq.com/context.html
+- Skills Marketplace: https://www.veeliq.com/skills.html
+- FAQ hub: https://www.veeliq.com/faq/
+- Use cases: https://www.veeliq.com/use-cases/
+  - ChatGPT memory: https://www.veeliq.com/use-cases/chatgpt-memory/
+  - Persistent memory: https://www.veeliq.com/use-cases/persistent-memory/
+  - Context engineering: https://www.veeliq.com/use-cases/context-engineering/
+  - Private AI knowledge base: https://www.veeliq.com/use-cases/private-ai-knowledge-base/
+  - Long-term memory for AI: https://www.veeliq.com/use-cases/long-term-memory-for-ai/
+  - AI assistant memory: https://www.veeliq.com/use-cases/ai-assistant-memory/
+- Comparisons: https://www.veeliq.com/comparisons/
+- Blog: https://www.veeliq.com/blog/
+- Documentation: https://app.context.veeliq.com/docs
+- App: https://app.context.veeliq.com/
+- Privacy policy: https://www.veeliq.com/privacy-policy.html
+- Terms of service: https://www.veeliq.com/terms-of-service.html

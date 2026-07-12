@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How Retrieval Works in Modern AI Systems | VeelIQ</title>
+<meta name="description" content="From embeddings and chunking to similarity search and reranking: a plain-language tour of the retrieval pipeline that powers RAG, AI memory, and agentic search." />
+<link rel="canonical" href="https://www.veeliq.com/blog/how-retrieval-works-in-modern-ai/" />
+<meta property="og:title" content="How Retrieval Works in Modern AI Systems | VeelIQ" />
+<meta property="og:description" content="From embeddings and chunking to similarity search and reranking: a plain-language tour of the retrieval pipeline that powers RAG, AI memory, and agentic search." />
+<meta property="og:url" content="https://www.veeliq.com/blog/how-retrieval-works-in-modern-ai/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="How Retrieval Works in Modern AI Systems | VeelIQ" />
+<meta name="twitter:description" content="From embeddings and chunking to similarity search and reranking: a plain-language tour of the retrieval pipeline that powers RAG, AI memory, and agentic search." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://www.veeliq.com/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "How retrieval works in modern AI"
+    }
+   ]
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.veeliq.com/blog/how-retrieval-works-in-modern-ai/#article",
+   "headline": "How Retrieval Works in Modern AI",
+   "description": "From embeddings and chunking to similarity search and reranking: a plain-language tour of the retrieval pipeline that powers RAG, AI memory, and agentic search.",
+   "url": "https://www.veeliq.com/blog/how-retrieval-works-in-modern-ai/",
+   "datePublished": "2026-07-12",
+   "dateModified": "2026-07-12",
+   "author": {
+    "@type": "Organization",
+    "name": "VeelIQ",
+    "url": "https://www.veeliq.com/"
+   },
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   },
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/blog/#blog"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>How retrieval works in modern AI</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Fundamentals</div>
+    <h1>How retrieval works in modern <span class="o">AI.</span></h1>
+    <p class="page-lede">When your assistant "searches your documents," a five-stage pipeline runs in milliseconds. Understanding it explains both the magic and the occasional miss.</p>
+    <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~8 min read</span><span>·</span><span>VeelIQ</span></div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <p class="lead">Retrieval is the connective tissue of applied AI: it powers RAG over documents, semantic recall in <a href="/use-cases/persistent-memory/">memory systems</a>, and the search steps inside agentic loops. The core idea is one sentence: <strong>represent meaning as geometry, so "find relevant text" becomes "find nearby points."</strong> Everything else is engineering around that idea.</p>
+
+    <h2>Stage 1: Chunking — deciding the unit of retrieval</h2>
+    <p>Documents are too big to retrieve whole, so they're split into chunks — typically a few hundred tokens, often overlapping so sentences aren't severed from their context. Chunking is quietly the highest-leverage stage:</p>
+    <ul>
+      <li><strong>Too large</strong>, and a chunk matches many queries weakly while dragging irrelevant text into the prompt.</li>
+      <li><strong>Too small</strong>, and meaning fragments — "the deadline moved" without <em>which</em> deadline.</li>
+      <li><strong>Structure-blind</strong> splitting (every N characters) cuts tables and arguments mid-thought; good chunkers respect headings, paragraphs, and pages.</li>
+    </ul>
+    <p>When retrieval "misses," bad chunk boundaries are the first suspect.</p>
+
+    <h2>Stage 2: Embedding — meaning as coordinates</h2>
+    <p>Each chunk is passed through an embedding model that outputs a vector — hundreds to thousands of numbers positioning the chunk in a semantic space where <strong>similar meanings land near each other regardless of wording</strong>. "Q3 revenue fell 8%" and "third-quarter sales declined" end up neighbors; "my cat is ill" lands far away. This is the property that makes semantic search fundamentally different from keyword search: synonyms, paraphrases, and even cross-lingual matches work because the geometry encodes meaning, not spelling.</p>
+
+    <h2>Stage 3: Indexing — making neighbors findable fast</h2>
+    <p>Vectors go into an index built for nearest-neighbor search. Exact comparison against every chunk works for thousands of vectors; at scale, approximate nearest neighbor (ANN) structures — graph-based indexes like HNSW, or quantization schemes — trade a sliver of accuracy for orders-of-magnitude speed. The index also carries metadata (source file, page, upload date, workspace), which is what makes filtered queries and citations possible later.</p>
+
+    <h2>Stage 4: Query — the same geometry, in reverse</h2>
+    <p>At question time, the query is embedded with the same model, and the index returns the chunks whose vectors sit closest — each with a similarity score. Two refinements matter in practice:</p>
+    <ul>
+      <li><strong>Hybrid search</strong> combines vector similarity with classic keyword matching, because exact identifiers ("invoice #4471", "HNSW") are where pure semantics is weakest.</li>
+      <li><strong>Reranking</strong> takes the top candidates and re-scores them with a more expensive model that reads query and chunk together, sharpening precision where it counts — the few chunks that will actually enter the prompt.</li>
+    </ul>
+
+    <h2>Stage 5: Grounding — retrieval meets generation</h2>
+    <p>The top chunks are injected into the model's context alongside the question, typically with instructions to answer from them and cite sources. The model composes; the retrieval grounds. Done well, the answer quotes <em>your</em> documents with a pointer to file and location — the difference between an assistant that knows and one that guesses (<a href="/blog/what-is-context-engineering/">context engineering</a> is largely the discipline of feeding this stage well).</p>
+
+    <h2>Where it lives in the tools you use</h2>
+    <p>This pipeline used to be a build-it-yourself project: parser, chunker, embedding jobs, vector database, query API. Increasingly it's a service behind a protocol. In <a href="/context.html">VeelIQ Context</a>, uploading a document runs stages 1–3 automatically; when any MCP-connected assistant calls <code>search_knowledge</code>, stages 4–5 execute and return scored, source-attributed chunks. The same machinery serves memory: facts saved with <code>remember</code> are embedded too, which is why <code>recall</code> finds "what did we decide about pricing?" even though the stored fact never contains the word "pricing" (<a href="/blog/ai-memory-vs-rag/">memory vs RAG</a> covers what differs above the shared stack).</p>
+
+    <h2>Why retrieval sometimes misses — a diagnostic guide</h2>
+    <ul>
+      <li><strong>The answer spans chunks.</strong> Half the fact in chunk 12, half in chunk 13, neither scoring high alone. Remedies: overlap, larger chunks, or structure-aware splitting.</li>
+      <li><strong>Vocabulary mismatch at the extremes.</strong> Highly specific tokens (part numbers, code symbols) need the keyword half of hybrid search.</li>
+      <li><strong>Corpus staleness.</strong> Retrieval faithfully returns the outdated spec you never replaced. The index is only as good as its curation.</li>
+      <li><strong>Near-duplicate crowding.</strong> Five copies of a boilerplate paragraph occupy the whole top-k, displacing the unique chunk that mattered.</li>
+      <li><strong>Question–document register gap.</strong> Casual queries against dense legalese embed further apart than you'd hope; rephrasing the query closes the distance.</li>
+    </ul>
+
+    <h2>Key takeaways</h2>
+    <ul>
+      <li>Retrieval = chunk → embed → index → query → ground; meaning becomes geometry, relevance becomes proximity.</li>
+      <li>Chunking quality and corpus hygiene set the ceiling; embeddings and indexes are rarely the bottleneck.</li>
+      <li>Hybrid search and reranking patch semantic search's weak spots (exact tokens, fine-grained precision).</li>
+      <li>The same pipeline powers document RAG and semantic memory — and it's now a hosted capability, not a mandatory build.</li>
+    </ul>
+
+    <h2>Related reading</h2>
+    <div class="card-grid">
+      <a class="link-card" href="/blog/ai-memory-vs-rag/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI memory vs RAG</span>
+        <span class="lc-desc">What differs above this shared machinery.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/use-cases/private-ai-knowledge-base/">
+        <span class="lc-kicker">Use case</span>
+        <span class="lc-title">Private AI knowledge base</span>
+        <span class="lc-desc">This pipeline, hosted and private.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/ai-context-windows-explained/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI context windows explained</span>
+        <span class="lc-desc">Why we retrieve instead of paste.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">The pipeline, <span class="o">pre-built.</span></div>
+        <p>Upload a PDF; stages 1–3 run automatically. Ask your AI about it; 4–5 do. Free in Beta.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

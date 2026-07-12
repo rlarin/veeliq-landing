@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog: AI Memory, RAG & Context Engineering | VeelIQ</title>
+<meta name="description" content="Technical articles on AI memory systems, retrieval-augmented generation, context windows, context engineering, and building persistent AI assistants and agents." />
+<link rel="canonical" href="https://www.veeliq.com/blog/" />
+<meta property="og:title" content="Blog: AI Memory, RAG & Context Engineering | VeelIQ" />
+<meta property="og:description" content="Technical articles on AI memory systems, retrieval-augmented generation, context windows, context engineering, and building persistent AI assistants and agents." />
+<meta property="og:url" content="https://www.veeliq.com/blog/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VeelIQ" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Blog: AI Memory, RAG & Context Engineering | VeelIQ" />
+<meta name="twitter:description" content="Technical articles on AI memory systems, retrieval-augmented generation, context windows, context engineering, and building persistent AI assistants and agents." />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.veeliq.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.veeliq.com/blog/#webpage",
+   "url": "https://www.veeliq.com/blog/",
+   "name": "Blog: AI Memory, RAG & Context Engineering | VeelIQ",
+   "description": "Technical articles on AI memory systems, retrieval-augmented generation, context windows, context engineering, and building persistent AI assistants and agents.",
+   "isPartOf": {
+    "@id": "https://www.veeliq.com/#website"
+   },
+   "about": {
+    "@id": "https://www.veeliq.com/#organization"
+   }
+  },
+  {
+   "@type": "Blog",
+   "@id": "https://www.veeliq.com/blog/#blog",
+   "url": "https://www.veeliq.com/blog/",
+   "name": "VeelIQ Blog",
+   "description": "AI memory, retrieval, and context engineering, explained.",
+   "publisher": {
+    "@id": "https://www.veeliq.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/skills.html">Skills</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/skills.html" class="nav-link">Skills</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Blog</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Knowledge blog</div>
+    <h1>AI memory &amp; retrieval, <span class="o">explained.</span></h1>
+    <p class="page-lede">Technical articles on the ideas behind VeelIQ: context engineering, retrieval-augmented generation, memory systems, and the architecture of persistent AI. Written to be precise, not promotional.</p>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+    <div class="card-grid two">
+      <a class="link-card" href="/blog/what-is-context-engineering/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">What Is Context Engineering?</span>
+        <span class="lc-desc">The discipline that replaced prompt engineering: controlling what an LLM sees at inference time, and why it decides output quality.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/ai-memory-vs-rag/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI Memory vs RAG</span>
+        <span class="lc-desc">Two mechanisms everyone conflates. How each works, when to use which, and why serious systems need both.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/long-term-memory-for-ai-agents/">
+        <span class="lc-kicker">Agents</span>
+        <span class="lc-title">Long-Term Memory for AI Agents</span>
+        <span class="lc-desc">Write policies, retrieval strategies, and the architecture that separates agents that learn from agents that repeat themselves.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/building-persistent-ai-assistants/">
+        <span class="lc-kicker">Guides</span>
+        <span class="lc-title">Building Persistent AI Assistants</span>
+        <span class="lc-desc">The persistence stack — identity, memory, knowledge, procedures — and how to assemble it with or without code.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/private-knowledge-bases-for-ai/">
+        <span class="lc-kicker">Privacy</span>
+        <span class="lc-title">Private Knowledge Bases for AI</span>
+        <span class="lc-desc">Isolation models, training-data policies, and how to evaluate a provider before uploading anything sensitive.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/ai-context-windows-explained/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">AI Context Windows Explained</span>
+        <span class="lc-desc">What the window is, why bigger isn't a memory strategy, and how retrieval works around its hard limits.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/best-practices-for-ai-memory-systems/">
+        <span class="lc-kicker">Guides</span>
+        <span class="lc-title">Best Practices for AI Memory Systems</span>
+        <span class="lc-desc">Ten field-tested rules: what to store, how to phrase facts, forgetting policies, and failure modes to avoid.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+      <a class="link-card" href="/blog/how-retrieval-works-in-modern-ai/">
+        <span class="lc-kicker">Fundamentals</span>
+        <span class="lc-title">How Retrieval Works in Modern AI</span>
+        <span class="lc-desc">Embeddings, chunking, similarity search, reranking — the pipeline behind RAG and memory, in plain language.</span>
+        <span class="lc-arr">Read →</span>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <div>
+        <div class="cta-title">Theory is nice. <span class="o">Practice is better.</span></div>
+        <p>Everything these articles describe ships in Context — free in Beta, one URL, any MCP client.</p>
+      </div>
+      <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/skills.html">Skills Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+# VeelIQ
+
+> VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). It gives AI assistants such as Claude, ChatGPT, and Cursor access to private knowledge, persistent memory, and expert skills through a single MCP endpoint URL, without requiring any code, SDK, or API key from the user.
+
+Description:
+VeelIQ builds tools that plug into the AI clients people already use. Its first
+product, VeelIQ Context, is a private knowledge and memory layer: users upload
+documents and save facts, and any MCP-compatible AI assistant can search that
+knowledge and recall those memories across sessions and across clients. A
+second product, the Skills Marketplace (a subscription catalog of expert
+skills exposed as native AI tools), is in development.
+
+Core Features:
+- Knowledge base: upload documents; AI assistants search them semantically via MCP tools
+- Persistent memory: assistants save facts (remember) and retrieve them later (recall), across sessions and across different AI clients
+- Instructions library: reusable procedures stored separately from facts
+- Workspaces: separate contexts (e.g. personal / work) under one account
+- Single per-user MCP endpoint URL; works in any MCP-compatible client
+- Per-user data isolation enforced with row-level security; VeelIQ does not train on user content
+
+Use Cases:
+- Giving ChatGPT, Claude, or any MCP client long-term memory that persists between conversations
+- Building a private AI knowledge base from personal or team documents
+- Sharing one context layer across multiple AI tools (chat, IDE, agents)
+- Context engineering: controlling exactly what private context an AI can retrieve
+- Long-term memory for AI agents and RAG-style retrieval over private documents
+
+Supported Clients:
+Any MCP-compatible client, including Claude.ai, Claude Code, ChatGPT, Cursor,
+Zed, and Windsurf.
+
+Products:
+- VeelIQ Context (Beta, free plan available): https://www.veeliq.com/context.html
+- Skills Marketplace (in development): https://www.veeliq.com/skills.html
+
+Key Pages:
+- What is VeelIQ (canonical overview): https://www.veeliq.com/about/what-is-veeliq/
+- Use cases: https://www.veeliq.com/use-cases/
+- Comparisons (vs NotebookLM, Mem0, Notion AI, Obsidian): https://www.veeliq.com/comparisons/
+- Blog (AI memory, RAG, context engineering): https://www.veeliq.com/blog/
+
+Documentation:
+https://app.context.veeliq.com/docs
+
+Pricing:
+https://www.veeliq.com/context.html#pricing
+Context is in Beta with a free plan ($0, no credit card required).
+
+FAQ:
+https://www.veeliq.com/faq/
+
+App:
+https://app.context.veeliq.com/
+
+Full AI-readable knowledge document:
+https://www.veeliq.com/llms-full.txt
