@@ -20,6 +20,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.veeliq.com/waitlist/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.veeliq.com/about/what-is-veeliq/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>

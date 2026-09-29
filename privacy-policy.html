@@ -80,8 +80,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .nav-drawer{display:none;flex-direction:column;background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}
-.nav-drawer.open{max-height:260px;padding:1rem 0}
+.nav-drawer.open{max-height:320px;padding:1rem 0}
 .nav-drawer .nav-link{display:block;padding:.75rem 1.5rem;border-bottom:1px solid var(--line)}
+.nav-drawer .btn-sm{display:flex;justify-content:center;margin:.75rem 1.5rem 0;padding:10px 12px}
 
 /* PAGE LAYOUT */
 .page-body{position:relative;z-index:1}
@@ -146,7 +147,8 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
 .foot-copy{font-size:11px;color:var(--muted-2);font-family:var(--font-mono)}
 
 /* RESPONSIVE */
-@media(max-width:900px){.nav-inner{padding:14px 20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.geo-diamond,.geo-diamond-sm{display:none}.content{padding:2.5rem 1.25rem 4rem}.foot-inner{flex-direction:column;align-items:flex-start;padding-inline:20px}.legal-nav{flex-wrap:wrap}}
+@media(max-width:900px){.nav-inner{padding:14px 20px;gap:12px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.geo-diamond,.geo-diamond-sm{display:none}.content{padding:2.5rem 1.25rem 4rem}.foot-inner{flex-direction:column;align-items:flex-start;padding-inline:20px}.legal-nav{flex-wrap:wrap}}
+@media(max-width:380px){.nav-actions .btn{display:none}}
 </style>
 </head>
 <body data-theme="light">
@@ -184,6 +186,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     <a href="index.html" class="nav-link">← Home</a>
     <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
     <a href="terms-of-service.html" class="nav-link">Terms</a>
+    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-orange" target="_blank" rel="noopener">Try Context free →</a>
   </div>
 </nav>
 
@@ -196,7 +199,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     </div>
 
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Version 1.1 &nbsp;·&nbsp; Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: September 29, 2026</p>
+    <p class="page-meta">Version 1.2 &nbsp;·&nbsp; Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: September 29, 2026</p>
 
     <nav class="legal-nav" aria-label="Legal documents">
       <a href="privacy-policy.html" class="active">Privacy Policy</a>
@@ -236,6 +239,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li><strong>Referrer URL</strong>: the page you visited before arriving on our site, captured automatically by your browser.</li>
         <li><strong>User agent string</strong>: your browser and operating system, collected to understand our audience.</li>
         <li><strong>Sign-up timestamp</strong>: the date and time your submission was recorded.</li>
+        <li><strong>Plugin Marketplace waitlist answers</strong>: if you join the waitlist, your answers about your role, the AI tools you use and the plugin you want first, the campaign that brought you (UTM source, medium and campaign, when the link had them), and the date and time you gave consent. We do not store your IP address with your signup.</li>
         <li><strong>Subscription and billing data</strong>: managed by our payment processor; we do not store full card details.</li>
         <li><strong>Content you provide (Context)</strong>: documents you upload to your Context knowledge base and memories your AI agent saves on your behalf. This content is stored solely to deliver the service back to you and is never used for any other purpose.</li>
         <li><strong>Tool call metadata</strong>: when your AI client calls a VeelIQ tool, we log the tool name, timestamp, and latency for reliability and billing. We do not retain the content of your AI conversations.</li>
@@ -255,6 +259,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li>To store and retrieve your Context content (the documents you upload and the memories your agent saves) so your AI can search and recall them when you ask.</li>
         <li>To send transactional emails (account confirmation, billing receipts, subscription changes).</li>
         <li>To understand where our audience is coming from and improve the product experience.</li>
+        <li>To contact waitlist members about the Plugin Marketplace beta, and to decide which plugins and AI clients to build for first, based on your consent.</li>
         <li>To prevent fraud and maintain the integrity of the service.</li>
       </ul>
       <p>We will never sell your data or use it for purposes incompatible with those listed above. We <strong>never train AI models on your content</strong>: your documents and memories exist only to serve your own AI.</p>
@@ -298,6 +303,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <h2 class="section-title">Data Retention</h2>
       <p>We retain account data for as long as your account is active. If you cancel your subscription, we retain minimal data for billing and legal compliance purposes for up to <strong>3 years</strong> as required by applicable law.</p>
       <p>You control your Context content directly: deleting a document source or a memory from your dashboard removes it from retrieval immediately.</p>
+      <p>We keep Plugin Marketplace waitlist data until the beta opens and the waitlist closes, or until you ask us to delete it, whichever comes first.</p>
       <p>Upon your request for deletion, your personal data will be permanently removed from our systems within <strong>30 days</strong>, subject to legal retention requirements.</p>
     </section>
 

@@ -71,7 +71,7 @@ and give it new abilities, for example CRM analysis, code review, or
 research assistance. Each plugin appears as native tools inside the user's
 AI client. Plugins combine expert instructions, live data connections, and
 guardrails.
-Status: coming soon; a waitlist is open at https://app.veeliq.com/
+Status: coming soon; a waitlist is open at https://www.veeliq.com/waitlist/
 
 
 ## 3. Key Features
