@@ -7,7 +7,7 @@
 <meta name="description" content="Coming soon: the VeelIQ Plugin Marketplace. Subscribe to 50+ plugins that connect directly to your AI and give it new abilities, as native tools in Claude.ai, Cursor, or any MCP-compatible client. One URL. No code." />
 <link rel="canonical" href="https://www.veeliq.com/plugins.html" />
 <meta property="og:title" content="VeelIQ Plugin Marketplace — Plug new abilities into your AI" />
-<meta property="og:description" content="Coming soon: plug new abilities straight into the AI you already use. Subscribe to plugins that show up as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup." />
+<meta property="og:description" content="Coming soon: plug new abilities straight into the AI you already use. Subscribe to plugins that show up as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. Just connect your apps once." />
 <meta property="og:url" content="https://www.veeliq.com/plugins.html" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -552,7 +552,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
           </div>
           <div class="mcp-foot">
             <span class="live"><span class="d"></span> 47 plugins available · 3 plugged in</span>
-            <span>latency · <span id="mcp-latency">68ms</span></span>
+            <span>latency · <span id="mcp-latency">1.2s</span></span>
           </div>
         </div>
       </div>
@@ -565,7 +565,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat reveal"><span class="num">50<span class="o">+</span></span><span class="lbl">Plugins at launch</span></div>
-      <div class="stat reveal"><span class="num">60<span class="o">s</span></span><span class="lbl">From plug-in to your AI's first new ability</span></div>
+      <div class="stat reveal"><span class="num">60<span class="o">s</span></span><span class="lbl">To plug in and connect your apps</span></div>
       <div class="stat reveal"><span class="num">0</span><span class="lbl">Lines of code required</span></div>
       <div class="stat reveal"><span class="num">1</span><span class="lbl">MCP URL — every plugin, every client</span></div>
     </div>
@@ -718,11 +718,12 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <div>
           <span class="pill pill-orange" style="background:rgba(255,77,0,.12);border-color:rgba(255,77,0,.25);color:#ffb896"><span class="dot"></span> Under the hood</span>
           <h2>What's inside a <span class="o">plugin.</span></h2>
-          <p class="byo-sub">A VeelIQ plugin isn't a prompt — it's a packaged expert that plugs straight into your model. Curated instructions, live data connections, guardrails, and typed outputs. Plug it in and your AI stops guessing and starts delegating to specialists.</p>
+          <p class="byo-sub">A VeelIQ plugin isn't just a prompt. It's a packaged expert that plugs straight into your AI: a playbook written by a specialist, a secure link to the apps you already use, and clear rules for how to answer. Your AI still does the talking — it just knows how to do the job now.</p>
           <div class="byo-features">
-            <div class="byo-feat"><span class="bullet">✓</span> Expert instructions tuned by domain specialists — not generic system messages</div>
-            <div class="byo-feat"><span class="bullet">✓</span> Live connections to your data so answers cite facts, not guesses</div>
-            <div class="byo-feat"><span class="bullet">✓</span> Typed inputs &amp; outputs your AI can chain like real tools</div>
+            <div class="byo-feat"><span class="bullet">✓</span> An expert playbook: step-by-step know-how written by specialists, not a one-line prompt</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Connect your apps once: approve access to tools like HubSpot or Slack, and revoke it anytime</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Answers built on your real data, with sources, instead of guesses</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Clear inputs and results your AI can use and combine like any built-in tool</div>
           </div>
           <div class="byo-cta-row">
             <a class="btn btn-lg btn-orange" href="#plugins">Browse plugins <span class="arr">→</span></a>
@@ -732,25 +733,28 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <div class="builder">
           <div class="builder-bar">
             <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
-            <span class="t">veeliq.crm.recap_deals · invoked</span>
+            <span class="t">crm-deal-recap / plugin.yaml</span>
           </div>
           <div class="builder-body">
-            <div class="ln"><span class="ix">1</span><span class="cm"># Plugin: CRM Deal Recap</span></div>
-            <div class="ln"><span class="ix">2</span><span class="kw">expert</span>: <span class="st">"senior revops analyst"</span></div>
-            <div class="ln"><span class="ix">3</span><span class="kw">grounding</span>:</div>
-            <div class="ln"><span class="ix">4</span>&nbsp;&nbsp;- <span class="st">"crm://deals?window=24h"</span></div>
-            <div class="ln"><span class="ix">5</span>&nbsp;&nbsp;- <span class="st">"slack://#revenue"</span></div>
-            <div class="ln"><span class="ix">6</span>&nbsp;</div>
-            <div class="ln"><span class="ix">7</span><span class="kw">guardrails</span>:</div>
-            <div class="ln"><span class="ix">8</span>&nbsp;&nbsp;<span class="kw">cite_sources</span>: <span class="pn">true</span></div>
-            <div class="ln"><span class="ix">9</span>&nbsp;&nbsp;<span class="kw">refuse_on</span>: <span class="st">"no_data"</span></div>
+            <div class="ln"><span class="ix">1</span><span class="cm"># CRM Deal Recap · what's inside</span></div>
+            <div class="ln"><span class="ix">2</span>&nbsp;</div>
+            <div class="ln"><span class="ix">3</span><span class="cm"># 1. The know-how</span></div>
+            <div class="ln"><span class="ix">4</span><span class="kw">playbook</span>:&nbsp;<span class="st">"written by a senior revops analyst"</span></div>
+            <div class="ln"><span class="ix">5</span>&nbsp;</div>
+            <div class="ln"><span class="ix">6</span><span class="cm"># 2. Your apps: you approve access once</span></div>
+            <div class="ln"><span class="ix">7</span><span class="kw">connects_to</span>:</div>
+            <div class="ln"><span class="ix">8</span>&nbsp;&nbsp;<span class="kw">hubspot</span>:&nbsp;<span class="st">"read deals"</span></div>
+            <div class="ln"><span class="ix">9</span>&nbsp;&nbsp;<span class="kw">slack</span>:&nbsp;<span class="st">"read #revenue"</span></div>
             <div class="ln"><span class="ix">10</span>&nbsp;</div>
-            <div class="ln"><span class="ix">11</span><span class="kw">output</span>:</div>
-            <div class="ln"><span class="ix">12</span>&nbsp;&nbsp;<span class="kw">shape</span>: <span class="st">"5-bullet recap"</span></div>
-            <div class="ln"><span class="ix">13</span>&nbsp;&nbsp;<span class="kw">tone</span>: <span class="st">"slack"</span></div>
-            <div class="ln"><span class="ix">14</span>&nbsp;&nbsp;<span class="kw">include</span>: [<span class="st">"owner"</span>, <span class="st">"risk"</span>]</div>
+            <div class="ln"><span class="ix">11</span><span class="cm"># 3. What your AI can ask it to do</span></div>
+            <div class="ln"><span class="ix">12</span><span class="kw">recap_deals</span>:</div>
+            <div class="ln"><span class="ix">13</span>&nbsp;&nbsp;<span class="kw">asks_for</span>:&nbsp;<span class="st">"a time window, e.g. last 24h"</span></div>
+            <div class="ln"><span class="ix">14</span>&nbsp;&nbsp;<span class="kw">returns</span>:&nbsp;<span class="st">"5 bullets with owner and risk"</span></div>
             <div class="ln"><span class="ix">15</span>&nbsp;</div>
-            <div class="ln"><span class="ix">16</span><span class="cm"># → returned in 68ms · 12 deals grounded</span></div>
+            <div class="ln"><span class="ix">16</span><span class="cm"># 4. The rules it follows</span></div>
+            <div class="ln"><span class="ix">17</span><span class="kw">rules</span>:</div>
+            <div class="ln"><span class="ix">18</span>&nbsp;&nbsp;-&nbsp;<span class="st">"show where every number came from"</span></div>
+            <div class="ln"><span class="ix">19</span>&nbsp;&nbsp;-&nbsp;<span class="st">"say no data instead of guessing"</span></div>
           </div>
         </div>
       </div>
@@ -948,7 +952,7 @@ function cycleMcp(){
     const t = setInterval(()=>{ replyEl.textContent=reply.slice(0,i++); if(i>reply.length) clearInterval(t); },24);
   },1400);
   const lat = document.getElementById('mcp-latency');
-  setTimeout(()=>{ if(lat) lat.textContent=(50+Math.floor(Math.random()*40))+'ms'; },1200);
+  setTimeout(()=>{ if(lat) lat.textContent=(0.9+Math.random()*0.8).toFixed(1)+'s'; },1200);
 }
 const mcpIO = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ cycleMcp(); setInterval(cycleMcp,8000); mcpIO.disconnect(); } });
