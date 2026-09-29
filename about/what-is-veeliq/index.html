@@ -119,40 +119,40 @@
 
     <div class="defbox">
       <div class="defterm">Definition</div>
-      <p><strong>VeelIQ</strong> is an AI solutions provider built on the Model Context Protocol (MCP). It gives AI assistants — Claude, ChatGPT, Cursor, and any other MCP-compatible client — access to a user's private knowledge, persistent memory, and plugins that give it new abilities through a single endpoint URL, with no code, SDK, or API key required.</p>
+      <p><strong>VeelIQ</strong> is an AI solutions provider built on the Model Context Protocol (MCP). It gives AI assistants (Claude, ChatGPT, Cursor, and any other MCP-compatible client) access to a user's private knowledge, persistent memory, and plugins that give it new abilities through a single endpoint URL, with no code, SDK, or API key required.</p>
     </div>
 
-    <p class="lead">VeelIQ is not a chatbot and does not operate its own language model. It is a context layer: a set of capabilities that plug into the AI tools people already use and pay for. Users connect once by pasting a personal MCP URL into their client; from then on, their assistant can search their documents, remember facts across sessions, and — when the Plugin Marketplace launches — gain new abilities from plugins it can call as native tools.</p>
+    <p class="lead">VeelIQ is not a chatbot and does not operate its own language model. It is a context layer: a set of capabilities that plug into the AI tools people already use and pay for. Users connect once by pasting a personal MCP URL into their client; from then on, their assistant can search their documents, remember facts across sessions, and, once the Plugin Marketplace launches, gain new abilities from plugins it can call as native tools.</p>
 
     <h2>Mission</h2>
-    <p>Make a person's knowledge and memory portable, private, and available to every AI they use. Today, context is trapped: each AI product keeps its own silo of uploads and memories, and none of it follows the user. VeelIQ's position is that your context belongs to you — not to whichever chat window you happened to open first.</p>
+    <p>Make a person's knowledge and memory portable, private, and available to every AI they use. Today, context is trapped: each AI product keeps its own silo of uploads and memories, and none of it follows the user. VeelIQ's position is that your context belongs to you, not to whichever chat window you happened to open first.</p>
 
     <h2>Products and features</h2>
     <h3>VeelIQ Context (Beta, free plan available)</h3>
     <ul>
-      <li><strong>Knowledge</strong> — upload documents; assistants search them semantically via the <code>search_knowledge</code> tool and answer with source citations. This is hosted retrieval-augmented generation (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</li>
-      <li><strong>Memory</strong> — assistants save facts with <code>remember</code> and fetch them with <code>recall</code>; memories persist across sessions and across clients (<a href="/use-cases/persistent-memory/">persistent memory</a>).</li>
-      <li><strong>Instructions library</strong> — reusable procedures stored separately from facts, loadable on demand.</li>
-      <li><strong>Workspaces</strong> — separate contexts (personal, work) under one account.</li>
-      <li><strong>One endpoint</strong> — a personal MCP URL in the form <code>context.veeliq.com/&lt;token&gt;/mcp</code> that works in every MCP client.</li>
+      <li><strong>Knowledge</strong>: upload documents; assistants search them semantically via the <code>search_knowledge</code> tool and answer with source citations. This is hosted retrieval-augmented generation (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</li>
+      <li><strong>Memory</strong>: assistants save facts with <code>remember</code> and fetch them with <code>recall</code>; memories persist across sessions and across clients (<a href="/use-cases/persistent-memory/">persistent memory</a>).</li>
+      <li><strong>Instructions library</strong>: reusable procedures stored separately from facts, loadable on demand.</li>
+      <li><strong>Workspaces</strong>: separate contexts (personal, work) under one account.</li>
+      <li><strong>One endpoint</strong>: a personal MCP URL in the form <code>context.veeliq.com/&lt;token&gt;/mcp</code> that works in every MCP client.</li>
     </ul>
     <h3>Plugin Marketplace (in development)</h3>
-    <p>A subscription marketplace of plugins that connect directly to the user's AI and give it new abilities — CRM analysis, code review, research — delivered as native tools inside the user's AI client. A waitlist is open; Context subscribers get first access.</p>
+    <p>A subscription marketplace of plugins that connect directly to the user's AI and give it new abilities, like CRM analysis, code review and research, delivered as native tools inside the user's AI client. A waitlist is open; Context subscribers get first access.</p>
 
     <h2>Benefits</h2>
     <ul>
-      <li><strong>Continuity</strong> — conversations stop starting from zero; decisions and preferences carry over.</li>
-      <li><strong>Portability</strong> — one context layer for every client; switching AI tools loses nothing.</li>
-      <li><strong>Grounding</strong> — answers cite the user's actual documents instead of guessing.</li>
-      <li><strong>Zero infrastructure</strong> — no vector database, embedding jobs, or servers to run.</li>
-      <li><strong>Ownership</strong> — every stored fact and document is inspectable and deletable by the user.</li>
+      <li><strong>Continuity</strong>: conversations stop starting from zero; decisions and preferences carry over.</li>
+      <li><strong>Portability</strong>: one context layer for every client; switching AI tools loses nothing.</li>
+      <li><strong>Grounding</strong>: answers cite the user's actual documents instead of guessing.</li>
+      <li><strong>Zero infrastructure</strong>: no vector database, embedding jobs, or servers to run.</li>
+      <li><strong>Ownership</strong>: every stored fact and document is inspectable and deletable by the user.</li>
     </ul>
 
     <h2>Audience</h2>
     <p>Developers giving coding agents durable project context; researchers querying private corpora; students working from course materials; teams sharing one knowledge layer; and AI power users who want a single memory across ChatGPT, Claude, and their IDE. See <a href="/use-cases/">use cases</a> for detailed scenarios.</p>
 
     <h2>Privacy model</h2>
-    <p>Each user's data lives in an isolated space enforced with row-level security on every table. VeelIQ does not train models on user content, does not receive conversation text (only tool calls), and logs tool calls with metadata only — tool name, timestamp, latency. Details: <a href="/privacy-policy.html">privacy policy</a>.</p>
+    <p>Each user's data lives in an isolated space enforced with row-level security on every table. VeelIQ does not train models on user content, does not receive conversation text (only tool calls), and logs tool calls with metadata only (tool name, timestamp, latency). Details: <a href="/privacy-policy.html">privacy policy</a>.</p>
 
     <h2>Limitations</h2>
     <p>In the interest of accuracy, current limitations include:</p>

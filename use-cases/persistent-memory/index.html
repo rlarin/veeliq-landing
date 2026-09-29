@@ -148,21 +148,21 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Persistent memory</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 02</div>
     <h1>Memory that outlives the <span class="o">conversation.</span></h1>
-    <p class="page-lede">Persistent AI memory means facts, preferences, and decisions survive the end of a chat — and reappear exactly when they're relevant, in any session, in any client.</p>
+    <p class="page-lede">Persistent AI memory means facts, preferences, and decisions survive the end of a chat and come back when they're relevant, in any session, in any client.</p>
   </div>
 </header>
 
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">Large language models are stateless. Whatever you tell them lives in the context window of the current conversation and evaporates when it ends. That's a reasonable design for a model — and a terrible experience for a user who works with AI every day.</p>
+    <p class="lead">Large language models are stateless. Whatever you tell them lives in the context window of the current conversation and evaporates when it ends. That's a reasonable design for a model, but a frustrating experience for a user who works with AI every day.</p>
     <p class="lead">Persistent memory fixes the experience without changing the model: an external store holds durable facts, and the assistant reads from and writes to it through tools. VeelIQ provides that store as a service, reachable from every MCP-compatible client through one URL.</p>
 
     <h2>Problem</h2>
     <p>Without persistence, daily AI use accumulates friction:</p>
     <ul>
       <li>You repeat your role, stack, constraints, and preferences in every session.</li>
-      <li>Decisions made in one chat are invisible to the next — and to your other AI tools.</li>
+      <li>Decisions made in one chat are invisible to the next one, and to your other AI tools.</li>
       <li>Long-running projects fragment across dozens of conversations nobody can search.</li>
       <li>Bigger context windows don't help: they still reset to zero at the end of the session.</li>
     </ul>
@@ -170,10 +170,10 @@
     <h2>Solution</h2>
     <p>VeelIQ Context adds two tools to your assistant:</p>
     <ul>
-      <li><strong><code>remember</code></strong> — saves a discrete fact to your private store ("Prefers TypeScript strict mode", "Launch date: Oct 3", "Client X's decision-maker is Marta").</li>
-      <li><strong><code>recall</code></strong> — retrieves the facts relevant to the current question by semantic similarity, not keywords.</li>
+      <li><strong><code>remember</code></strong>: saves a discrete fact to your private store ("Prefers TypeScript strict mode", "Launch date: Oct 3", "Client X's decision-maker is Marta").</li>
+      <li><strong><code>recall</code></strong>: retrieves the facts relevant to the current question by semantic similarity, not keywords.</li>
     </ul>
-    <p>Memories are stored outside the context window, so they don't consume tokens until they're actually needed — recall injects only the relevant slice. The store is shared by every client you connect, which makes the memory truly yours rather than an artifact of one app. For the theory, read <a href="/blog/best-practices-for-ai-memory-systems/">best practices for AI memory systems</a>.</p>
+    <p>Memories are stored outside the context window, so they don't consume tokens until they're actually needed. Recall brings in only the relevant slice. The store is shared by every client you connect, which makes the memory truly yours rather than an artifact of one app. For the theory, read <a href="/blog/best-practices-for-ai-memory-systems/">best practices for AI memory systems</a>.</p>
 
     <h2>Benefits</h2>
     <ul>
@@ -188,9 +188,9 @@
 
     <h2>Examples</h2>
     <ul>
-      <li><strong>Consultant</strong> — saves one fact per client decision; recall reconstructs any account's history on demand.</li>
-      <li><strong>Developer</strong> — the coding agent remembers architecture decisions and stops proposing rejected patterns.</li>
-      <li><strong>Writer</strong> — style preferences persist, so every draft starts in the right voice.</li>
+      <li><strong>Consultant</strong>: saves one fact per client decision; recall reconstructs any account's history on demand.</li>
+      <li><strong>Developer</strong>: the coding agent remembers architecture decisions and stops proposing rejected patterns.</li>
+      <li><strong>Writer</strong>: style preferences persist, so every draft starts in the right voice.</li>
     </ul>
 
     <h2 id="faq">FAQ</h2>

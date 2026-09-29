@@ -79,7 +79,7 @@
      "name": "Do I need to write code to do context engineering?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering — the retrieval pipeline is handled for you."
+      "text": "With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering. The retrieval pipeline is handled for you."
      }
     },
     {
@@ -148,46 +148,46 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Context engineering</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 03</div>
     <h1>Context engineering, without the <span class="o">engineering.</span></h1>
-    <p class="page-lede">The quality of an AI's output is mostly determined by the context it sees. VeelIQ lets you curate that context — knowledge, memory, and instructions — with zero code.</p>
+    <p class="page-lede">The quality of an AI's output is mostly determined by the context it sees. VeelIQ lets you curate that context (knowledge, memory, and instructions) without writing code.</p>
   </div>
 </header>
 
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">The AI industry has converged on a lesson: past a certain point, better prompts matter less than better context. What documents can the model retrieve? What does it remember about you? Which procedures does it load for this task? Managing those inputs deliberately is called <strong>context engineering</strong> — we cover the discipline in depth in <a href="/blog/what-is-context-engineering/">our guide</a>.</p>
+    <p class="lead">The AI industry has converged on a lesson: past a certain point, better prompts matter less than better context. What documents can the model retrieve? What does it remember about you? Which procedures does it load for this task? Managing those inputs deliberately is called <strong>context engineering</strong>. We cover the discipline in depth in <a href="/blog/what-is-context-engineering/">our guide</a>.</p>
     <p class="lead">Until recently, practicing it meant building infrastructure: vector databases, chunking pipelines, embedding jobs, and glue code. VeelIQ packages that pipeline behind one MCP URL, so curating your AI's context becomes an editorial task instead of an engineering project.</p>
 
     <h2>Problem</h2>
     <ul>
       <li>Generic AI answers: the model knows the world but not your world.</li>
       <li>Prompt bloat: people paste the same background into every conversation, wasting tokens and patience.</li>
-      <li>DIY RAG is real infrastructure — most individuals and small teams will never build it.</li>
+      <li>DIY RAG is real infrastructure, and most individuals and small teams will never build it.</li>
       <li>Context scattered across apps: notes here, decisions there, none of it reachable by your AI.</li>
     </ul>
 
     <h2>Solution</h2>
     <p>VeelIQ gives you the three levers of context engineering as managed primitives:</p>
     <ul>
-      <li><strong>Knowledge</strong> — upload the documents that define your world; retrieval brings in the relevant chunks per query, with citations.</li>
-      <li><strong>Memory</strong> — durable facts saved once, recalled semantically whenever relevant.</li>
-      <li><strong>Instructions</strong> — reusable procedures stored in a library, loaded on demand instead of pasted into every prompt.</li>
+      <li><strong>Knowledge</strong>: upload the documents that define your world; retrieval brings in the relevant chunks per query, with citations.</li>
+      <li><strong>Memory</strong>: durable facts saved once, recalled semantically whenever relevant.</li>
+      <li><strong>Instructions</strong>: reusable procedures stored in a library, loaded on demand instead of pasted into every prompt.</li>
     </ul>
-    <p>Workspaces keep separate contexts (clients, projects, personal) cleanly apart. Every MCP client you connect — Claude, ChatGPT, Cursor — draws from the same curated context.</p>
+    <p>Workspaces keep separate contexts (clients, projects, personal) cleanly apart. Every MCP client you connect, whether Claude, ChatGPT or Cursor, draws from the same curated context.</p>
 
     <h2>Benefits</h2>
     <ul>
       <li>Answers grounded in your documents and decisions, not statistical averages.</li>
       <li>Shorter prompts: stable context lives outside the conversation and loads on demand.</li>
       <li>One curation effort serves every AI tool you use, now and later.</li>
-      <li>No pipeline to maintain — chunking, embedding, and retrieval are handled.</li>
+      <li>No pipeline to maintain: chunking, embedding, and retrieval are handled for you.</li>
     </ul>
 
     <h2>Features used</h2>
     <p>All of <a href="/context.html">Context</a>: knowledge search, memory, the instructions library, and workspaces. The <a href="/use-cases/private-ai-knowledge-base/">private knowledge base</a> use case covers the document side in more depth.</p>
 
     <h2>Example</h2>
-    <p>A freelance consultant maintains one workspace per client. Each holds the client's briefs and reports (knowledge), the running log of decisions (memory), and the consultant's delivery checklist (instructions). Opening any AI client, they ask "Draft the kickoff email for Acme following my checklist" — the assistant loads the checklist, recalls Acme's decisions, cites the brief, and drafts in one pass.</p>
+    <p>A freelance consultant maintains one workspace per client. Each holds the client's briefs and reports (knowledge), the running log of decisions (memory), and the consultant's delivery checklist (instructions). Opening any AI client, they ask "Draft the kickoff email for Acme following my checklist", and the assistant loads the checklist, recalls Acme's decisions, cites the brief, and drafts in one pass.</p>
 
     <h2 id="faq">FAQ</h2>
     <div class="faq-list">
@@ -197,7 +197,7 @@
 </details>
 <details class="faq-item" id="uc-ce-code">
   <summary><span>Do I need to write code to do context engineering? <a class="anchor-link" href="#uc-ce-code" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
-  <div class="faq-a">With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering — the retrieval pipeline is handled for you.</div>
+  <div class="faq-a">With VeelIQ, no. Uploading documents, saving memories, and organizing workspaces is context engineering. The retrieval pipeline is handled for you.</div>
 </details>
 <details class="faq-item" id="uc-ce-instructions">
   <summary><span>Where do reusable procedures fit in? <a class="anchor-link" href="#uc-ce-instructions" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>

@@ -117,62 +117,62 @@
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">Interactive assistants forget between chats; agents forget between <em>runs</em> — and agents run constantly. A nightly report generator, a PR-review bot, a research agent on a weekly schedule: each invocation is a fresh process with a fresh context window. Without an external memory, every run repeats the discoveries, mistakes, and clarifying questions of the last one. With one, runs compound.</p>
+    <p class="lead">Interactive assistants forget between chats; agents forget between <em>runs</em>, and agents run constantly. A nightly report generator, a PR-review bot, a research agent on a weekly schedule: each invocation is a fresh process with a fresh context window. Without an external memory, every run repeats the discoveries, mistakes, and clarifying questions of the last one. With one, runs compound.</p>
 
     <h2>Why agents need memory more than chatbots do</h2>
     <ul>
       <li><strong>No human in the loop to compensate.</strong> In chat, you paste the missing context. An unattended agent has nobody to do that.</li>
       <li><strong>Repetition amplifies waste.</strong> A forgotten preference costs one user one correction; an agent repeats the error on every scheduled run.</li>
-      <li><strong>State is the product.</strong> Many agent tasks — track this, monitor that, continue yesterday's work — are literally definitions of memory.</li>
+      <li><strong>State is the product.</strong> Many agent tasks (track this, monitor that, continue yesterday's work) are literally definitions of memory.</li>
       <li><strong>Multi-agent coordination.</strong> When several agents (or an agent plus its human) collaborate, a shared store is the only sane communication channel across time.</li>
     </ul>
 
     <h2>The three-layer architecture</h2>
     <h3>Layer 1: Working memory (the context window)</h3>
-    <p>Everything the model sees during a single run: the task prompt, tool results, intermediate reasoning. It's fast, rich — and gone at process exit. Design principle: treat it as a cache, never as the system of record (<a href="/blog/ai-context-windows-explained/">why the window can't be the store</a>).</p>
+    <p>Everything the model sees during a single run: the task prompt, tool results, intermediate reasoning. It's fast and rich, and it's gone when the process exits. Design principle: treat it as a cache, never as the system of record (<a href="/blog/ai-context-windows-explained/">why the window can't be the store</a>).</p>
     <h3>Layer 2: Episodic memory (facts across runs)</h3>
     <p>Durable, atomic facts written during runs and recalled in later ones: decisions made, obstacles found, preferences learned, state reached. This is the layer people mean by "long-term memory." It needs four operations: <strong>write</strong> (<code>remember</code>), <strong>semantic read</strong> (<code>recall</code>), <strong>revise</strong>, and <strong>delete</strong>.</p>
     <h3>Layer 3: Reference knowledge (documents)</h3>
-    <p>The corpus the agent grounds its work in: specs, changelogs, policies, prior reports. Retrieved by similarity, cited by source — classic RAG, distinct from episodic facts (<a href="/blog/ai-memory-vs-rag/">memory vs RAG</a>).</p>
-    <p>The practical question is where layers 2 and 3 live. Building them per-agent means a vector store, embeddings, and CRUD plumbing per project. The emerging alternative: a hosted context layer speaking MCP, so any agent runtime that supports the protocol — Claude Code, API-built agents, custom loops — gets all three operations without infrastructure. <a href="/context.html">VeelIQ Context</a> is exactly this: <code>remember</code>, <code>recall</code>, and <code>search_knowledge</code> behind one endpoint URL.</p>
+    <p>The corpus the agent grounds its work in: specs, changelogs, policies, prior reports. Retrieved by similarity, cited by source: classic RAG, distinct from episodic facts (<a href="/blog/ai-memory-vs-rag/">memory vs RAG</a>).</p>
+    <p>The practical question is where layers 2 and 3 live. Building them per-agent means a vector store, embeddings, and CRUD plumbing per project. The emerging alternative: a hosted context layer speaking MCP, so any agent runtime that supports the protocol (Claude Code, API-built agents, custom loops) gets all three operations without infrastructure. <a href="/context.html">VeelIQ Context</a> is exactly this: <code>remember</code>, <code>recall</code>, and <code>search_knowledge</code> behind one endpoint URL.</p>
 
     <h2>Write policy: what should an agent remember?</h2>
     <p>The classic failure is writing too much. An agent that remembers everything drowns its own retrieval in noise. A workable policy:</p>
     <ul>
-      <li><strong>Decisions with rationale</strong> — "Chose polling over webhooks; the vendor API drops events."</li>
-      <li><strong>Durable environment facts</strong> — "Staging deploys require the VPN; prod deploys don't."</li>
-      <li><strong>Human corrections</strong> — the highest-value writes an agent can make. Every correction remembered is a correction never repeated.</li>
-      <li><strong>Progress markers</strong> — "Migrated tables A–F; G blocked on legacy auth."</li>
+      <li><strong>Decisions with rationale</strong>: "Chose polling over webhooks; the vendor API drops events."</li>
+      <li><strong>Durable environment facts</strong>: "Staging deploys require the VPN; prod deploys don't."</li>
+      <li><strong>Human corrections</strong>: the highest-value writes an agent can make. Every correction remembered is a correction never repeated.</li>
+      <li><strong>Progress markers</strong>: "Migrated tables A–F; G blocked on legacy auth."</li>
       <li><strong>Not</strong>: raw tool output, transcripts, or anything reconstructible from the corpus. Store the conclusion, link the source.</li>
     </ul>
 
     <h2>Read policy: recall at the right moments</h2>
     <ol>
-      <li><strong>Run start</strong> — recall against the task description: "What do I already know about tonight's release-notes job?"</li>
-      <li><strong>Before decisions</strong> — recall against the decision topic, so past rationale (and past failures) inform the choice.</li>
-      <li><strong>On surprise</strong> — when a tool call fails or output looks unexpected, recall the anomaly; the workaround is often already stored.</li>
+      <li><strong>Run start</strong>: recall against the task description: "What do I already know about tonight's release-notes job?"</li>
+      <li><strong>Before decisions</strong>: recall against the decision topic, so past rationale (and past failures) inform the choice.</li>
+      <li><strong>On surprise</strong>: when a tool call fails or output looks unexpected, recall the anomaly; the workaround is often already stored.</li>
     </ol>
     <p>Semantic recall is what makes this cheap: the agent doesn't enumerate its memory, it asks for what's relevant and gets the top matches injected as a few hundred tokens.</p>
 
     <h2>Memory hygiene for unattended systems</h2>
-    <p>Because agents write autonomously, hygiene is a safety property, not just a quality one:</p>
+    <p>Because agents write autonomously, hygiene affects safety as well as quality:</p>
     <ul>
-      <li><strong>Auditability</strong> — a human must be able to list, edit, and delete everything the agent stored. A dashboard beats a database dump.</li>
-      <li><strong>Contradiction handling</strong> — new facts should supersede old ones explicitly ("deadline moved to Aug 14, was Jul 30"), not coexist with them.</li>
-      <li><strong>Scoping</strong> — separate stores per project or client (workspaces) prevent cross-contamination between unrelated agents.</li>
-      <li><strong>Retention</strong> — progress markers can expire; decisions and corrections should persist. Time-to-live per category works well.</li>
+      <li><strong>Auditability</strong>: a human must be able to list, edit, and delete everything the agent stored. A dashboard beats a database dump.</li>
+      <li><strong>Contradiction handling</strong>: new facts should supersede old ones explicitly ("deadline moved to Aug 14, was Jul 30"), not coexist with them.</li>
+      <li><strong>Scoping</strong>: separate stores per project or client (workspaces) prevent cross-contamination between unrelated agents.</li>
+      <li><strong>Retention</strong>: progress markers can expire; decisions and corrections should persist. Time-to-live per category works well.</li>
     </ul>
     <p>The fuller checklist lives in <a href="/blog/best-practices-for-ai-memory-systems/">best practices for AI memory systems</a>.</p>
 
     <h2>A worked example</h2>
     <p>A weekly competitive-research agent, over four runs:</p>
     <ol>
-      <li><strong>Run 1</strong> — cold start. Asks its owner two clarifying questions; remembers both answers and the report format that was approved.</li>
-      <li><strong>Run 2</strong> — recalls format and preferences; produces the report unaided. Owner corrects one competitor's name; the correction is remembered.</li>
-      <li><strong>Run 3</strong> — recalls the correction; searches the knowledge corpus (last quarter's strategy PDF) to frame findings against company goals; remembers a new competitor it discovered.</li>
-      <li><strong>Run 4</strong> — the new competitor is now tracked automatically. Zero questions, zero corrections, grounded citations.</li>
+      <li><strong>Run 1</strong>: cold start. Asks its owner two clarifying questions; remembers both answers and the report format that was approved.</li>
+      <li><strong>Run 2</strong>: recalls format and preferences; produces the report unaided. Owner corrects one competitor's name; the correction is remembered.</li>
+      <li><strong>Run 3</strong>: recalls the correction; searches the knowledge corpus (last quarter's strategy PDF) to frame findings against company goals; remembers a new competitor it discovered.</li>
+      <li><strong>Run 4</strong>: the new competitor is now tracked automatically. Zero questions, zero corrections, grounded citations.</li>
     </ol>
-    <p>Nothing about the model changed. The agent got better because its memory did — the pattern detailed in the <a href="/use-cases/long-term-memory-for-ai/">long-term memory use case</a>.</p>
+    <p>Nothing about the model changed. The agent got better because its memory did. This is the pattern detailed in the <a href="/use-cases/long-term-memory-for-ai/">long-term memory use case</a>.</p>
 
     <h2>Key takeaways</h2>
     <ul>

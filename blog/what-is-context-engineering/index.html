@@ -119,10 +119,10 @@
 
     <div class="defbox">
       <div class="defterm">Definition</div>
-      <p><strong>Context engineering</strong> is the practice of designing and controlling everything an AI model receives at inference time — instructions, retrieved documents, memories, conversation history, and tool results — so that the model produces accurate, relevant, grounded output.</p>
+      <p><strong>Context engineering</strong> is the practice of designing and controlling everything an AI model receives at inference time (instructions, retrieved documents, memories, conversation history, and tool results) so that the model produces accurate, relevant, grounded output.</p>
     </div>
 
-    <p class="lead">A large language model is a function of its input. The weights are fixed at training time; the only thing you control at run time is the context. That makes context the entire interface between your world and the model's capabilities — and engineering it well is the difference between an assistant that knows your project and one that produces plausible generalities.</p>
+    <p class="lead">A large language model is a function of its input. The weights are fixed at training time; the only thing you control at run time is the context. That makes context the entire interface between your world and the model's capabilities, and engineering it well is the difference between an assistant that knows your project and one that produces plausible generalities.</p>
 
     <h2>From prompt engineering to context engineering</h2>
     <p>In 2023, "prompt engineering" meant hand-crafting magic words: role-play framings, chain-of-thought incantations, exotic formatting. Some of it worked, much of it was folklore, and nearly all of it aged badly as models improved. What didn't age is a simpler observation: models answer better when the right information is in front of them.</p>
@@ -130,43 +130,43 @@
     <ul>
       <li>What stable <strong>instructions</strong> should govern this task?</li>
       <li>Which <strong>documents</strong> should be retrievable, and how should they be chunked and indexed?</li>
-      <li>What <strong>memories</strong> — durable facts about the user or project — should be recallable?</li>
+      <li>What <strong>memories</strong> (durable facts about the user or project) should be recallable?</li>
       <li>Which <strong>tools</strong> can the model call to fetch what it doesn't have?</li>
       <li>What <strong>doesn't</strong> belong in context, because it dilutes attention or leaks information?</li>
     </ul>
-    <p>The shift matters because context is a scarce resource. Even huge context windows degrade in practice — models attend unevenly across very long inputs, and every irrelevant token you include competes with the relevant ones (see <a href="/blog/ai-context-windows-explained/">AI context windows explained</a>). Good context engineering is as much about exclusion as inclusion.</p>
+    <p>The shift matters because context is a scarce resource. Even huge context windows degrade in practice. Models attend unevenly across very long inputs, and every irrelevant token you include competes with the relevant ones (see <a href="/blog/ai-context-windows-explained/">AI context windows explained</a>). Good context engineering is as much about exclusion as inclusion.</p>
 
     <h2>The four pillars</h2>
     <h3>1. Instructions</h3>
-    <p>Standing guidance: who the assistant is, what conventions to follow, what a good answer looks like. The failure mode is bloat — pasting an ever-growing "system prompt" into every conversation. The engineering move is to store procedures separately and load them on demand: a deployment checklist when deploying, a style guide when writing, nothing when neither applies.</p>
+    <p>Standing guidance: who the assistant is, what conventions to follow, what a good answer looks like. The failure mode is bloat: pasting an ever-growing "system prompt" into every conversation. The engineering move is to store procedures separately and load them on demand: a deployment checklist when deploying, a style guide when writing, nothing when neither applies.</p>
     <h3>2. Knowledge</h3>
-    <p>The documents that define your world: specs, reports, research, manuals. Models can't know them, so systems retrieve them — chunked, embedded, and searched by semantic similarity at query time. This is retrieval-augmented generation, and the retrieval quality ceiling is set by corpus curation: what you uploaded, how current it is, and whether near-duplicates are polluting results (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</p>
+    <p>The documents that define your world: specs, reports, research, manuals. Models can't know them, so systems retrieve them. They're chunked, embedded, and searched by semantic similarity at query time. This is retrieval-augmented generation, and the retrieval quality ceiling is set by corpus curation: what you uploaded, how current it is, and whether near-duplicates are polluting results (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</p>
     <h3>3. Memory</h3>
-    <p>Discrete facts that accumulate over time: decisions, preferences, names, constraints. Unlike knowledge, memory is written by the AI itself during use — "remember that we chose PostgreSQL" — and recalled semantically later. Memory answers "what do we know about <em>us</em>?" where knowledge answers "what do the documents say?" The distinction is worth internalizing: we compare them fully in <a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a>.</p>
+    <p>Discrete facts that accumulate over time: decisions, preferences, names, constraints. Unlike knowledge, memory is written by the AI itself during use ("remember that we chose PostgreSQL") and recalled semantically later. Memory answers "what do we know about <em>us</em>?" where knowledge answers "what do the documents say?" The distinction is worth internalizing: we compare them fully in <a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a>.</p>
     <h3>4. Tool results</h3>
     <p>Live context fetched during the conversation: search results, database rows, API responses. The engineering questions are which tools to expose, how to describe them so the model calls them appropriately, and how much of their output to admit into the window.</p>
 
     <h2>Why it decides output quality</h2>
-    <p>Consider the same question — "Should we support SSO in the beta?" — posed to two assistants. The first has generic context and answers with a balanced essay about SSO trade-offs. The second retrieves your product spec (knowledge), recalls that enterprise deals were deprioritized in May (memory), and loads your decision-log template (instructions). Its answer cites the spec, references the May decision, and formats the recommendation the way your team records decisions. Same model. Different context. Only one of the answers is useful.</p>
-    <p>This is the general pattern: <strong>hallucination is usually a context deficit</strong>. Models guess when they lack grounding. Fill the gap with retrievable facts and the guessing largely stops — along with the re-explaining, the generic advice, and the "as an AI, I don't have access to..." dead ends.</p>
+    <p>Consider the same question, "Should we support SSO in the beta?", posed to two assistants. The first has generic context and answers with a balanced essay about SSO trade-offs. The second retrieves your product spec (knowledge), recalls that enterprise deals were deprioritized in May (memory), and loads your decision-log template (instructions). Its answer cites the spec, references the May decision, and formats the recommendation the way your team records decisions. Same model. Different context. Only one of the answers is useful.</p>
+    <p>This is the general pattern: <strong>hallucination is usually a context deficit</strong>. Models guess when they lack grounding. Fill the gap with retrievable facts and the guessing largely stops, along with the re-explaining, the generic advice, and the "as an AI, I don't have access to..." dead ends.</p>
 
     <h2>Context engineering without infrastructure</h2>
     <p>Historically, practicing this meant building: a vector database, an embedding pipeline, chunking heuristics, a retrieval API, and integration code per AI client. That's a real engineering project, which is why context engineering stayed the domain of AI teams.</p>
-    <p>The Model Context Protocol (MCP) changed the integration half: any compliant client can consume any compliant tool server. Hosted context layers changed the pipeline half. <a href="/context.html">VeelIQ Context</a>, for example, packages the whole stack — upload, chunking, embeddings, semantic search, memory, instructions — behind one personal MCP URL. Curating context becomes an editorial act: upload the right documents, save the right facts, organize <a href="/use-cases/context-engineering/">workspaces</a> that keep contexts from bleeding into each other.</p>
+    <p>The Model Context Protocol (MCP) changed the integration half: any compliant client can consume any compliant tool server. Hosted context layers changed the pipeline half. <a href="/context.html">VeelIQ Context</a>, for example, packages the whole stack (upload, chunking, embeddings, semantic search, memory, instructions) behind one personal MCP URL. Curating context becomes an editorial act: upload the right documents, save the right facts, organize <a href="/use-cases/context-engineering/">workspaces</a> that keep contexts from bleeding into each other.</p>
 
     <h2>A starter practice</h2>
     <ol>
-      <li><strong>Inventory</strong> — list the 10 documents you reference most and the 20 facts you keep re-explaining to AI tools.</li>
-      <li><strong>Load</strong> — upload the documents to a knowledge layer; save the facts as memories.</li>
-      <li><strong>Separate</strong> — split contexts that shouldn't mix (clients, projects, personal) into workspaces.</li>
-      <li><strong>Observe</strong> — watch whether answers start citing your sources. Grounded citations are the success signal.</li>
-      <li><strong>Prune</strong> — remove stale documents and dead facts monthly. Retrieval quality is corpus hygiene.</li>
+      <li><strong>Inventory</strong>: list the 10 documents you reference most and the 20 facts you keep re-explaining to AI tools.</li>
+      <li><strong>Load</strong>: upload the documents to a knowledge layer; save the facts as memories.</li>
+      <li><strong>Separate</strong>: split contexts that shouldn't mix (clients, projects, personal) into workspaces.</li>
+      <li><strong>Observe</strong>: watch whether answers start citing your sources. Grounded citations are the success signal.</li>
+      <li><strong>Prune</strong>: remove stale documents and dead facts monthly. Retrieval quality is corpus hygiene.</li>
     </ol>
 
     <h2>Key takeaways</h2>
     <ul>
       <li>Context engineering is the run-time discipline of deciding what a model sees; it has largely superseded prompt tricks as the quality lever.</li>
-      <li>Its four pillars are instructions, knowledge, memory, and tool results — each with distinct storage and retrieval patterns.</li>
+      <li>Its four pillars are instructions, knowledge, memory, and tool results, each with its own storage and retrieval patterns.</li>
       <li>Exclusion matters as much as inclusion: irrelevant context degrades attention and wastes tokens.</li>
       <li>MCP and hosted context layers have made the practice accessible without building retrieval infrastructure.</li>
     </ul>

@@ -95,7 +95,7 @@
      "name": "Does this work with agent frameworks?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Any framework or runtime that speaks MCP — including Claude Code and custom agents built on the Claude API — can use VeelIQ as its memory backend without extra infrastructure."
+      "text": "Any framework or runtime that speaks MCP, including Claude Code and custom agents built on the Claude API, can use VeelIQ as its memory backend without extra infrastructure."
      }
     },
     {
@@ -148,20 +148,20 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Long-term memory for AI</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 05</div>
     <h1>Agents that <span class="o">learn</span> between runs.</h1>
-    <p class="page-lede">Autonomous agents restart from nothing every time they run. Long-term memory over MCP lets them carry decisions, preferences, and state forward — turning repetition into progress.</p>
+    <p class="page-lede">Autonomous agents restart from nothing every time they run. Long-term memory over MCP lets them carry decisions, preferences, and state forward instead of repeating the same work.</p>
   </div>
 </header>
 
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">The difference between an agent that improves and an agent that repeats itself is memory. A coding agent that rediscovers your architecture every morning, a research agent that re-asks the same clarifying questions, a scheduled job that forgets last week's conclusions — all of them are missing the same primitive: a durable store that outlives the process.</p>
-    <p class="lead">VeelIQ provides that store as a hosted MCP service. Any agent that speaks MCP — Claude Code, agents built on the Claude API, or custom runtimes — can persist facts during a run and load the relevant ones at the start of the next.</p>
+    <p class="lead">The difference between an agent that improves and an agent that repeats itself is memory. A coding agent that rediscovers your architecture every morning, a research agent that re-asks the same clarifying questions, a scheduled job that forgets last week's conclusions: all of them are missing the same primitive: a durable store that outlives the process.</p>
+    <p class="lead">VeelIQ provides that store as a hosted MCP service. Any agent that speaks MCP (Claude Code, agents built on the Claude API, or custom runtimes) can persist facts during a run and load the relevant ones at the start of the next.</p>
 
     <h2>Problem</h2>
     <ul>
       <li>Agent state dies with the process; every run starts cold.</li>
-      <li>Context windows can't help across runs — they are per-conversation by definition.</li>
+      <li>Context windows can't help across runs, because they are per-conversation by definition.</li>
       <li>Rolling your own memory means standing up a database, embeddings, and retrieval logic per project.</li>
       <li>Homegrown memory is usually unauditable: nobody knows what the agent has stored.</li>
     </ul>
@@ -169,11 +169,11 @@
     <h2>Solution</h2>
     <p>Point the agent at your VeelIQ MCP endpoint. Its loop gains three durable operations:</p>
     <ul>
-      <li><strong>Write</strong> — <code>remember</code> persists decisions and discoveries as they happen ("migration blocked by legacy auth service — workaround documented in notes.pdf").</li>
-      <li><strong>Read</strong> — <code>recall</code> at run start loads the facts relevant to today's task, by semantic similarity.</li>
-      <li><strong>Ground</strong> — <code>search_knowledge</code> pulls supporting detail from project documents on demand.</li>
+      <li><strong>Write</strong>: <code>remember</code> persists decisions and discoveries as they happen ("migration blocked by legacy auth service; workaround documented in notes.pdf").</li>
+      <li><strong>Read</strong>: <code>recall</code> at run start loads the facts relevant to today's task, by semantic similarity.</li>
+      <li><strong>Ground</strong>: <code>search_knowledge</code> pulls supporting detail from project documents on demand.</li>
     </ul>
-    <p>Memory hygiene matters for agents even more than for chat — see <a href="/blog/long-term-memory-for-ai-agents/">the architecture guide</a> for write policies and retrieval patterns.</p>
+    <p>Memory hygiene matters for agents even more than for chat. See <a href="/blog/long-term-memory-for-ai-agents/">the architecture guide</a> for write policies and retrieval patterns.</p>
 
     <h2>Benefits</h2>
     <ul>
@@ -185,10 +185,10 @@
     </ul>
 
     <h2>Features used</h2>
-    <p>Memory and knowledge search from <a href="/context.html">Context</a>, plus the instructions library — agents can load standing procedures ("deploy checklist") the same way they load facts.</p>
+    <p>Memory and knowledge search from <a href="/context.html">Context</a>, plus the instructions library, so agents can load standing procedures ("deploy checklist") the same way they load facts.</p>
 
     <h2>Example</h2>
-    <p>A nightly release-notes agent runs at 02:00. On each run it recalls the style decisions and product naming saved from previous runs, searches the changelog PDFs uploaded to knowledge, drafts the notes, and remembers anything new the maintainer corrected. By week three, corrections have dropped to near zero — the agent has effectively been trained by its own memory, without touching a model.</p>
+    <p>A nightly release-notes agent runs at 02:00. On each run it recalls the style decisions and product naming saved from previous runs, searches the changelog PDFs uploaded to knowledge, drafts the notes, and remembers anything new the maintainer corrected. By week three, corrections have dropped to almost zero. The agent learned from its own memory, and nobody had to retrain a model.</p>
 
     <h2 id="faq">FAQ</h2>
     <div class="faq-list">
@@ -206,7 +206,7 @@
 </details>
 <details class="faq-item" id="uc-lt-frameworks">
   <summary><span>Does this work with agent frameworks? <a class="anchor-link" href="#uc-lt-frameworks" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
-  <div class="faq-a">Any framework or runtime that speaks MCP — including Claude Code and custom agents built on the Claude API — can use VeelIQ as its memory backend without extra infrastructure.</div>
+  <div class="faq-a">Any framework or runtime that speaks MCP, including Claude Code and custom agents built on the Claude API, can use VeelIQ as its memory backend without extra infrastructure.</div>
 </details>
 <details class="faq-item" id="uc-lt-safety">
   <summary><span>Can I audit what an agent has remembered? <a class="anchor-link" href="#uc-lt-safety" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>

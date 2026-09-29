@@ -109,7 +109,7 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Private knowledge bases for AI</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Privacy</div>
     <h1>Private knowledge bases <span class="o">for AI.</span></h1>
-    <p class="page-lede">"Upload your documents and chat with them" is now a commodity pitch. What separates offerings is the word before "knowledge base" — and most people never check what <em>private</em> actually means.</p>
+    <p class="page-lede">"Upload your documents and chat with them" is now a commodity pitch. What separates offerings is the word before "knowledge base", and most people never check what <em>private</em> actually means.</p>
     <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~7 min read</span><span>·</span><span>VeelIQ</span></div>
   </div>
 </header>
@@ -123,13 +123,13 @@
     <h3>1. No training on your content</h3>
     <p>The first question for any provider: <strong>is my content ever used to train or fine-tune models?</strong> The acceptable answer is an unqualified no, stated in the privacy policy, not in a FAQ that can change. Training is how private data becomes public behavior.</p>
     <h3>2. Tenant isolation with teeth</h3>
-    <p>Multi-tenant services store many users' data on shared infrastructure; the question is what enforces separation. Application-level filtering ("we add a WHERE clause") fails open — one bug and queries cross tenants. Database-enforced <strong>row-level security (RLS)</strong> fails closed: the database itself refuses to return rows that don't belong to the authenticated user, no matter what the application layer does. Ask which model your provider uses.</p>
+    <p>Multi-tenant services store many users' data on shared infrastructure; the question is what enforces separation. Application-level filtering ("we add a WHERE clause") fails open: one bug and queries cross tenants. Database-enforced <strong>row-level security (RLS)</strong> fails closed: the database itself refuses to return rows that don't belong to the authenticated user, no matter what the application layer does. Ask which model your provider uses.</p>
     <h3>3. Scoped, revocable access</h3>
-    <p>Retrieval endpoints should be per-user and token-scoped, so possession of a URL grants access to exactly one tenant's corpus — and revoking the token kills access without a migration.</p>
+    <p>Retrieval endpoints should be per-user and token-scoped, so possession of a URL grants access to exactly one tenant's corpus, and revoking the token kills access without a migration.</p>
     <h3>4. Deletion that deletes</h3>
     <p>Removing a source should remove its chunks and embeddings from the index, not just hide the filename. You should be able to enumerate every source the system holds for you.</p>
     <h3>5. Conversation boundaries</h3>
-    <p>Subtle but important for AI knowledge bases specifically: does the provider see your conversations, or only the retrieval queries? A tool-provider architecture — where the knowledge base answers discrete tool calls and never receives the surrounding chat — structurally limits what the provider can know. Metadata-only logging (tool name, timestamp, latency) is the right posture.</p>
+    <p>Subtle but important for AI knowledge bases specifically: does the provider see your conversations, or only the retrieval queries? A tool-provider architecture, where the knowledge base answers discrete tool calls and never receives the surrounding chat, structurally limits what the provider can know. Metadata-only logging (tool name, timestamp, latency) is the right posture.</p>
 
     <h2>The architecture spectrum</h2>
     <div class="table-scroll"><table class="cmp">
@@ -141,12 +141,12 @@
         <tr><td>Upload-to-chatbot (files into a chat app)</td><td>Varies by vendor and plan; often entangled with product improvement clauses</td><td>Knowledge locked to one vendor; least user control</td></tr>
       </tbody>
     </table></div>
-    <p>There is no universally correct row — a hospital's constraints aren't a freelancer's. The failure is not choosing consciously. The <a href="/comparisons/veeliq-vs-obsidian/">VeelIQ vs Obsidian comparison</a> walks the local-vs-hosted trade-off in detail.</p>
+    <p>There is no universally correct row. A hospital's constraints aren't a freelancer's. The failure is not choosing consciously. The <a href="/comparisons/veeliq-vs-obsidian/">VeelIQ vs Obsidian comparison</a> walks the local-vs-hosted trade-off in detail.</p>
 
     <h2>Retrieval-specific risks people miss</h2>
     <ul>
-      <li><strong>Cross-context bleed.</strong> One undifferentiated corpus means client A's strategy can surface while you work for client B. Fix: separate workspaces per context, enforced at the store level — not prompt discipline.</li>
-      <li><strong>Over-retrieval.</strong> Retrieval injects document content into prompts. Only the top-matching chunks should travel, not whole files; chunk-level granularity is a privacy control, not just a relevance one.</li>
+      <li><strong>Cross-context bleed.</strong> One undifferentiated corpus means client A's strategy can surface while you work for client B. Fix: separate workspaces per context, enforced at the store level, not by prompt discipline.</li>
+      <li><strong>Over-retrieval.</strong> Retrieval injects document content into prompts. Only the top-matching chunks should travel, not whole files; chunk-level granularity matters for privacy as well as relevance.</li>
       <li><strong>Citation leakage.</strong> Source names appear in answers (that's the point), so name files with the sensitivity they'll carry into conversations.</li>
       <li><strong>Stale embeddings.</strong> Deleting a document must delete its vectors. Embeddings can reconstruct content approximately; they are the data, legally and practically.</li>
     </ul>
@@ -157,7 +157,7 @@
       <li>Isolation enforced in the database (RLS) rather than only in application code?</li>
       <li>Per-user scoped endpoints with revocable tokens?</li>
       <li>Full source listing plus true deletion of chunks and vectors?</li>
-      <li>Provider sees tool calls only — never full conversations?</li>
+      <li>Provider sees tool calls only, never full conversations?</li>
       <li>Workspace separation for contexts that must not mix?</li>
       <li>Open-standard access (MCP), so leaving doesn't strand your corpus inside one app?</li>
     </ol>
@@ -165,7 +165,7 @@
 
     <h2>Key takeaways</h2>
     <ul>
-      <li>"Private" decomposes into training policy, isolation mechanism, access scoping, deletion semantics, and conversation boundaries — verify each, don't assume the bundle.</li>
+      <li>"Private" decomposes into training policy, isolation mechanism, access scoping, deletion semantics, and conversation boundaries. Verify each one; don't assume they come as a bundle.</li>
       <li>Database-enforced RLS fails closed; application-level filtering fails open.</li>
       <li>Retrieval adds its own risks: context bleed, over-retrieval, and embeddings that outlive deleted files.</li>
       <li>Choose your point on the local↔hosted spectrum consciously; any conscious choice beats the default of pasting files into whatever chat window is open.</li>
@@ -196,7 +196,7 @@
     <div class="cta-box">
       <div>
         <div class="cta-title">Private, <span class="o">verified.</span></div>
-        <p>RLS isolation, no training on your content, tool calls only. Try it with a non-sensitive document first — we'd do the same.</p>
+        <p>RLS isolation, no training on your content, tool calls only. Try it with a non-sensitive document first. We'd do the same.</p>
       </div>
       <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
     </div>
