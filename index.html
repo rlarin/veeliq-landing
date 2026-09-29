@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>VeelIQ — AI Solutions for the tools you already use</title>
-<meta name="description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Skills Marketplace is coming soon." />
+<meta name="description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Plugin Marketplace, with plugins that give your AI new abilities, is coming soon." />
 <link rel="canonical" href="https://www.veeliq.com/" />
 <meta property="og:title" content="VeelIQ — AI Solutions for the tools you already use" />
-<meta property="og:description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Skills Marketplace is coming soon." />
+<meta property="og:description" content="VeelIQ builds AI solutions that plug into the AI you already use. Context gives your AI private knowledge and memory via MCP (now in Beta, free plan available). Plugin Marketplace, with plugins that give your AI new abilities, is coming soon." />
 <meta property="og:url" content="https://www.veeliq.com/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -180,7 +180,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .hero{position:relative;padding:80px 0 100px;overflow:hidden}
 .iq-watermark{position:absolute;top:50%;right:-40px;transform:translateY(-50%);font-family:var(--font-display);font-weight:900;font-size:280px;color:var(--orange);opacity:.04;letter-spacing:-.08em;pointer-events:none;line-height:.8;z-index:0;user-select:none}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center;position:relative}
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+@media(max-width:1000px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:48px}}
 .hero-title{font-size:clamp(48px,7vw,92px);margin:22px 0 28px}
 .hero-title .line{display:block;overflow:hidden;padding-bottom:.04em}
 .hero-title .line>span{display:block}
@@ -336,6 +336,22 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){.wrap{padding-inline:20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.sol-card{padding:28px}}
+/* Narrow screens: keep the nav and the hero MCP diagram inside the viewport */
+@media(max-width:900px){.nav-inner{padding:14px 20px;gap:12px}}
+@media(max-width:560px){
+  .mcp-diagram{padding:18px}
+  .mcp-head,.mcp-foot{flex-wrap:wrap;gap:8px 12px}
+  .mcp-stage{grid-template-columns:minmax(0,1fr);min-height:0;gap:0}
+  .mcp-pipe{width:100%;height:150px}
+  .mcp-server-label{position:absolute;top:50%;left:calc(50% + 52px);transform:translateY(-50%);margin:0}
+  .mcp-wire.left,.mcp-wire.right{top:auto;left:50%;right:auto;width:2px;height:calc(50% - 38px);margin-left:-1px}
+  .mcp-wire.left{top:0}
+  .mcp-wire.right{bottom:0}
+  .mcp-wire::before{top:0;left:-1px;width:4px;height:18px;background:linear-gradient(180deg,transparent,var(--orange),transparent)}
+  .mcp-wire.left::before,.mcp-wire.right::before{animation-name:dataFlowDown}
+}
+@keyframes dataFlowDown{0%{top:-10%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+@media(max-width:380px){.nav-actions .btn{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -368,7 +384,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     <div class="nav-links">
       <a class="nav-link" href="#solutions">Solutions</a>
       <a class="nav-link" href="./context.html">Context</a>
-      <a class="nav-link" href="./skills.html">Skills</a>
+      <a class="nav-link" href="./plugins.html">Plugins</a>
       <a class="nav-link" href="#why">Why VeelIQ</a>
       <a class="nav-link" href="#faq">FAQ</a>
     </div>
@@ -385,7 +401,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="nav-drawer" id="nav-drawer">
     <a href="#solutions" class="nav-link">Solutions</a>
     <a href="./context.html" class="nav-link">Context</a>
-    <a href="./skills.html" class="nav-link">Skills</a>
+    <a href="./plugins.html" class="nav-link">Plugins</a>
     <a href="#why" class="nav-link">Why VeelIQ</a>
     <a href="#faq" class="nav-link">FAQ</a>
     <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" style="margin:12px 20px 0">Try Context free →</a>
@@ -406,7 +422,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         </h1>
         <p class="hero-sub">
           VeelIQ builds AI solutions that plug directly into the AI you already use.
-          Private knowledge, persistent memory, and expert skills, delivered as native tools
+          Private knowledge, persistent memory, and plugins that give it new abilities, delivered as native tools
           inside Claude, Cursor, ChatGPT, or any MCP client. One URL. No code.
         </p>
         <div class="hero-cta-row">
@@ -489,7 +505,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="ticker-track">
     <span>Private Knowledge</span><span class="sep">/</span>
     <span class="o">Persistent Memory</span><span class="sep">/</span>
-    <span>Expert Skills</span><span class="sep">/</span>
+    <span>Plug-in Abilities</span><span class="sep">/</span>
     <span class="o">One MCP URL</span><span class="sep">/</span>
     <span>Zero Code</span><span class="sep">/</span>
     <span>Any Client</span><span class="sep">/</span>
@@ -497,7 +513,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     <span>Grounded Answers</span><span class="sep">/</span>
     <span>Private Knowledge</span><span class="sep">/</span>
     <span class="o">Persistent Memory</span><span class="sep">/</span>
-    <span>Expert Skills</span><span class="sep">/</span>
+    <span>Plug-in Abilities</span><span class="sep">/</span>
     <span class="o">One MCP URL</span><span class="sep">/</span>
     <span>Zero Code</span><span class="sep">/</span>
     <span>Any Client</span><span class="sep">/</span>
@@ -532,21 +548,21 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
           <a class="btn btn-ghost" href="./context.html">Learn more <span class="arr">→</span></a>
         </div>
       </article>
-      <article class="sol-card reveal" data-href="./skills.html">
+      <article class="sol-card reveal" data-href="./plugins.html">
         <div>
           <span class="pill"><span class="dot"></span> Coming soon</span>
         </div>
-        <h3 class="sol-title">Skills Marketplace</h3>
-        <div class="sol-tagline">Expert skills, on demand.</div>
-        <p class="sol-desc">Subscribe to expert skills, CRM analyst, code reviewer, research agent, and they appear as native tools inside your AI client. Hand-crafted prompts, retrieval, and guardrails.</p>
+        <h3 class="sol-title">Plugin Marketplace</h3>
+        <div class="sol-tagline">Plug in new abilities. Instantly.</div>
+        <p class="sol-desc">Subscribe to plugins that connect straight to your AI and teach it new jobs: CRM analyst, code reviewer, research agent, and more. Each one shows up as a native tool, ready the moment you plug it in.</p>
         <div class="sol-feats">
-          <div class="sol-feat"><span class="bullet">✓</span> 50+ expert skills at launch</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Curated prompts and guardrails</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Add or cancel anytime</div>
+          <div class="sol-feat"><span class="bullet">✓</span> 50+ plugins at launch</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Expert-built, guardrails included</div>
+          <div class="sol-feat"><span class="bullet">✓</span> Plug in or unplug anytime</div>
         </div>
         <div class="sol-cta-row">
           <a class="btn btn-ghost" href="https://app.veeliq.com/" target="_blank" rel="noopener">Join the waitlist</a>
-          <a class="btn btn-ghost" href="./skills.html">Learn more <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="./plugins.html">Learn more <span class="arr">→</span></a>
         </div>
       </article>
     </div>
@@ -572,7 +588,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       </div>
       <div class="step-card reveal">
         <div class="step-title">You own the intelligence.</div>
-        <p class="step-body" style="margin-bottom:0">Knowledge, memory, and skills stay attached to you, not to a single chat window or vendor.</p>
+        <p class="step-body" style="margin-bottom:0">Knowledge, memory, and plugins stay attached to you, not to a single chat window or vendor.</p>
       </div>
       <div class="step-card reveal">
         <div class="step-title">Built on open standards.</div>
@@ -596,15 +612,15 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">01</span></div>
         <div class="step-title">Pick a solution</div>
-        <p class="step-body">Start with Context (free) or join the Skills waitlist.</p>
+        <p class="step-body">Start with Context (free) or join the Plugin Marketplace waitlist.</p>
         <div class="step-visual">
           <div class="sv-chips">
             <span class="or">Context · Beta ✓</span>
-            <span>Skills Marketplace · soon</span>
+            <span>Plugin Marketplace · soon</span>
             <span class="sel">Free plan ✓</span>
             <span>Knowledge</span>
             <span>Memory</span>
-            <span>Expert skills</span>
+            <span>Plugins</span>
           </div>
         </div>
       </div>
@@ -620,13 +636,13 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">03</span></div>
         <div class="step-title">Just ask</div>
-        <p class="step-body">Your AI now knows your docs, remembers your facts, and calls expert tools.</p>
+        <p class="step-body">Your AI now knows your docs, remembers your facts, and picks up new abilities from plugins.</p>
         <div class="step-visual">
           <div class="sv-tools">
             <div class="sv-tool"><span class="spark"></span>veeliq.context.search_knowledge</div>
             <div class="sv-tool"><span class="spark"></span>veeliq.context.recall</div>
             <div class="sv-tool"><span class="spark"></span>veeliq.context.remember</div>
-            <div class="sv-tool"><span class="spark"></span>veeliq.skills.crm.recap_deals</div>
+            <div class="sv-tool"><span class="spark"></span>veeliq.plugins.crm.recap_deals</div>
           </div>
         </div>
       </div>
@@ -646,15 +662,15 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
       <div class="faq-list reveal">
         <details class="faq-item" open>
           <summary>What is VeelIQ? <span class="plus">+</span></summary>
-          <p>VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Skills Marketplace, a subscription catalog of expert skills (coming soon). Both plug into the AI you already use through one URL.</p>
+          <p>VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Plugin Marketplace, a subscription catalog of plugins that plug directly into your AI and give it new abilities (coming soon). Both plug into the AI you already use through one URL.</p>
         </details>
         <details class="faq-item">
           <summary>What is Context? <span class="plus">+</span></summary>
           <p>Context is a private context layer for your AI. Upload your documents and your agent answers from them; ask it to remember something and it recalls it next session, in any client. It is live in Beta with a free plan.</p>
         </details>
         <details class="faq-item">
-          <summary>When does the Skills Marketplace launch? <span class="plus">+</span></summary>
-          <p>Coming soon. The waitlist is open, and Context subscribers will see it first.</p>
+          <summary>When does the Plugin Marketplace launch? <span class="plus">+</span></summary>
+          <p>Coming soon. The waitlist is open, and Context subscribers will be the first to plug in.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an API key or AI model? <span class="plus">+</span></summary>
@@ -678,7 +694,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="wrap">
     <div class="reveal">
       <h2>More <span class="o">IQ.</span><br><span class="outline">Instantly.</span></h2>
-      <p>Context is live in Beta. Free plan, no credit card.<br>The Skills Marketplace is next.</p>
+      <p>Context is live in Beta. Free plan, no credit card.<br>The Plugin Marketplace is next.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
         <a class="btn btn-lg btn-ghost" href="#solutions">Explore solutions</a>
@@ -706,7 +722,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <h4>Solutions</h4>
         <ul>
           <li><a href="./context.html">Context</a></li>
-          <li><a href="./skills.html">Skills Marketplace</a></li>
+          <li><a href="./plugins.html">Plugin Marketplace</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -726,7 +742,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <ul>
           <li><a href="./about/what-is-veeliq/">What is VeelIQ</a></li>
           <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
-          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Skills waitlist</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Plugins waitlist</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
           <li><a href="terms-of-service.html">Terms of Service</a></li>
         </ul>
@@ -828,7 +844,7 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
       "@id": "https://www.veeliq.com/#organization",
       "name": "VeelIQ",
       "url": "https://www.veeliq.com/",
-      "description": "VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). Its products give AI assistants private knowledge, persistent memory, and expert skills through a single endpoint URL.",
+      "description": "VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). Its products give AI assistants private knowledge, persistent memory, and plugins that give them new abilities through a single endpoint URL.",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.veeliq.com/coming-soon/web-app-manifest-512x512.png"
@@ -883,7 +899,7 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
         {
           "@type": "Question",
           "name": "What is VeelIQ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Skills Marketplace, a subscription catalog of expert skills (coming soon). Both plug into the AI you already use through one URL."}
+          "acceptedAnswer": {"@type": "Answer", "text": "VeelIQ is an AI solutions provider built on MCP. Today we ship two solutions: Context, a private knowledge and memory layer for your AI (in Beta with a free plan), and the Plugin Marketplace, a subscription catalog of plugins that plug directly into your AI and give it new abilities (coming soon). Both plug into the AI you already use through one URL."}
         },
         {
           "@type": "Question",
@@ -892,8 +908,8 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
         },
         {
           "@type": "Question",
-          "name": "When does the Skills Marketplace launch?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Coming soon. The waitlist is open, and Context subscribers will see it first."}
+          "name": "When does the Plugin Marketplace launch?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Coming soon. The waitlist is open, and Context subscribers will be the first to plug in."}
         },
         {
           "@type": "Question",

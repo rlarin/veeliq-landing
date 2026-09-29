@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VeelIQ Context — Private knowledge and memory for your AI</title>
-<meta name="description" content="Context gives your AI a private, persistent context layer via MCP. Upload documents, let your agent search them and remember facts between sessions. Now in Beta with a free plan." />
-<link rel="canonical" href="https://www.veeliq.com/context.html" />
-<meta property="og:title" content="VeelIQ Context — Private knowledge and memory for your AI" />
-<meta property="og:description" content="Context gives your AI a private, persistent context layer via MCP. Upload documents, let your agent search them and remember facts between sessions. Now in Beta with a free plan." />
-<meta property="og:url" content="https://www.veeliq.com/context.html" />
+<title>VeelIQ Plugin Marketplace — Plug new abilities into your AI</title>
+<meta name="description" content="Coming soon: the VeelIQ Plugin Marketplace. Subscribe to 50+ plugins that connect directly to your AI and give it new abilities, as native tools in Claude.ai, Cursor, or any MCP-compatible client. One URL. No code." />
+<link rel="canonical" href="https://www.veeliq.com/plugins.html" />
+<meta property="og:title" content="VeelIQ Plugin Marketplace — Plug new abilities into your AI" />
+<meta property="og:description" content="Coming soon: plug new abilities straight into the AI you already use. Subscribe to plugins that show up as native tools in Claude.ai, Cursor, or any MCP-compatible client. No code. No setup." />
+<meta property="og:url" content="https://www.veeliq.com/plugins.html" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="coming-soon/favicon-96x96.png" sizes="96x96" />
@@ -176,6 +176,18 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .foot-tagline{font-size:13.5px;color:var(--muted);margin-top:14px;max-width:28ch;line-height:1.5}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 
+/* ===== TWEAKS PANEL ===== */
+.tweaks-panel{position:fixed;right:20px;bottom:20px;z-index:200;width:280px;background:var(--panel);border:1px solid var(--line-2);border-radius:12px;box-shadow:var(--shadow-lg);padding:14px 16px 16px;display:none;font-family:var(--font-ui)}
+.tweaks-panel.on{display:block}
+.tweaks-panel h3{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.tweaks-panel h3 .badge{font-family:var(--font-mono);font-size:9px;color:var(--orange);background:var(--orange-50);padding:2px 6px;border-radius:3px;letter-spacing:.1em}
+[data-theme="dark"] .tweaks-panel h3 .badge{background:rgba(255,77,0,.1)}
+.tweak-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.tweak-row label{font-size:12px;color:var(--muted)}
+.tweak-seg{display:inline-flex;background:var(--bg-3);border-radius:6px;padding:2px;gap:2px}
+.tweak-seg button{padding:4px 10px;font-size:11px;font-weight:500;color:var(--muted);border-radius:4px;transition:all .15s}
+.tweak-seg button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+
 /* ===== HERO ===== */
 .hero{position:relative;padding:80px 0 100px;overflow:hidden}
 .iq-watermark{position:absolute;top:50%;right:-40px;transform:translateY(-50%);font-family:var(--font-display);font-weight:900;font-size:280px;color:var(--orange);opacity:.04;letter-spacing:-.08em;pointer-events:none;line-height:.8;z-index:0;user-select:none}
@@ -245,6 +257,22 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .mcp-foot .live .d{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2);animation:livePulse 1.6s infinite}
 @keyframes livePulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 
+/* ===== STATS ===== */
+.stats{position:relative;padding:48px 0;border-block:1px solid var(--line);background:var(--bg-2)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:start}
+@media(max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat .num{font-family:var(--font-display);font-size:44px;font-weight:900;letter-spacing:-.05em;color:var(--ink);line-height:1}
+.stat .num .o{color:var(--orange)}
+.stat .lbl{font-size:13px;color:var(--muted);font-weight:500}
+
+/* ===== TICKER ===== */
+.ticker{padding:18px 0;border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ticker-track{display:flex;gap:48px;white-space:nowrap;animation:tickerMove 45s linear infinite;font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.ticker-track .o{color:var(--orange)}
+.ticker-track .sep{color:var(--muted-2);font-family:var(--font-mono);font-weight:400}
+@keyframes tickerMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
 /* ===== HOW IT WORKS ===== */
 .how{position:relative}
 .how-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
@@ -273,25 +301,51 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .sv-tool .spark{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 2px var(--orange-50);flex-shrink:0}
 [data-theme="dark"] .sv-tool .spark{box-shadow:0 0 0 2px rgba(255,77,0,.12)}
 
-/* ===== SOLUTIONS / CAPABILITY CARDS ===== */
-.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
-@media(max-width:900px){.sol-grid{grid-template-columns:1fr}}
-.sol-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:all .25s cubic-bezier(.16,1,.3,1)}
-.sol-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.sol-card::before{content:'';position:absolute;top:0;left:0;height:3px;width:32px;background:var(--line-2);border-radius:0 0 3px 0}
-.sol-card.sol-hi::before{background:var(--orange)}
-.sol-card.sol-hi{border-color:var(--orange-200)}
-.sol-card.sol-hi:hover{border-color:var(--orange);box-shadow:var(--shadow-orange)}
-[data-theme="dark"] .sol-card.sol-hi{border-color:rgba(255,77,0,.35)}
-.sol-title{font-family:var(--font-display);font-size:28px;font-weight:900;letter-spacing:-.04em;color:var(--ink);margin:18px 0 6px}
-.sol-tagline{font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--orange);margin-bottom:14px}
-.sol-desc{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:20px}
-.sol-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;flex:1}
-.sol-feat{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--ink-2)}
-.sol-feat .bullet{width:20px;height:20px;border-radius:5px;background:var(--orange-50);color:var(--orange);display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px}
-[data-theme="dark"] .sol-feat .bullet{background:rgba(255,77,0,.12)}
-.sol-cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.sol-note{margin-top:24px;font-size:13.5px;color:var(--muted);text-align:center;font-style:normal}
+/* ===== CATALOG ===== */
+.cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:32px;flex-wrap:wrap}
+.cat-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px;padding:6px;background:var(--bg-3);border:1px solid var(--line);border-radius:10px;width:fit-content;max-width:100%}
+.cat-filter{padding:7px 12px;font-size:12.5px;font-weight:500;color:var(--muted);border-radius:6px;transition:all .2s;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ui)}
+.cat-filter .count{font-family:var(--font-mono);font-size:10px;color:var(--muted-2)}
+.cat-filter:hover{color:var(--ink)}
+.cat-filter.on{background:var(--panel);color:var(--ink);box-shadow:var(--shadow-sm)}
+.cat-filter.on .count{color:var(--orange)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cat-grid{grid-template-columns:1fr}}
+.plugin-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);overflow:hidden;min-height:148px;display:flex;flex-direction:column}
+.plugin-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.plugin-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.plugin-icon{width:32px;height:32px;border-radius:7px;background:var(--bg-3);display:grid;place-items:center;font-family:var(--font-mono);font-weight:700;font-size:12px;color:var(--ink);flex-shrink:0}
+.plugin-card.featured .plugin-icon{background:var(--orange);color:#fff}
+.plugin-name{font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+.plugin-cat{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.plugin-desc{font-size:12.5px;line-height:1.5;color:var(--muted);margin-bottom:14px;flex:1}
+.plugin-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px dashed var(--line);font-family:var(--font-mono);font-size:10.5px;color:var(--muted-2)}
+.plugin-foot .inc{color:var(--orange)}
+.plugin-card .hover-tag{position:absolute;top:14px;right:14px;font-family:var(--font-mono);font-size:9.5px;color:var(--orange);opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s}
+.plugin-card:hover .hover-tag{opacity:1;transform:none}
+.cat-more{margin-top:32px;display:flex;justify-content:center;align-items:center;gap:18px;padding:20px;background:var(--bg-2);border:1px dashed var(--line-2);border-radius:12px}
+.cat-more-text{font-size:13px;color:var(--muted)}
+.cat-more-text strong{color:var(--ink);font-weight:600}
+
+/* ===== COMPARE ===== */
+.compare-head{margin-bottom:48px}
+.compare-wrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);overflow-x:auto;box-shadow:var(--shadow-md)}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th,.compare-table td{padding:18px 22px;text-align:left;font-size:14px;border-top:1px solid var(--line);vertical-align:middle}
+.compare-table thead th{font-family:var(--font-mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:var(--bg-2);border-top:none;padding-block:16px}
+.compare-table thead th:nth-child(2){background:var(--orange);color:#fff}
+.compare-table thead th:nth-child(2) .tag{display:block;font-family:var(--font-display);font-size:15px;font-weight:900;letter-spacing:-.03em;text-transform:none;margin-bottom:2px}
+.compare-table tbody td{color:var(--ink-2)}
+.compare-table tbody td:first-child{font-weight:500;color:var(--ink);font-family:var(--font-display);font-size:13.5px;letter-spacing:-.01em}
+.compare-table td .yes,.compare-table td .no{display:inline-flex;align-items:center;gap:6px;font-size:13px}
+.compare-table td .yes{color:var(--ink)}
+.compare-table td .yes .m{width:18px;height:18px;border-radius:50%;background:var(--orange);display:grid;place-items:center;color:#fff;font-size:10px;font-weight:900}
+.compare-table td .no{color:var(--muted)}
+.compare-table td .no .m{width:18px;height:18px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--muted);font-size:10px;font-weight:700}
+.compare-table td.hi{background:color-mix(in srgb,var(--orange-50) 80%,transparent)}
+[data-theme="dark"] .compare-table td.hi{background:rgba(255,77,0,.04)}
+@media(max-width:800px){.compare-table th,.compare-table td{padding:14px;font-size:12.5px}}
 
 /* ===== BUILD / UNDER THE HOOD ===== */
 .byo{background:var(--ink);color:var(--bg);border-radius:24px;padding:64px 56px;position:relative;overflow:hidden}
@@ -352,7 +406,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){.wrap{padding-inline:20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.byo{padding:40px 28px}.sol-card{padding:28px}}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.byo{padding:40px 28px}}
 /* Narrow screens: keep the nav and the hero MCP diagram inside the viewport */
 @media(max-width:900px){.nav-inner{padding:14px 20px;gap:12px}}
 @media(max-width:560px){
@@ -380,10 +434,10 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 <aside class="sidenav" aria-label="Section nav">
   <ul>
     <li><a href="#top" data-sec="top" class="is-active">01 · Start</a></li>
-    <li><a href="#what" data-sec="what">02 · What you get</a></li>
-    <li><a href="#how" data-sec="how">03 · How</a></li>
-    <li><a href="#privacy" data-sec="privacy">04 · Privacy</a></li>
-    <li><a href="#pricing" data-sec="pricing">05 · Pricing</a></li>
+    <li><a href="#how" data-sec="how">02 · How</a></li>
+    <li><a href="#plugins" data-sec="plugins">03 · Plugins</a></li>
+    <li><a href="#compare" data-sec="compare">04 · Compare</a></li>
+    <li><a href="#build" data-sec="build">05 · Under the Hood</a></li>
     <li><a href="#faq" data-sec="faq">06 · FAQ</a></li>
   </ul>
 </aside>
@@ -400,29 +454,29 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     </a>
     <div class="nav-spacer"></div>
     <div class="nav-links">
-      <a class="nav-link" href="./index.html#solutions">← All solutions</a>
-      <a class="nav-link" href="#what">What you get</a>
       <a class="nav-link" href="#how">How it works</a>
-      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#plugins">Plugins</a>
+      <a class="nav-link" href="#compare">vs. DIY</a>
+      <a class="nav-link" href="#build">Under the Hood</a>
       <a class="nav-link" href="#faq">FAQ</a>
     </div>
     <div class="nav-actions">
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
-      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
+      <a href="https://app.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Join the waitlist <span class="arr">→</span></a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-drawer" id="nav-drawer">
-    <a href="./index.html#solutions" class="nav-link">← All solutions</a>
-    <a href="#what" class="nav-link">What you get</a>
     <a href="#how" class="nav-link">How it works</a>
-    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#plugins" class="nav-link">Plugins</a>
+    <a href="#compare" class="nav-link">vs. DIY</a>
+    <a href="#build" class="nav-link">Under the Hood</a>
     <a href="#faq" class="nav-link">FAQ</a>
-    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" style="margin:12px 20px 0">Start free →</a>
+    <a href="https://app.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" style="margin:12px 20px 0">Join the waitlist →</a>
   </div>
 </nav>
 
@@ -432,20 +486,20 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-left reveal">
-        <span class="pill pill-orange"><span class="dot"></span> Now in Beta · Free plan</span>
+        <span class="pill pill-orange"><span class="dot"></span> Plugin Marketplace · Coming soon</span>
         <h1 class="display hero-title">
-          <span class="line"><span>Your AI</span></span>
-          <span class="line"><span>finally <span class="o">remembers.</span></span></span>
-          <span class="line"><span class="outline">And reads your docs.</span></span>
+          <span class="line"><span>Plug in.</span></span>
+          <span class="line"><span>Level <span class="o">up.</span></span></span>
+          <span class="line"><span class="outline">Your AI, upgraded.</span></span>
         </h1>
         <p class="hero-sub">
-          Context is a private context layer for the AI you already use. Upload your documents,
-          and your agent answers from them. Ask it to remember something, and it recalls it
-          next session, in any client. One personal MCP URL. No code.
+          The VeelIQ Plugin Marketplace lets you plug new abilities straight into the AI you already use.
+          Subscribe to a plugin — CRM analyst, code reviewer, research agent — and your AI instantly
+          knows how to do the job, right inside Claude.ai, Cursor, or any MCP client. One URL. No code. More done.
         </p>
         <div class="hero-cta-row">
-          <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
-          <a class="btn btn-lg btn-ghost" href="#how">See how it works</a>
+          <a class="btn btn-lg btn-orange" href="https://app.veeliq.com/" target="_blank" rel="noopener">Get early access <span class="arr">→</span></a>
+          <a class="btn btn-lg btn-ghost" href="#plugins">Browse 50+ plugins</a>
         </div>
         <div class="hero-trust">
           <span class="hero-trust-label">Plugs into</span>
@@ -463,7 +517,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <div class="mcp-diagram">
           <div class="mcp-head">
             <span class="mcp-title">mcp bridge · live</span>
-            <span class="mcp-url">context.veeliq.com/<span class="ac">mcp</span></span>
+            <span class="mcp-url">mcp.veeliq.com/<span class="ac">u_8f2a</span></span>
           </div>
           <div class="mcp-stage">
             <div class="mcp-client">
@@ -471,7 +525,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
               <div class="mcp-client-title"><span class="dot"></span> Claude.ai</div>
               <div class="mcp-chat user">
                 <span class="tag">You · 2s ago</span>
-                What did we decide about pricing last week?
+                Summarize yesterday's HubSpot deals in our Slack tone
               </div>
               <div class="mcp-chat">
                 <span class="tag">Claude</span>
@@ -487,17 +541,17 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
                   <polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/>
                 </svg>
               </div>
-              <span class="mcp-server-label">Context</span>
+              <span class="mcp-server-label">VeelIQ</span>
             </div>
             <div class="mcp-skills" id="mcp-skills">
-              <div class="mcp-skill" data-delay="300"><span class="icon">SK</span><span class="name">search_knowledge</span><span class="ok">✓</span></div>
-              <div class="mcp-skill" data-delay="600"><span class="icon">RC</span><span class="name">recall</span><span class="ok">✓</span></div>
-              <div class="mcp-skill" data-delay="900"><span class="icon">RM</span><span class="name">remember</span><span class="ok">✓</span></div>
-              <div class="mcp-skill" data-delay="1200"><span class="icon">LS</span><span class="name">list_sources</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="300"><span class="icon">CR</span><span class="name">CRM Intelligence</span><span class="ok">✓</span></div>
+              <div class="mcp-skill" data-delay="600"><span class="icon">SL</span><span class="name">Slack Tone</span><span class="ok">✓</span></div>
+              <div class="mcp-skill loading" data-delay="900"><span class="icon">RE</span><span class="name">Revenue Recap</span><span class="ok">·</span></div>
+              <div class="mcp-skill" data-delay="1200"><span class="icon">SM</span><span class="name">Summarizer</span><span class="ok">✓</span></div>
             </div>
           </div>
           <div class="mcp-foot">
-            <span class="live"><span class="d"></span> knowledge + memory · 1 endpoint</span>
+            <span class="live"><span class="d"></span> 47 plugins available · 3 plugged in</span>
             <span>latency · <span id="mcp-latency">68ms</span></span>
           </div>
         </div>
@@ -506,45 +560,43 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
-<section class="sec sec-dark" id="what">
+<!-- STATS -->
+<div class="stats">
   <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow"><span class="bar"></span> 01 · What you get</div>
-      <h2 class="section-title" style="margin-top:14px">Knowledge and Memory. <span class="o">One endpoint.</span></h2>
-      <p class="section-lede">Two capabilities, one private store, one URL. Your AI reads what you upload and remembers what you tell it.</p>
+    <div class="stats-grid">
+      <div class="stat reveal"><span class="num">50<span class="o">+</span></span><span class="lbl">Plugins at launch</span></div>
+      <div class="stat reveal"><span class="num">60<span class="o">s</span></span><span class="lbl">From plug-in to your AI's first new ability</span></div>
+      <div class="stat reveal"><span class="num">0</span><span class="lbl">Lines of code required</span></div>
+      <div class="stat reveal"><span class="num">1</span><span class="lbl">MCP URL — every plugin, every client</span></div>
     </div>
-    <div class="sol-grid">
-      <article class="sol-card sol-hi reveal">
-        <div>
-          <span class="pill pill-orange"><span class="dot"></span> Knowledge · RAG</span>
-        </div>
-        <h3 class="sol-title">Knowledge</h3>
-        <div class="sol-tagline">Your docs, searchable by your AI.</div>
-        <p class="sol-desc">You upload documents from the dashboard: specs, contracts, notes, manuals. Your AI searches them and answers with your facts, not guesses.</p>
-        <div class="sol-feats">
-          <div class="sol-feat"><span class="bullet">✓</span> PDF and docs upload</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Semantic search, grounded answers</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Sources listed and inspectable</div>
-        </div>
-      </article>
-      <article class="sol-card sol-hi reveal">
-        <div>
-          <span class="pill pill-orange"><span class="dot"></span> Memory · Persistent</span>
-        </div>
-        <h3 class="sol-title">Memory</h3>
-        <div class="sol-tagline">Facts that persist across sessions.</div>
-        <p class="sol-desc">Your agent saves facts as you work: decisions, preferences, project state. Next session, in any client, it remembers.</p>
-        <div class="sol-feats">
-          <div class="sol-feat"><span class="bullet">✓</span> Agent writes, you stay in control</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Recall across sessions and clients</div>
-          <div class="sol-feat"><span class="bullet">✓</span> Delete anything, anytime</div>
-        </div>
-      </article>
-    </div>
-    <p class="sol-note reveal">Same private store, same endpoint. The only difference is who writes: you upload knowledge, your agent saves memories.</p>
   </div>
-</section>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>CRM Intelligence</span><span class="sep">/</span>
+    <span>Email Agent</span><span class="sep">/</span>
+    <span class="o">Code Reviewer</span><span class="sep">/</span>
+    <span>SEO Optimizer</span><span class="sep">/</span>
+    <span>Research Agent</span><span class="sep">/</span>
+    <span class="o">Contract Reviewer</span><span class="sep">/</span>
+    <span>Meeting Summarizer</span><span class="sep">/</span>
+    <span>Lead Qualifier</span><span class="sep">/</span>
+    <span class="o">Invoice Extractor</span><span class="sep">/</span>
+    <span>Support Triage</span><span class="sep">/</span>
+    <span>CRM Intelligence</span><span class="sep">/</span>
+    <span>Email Agent</span><span class="sep">/</span>
+    <span class="o">Code Reviewer</span><span class="sep">/</span>
+    <span>SEO Optimizer</span><span class="sep">/</span>
+    <span>Research Agent</span><span class="sep">/</span>
+    <span class="o">Contract Reviewer</span><span class="sep">/</span>
+    <span>Meeting Summarizer</span><span class="sep">/</span>
+    <span>Lead Qualifier</span><span class="sep">/</span>
+    <span class="o">Invoice Extractor</span><span class="sep">/</span>
+    <span>Support Triage</span><span class="sep">/</span>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="sec how" id="how">
@@ -552,45 +604,48 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     <div class="how-head reveal">
       <div>
         <div class="eyebrow"><span class="bar"></span> 02 · How it works</div>
-        <h2 class="section-title" style="margin-top:14px">Three steps. About a <span class="o">minute.</span></h2>
+        <h2 class="section-title" style="margin-top:14px">Three steps. Under a <span class="o">minute.</span></h2>
       </div>
       <p class="section-lede" style="margin:0">No SDK. No API keys. No deployment. The only thing you install is a URL.</p>
     </div>
     <div class="how-steps">
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">01</span></div>
-        <div class="step-title">Create your account</div>
-        <p class="step-body">Sign up free at app.context.veeliq.com. No credit card.</p>
+        <div class="step-title">Pick your plugins</div>
+        <p class="step-body">Browse the marketplace and subscribe to the plugins your workflow needs. Plug in or unplug anytime.</p>
         <div class="step-visual">
           <div class="sv-chips">
-            <span class="or">Free plan ✓</span>
-            <span class="sel">Beta ✓</span>
-            <span>No credit card</span>
-            <span>Knowledge</span>
-            <span>Memory</span>
-            <span>1 endpoint</span>
+            <span class="or">CRM Intelligence ✓</span>
+            <span>Email Agent</span>
+            <span class="sel">Code Reviewer ✓</span>
+            <span>Research Agent</span>
+            <span>SEO</span>
+            <span class="or">Meeting Recap ✓</span>
+            <span>Lead Qualifier</span>
+            <span>Invoice Extractor</span>
+            <span>Contract Reviewer</span>
           </div>
         </div>
       </div>
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">02</span></div>
-        <div class="step-title">Upload and connect</div>
-        <p class="step-body">Drop in your documents, then add Context as a connector in Claude and sign in. No key to copy or store.</p>
+        <div class="step-title">Plug in one URL</div>
+        <p class="step-body">Drop your personal MCP URL into Claude.ai, Cursor, or any MCP-compatible client. Every plugin rides on it.</p>
         <div class="step-visual">
-          <div class="sv-url"><span class="prefix">https://</span><span class="path">context.veeliq.com/mcp</span><span class="cursor"></span></div>
-          <div class="sv-copy">⎘ connector added · signed in with VeelIQ</div>
+          <div class="sv-url"><span class="prefix">https://</span><span class="path">mcp.veeliq.com/u_8f2a</span><span class="cursor"></span></div>
+          <div class="sv-copy">⎘ copied to clipboard · connector added</div>
         </div>
       </div>
       <div class="step-card reveal">
         <div class="step-num"><span>Step</span><span class="big">03</span></div>
-        <div class="step-title">Ask and remember</div>
-        <p class="step-body">Your AI now cites your docs and keeps memory between sessions.</p>
+        <div class="step-title">Watch your AI level up</div>
+        <p class="step-body">Each plugin shows up as a native ability inside your AI. Just ask, and it already knows how.</p>
         <div class="step-visual">
           <div class="sv-tools">
-            <div class="sv-tool"><span class="spark"></span>context.search_knowledge</div>
-            <div class="sv-tool"><span class="spark"></span>context.recall</div>
-            <div class="sv-tool"><span class="spark"></span>context.remember</div>
-            <div class="sv-tool"><span class="spark"></span>context.list_sources</div>
+            <div class="sv-tool"><span class="spark"></span>veeliq.crm.recap_deals</div>
+            <div class="sv-tool"><span class="spark"></span>veeliq.code.review_pr</div>
+            <div class="sv-tool"><span class="spark"></span>veeliq.meeting.summarize</div>
+            <div class="sv-tool"><span class="spark"></span>veeliq.research.brief</div>
           </div>
         </div>
       </div>
@@ -598,120 +653,148 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
   </div>
 </section>
 
-<!-- PRIVACY -->
-<section class="sec" id="privacy">
+<!-- PLUGIN CATALOG -->
+<section class="sec sec-dark" id="plugins">
+  <div class="wrap">
+    <div class="cat-head reveal">
+      <div>
+        <div class="eyebrow"><span class="bar"></span> 03 · Plugin catalog</div>
+        <h2 class="section-title" style="margin-top:14px">New abilities, <span class="o">one plug away.</span></h2>
+      </div>
+      <p class="section-lede" style="margin:0">Every plugin is a packaged ability — expert instructions, live data connections, and guardrails — so your AI stops improvising and starts performing.</p>
+    </div>
+    <div class="cat-filters reveal" id="cat-filters">
+      <button class="cat-filter on" data-filter="all">All <span class="count">50+</span></button>
+      <button class="cat-filter" data-filter="sales">Sales <span class="count">09</span></button>
+      <button class="cat-filter" data-filter="engineering">Engineering <span class="count">12</span></button>
+      <button class="cat-filter" data-filter="research">Research <span class="count">08</span></button>
+      <button class="cat-filter" data-filter="ops">Operations <span class="count">11</span></button>
+      <button class="cat-filter" data-filter="creative">Creative <span class="count">07</span></button>
+    </div>
+    <div class="cat-grid reveal" id="cat-grid"></div>
+    <div class="cat-more reveal">
+      <span class="cat-more-text">Showing <strong id="shown-count">12</strong> of <strong>50+</strong> plugins at launch.</span>
+      <a href="https://app.veeliq.com/" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">Get early access <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="sec" id="compare">
+  <div class="wrap wrap-narrow">
+    <div class="compare-head reveal">
+      <div class="eyebrow"><span class="bar"></span> 04 · vs. DIY</div>
+      <h2 class="section-title" style="margin-top:14px;max-width:22ch">Build it yourself, or <span class="o">just plug it in.</span></h2>
+      <p class="section-lede">We love a good Friday hack. But here's what it actually costs to match one VeelIQ plugin from scratch — before you've shipped the second one.</p>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><span class="tag">VeelIQ</span> Plugin Marketplace</th>
+            <th>Build your own MCP server</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Time to first working tool</td><td class="hi"><span class="yes"><span class="m">✓</span> ~60 seconds</span></td><td><span class="no"><span class="m">—</span> 2–4 weeks</span></td></tr>
+          <tr><td>Code to write &amp; maintain</td><td class="hi"><span class="yes"><span class="m">✓</span> Zero</span></td><td><span class="no"><span class="m">—</span> Server, auth, schemas, CI</span></td></tr>
+          <tr><td>Expert prompts &amp; retrieval</td><td class="hi"><span class="yes"><span class="m">✓</span> Curated &amp; versioned</span></td><td><span class="no"><span class="m">—</span> DIY &amp; drift over time</span></td></tr>
+          <tr><td>Hosting &amp; scaling</td><td class="hi"><span class="yes"><span class="m">✓</span> Handled</span></td><td><span class="no"><span class="m">—</span> Your pager</span></td></tr>
+          <tr><td>Works in every MCP client</td><td class="hi"><span class="yes"><span class="m">✓</span> One URL</span></td><td><span class="no"><span class="m">—</span> Per-client config</span></td></tr>
+          <tr><td>Add / remove abilities anytime</td><td class="hi"><span class="yes"><span class="m">✓</span> Plug in or unplug from the dashboard</span></td><td><span class="no"><span class="m">—</span> New deploy each time</span></td></tr>
+          <tr><td>Team-wide rollout</td><td class="hi"><span class="yes"><span class="m">✓</span> SSO &amp; audit log</span></td><td><span class="no"><span class="m">—</span> Engineering backlog</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- UNDER THE HOOD -->
+<section class="sec" id="build">
   <div class="wrap">
     <div class="byo reveal">
       <div class="byo-grid">
         <div>
-          <span class="pill pill-orange" style="background:rgba(255,77,0,.12);border-color:rgba(255,77,0,.25);color:#ffb896"><span class="dot"></span> Privacy</span>
-          <h2>Private by <span class="o">design.</span></h2>
-          <p class="byo-sub">Context is your data working for your AI, and nobody else's. Isolation is enforced at the database level, not promised in a policy page.</p>
+          <span class="pill pill-orange" style="background:rgba(255,77,0,.12);border-color:rgba(255,77,0,.25);color:#ffb896"><span class="dot"></span> Under the hood</span>
+          <h2>What's inside a <span class="o">plugin.</span></h2>
+          <p class="byo-sub">A VeelIQ plugin isn't a prompt — it's a packaged expert that plugs straight into your model. Curated instructions, live data connections, guardrails, and typed outputs. Plug it in and your AI stops guessing and starts delegating to specialists.</p>
           <div class="byo-features">
-            <div class="byo-feat"><span class="bullet">✓</span> Your data lives in your own isolated space, enforced with row level security</div>
-            <div class="byo-feat"><span class="bullet">✓</span> We never train models on your content</div>
-            <div class="byo-feat"><span class="bullet">✓</span> Delete a source or a memory and it is gone from retrieval</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Expert instructions tuned by domain specialists — not generic system messages</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Live connections to your data so answers cite facts, not guesses</div>
+            <div class="byo-feat"><span class="bullet">✓</span> Typed inputs &amp; outputs your AI can chain like real tools</div>
           </div>
           <div class="byo-cta-row">
-            <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
-            <a class="btn btn-lg btn-ghost" href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Read the docs</a>
+            <a class="btn btn-lg btn-orange" href="#plugins">Browse plugins <span class="arr">→</span></a>
+            <a class="btn btn-lg btn-ghost" href="https://app.veeliq.com/" target="_blank" rel="noopener">Read how it works</a>
           </div>
         </div>
         <div class="builder">
           <div class="builder-bar">
             <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
-            <span class="t">context.search_knowledge · invoked</span>
+            <span class="t">veeliq.crm.recap_deals · invoked</span>
           </div>
           <div class="builder-body">
-            <div class="ln"><span class="ix">1</span><span class="cm"># Tool: search_knowledge</span></div>
-            <div class="ln"><span class="ix">2</span><span class="kw">query</span>: <span class="st">"pricing decision"</span></div>
-            <div class="ln"><span class="ix">3</span>&nbsp;</div>
-            <div class="ln"><span class="ix">4</span><span class="kw">results</span>:</div>
-            <div class="ln"><span class="ix">5</span>&nbsp;&nbsp;- <span class="kw">source</span>: <span class="st">"pricing-notes.pdf"</span></div>
-            <div class="ln"><span class="ix">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">score</span>: <span class="pn">0.92</span></div>
-            <div class="ln"><span class="ix">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">chunk</span>: <span class="st">"Free tier stays at $0..."</span></div>
-            <div class="ln"><span class="ix">8</span>&nbsp;&nbsp;- <span class="kw">source</span>: <span class="st">"meeting-06-28.md"</span></div>
-            <div class="ln"><span class="ix">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">score</span>: <span class="pn">0.87</span></div>
-            <div class="ln"><span class="ix">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">chunk</span>: <span class="st">"Pro plan waits for GA..."</span></div>
-            <div class="ln"><span class="ix">11</span>&nbsp;</div>
-            <div class="ln"><span class="ix">12</span><span class="kw">isolation</span>: <span class="st">"rls · per-user"</span></div>
-            <div class="ln"><span class="ix">13</span>&nbsp;</div>
-            <div class="ln"><span class="ix">14</span><span class="cm"># → returned in 42ms · 2 chunks grounded</span></div>
+            <div class="ln"><span class="ix">1</span><span class="cm"># Plugin: CRM Deal Recap</span></div>
+            <div class="ln"><span class="ix">2</span><span class="kw">expert</span>: <span class="st">"senior revops analyst"</span></div>
+            <div class="ln"><span class="ix">3</span><span class="kw">grounding</span>:</div>
+            <div class="ln"><span class="ix">4</span>&nbsp;&nbsp;- <span class="st">"crm://deals?window=24h"</span></div>
+            <div class="ln"><span class="ix">5</span>&nbsp;&nbsp;- <span class="st">"slack://#revenue"</span></div>
+            <div class="ln"><span class="ix">6</span>&nbsp;</div>
+            <div class="ln"><span class="ix">7</span><span class="kw">guardrails</span>:</div>
+            <div class="ln"><span class="ix">8</span>&nbsp;&nbsp;<span class="kw">cite_sources</span>: <span class="pn">true</span></div>
+            <div class="ln"><span class="ix">9</span>&nbsp;&nbsp;<span class="kw">refuse_on</span>: <span class="st">"no_data"</span></div>
+            <div class="ln"><span class="ix">10</span>&nbsp;</div>
+            <div class="ln"><span class="ix">11</span><span class="kw">output</span>:</div>
+            <div class="ln"><span class="ix">12</span>&nbsp;&nbsp;<span class="kw">shape</span>: <span class="st">"5-bullet recap"</span></div>
+            <div class="ln"><span class="ix">13</span>&nbsp;&nbsp;<span class="kw">tone</span>: <span class="st">"slack"</span></div>
+            <div class="ln"><span class="ix">14</span>&nbsp;&nbsp;<span class="kw">include</span>: [<span class="st">"owner"</span>, <span class="st">"risk"</span>]</div>
+            <div class="ln"><span class="ix">15</span>&nbsp;</div>
+            <div class="ln"><span class="ix">16</span><span class="cm"># → returned in 68ms · 12 deals grounded</span></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="sec sec-dark" id="pricing">
-  <div class="wrap wrap-narrow">
-    <div class="reveal">
-      <div class="eyebrow"><span class="bar"></span> 04 · Pricing</div>
-      <h2 class="section-title" style="margin-top:14px">Start free. <span class="o">Stay free</span> while you try it.</h2>
-      <p class="section-lede">The Beta free plan covers everything you need to put Context to work.</p>
-    </div>
-    <div class="sol-grid">
-      <article class="sol-card sol-hi reveal">
-        <div>
-          <span class="pill pill-orange"><span class="dot"></span> Beta</span>
-        </div>
-        <h3 class="sol-title">Free</h3>
-        <div class="sol-tagline">$0</div>
-        <p class="sol-desc">Everything you need to try Context: document uploads, knowledge search, memory. Fair usage limits.</p>
-        <div class="sol-cta-row">
-          <a class="btn btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
-        </div>
-      </article>
-      <article class="sol-card reveal">
-        <div>
-          <span class="pill"><span class="dot"></span> Coming soon</span>
-        </div>
-        <h3 class="sol-title">Pro</h3>
-        <div class="sol-tagline">Coming soon</div>
-        <p class="sol-desc">Higher limits, more sources, priority ingestion. Upgrade from the dashboard when you need it.</p>
-        <div class="sol-cta-row">
-          <a class="btn btn-ghost" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Open the dashboard</a>
-        </div>
-      </article>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec" id="faq">
+<section class="sec sec-dark" id="faq">
   <div class="wrap">
     <div class="faq-grid">
       <div class="reveal">
-        <div class="eyebrow"><span class="bar"></span> 05 · FAQ</div>
+        <div class="eyebrow"><span class="bar"></span> 06 · FAQ</div>
         <h2 class="section-title" style="margin-top:14px">Questions,<br><span class="o">answered.</span></h2>
-        <p class="section-lede">Still curious? Our docs go deeper — or start free at <a href="https://app.context.veeliq.com/" style="color:var(--orange);border-bottom:1px solid currentColor">app.context.veeliq.com</a>.</p>
+        <p class="section-lede">Still curious? Our docs go deeper — or ping us at <a href="https://app.veeliq.com/" style="color:var(--orange);border-bottom:1px solid currentColor">app.veeliq.com</a>.</p>
       </div>
       <div class="faq-list reveal">
         <details class="faq-item" open>
-          <summary>What is Context? <span class="plus">+</span></summary>
-          <p>Context is a private knowledge and memory layer for the AI you already use. Upload documents and your agent answers from them; ask it to remember something and it recalls it next session, in any MCP client. It is live in Beta with a free plan.</p>
+          <summary>What is the Plugin Marketplace? <span class="plus">+</span></summary>
+          <p>The Plugin Marketplace is one of VeelIQ's AI solutions: a subscription marketplace of plugins that connect directly to the AI you already use and give it new abilities. Each plugin packages expert instructions, live data connections, and guardrails as MCP tools. Subscribe, plug one URL into your AI client, and your AI can instantly do more. It is coming soon; join the waitlist to get in first.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What can a plugin do for my AI? <span class="plus">+</span></summary>
+          <p>A plugin teaches your AI a new job. Plug in CRM Intelligence and it can recap your pipeline; plug in Code Reviewer and it reviews pull requests with architecture context. You keep chatting the way you always do — your AI just has more it can do for you.</p>
         </details>
         <details class="faq-item">
           <summary>Do I need an API key or AI model? <span class="plus">+</span></summary>
-          <p>No. Context rides on top of the AI you already use — Claude, Cursor, ChatGPT. You never provide a model key. We only act as a tool provider over MCP.</p>
+          <p>No. VeelIQ rides on top of the AI you already use — Claude.ai, Cursor, ChatGPT. You never provide a model key. We only act as a tool provider over MCP.</p>
         </details>
         <details class="faq-item">
           <summary>Which clients are supported? <span class="plus">+</span></summary>
-          <p>Any MCP-compatible client. That includes Claude.ai, Cursor, ChatGPT, Zed, Windsurf, and growing. One URL covers all of them.</p>
+          <p>Any MCP-compatible client. That includes Claude.ai, Cursor, Zed, Windsurf, and growing. One URL covers all of them.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens with my data? <span class="plus">+</span></summary>
-          <p>Your documents and memories live in your own isolated space, enforced with row level security. We never train models on your content, and deleting a source or memory removes it from retrieval immediately.</p>
+          <summary>Can I build a plugin and earn on it? <span class="plus">+</span></summary>
+          <p>Yes — the Creator Program opens alongside the marketplace. Package your expertise as a plugin with a 20-line YAML manifest, publish it, and earn 70% of invocation revenue. Join the waitlist for early creator access.</p>
         </details>
         <details class="faq-item">
-          <summary>What are the free plan limits? <span class="plus">+</span></summary>
-          <p>The Beta free plan includes document uploads, knowledge search, and memory under fair usage limits. Current limits are always listed in the dashboard at app.context.veeliq.com.</p>
+          <summary>How is pricing structured? <span class="plus">+</span></summary>
+          <p>Plugins are priced individually (most $5–$20/mo). Bundle plans cover popular combos. There's a free tier with starter plugins to try it out.</p>
         </details>
         <details class="faq-item">
-          <summary>How does Context relate to the Plugin Marketplace? <span class="plus">+</span></summary>
-          <p>Same platform, same one-URL philosophy. Context gives your AI private knowledge and memory today; the Plugin Marketplace lets you plug in new abilities next. Context subscribers will be the first to plug in.</p>
+          <summary>Who can see my data? <span class="plus">+</span></summary>
+          <p>VeelIQ never retains the content of your AI conversations. Tool calls are logged with metadata only (plugin, timestamp, latency) for reliability and billing.</p>
         </details>
       </div>
     </div>
@@ -722,13 +805,13 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 <section class="final" id="final">
   <div class="wrap">
     <div class="reveal">
-      <h2>Give your AI <span class="o">context.</span><br><span class="outline">Today.</span></h2>
-      <p>Free Beta plan. No credit card. Set up in about a minute.</p>
+      <h2>More <span class="o">IQ.</span><br><span class="outline">Instantly.</span></h2>
+      <p>The Plugin Marketplace is coming soon. Join the waitlist<br>and be the first to plug new abilities into your AI.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-lg btn-orange" href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Start free <span class="arr">→</span></a>
-        <a class="btn btn-lg btn-ghost" href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Read the docs</a>
+        <a class="btn btn-lg btn-orange" href="https://app.veeliq.com/" target="_blank" rel="noopener">Join the waitlist <span class="arr">→</span></a>
+        <a class="btn btn-lg btn-ghost" href="#plugins">Browse all plugins</a>
       </div>
-      <div class="final-url">add <span>context.veeliq.com/mcp</span> as a connector in your AI client</div>
+      <div class="final-url">paste <span>mcp.veeliq.com/&lt;you&gt;</span> into your AI client</div>
     </div>
   </div>
 </section>
@@ -745,25 +828,25 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
           </svg>
           <span>Veel<span class="logo-iq">IQ</span></span>
         </a>
-        <p class="foot-tagline">AI solutions for the AI you already use.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="./index.html">All solutions</a></li>
-          <li><a href="./plugins.html">Plugin Marketplace</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
+        <p class="foot-tagline">Plug new abilities into the AI you already use.</p>
       </div>
       <div class="foot-col">
         <h4>Product</h4>
         <ul>
-          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
-          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="./use-cases/">Use cases</a></li>
-          <li><a href="./blog/">Blog</a></li>
+          <li><a href="./index.html">All solutions</a></li>
+          <li><a href="./context.html">Context</a></li>
+          <li><a href="#plugins">Plugin catalog</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#compare">vs. DIY</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Creators</h4>
+        <ul>
+          <li><a href="#build">Under the Hood</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Docs</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Revenue share</a></li>
+          <li><a href="https://app.veeliq.com/" target="_blank" rel="noopener">Changelog</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -771,6 +854,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
         <ul>
           <li><a href="./about/what-is-veeliq/">What is VeelIQ</a></li>
           <li><a href="./faq/">FAQ hub</a></li>
+          <li><a href="./blog/">Blog</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
           <li><a href="terms-of-service.html">Terms of Service</a></li>
         </ul>
@@ -778,12 +862,59 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
     </div>
     <div class="foot-bottom">
       <span>© 2026 VeelIQ</span>
-      <span style="font-family:var(--font-mono)">v3.0 · veeliq.com</span>
+      <span style="font-family:var(--font-mono)">v2.0 · mcp.veeliq.com</span>
     </div>
   </div>
 </footer>
 
 <script>
+/* ===== Plugins data ===== */
+const PLUGINS = [
+  {n:"CRM Intelligence",cat:"sales",f:true,d:"Recap deals, surface at-risk pipeline, draft follow-ups grounded in HubSpot / Salesforce data.",i:"CR",inv:"1.2k calls/day"},
+  {n:"Email Agent",cat:"ops",f:true,d:"Triage inbox, draft replies in your voice, schedule sends — inside any AI client you talk to.",i:"EM",inv:"890 calls/day"},
+  {n:"Code Reviewer",cat:"engineering",f:true,d:"Line-level review with architecture context. Catches the things a linter can't.",i:"CR",inv:"2.1k calls/day"},
+  {n:"Research Agent",cat:"research",d:"Multi-step web + papers research with source citations and adversarial fact-checking.",i:"RE",inv:"640 calls/day"},
+  {n:"Data Analyst",cat:"research",f:true,d:"Natural-language SQL + chart generation against your warehouse. Snowflake, BigQuery, Postgres.",i:"DA",inv:"1.8k calls/day"},
+  {n:"SEO Optimizer",cat:"creative",d:"On-page audits, intent mapping, content briefs tuned to your ranking ambitions.",i:"SE",inv:"420 calls/day"},
+  {n:"Contract Reviewer",cat:"ops",d:"Flags risky clauses, suggests redlines, benchmarks terms against market standard.",i:"CO",inv:"310 calls/day"},
+  {n:"Meeting Summarizer",cat:"ops",d:"Pulls decisions, owners, and due dates from transcripts. Posts to Notion or Slack.",i:"ME",inv:"1.5k calls/day"},
+  {n:"Social Writer",cat:"creative",d:"Draft posts in your brand voice, schedule threads, and A/B hook headlines.",i:"SO",inv:"520 calls/day"},
+  {n:"Lead Qualifier",cat:"sales",d:"Scores inbound leads against your ICP, enriches with firmographics, routes to the right rep.",i:"LE",inv:"780 calls/day"},
+  {n:"Invoice Extractor",cat:"ops",d:"Parse invoices and receipts into structured line-items. Export to Xero or QuickBooks.",i:"IN",inv:"260 calls/day"},
+  {n:"Support Triage",cat:"ops",d:"Classifies tickets, suggests drafts, escalates at SLA risk. Reads Zendesk and Intercom.",i:"SU",inv:"1.1k calls/day"},
+];
+
+function renderPlugins(filter='all'){
+  const grid = document.getElementById('cat-grid');
+  const items = filter==='all' ? PLUGINS : PLUGINS.filter(s=>s.cat===filter);
+  grid.innerHTML = items.map(s=>`
+    <article class="plugin-card ${s.f?'featured':''}" data-cat="${s.cat}">
+      <span class="hover-tag">plug in →</span>
+      <div class="plugin-head">
+        <div class="plugin-icon">${s.i}</div>
+        <div><div class="plugin-name">${s.n}</div><div class="plugin-cat">${s.cat}</div></div>
+      </div>
+      <p class="plugin-desc">${s.d}</p>
+      <div class="plugin-foot">
+        <span class="invokes">${s.inv}</span>
+        ${s.f?'<span class="inc">★ featured</span>':'<span>$8/mo</span>'}
+      </div>
+    </article>
+  `).join('');
+  document.getElementById('shown-count').textContent = items.length;
+}
+renderPlugins();
+
+document.getElementById('cat-filters').addEventListener('click', e=>{
+  const b = e.target.closest('[data-filter]'); if(!b) return;
+  document.querySelectorAll('.cat-filter').forEach(x=>x.classList.toggle('on',x===b));
+  renderPlugins(b.dataset.filter);
+  document.querySelectorAll('#cat-grid .plugin-card').forEach((el,i)=>{
+    el.style.opacity=0; el.style.transform='translateY(6px)';
+    setTimeout(()=>{ el.style.transition='all .35s cubic-bezier(.16,1,.3,1)'; el.style.opacity=1; el.style.transform='none'; },i*24);
+  });
+});
+
 /* ===== Scroll reveals ===== */
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -796,7 +927,7 @@ addEventListener('scroll',()=>nav.classList.toggle('is-scrolled',scrollY>10),{pa
 
 /* ===== Side rail spy ===== */
 const sideLinks = document.querySelectorAll('.sidenav a');
-const sections = ['top','what','how','privacy','pricing','faq'].map(id=>document.getElementById(id)).filter(Boolean);
+const sections = ['top','how','plugins','compare','build','faq'].map(id=>document.getElementById(id)).filter(Boolean);
 const spy = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting) sideLinks.forEach(a=>a.classList.toggle('is-active',a.dataset.sec===e.target.id));
@@ -811,13 +942,13 @@ function cycleMcp(){
     setTimeout(()=>s.classList.add('in'), parseInt(s.dataset.delay||0));
   });
   const replyEl = document.getElementById('chat-reply');
-  const reply = "We kept the free tier at $0 for Beta. Source: pricing-notes.pdf, plus a memory saved June 28.";
+  const reply = "Pulled 12 deals from HubSpot via CRM Intelligence. Drafting in your Slack tone...";
   setTimeout(()=>{
     replyEl.innerHTML=''; let i=0;
     const t = setInterval(()=>{ replyEl.textContent=reply.slice(0,i++); if(i>reply.length) clearInterval(t); },24);
   },1400);
   const lat = document.getElementById('mcp-latency');
-  setTimeout(()=>{ if(lat) lat.textContent=(30+Math.floor(Math.random()*40))+'ms'; },1200);
+  setTimeout(()=>{ if(lat) lat.textContent=(50+Math.floor(Math.random()*40))+'ms'; },1200);
 }
 const mcpIO = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ cycleMcp(); setInterval(cycleMcp,8000); mcpIO.disconnect(); } });
@@ -860,7 +991,8 @@ navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   "@context": "https://schema.org",
   "@graph": [
     {"@type":"Organization","@id":"https://www.veeliq.com/#organization","name":"VeelIQ","url":"https://www.veeliq.com/"},
-    {"@type":"SoftwareApplication","name":"VeelIQ Context","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Private knowledge and memory for your AI via MCP. Upload documents, let your agent search them and remember facts between sessions. In Beta with a free plan.","url":"https://www.veeliq.com/context.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free Beta plan"}}
+    {"@type":"WebSite","@id":"https://www.veeliq.com/#website","url":"https://www.veeliq.com/","name":"VeelIQ"},
+    {"@type":"SoftwareApplication","name":"VeelIQ Plugin Marketplace","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"A marketplace of AI plugins delivered via MCP. Subscribe to plugins that connect directly to your AI and give it new abilities as native tools in Claude.ai, Cursor, or any MCP-compatible client. Coming soon.","url":"https://www.veeliq.com/plugins.html"}
   ]
 }
 </script>
