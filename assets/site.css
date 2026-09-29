@@ -206,6 +206,15 @@ a.link-card .lc-arr{margin-top:auto;font-size:12px;font-weight:600;color:var(--o
 [data-theme="dark"] .wl-chip input:checked+span{background:rgba(255,77,0,.1)}
 .wl-chip input:focus-visible+span{outline:2px solid var(--orange);outline-offset:2px}
 .wl-other{margin-top:14px}
+.wl-field-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:6px;font-size:12px;line-height:1.4}
+.wl-field-error{color:#dc2626}
+[data-theme="dark"] .wl-field-error{color:#f87171}
+.wl-count{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--muted-2);white-space:nowrap}
+.wl-input[aria-invalid="true"]{border-color:#dc2626}
+.wl-input[aria-invalid="true"]:focus{box-shadow:0 0 0 3px rgba(220,38,38,.18)}
+.article .wl-success .wl-success-confirm{margin:0 0 8px;color:var(--ink-2)}
+.wl-state{outline:none}
+.wl-state .lead{margin-bottom:20px}
 .wl-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 .wl-consent{display:flex;gap:12px;align-items:flex-start;margin:4px 0 24px;font-size:13.5px;line-height:1.55;color:var(--ink-2);cursor:pointer}
 .wl-consent input{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--orange);cursor:pointer}

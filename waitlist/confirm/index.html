@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Confirm Your Waitlist Spot | VeelIQ</title>
+<meta name="description" content="Confirm your email to keep your spot on the VeelIQ Plugin Marketplace waitlist." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<link rel="icon" type="image/png" href="/coming-soon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/coming-soon/favicon.svg" />
+<link rel="shortcut icon" href="/coming-soon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/coming-soon/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('veeliq-theme')||'light'}catch(e){}</script>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="VeelIQ home">
+      <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+      <span>Veel<span class="logo-iq">IQ</span></span>
+    </a>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="/context.html">Context</a>
+      <a class="nav-link" href="/plugins.html">Plugins</a>
+      <a class="nav-link" href="/use-cases/">Use cases</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link" href="/faq/">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+      <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/context.html" class="nav-link">Context</a>
+    <a href="/plugins.html" class="nav-link">Plugins</a>
+    <a href="/use-cases/" class="nav-link">Use cases</a>
+    <a href="/comparisons/" class="nav-link">Comparisons</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/faq/" class="nav-link">FAQ</a>
+    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Try Context free <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-article">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/plugins.html">Plugin Marketplace</a><span class="sep">/</span><a href="/waitlist/">Waitlist</a><span class="sep">/</span><span>Confirm</span></nav>
+    <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Private beta</div>
+    <h1>Confirm your <span class="o">spot.</span></h1>
+  </div>
+</header>
+
+<main class="article">
+  <div class="wrap-article">
+
+    <!-- One panel per state; the script shows exactly one. -->
+    <div class="wl-state" data-state="ready" hidden>
+      <p class="lead">One click and your email is confirmed on the Plugin Marketplace waitlist.</p>
+      <div class="wl-actions">
+        <button class="btn btn-lg btn-orange" type="button" id="wl-confirm">Confirm my spot <span class="arr">→</span></button>
+        <p class="wl-error" id="wl-confirm-error" role="alert" aria-live="assertive"></p>
+      </div>
+    </div>
+
+    <div class="wl-success" data-state="confirmed" tabindex="-1" hidden>
+      <div class="wl-success-mark" aria-hidden="true">✓</div>
+      <div>
+        <div class="wl-success-title">You're confirmed.</div>
+        <p>We'll let you know when the Plugin Marketplace beta opens. In the meantime, <a href="/context.html">Context</a> is live and free.</p>
+      </div>
+    </div>
+
+    <div class="wl-state" data-state="expired" tabindex="-1" hidden>
+      <p class="lead"><strong>This link has expired.</strong> Links work for 7 days. Join the waitlist again and we'll send you a new one.</p>
+      <a class="btn btn-lg btn-orange" href="/waitlist/">Join the waitlist <span class="arr">→</span></a>
+    </div>
+
+    <div class="wl-state" data-state="invalid" tabindex="-1" hidden>
+      <p class="lead"><strong>This link is not valid.</strong> It may have been used already: if you confirmed before, you're all set. Otherwise, join the waitlist again to get a new link.</p>
+      <a class="btn btn-lg btn-ghost" href="/waitlist/">Go to the waitlist</a>
+    </div>
+
+    <noscript><p class="lead">Please enable JavaScript to confirm your spot.</p></noscript>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="logo" aria-label="VeelIQ home">
+          <svg class="logo-mark" viewBox="0 0 46 56" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 14,0 20,56 6,56" fill="currentColor"/><polygon points="20,56 32,56 46,0 32,0" fill="#ff4d00"/></svg>
+          <span>Veel<span class="logo-iq">IQ</span></span>
+        </a>
+        <p class="foot-tagline">AI solutions for the AI you already use.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/context.html">Context</a></li>
+          <li><a href="/plugins.html">Plugin Marketplace</a></li>
+          <li><a href="/context.html#pricing">Pricing</a></li>
+          <li><a href="https://app.context.veeliq.com/docs" target="_blank" rel="noopener">Docs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+          <li><a href="/comparisons/">Comparisons</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about/what-is-veeliq/">What is VeelIQ</a></li>
+          <li><a href="/blog/what-is-context-engineering/">Context engineering</a></li>
+          <li><a href="/blog/ai-memory-vs-rag/">AI memory vs RAG</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">Try Context</a></li>
+          <li><a href="/waitlist/">Plugins waitlist</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VeelIQ</span>
+      <span style="font-family:var(--font-mono)">veeliq.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+<script>
+(function () {
+  var API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+    ? 'http://localhost:8000'
+    : 'https://context.veeliq.com';
+  /* The token travels in the URL fragment, which browsers never send to a server. */
+  var match = /(?:^|&)token=([A-Za-z0-9_-]{20,128})(?:&|$)/.exec(location.hash.slice(1));
+  var token = match ? match[1] : null;
+  var button = document.getElementById('wl-confirm');
+  var error = document.getElementById('wl-confirm-error');
+  var label = button.innerHTML;
+
+  function show(state) {
+    document.querySelectorAll('[data-state]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-state') !== state;
+    });
+    var panel = document.querySelector('[data-state="' + state + '"]');
+    if (state !== 'ready') panel.focus();
+  }
+
+  function forgetToken() {
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  }
+
+  if (!token) {
+    show('invalid');
+    return;
+  }
+  show('ready');
+
+  function retry(message) {
+    error.textContent = message;
+    button.disabled = false;
+    button.innerHTML = label;
+  }
+
+  button.addEventListener('click', function () {
+    error.textContent = '';
+    button.disabled = true;
+    button.textContent = 'Confirming...';
+    fetch(API + '/api/v1/waitlist/confirm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token })
+    }).then(function (res) {
+      if (res.ok) { forgetToken(); return show('confirmed'); }
+      if (res.status === 410) { forgetToken(); return show('expired'); }
+      if (res.status === 404 || res.status === 422) { forgetToken(); return show('invalid'); }
+      retry(res.status === 429
+        ? 'Too many attempts. Please try again in a minute.'
+        : 'Something went wrong. Please try again.');
+    }).catch(function () {
+      retry('Something went wrong. Please try again.');
+    });
+  });
+})();
+</script>
+</body>
+</html>

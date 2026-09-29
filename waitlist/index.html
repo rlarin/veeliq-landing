@@ -108,6 +108,11 @@
           <label class="wl-chip"><input type="radio" name="role" value="developer" /><span>Developer</span></label>
           <label class="wl-chip"><input type="radio" name="role" value="other" /><span>Other</span></label>
         </div>
+        <div class="wl-other" id="wl-role-other-box" hidden>
+          <label class="wl-label" for="wl-role-other">Your role</label>
+          <input class="wl-input" id="wl-role-other" name="role_other" type="text" maxlength="60" autocomplete="organization-title" placeholder="For example: Fractional CMO" data-free-text aria-describedby="wl-role-other-error" />
+          <div class="wl-field-meta"><span class="wl-field-error" id="wl-role-other-error"></span><span class="wl-count" aria-hidden="true">0/60</span></div>
+        </div>
       </fieldset>
 
       <fieldset class="wl-field">
@@ -120,6 +125,11 @@
           <label class="wl-chip"><input type="checkbox" name="ai_clients" value="cursor" /><span>Cursor</span></label>
           <label class="wl-chip"><input type="checkbox" name="ai_clients" value="other" /><span>Other</span></label>
         </div>
+        <div class="wl-other" id="wl-clients-other-box" hidden>
+          <label class="wl-label" for="wl-clients-other">Which other AI tools?</label>
+          <input class="wl-input" id="wl-clients-other" name="ai_clients_other" type="text" maxlength="80" autocomplete="off" placeholder="For example: Perplexity, Mistral" data-free-text aria-describedby="wl-clients-other-error" />
+          <div class="wl-field-meta"><span class="wl-field-error" id="wl-clients-other-error"></span><span class="wl-count" aria-hidden="true">0/80</span></div>
+        </div>
       </fieldset>
 
       <fieldset class="wl-field">
@@ -130,9 +140,10 @@
           <label class="wl-chip"><input type="radio" name="wanted_plugin" value="sales_prep" /><span>Sales Prep</span></label>
           <label class="wl-chip"><input type="radio" name="wanted_plugin" value="other" /><span>Something else</span></label>
         </div>
-        <div class="wl-other" id="wl-other" hidden>
-          <label class="wl-label" for="wl-other-text">What should it do?</label>
-          <input class="wl-input" id="wl-other-text" name="wanted_plugin_other" type="text" maxlength="200" autocomplete="off" placeholder="For example: turn meeting notes into a follow-up email" />
+        <div class="wl-other" id="wl-plugin-other-box" hidden>
+          <label class="wl-label" for="wl-plugin-other">What should it do?</label>
+          <input class="wl-input" id="wl-plugin-other" name="wanted_plugin_other" type="text" maxlength="200" autocomplete="off" placeholder="For example: turn meeting notes into a follow-up email" data-free-text aria-describedby="wl-plugin-other-error" />
+          <div class="wl-field-meta"><span class="wl-field-error" id="wl-plugin-other-error"></span><span class="wl-count" aria-hidden="true">0/200</span></div>
         </div>
       </fieldset>
 
@@ -156,7 +167,8 @@
     <div class="wl-success" id="wl-success" tabindex="-1" hidden>
       <div class="wl-success-mark" aria-hidden="true">✓</div>
       <div>
-        <div class="wl-success-title">Done. We'll let you know when the beta opens.</div>
+        <div class="wl-success-title" id="wl-success-title">Done. We'll let you know when the beta opens.</div>
+        <p class="wl-success-confirm" id="wl-success-confirm" hidden>We sent a confirmation link to <strong id="wl-success-email"></strong>. It works for 7 days. If you don't see it in a few minutes, check your spam folder.</p>
         <p>In the meantime, <a href="/context.html">Context</a> is live and free: give your AI your own knowledge and memory today.</p>
       </div>
     </div>
@@ -228,22 +240,67 @@
   var form = document.getElementById('wl-form');
   var submit = document.getElementById('wl-submit');
   var error = document.getElementById('wl-error');
-  var other = document.getElementById('wl-other');
-  var otherText = document.getElementById('wl-other-text');
   var success = document.getElementById('wl-success');
   var submitLabel = submit.innerHTML;
 
-  form.querySelectorAll('input[name="wanted_plugin"]').forEach(function (radio) {
-    radio.addEventListener('change', function () {
-      var isOther = form.elements.wanted_plugin.value === 'other';
-      other.hidden = !isOther;
-      if (isOther) otherText.focus();
-    });
+  /* Free text for the "Other" answers. Same rule as the API: letters and numbers
+     in any language, spaces and basic punctuation. No quotes, brackets, pipes,
+     backslashes, "=" or emoji. */
+  var FREE_TEXT = /^[\p{L}\p{N}_ .,'\u2019&()\/+\-:;!?#@%$]*$/u;
+  var FREE_TEXT_HINT = 'Use letters, numbers, spaces and basic punctuation.';
+
+  /* Each "Other" choice reveals its own text box. */
+  var others = [
+    { box: 'wl-role-other-box', input: 'wl-role-other', on: function () { return checked('role') === 'other'; } },
+    { box: 'wl-clients-other-box', input: 'wl-clients-other', on: function () { return !!form.querySelector('input[name="ai_clients"][value="other"]:checked'); } },
+    { box: 'wl-plugin-other-box', input: 'wl-plugin-other', on: function () { return checked('wanted_plugin') === 'other'; } }
+  ].map(function (o) {
+    return { box: document.getElementById(o.box), input: document.getElementById(o.input), on: o.on };
   });
 
   function checked(name) {
     var el = form.querySelector('input[name="' + name + '"]:checked');
     return el ? el.value : null;
+  }
+
+  function clean(value) {
+    return value.normalize('NFC').replace(/\s+/g, ' ').trim();
+  }
+
+  function freeTextError(input) {
+    return FREE_TEXT.test(clean(input.value)) ? '' : FREE_TEXT_HINT;
+  }
+
+  function showFieldError(input, message) {
+    document.getElementById(input.getAttribute('aria-describedby')).textContent = message;
+    input.setAttribute('aria-invalid', message ? 'true' : 'false');
+  }
+
+  function syncOthers(changed) {
+    others.forEach(function (o) {
+      var show = o.on();
+      var wasHidden = o.box.hidden;
+      o.box.hidden = !show;
+      if (show && wasHidden && changed && changed.value === 'other') o.input.focus();
+    });
+  }
+
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'role' || e.target.name === 'ai_clients' || e.target.name === 'wanted_plugin') {
+      syncOthers(e.target);
+    }
+  });
+
+  form.querySelectorAll('[data-free-text]').forEach(function (input) {
+    var counter = input.parentNode.querySelector('.wl-count');
+    input.addEventListener('input', function () {
+      counter.textContent = input.value.length + '/' + input.maxLength;
+      showFieldError(input, freeTextError(input));
+    });
+  });
+
+  function otherValue(o) {
+    return o.on() ? clean(o.input.value) || null : null;
   }
 
   function utm(key) {
@@ -256,6 +313,17 @@
     if (field) field.focus();
   }
 
+  function showSuccess(doubleOptIn, email) {
+    if (doubleOptIn) {
+      document.getElementById('wl-success-title').textContent = 'Check your inbox to confirm your spot.';
+      document.getElementById('wl-success-email').textContent = email;
+      document.getElementById('wl-success-confirm').hidden = false;
+    }
+    form.hidden = true;
+    success.hidden = false;
+    success.focus();
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     error.textContent = '';
@@ -263,20 +331,27 @@
     if (!email.value.trim() || !email.checkValidity()) {
       return fail('Please enter a valid email address.', email);
     }
+    for (var i = 0; i < others.length; i++) {
+      if (others[i].on() && freeTextError(others[i].input)) {
+        showFieldError(others[i].input, FREE_TEXT_HINT);
+        return fail('Please check the highlighted answer. ' + FREE_TEXT_HINT, others[i].input);
+      }
+    }
     if (!form.elements.consent.checked) {
       return fail('Please agree to the Privacy Policy so we can save your spot.', form.elements.consent);
     }
 
-    var plugin = checked('wanted_plugin');
     var payload = {
       email: email.value.trim(),
       role: checked('role'),
+      role_other: otherValue(others[0]),
       ai_clients: Array.prototype.map.call(
         form.querySelectorAll('input[name="ai_clients"]:checked'),
         function (el) { return el.value; }
       ),
-      wanted_plugin: plugin,
-      wanted_plugin_other: plugin === 'other' ? otherText.value.trim() || null : null,
+      ai_clients_other: otherValue(others[1]),
+      wanted_plugin: checked('wanted_plugin'),
+      wanted_plugin_other: otherValue(others[2]),
       utm_source: utm('utm_source'),
       utm_medium: utm('utm_medium'),
       utm_campaign: utm('utm_campaign'),
@@ -298,16 +373,25 @@
       body: JSON.stringify(payload)
     }).then(function (res) {
       if (res.ok) {
-        form.hidden = true;
-        success.hidden = false;
-        success.focus();
-      } else if (res.status === 429) {
-        retry('Too many attempts. Please try again in a minute.');
-      } else if (res.status === 422) {
-        retry('Please check your email address and try again.');
-      } else {
-        retry('Something went wrong. Please try again.');
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          showSuccess(data && data.double_opt_in === true, payload.email);
+        });
       }
+      if (res.status === 429) return retry('Too many attempts. Please try again in a minute.');
+      if (res.status === 422) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          var fields = (data && data.detail || []).map(function (d) { return d.loc && d.loc[d.loc.length - 1]; });
+          var bad = others.filter(function (o) { return fields.indexOf(o.input.name) !== -1; })[0];
+          if (bad) {
+            showFieldError(bad.input, FREE_TEXT_HINT);
+            retry('Please check the highlighted answer. ' + FREE_TEXT_HINT);
+            bad.input.focus();
+          } else {
+            retry('Please check your email address and try again.');
+          }
+        });
+      }
+      retry('Something went wrong. Please try again.');
     }).catch(function () {
       retry('Something went wrong. Please try again.');
     });
