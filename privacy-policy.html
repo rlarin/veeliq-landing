@@ -196,7 +196,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     </div>
 
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: July 4, 2026</p>
+    <p class="page-meta">Version 1.1 &nbsp;·&nbsp; Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: September 29, 2026</p>
 
     <nav class="legal-nav" aria-label="Legal documents">
       <a href="privacy-policy.html" class="active">Privacy Policy</a>
@@ -265,7 +265,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <h2 class="section-title">Data Storage &amp; Security</h2>
       <p>Account data and Context content are stored in <a href="https://supabase.com" class="inline-link" target="_blank" rel="noopener">Supabase</a>, a managed PostgreSQL platform with industry-standard security practices, including encryption at rest and in transit (TLS 1.2+).</p>
       <p>Your Context data lives in your own isolated space: row level security (RLS) is enforced on every table, so your documents and memories are only ever accessible through your own authenticated endpoint.</p>
-      <p>Supabase infrastructure is hosted on AWS and is SOC 2 Type II compliant. Data is stored in the EU (Frankfurt) region.</p>
+      <p>Supabase infrastructure is hosted on AWS and is SOC 2 Type II compliant. Data is stored in the EU (Frankfurt) region. The Context API that serves your endpoint runs on Fly.io in the same region.</p>
       <p>While we take reasonable precautions to protect your data, no method of transmission over the internet is 100% secure. We encourage you to use a strong, unique password for your account.</p>
     </section>
 
@@ -275,11 +275,15 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
       <p>We do not sell, trade, or rent your personal information. We share data only with:</p>
       <ul>
         <li><strong>Supabase</strong> — our database provider (see Section 4).</li>
+        <li><strong>Fly.io</strong>: hosts the Context API in the EU (Frankfurt) region. Requests to your Context endpoint and your content pass through it in transit to Supabase.</li>
+        <li><strong><a href="https://www.voyageai.com" class="inline-link" target="_blank" rel="noopener">Voyage AI</a></strong>: our embedding and reranking provider. It receives the text of your document chunks, memories, instructions, tasks, notes and search queries to power search and recall. Notes you mark as private are never sent.</li>
+        <li><strong><a href="https://groq.com" class="inline-link" target="_blank" rel="noopener">Groq</a></strong>: our LLM inference provider, used for two tasks. It receives the audio track of audio and video files you upload, to transcribe them into text. It also receives the text of memories your agent saves, after detected secrets such as passwords and API keys are removed, so a language model can flag duplicates, contradictions and facts that may go out of date.</li>
         <li><strong>Payment processor</strong> — billing data is handled by our third-party payment provider; we never store card numbers.</li>
         <li><strong>Google Fonts</strong> — font assets loaded from <code style="font-family:var(--font-mono);font-size:.85em;color:var(--orange)">fonts.googleapis.com</code>. Google may log the request; see <a href="https://policies.google.com/privacy" class="inline-link" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
         <li><strong>Legal authorities</strong> — if required by applicable law or a valid legal process.</li>
       </ul>
       <p>All third-party providers are bound to process your data only as directed by us and in accordance with applicable data-protection laws.</p>
+      <p>We send your content to our AI providers solely to deliver the Service to you, and we do not use it to train or fine-tune AI models. Voyage AI and Groq process data in the United States. Where personal data is transferred outside the European Economic Area, the transfer is covered by appropriate safeguards, such as the EU Standard Contractual Clauses.</p>
     </section>
 
     <section class="policy-section" id="s6">
