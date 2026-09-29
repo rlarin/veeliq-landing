@@ -1,14 +1,15 @@
 # VeelIQ
 
-> VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). It gives AI assistants such as Claude, ChatGPT, and Cursor access to private knowledge, persistent memory, and expert skills through a single MCP endpoint URL, without requiring any code, SDK, or API key from the user.
+> VeelIQ is an AI solutions provider built on the Model Context Protocol (MCP). It gives AI assistants such as Claude, ChatGPT, and Cursor access to private knowledge, persistent memory, and plugins that give them new abilities through a single MCP endpoint URL, without requiring any code, SDK, or API key from the user.
 
 Description:
 VeelIQ builds tools that plug into the AI clients people already use. Its first
 product, VeelIQ Context, is a private knowledge and memory layer: users upload
 documents and save facts, and any MCP-compatible AI assistant can search that
 knowledge and recall those memories across sessions and across clients. A
-second product, the Skills Marketplace (a subscription catalog of expert
-skills exposed as native AI tools), is in development.
+second product, the Plugin Marketplace (a subscription marketplace of plugins
+that connect directly to the user's AI and give it new abilities, exposed as
+native AI tools), is in development.
 
 Core Features:
 - Knowledge base: upload documents; AI assistants search them semantically via MCP tools
@@ -31,7 +32,7 @@ Zed, and Windsurf.
 
 Products:
 - VeelIQ Context (Beta, free plan available): https://www.veeliq.com/context.html
-- Skills Marketplace (in development): https://www.veeliq.com/skills.html
+- Plugin Marketplace (in development): https://www.veeliq.com/plugins.html
 
 Key Pages:
 - What is VeelIQ (canonical overview): https://www.veeliq.com/about/what-is-veeliq/
