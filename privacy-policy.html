@@ -199,7 +199,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     </div>
 
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Version 1.2 &nbsp;·&nbsp; Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: September 29, 2026</p>
+    <p class="page-meta">Version 1.3 &nbsp;·&nbsp; Effective date: March 27, 2026 &nbsp;·&nbsp; Last updated: September 29, 2026</p>
 
     <nav class="legal-nav" aria-label="Legal documents">
       <a href="privacy-policy.html" class="active">Privacy Policy</a>
@@ -239,7 +239,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li><strong>Referrer URL</strong>: the page you visited before arriving on our site, captured automatically by your browser.</li>
         <li><strong>User agent string</strong>: your browser and operating system, collected to understand our audience.</li>
         <li><strong>Sign-up timestamp</strong>: the date and time your submission was recorded.</li>
-        <li><strong>Plugin Marketplace waitlist answers</strong>: if you join the waitlist, your answers about your role, the AI tools you use and the plugin you want first, the campaign that brought you (UTM source, medium and campaign, when the link had them), and the date and time you gave consent. We do not store your IP address with your signup.</li>
+        <li><strong>Plugin Marketplace waitlist answers</strong>: if you join the waitlist, your answers about your role, the AI tools you use and the plugin you want first (including any text you write for "Other"), the campaign that brought you (UTM source, medium and campaign, when the link had them), the date and time you gave consent, and whether and when you confirmed your email. We do not store your IP address with your signup.</li>
         <li><strong>Subscription and billing data</strong>: managed by our payment processor; we do not store full card details.</li>
         <li><strong>Content you provide (Context)</strong>: documents you upload to your Context knowledge base and memories your AI agent saves on your behalf. This content is stored solely to deliver the service back to you and is never used for any other purpose.</li>
         <li><strong>Tool call metadata</strong>: when your AI client calls a VeelIQ tool, we log the tool name, timestamp, and latency for reliability and billing. We do not retain the content of your AI conversations.</li>
@@ -260,6 +260,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li>To send transactional emails (account confirmation, billing receipts, subscription changes).</li>
         <li>To understand where our audience is coming from and improve the product experience.</li>
         <li>To contact waitlist members about the Plugin Marketplace beta, and to decide which plugins and AI clients to build for first, based on your consent.</li>
+        <li>To send you a single email asking you to confirm your waitlist signup (double opt-in). Until you confirm, we do not send you anything else.</li>
         <li>To prevent fraud and maintain the integrity of the service.</li>
       </ul>
       <p>We will never sell your data or use it for purposes incompatible with those listed above. We <strong>never train AI models on your content</strong>: your documents and memories exist only to serve your own AI.</p>
@@ -284,11 +285,12 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
         <li><strong><a href="https://www.voyageai.com" class="inline-link" target="_blank" rel="noopener">Voyage AI</a></strong>: our embedding and reranking provider. It receives the text of your document chunks, memories, instructions, tasks, notes and search queries to power search and recall. Notes you mark as private are never sent.</li>
         <li><strong><a href="https://groq.com" class="inline-link" target="_blank" rel="noopener">Groq</a></strong>: our LLM inference provider, used for two tasks. It receives the audio track of audio and video files you upload, to transcribe them into text. It also receives the text of memories your agent saves, after detected secrets such as passwords and API keys are removed, so a language model can flag duplicates, contradictions and facts that may go out of date.</li>
         <li><strong>Payment processor</strong>: billing data is handled by our third-party payment provider; we never store card numbers.</li>
+        <li><strong><a href="https://resend.com" class="inline-link" target="_blank" rel="noopener">Resend</a></strong>: our email delivery provider. It receives your email address and the confirmation email we send when you join the Plugin Marketplace waitlist.</li>
         <li><strong>Google Fonts</strong>: font assets loaded from <code style="font-family:var(--font-mono);font-size:.85em;color:var(--orange)">fonts.googleapis.com</code>. Google may log the request; see <a href="https://policies.google.com/privacy" class="inline-link" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
         <li><strong>Legal authorities</strong>: if required by applicable law or a valid legal process.</li>
       </ul>
       <p>All third-party providers are bound to process your data only as directed by us and in accordance with applicable data-protection laws.</p>
-      <p>We send your content to our AI providers solely to deliver the Service to you, and we do not use it to train or fine-tune AI models. Voyage AI and Groq process data in the United States. Where personal data is transferred outside the European Economic Area, the transfer is covered by appropriate safeguards, such as the EU Standard Contractual Clauses.</p>
+      <p>We send your content to our AI providers solely to deliver the Service to you, and we do not use it to train or fine-tune AI models. Voyage AI and Groq process data in the United States, and Resend may do so as well. Where personal data is transferred outside the European Economic Area, the transfer is covered by appropriate safeguards, such as the EU Standard Contractual Clauses.</p>
     </section>
 
     <section class="policy-section" id="s6">
