@@ -180,7 +180,7 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 .hero{position:relative;padding:80px 0 100px;overflow:hidden}
 .iq-watermark{position:absolute;top:50%;right:-40px;transform:translateY(-50%);font-family:var(--font-display);font-weight:900;font-size:280px;color:var(--orange);opacity:.04;letter-spacing:-.08em;pointer-events:none;line-height:.8;z-index:0;user-select:none}
 .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center;position:relative}
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+@media(max-width:1000px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:48px}}
 .hero-title{font-size:clamp(48px,7vw,92px);margin:22px 0 28px}
 .hero-title .line{display:block;overflow:hidden;padding-bottom:.04em}
 .hero-title .line>span{display:block}
@@ -353,6 +353,22 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){.wrap{padding-inline:20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}.byo{padding:40px 28px}.sol-card{padding:28px}}
+/* Narrow screens: keep the nav and the hero MCP diagram inside the viewport */
+@media(max-width:900px){.nav-inner{padding:14px 20px;gap:12px}}
+@media(max-width:560px){
+  .mcp-diagram{padding:18px}
+  .mcp-head,.mcp-foot{flex-wrap:wrap;gap:8px 12px}
+  .mcp-stage{grid-template-columns:minmax(0,1fr);min-height:0;gap:0}
+  .mcp-pipe{width:100%;height:150px}
+  .mcp-server-label{position:absolute;top:50%;left:calc(50% + 52px);transform:translateY(-50%);margin:0}
+  .mcp-wire.left,.mcp-wire.right{top:auto;left:50%;right:auto;width:2px;height:calc(50% - 38px);margin-left:-1px}
+  .mcp-wire.left{top:0}
+  .mcp-wire.right{bottom:0}
+  .mcp-wire::before{top:0;left:-1px;width:4px;height:18px;background:linear-gradient(180deg,transparent,var(--orange),transparent)}
+  .mcp-wire.left::before,.mcp-wire.right::before{animation-name:dataFlowDown}
+}
+@keyframes dataFlowDown{0%{top:-10%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+@media(max-width:380px){.nav-actions .btn{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
