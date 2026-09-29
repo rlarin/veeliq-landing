@@ -71,7 +71,7 @@
      "name": "How is this different from NotebookLM?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use — Claude, ChatGPT, your IDE — via MCP. See the full comparison."
+      "text": "NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use (Claude, ChatGPT, your IDE) via MCP. See the full comparison."
      }
     },
     {
@@ -156,14 +156,14 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>Private AI knowledge base</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 04</div>
     <h1>Your documents, answering <span class="o">back.</span></h1>
-    <p class="page-lede">A private AI knowledge base turns your files into something your assistant can search, cite, and reason over — from any AI client, with your data isolated in your own space.</p>
+    <p class="page-lede">A private AI knowledge base turns your files into something your assistant can search, cite, and reason over from any AI client, with your data isolated in your own space.</p>
   </div>
 </header>
 
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">Most of what you know isn't in any AI model. It's in your PDFs, reports, research papers, meeting notes, and manuals. Generic assistants can't see any of it, so they answer your specific questions with general knowledge — confidently, and often wrong.</p>
+    <p class="lead">Most of what you know isn't in any AI model. It's in your PDFs, reports, research papers, meeting notes, and manuals. Generic assistants can't see any of it, so they answer your specific questions with general knowledge. They sound confident and are often wrong.</p>
     <p class="lead">VeelIQ Context turns those documents into a private knowledge base. Upload once; the content is chunked and indexed. From then on, any connected AI client can search it semantically, quote it, and cite exactly which file an answer came from.</p>
 
     <h2>Problem</h2>
@@ -177,12 +177,12 @@
 
     <h2>Solution</h2>
     <p>Upload documents to your Context workspace at <a href="https://app.context.veeliq.com/" target="_blank" rel="noopener">app.context.veeliq.com</a>. Each file is split into chunks and embedded for semantic search. When your assistant needs information, it calls <code>search_knowledge</code>; VeelIQ returns the most relevant chunks with similarity scores and source metadata, and the assistant composes a grounded, cited answer.</p>
-    <p>The knowledge base lives behind your personal MCP URL, so it works identically in Claude, ChatGPT, Cursor, or any MCP client — one corpus, every tool. Isolation is per-user with row-level security, and your content is never used for model training. For evaluation criteria, see <a href="/blog/private-knowledge-bases-for-ai/">private knowledge bases for AI</a>.</p>
+    <p>The knowledge base lives behind your personal MCP URL, so it works identically in Claude, ChatGPT, Cursor, or any MCP client. One set of documents serves every tool. Isolation is per-user with row-level security, and your content is never used for model training. For evaluation criteria, see <a href="/blog/private-knowledge-bases-for-ai/">private knowledge bases for AI</a>.</p>
 
     <h2>Benefits</h2>
     <ul>
       <li>Specific answers with citations instead of confident guesses.</li>
-      <li>Upload once, query from everywhere — no per-app re-uploading.</li>
+      <li>Upload once, query from everywhere, with no re-uploading per app.</li>
       <li>No infrastructure: chunking, embeddings, and retrieval are managed.</li>
       <li>Sources are listable and deletable; the corpus stays under your control.</li>
       <li>Workspaces separate corpora that shouldn't mix (clients, teams, personal).</li>
@@ -193,16 +193,16 @@
 
     <h2>Examples</h2>
     <ul>
-      <li><strong>Researcher</strong> — 40 papers in a workspace; asks comparative questions and gets chunk-level citations.</li>
-      <li><strong>Owner's manuals</strong> — upload the PDF once, then ask "what does this dashboard light mean?" from any device's AI.</li>
-      <li><strong>Team handbook</strong> — policies uploaded once; every teammate's assistant quotes the same source of truth.</li>
+      <li><strong>Researcher</strong>: 40 papers in a workspace; asks comparative questions and gets chunk-level citations.</li>
+      <li><strong>Owner's manuals</strong>: upload the PDF once, then ask "what does this dashboard light mean?" from any device's AI.</li>
+      <li><strong>Team handbook</strong>: policies uploaded once; every teammate's assistant quotes the same source of truth.</li>
     </ul>
 
     <h2 id="faq">FAQ</h2>
     <div class="faq-list">
 <details class="faq-item" id="uc-kb-vs-notebooklm">
   <summary><span>How is this different from NotebookLM? <a class="anchor-link" href="#uc-kb-vs-notebooklm" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
-  <div class="faq-a">NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use — Claude, ChatGPT, your IDE — via MCP. See the <a href="/comparisons/veeliq-vs-notebooklm/">full comparison</a>.</div>
+  <div class="faq-a">NotebookLM is a separate app you visit. A VeelIQ knowledge base plugs into the AI clients you already use (Claude, ChatGPT, your IDE) via MCP. See the <a href="/comparisons/veeliq-vs-notebooklm/">full comparison</a>.</div>
 </details>
 <details class="faq-item" id="uc-kb-formats">
   <summary><span>What can go into the knowledge base? <a class="anchor-link" href="#uc-kb-formats" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>

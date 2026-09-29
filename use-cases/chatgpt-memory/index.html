@@ -95,7 +95,7 @@
      "name": "Is what ChatGPT stores in VeelIQ private?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes. Facts are stored in your isolated space under row-level security. VeelIQ never sees the rest of your conversation — only the tool calls."
+      "text": "Yes. Facts are stored in your isolated space under row-level security. VeelIQ never sees the rest of your conversation, only the tool calls."
      }
     },
     {
@@ -156,38 +156,38 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/use-cases/">Use cases</a><span class="sep">/</span><span>ChatGPT memory</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Use case 01</div>
     <h1>Give ChatGPT a memory that's actually <span class="o">yours.</span></h1>
-    <p class="page-lede">Persistent, portable, inspectable memory for ChatGPT — stored in your own private space and shared with every other AI tool you use, via one MCP connector.</p>
+    <p class="page-lede">Persistent, portable, inspectable memory for ChatGPT, stored in your own private space and shared with every other AI tool you use, via one MCP connector.</p>
   </div>
 </header>
 
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">ChatGPT ships with a built-in memory feature, and it helps — inside ChatGPT. The moment you open Claude, Cursor, or any other tool, that memory stays behind. It is also limited in size, curated by OpenAI's own heuristics, and only partially visible to you.</p>
-    <p class="lead">VeelIQ takes a different approach: memory as a neutral layer that belongs to you, not to any single AI vendor. Connect ChatGPT to your VeelIQ endpoint and it can save facts on request, recall them in any later session, and search your uploaded documents — while the exact same memory serves every other client you connect.</p>
+    <p class="lead">ChatGPT ships with a built-in memory feature, and it helps, but only inside ChatGPT. The moment you open Claude, Cursor, or any other tool, that memory stays behind. It is also limited in size, curated by OpenAI's own heuristics, and only partially visible to you.</p>
+    <p class="lead">VeelIQ takes a different approach: memory as a neutral layer that belongs to you, not to any single AI vendor. Connect ChatGPT to your VeelIQ endpoint and it can save facts on request, recall them in any later session, and search your uploaded documents. The same memory also serves every other client you connect.</p>
 
     <h2>Problem</h2>
     <p>Every new ChatGPT conversation starts nearly from zero. You re-explain your role, your project, your stack, your preferences. Built-in memory softens this but introduces new problems:</p>
     <ul>
-      <li><strong>Vendor lock-in</strong> — memories live inside OpenAI's product and cannot follow you elsewhere.</li>
-      <li><strong>Opacity</strong> — you don't fully control what gets stored or how it's used in prompts.</li>
-      <li><strong>No documents</strong> — built-in memory stores snippets about you; it does not make your files searchable.</li>
-      <li><strong>Capacity</strong> — built-in memory is small and prunes itself unpredictably.</li>
+      <li><strong>Vendor lock-in</strong>: memories live inside OpenAI's product and cannot follow you elsewhere.</li>
+      <li><strong>Opacity</strong>: you don't fully control what gets stored or how it's used in prompts.</li>
+      <li><strong>No documents</strong>: built-in memory stores snippets about you; it does not make your files searchable.</li>
+      <li><strong>Capacity</strong>: built-in memory is small and prunes itself unpredictably.</li>
     </ul>
 
     <h2>Solution</h2>
     <p>Add your personal VeelIQ MCP URL as a connector in ChatGPT. ChatGPT then gains native tools backed by your private space:</p>
     <ul>
-      <li><code>remember</code> — "Remember that our launch is October 3rd" stores a durable fact.</li>
-      <li><code>recall</code> — next week, in a fresh chat, "When is the launch?" retrieves it.</li>
-      <li><code>search_knowledge</code> — questions are answered from your uploaded PDFs, with sources.</li>
+      <li><code>remember</code>: "Remember that our launch is October 3rd" stores a durable fact.</li>
+      <li><code>recall</code>: next week, in a fresh chat, "When is the launch?" retrieves it.</li>
+      <li><code>search_knowledge</code>: questions are answered from your uploaded PDFs, with sources.</li>
     </ul>
     <p>Because the store is client-agnostic, a fact saved from ChatGPT is instantly available to Claude or your IDE agent. Your memory finally has one home with many doors.</p>
 
     <h2>Benefits</h2>
     <ul>
       <li>Conversations start warm: context carries over between sessions automatically.</li>
-      <li>Memory is portable across vendors — switch tools without losing anything.</li>
+      <li>Memory is portable across vendors, so you can switch tools without losing anything.</li>
       <li>Everything stored is visible and deletable in your dashboard.</li>
       <li>Document knowledge comes along free: the same connector serves your files.</li>
       <li>Private by design: row-level security isolation, no training on your content.</li>
@@ -197,7 +197,7 @@
     <p><a href="/context.html">VeelIQ Context</a>: memory (remember / recall), knowledge search over uploaded documents, and workspaces to keep personal and work contexts separate. Everything on this page works on the free Beta plan.</p>
 
     <h2>Example</h2>
-    <p>A product manager tells ChatGPT once: <em>"Remember: we decided to keep the free tier at $0 through Beta, decision made June 28."</em> Two weeks later, in a brand-new conversation — or in Claude — they ask <em>"What did we decide about pricing?"</em> The assistant calls <code>recall</code>, finds the fact, and answers with the date and the decision. No scrolling through old chats, no re-explaining.</p>
+    <p>A product manager tells ChatGPT once: <em>"Remember: we decided to keep the free tier at $0 through Beta, decision made June 28."</em> Two weeks later, in a brand-new conversation (or in Claude), they ask <em>"What did we decide about pricing?"</em> The assistant calls <code>recall</code>, finds the fact, and answers with the date and the decision. No scrolling through old chats, no re-explaining.</p>
 
     <h2 id="faq">FAQ</h2>
     <div class="faq-list">
@@ -215,7 +215,7 @@
 </details>
 <details class="faq-item" id="uc-cg-private">
   <summary><span>Is what ChatGPT stores in VeelIQ private? <a class="anchor-link" href="#uc-cg-private" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
-  <div class="faq-a">Yes. Facts are stored in your isolated space under row-level security. VeelIQ never sees the rest of your conversation — only the tool calls.</div>
+  <div class="faq-a">Yes. Facts are stored in your isolated space under row-level security. VeelIQ never sees the rest of your conversation, only the tool calls.</div>
 </details>
 <details class="faq-item" id="uc-cg-share">
   <summary><span>Will Claude see what ChatGPT remembered? <a class="anchor-link" href="#uc-cg-share" aria-label="Link to this question">#</a></span> <span class="plus">+</span></summary>
@@ -244,7 +244,7 @@
       <a class="link-card" href="/blog/ai-memory-vs-rag/">
         <span class="lc-kicker">Blog</span>
         <span class="lc-title">AI memory vs RAG</span>
-        <span class="lc-desc">Two mechanisms, one endpoint — when to use which.</span>
+        <span class="lc-desc">Two mechanisms, one endpoint: when to use which.</span>
         <span class="lc-arr">Read →</span>
       </a>
     </div>

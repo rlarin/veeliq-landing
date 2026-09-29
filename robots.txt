@@ -1,4 +1,4 @@
-# VeelIQ — robots.txt
+# VeelIQ robots.txt
 # All crawlers, including AI crawlers, are welcome.
 # AI-readable summaries: https://www.veeliq.com/llms.txt
 #                        https://www.veeliq.com/llms-full.txt

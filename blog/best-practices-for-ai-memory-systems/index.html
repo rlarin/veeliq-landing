@@ -109,7 +109,7 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Best practices for AI memory systems</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Guides</div>
     <h1>Best practices for AI memory <span class="o">systems.</span></h1>
-    <p class="page-lede">Memory is the easiest AI capability to switch on and the easiest to ruin. Ten practices — learned from systems that drowned in their own facts — for keeping memory useful at month twelve, not just day one.</p>
+    <p class="page-lede">Memory is the easiest AI capability to switch on and the easiest to ruin. Here are ten practices, learned from systems that drowned in their own facts, for keeping memory useful at month twelve, not just day one.</p>
     <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~8 min read</span><span>·</span><span>VeelIQ</span></div>
   </div>
 </header>
@@ -117,7 +117,7 @@
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">Every memory system faces the same arc: early delight ("it remembered!"), middle-age noise (recall returns six half-relevant facts), and — without discipline — eventual distrust, when stale or contradictory memories make the assistant <em>worse</em> than a stateless one. The practices below are about surviving that arc. They apply whether your store is <a href="/context.html">VeelIQ Context</a>, a homegrown stack, or any vendor's memory feature.</p>
+    <p class="lead">Every memory system faces the same arc: early delight ("it remembered!"), middle-age noise (recall returns six half-relevant facts), and, without discipline, eventual distrust when stale or contradictory memories make the assistant <em>worse</em> than a stateless one. The practices below are about surviving that arc. They apply whether your store is <a href="/context.html">VeelIQ Context</a>, a homegrown stack, or any vendor's memory feature.</p>
 
     <h2>Storage practices</h2>
     <h3>1. Store conclusions, not transcripts</h3>
@@ -125,40 +125,40 @@
     <h3>2. Keep facts atomic</h3>
     <p>One assertion per entry. "Launch is Oct 3" and "Marta owns the launch comms" retrieve independently and cleanly; fused into one entry, a query about comms drags in dates, and revising one half means rewriting both. Atomicity is what makes semantic recall precise.</p>
     <h3>3. Write for your future retriever</h3>
-    <p>Memories are retrieved by similarity to future questions, so phrase them the way they'll be asked about. "Client Acme's decision-maker is Marta Ruiz (CTO)" beats "spoke to Marta today" — the first matches "who decides at Acme?", the second matches nothing. Include the entities; drop the diary voice.</p>
+    <p>Memories are retrieved by similarity to future questions, so phrase them the way they'll be asked about. "Client Acme's decision-maker is Marta Ruiz (CTO)" beats "spoke to Marta today". The first matches "who decides at Acme?", the second matches nothing. Include the entities; drop the diary voice.</p>
     <h3>4. Timestamp and attribute everything</h3>
-    <p>"Deadline is Aug 14 (moved from Jul 30, per Monday's standup)" carries its own provenance. When facts conflict later — and they will — recency and source are how conflicts resolve. Metadata is cheap at write time and priceless at read time.</p>
+    <p>"Deadline is Aug 14 (moved from Jul 30, per Monday's standup)" carries its own provenance. When facts conflict later (and they will), recency and source are how conflicts resolve. Metadata is cheap at write time and priceless at read time.</p>
 
     <h2>Retrieval practices</h2>
     <h3>5. Recall semantically, inject sparingly</h3>
     <p>Query memory with meaning ("what do we know about Acme's renewal?"), take the top handful of matches, and stop. Injecting twenty tangential facts recreates the noisy-window problem memory was meant to solve (<a href="/blog/ai-context-windows-explained/">why over-stuffing backfires</a>).</p>
     <h3>6. Recall at the right moments</h3>
-    <p>Three beats cover most workflows: session start (who/what is this about?), before decisions (what did we already decide and why?), and on surprise (has this error appeared before?). Recall-everywhere adds latency and noise; recall-never wastes the store. For unattended agents this cadence is even more structured — see <a href="/blog/long-term-memory-for-ai-agents/">agent memory patterns</a>.</p>
+    <p>Three beats cover most workflows: session start (who/what is this about?), before decisions (what did we already decide and why?), and on surprise (has this error appeared before?). Recall-everywhere adds latency and noise; recall-never wastes the store. For unattended agents this cadence is even more structured. See <a href="/blog/long-term-memory-for-ai-agents/">agent memory patterns</a>.</p>
 
     <h2>Lifecycle practices</h2>
     <h3>7. Supersede, don't accumulate</h3>
-    <p>When reality changes, the new fact should explicitly replace the old — update or delete the stale entry rather than letting "deadline Jul 30" and "deadline Aug 14" coexist for the retriever to coin-flip between. Contradiction is the fastest way to lose trust in a memory system.</p>
+    <p>When reality changes, the new fact should explicitly replace the old one. Update or delete the stale entry rather than letting "deadline Jul 30" and "deadline Aug 14" coexist for the retriever to coin-flip between. Contradiction is the fastest way to lose trust in a memory system.</p>
     <h3>8. Forget on purpose</h3>
-    <p>Not everything deserves permanence. Progress markers ("halfway through the migration") expire naturally; preferences and decisions persist. A periodic sweep — monthly is plenty for personal use — deleting dead facts keeps recall sharp. Deliberate forgetting is a feature, not data loss.</p>
+    <p>Not everything deserves permanence. Progress markers ("halfway through the migration") expire naturally; preferences and decisions persist. A periodic sweep that deletes dead facts (monthly is plenty for personal use) keeps recall sharp. Deleting on purpose is good maintenance, and you lose nothing you need.</p>
 
     <h2>Trust practices</h2>
     <h3>9. Keep memory auditable</h3>
-    <p>You must be able to list every stored fact, edit it, and delete it — in an interface, not a database console. This is a functional requirement (hygiene is impossible without it) and a trust requirement: memory you can't inspect is memory you'll eventually fear. It's also the sharpest question to ask any vendor whose memory feature is a black box.</p>
+    <p>You must be able to list every stored fact, edit it, and delete it in an interface, not a database console. This is a functional requirement (hygiene is impossible without it) and a trust requirement: memory you can't inspect is memory you'll eventually fear. It's also the sharpest question to ask any vendor whose memory feature is a black box.</p>
     <h3>10. Scope memories to contexts</h3>
-    <p>Work and personal, client A and client B — contexts that must not cross-pollinate need separate stores (workspaces), enforced at the storage layer rather than by prompt etiquette. Scoping also improves relevance: a smaller, coherent store simply retrieves better than one giant heap.</p>
+    <p>Work and personal, client A and client B: contexts that must not cross-pollinate need separate stores (workspaces), enforced at the storage layer rather than by prompt etiquette. Scoping also improves relevance: a smaller, coherent store simply retrieves better than one giant heap.</p>
 
     <h2>Anti-patterns, for the record</h2>
     <ul>
-      <li><strong>The hoarder</strong> — auto-remembering everything. Recall precision collapses within weeks.</li>
-      <li><strong>The diary</strong> — narrative entries ("had a great call today...") that match no future query.</li>
-      <li><strong>The immortal store</strong> — nothing ever deleted; contradictions accumulate until answers destabilize.</li>
-      <li><strong>The black box</strong> — memory nobody can inspect; trust decays with the first wrong recall.</li>
-      <li><strong>The single heap</strong> — all contexts in one store; client A's secrets surface in client B's session.</li>
+      <li><strong>The hoarder</strong>: auto-remembering everything. Recall precision collapses within weeks.</li>
+      <li><strong>The diary</strong>: narrative entries ("had a great call today...") that match no future query.</li>
+      <li><strong>The immortal store</strong>: nothing ever deleted; contradictions accumulate until answers destabilize.</li>
+      <li><strong>The black box</strong>: memory nobody can inspect; trust decays with the first wrong recall.</li>
+      <li><strong>The single heap</strong>: all contexts in one store; client A's secrets surface in client B's session.</li>
     </ul>
 
     <h2>Key takeaways</h2>
     <ul>
-      <li>Write atomic, entity-rich, timestamped conclusions — phrased for the questions your future self will ask.</li>
+      <li>Write atomic, entity-rich, timestamped conclusions, phrased for the questions your future self will ask.</li>
       <li>Recall semantically at a few deliberate moments and inject only the top matches.</li>
       <li>Supersede stale facts, forget expired ones, and audit the store on a schedule.</li>
       <li>Inspectability and workspace scoping are the two properties that keep a memory system trustworthy at scale.</li>

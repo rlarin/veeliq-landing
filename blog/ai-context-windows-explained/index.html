@@ -109,7 +109,7 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>AI context windows explained</span></nav>
     <div class="eyebrow" style="margin-top:18px"><span class="bar"></span> Fundamentals</div>
     <h1>AI context windows, <span class="o">explained.</span></h1>
-    <p class="page-lede">The context window is the most misunderstood number in AI. Here's what it actually is, why "bigger" stopped being the answer, and how real systems work around its limits.</p>
+    <p class="page-lede">People misread the context window all the time. This post covers what it actually is, why "bigger" stopped being the answer, and how real systems work around its limits.</p>
     <div class="page-meta"><span>Published 2026-07-12</span><span>·</span><span>~7 min read</span><span>·</span><span>VeelIQ</span></div>
   </div>
 </header>
@@ -119,36 +119,36 @@
 
     <div class="defbox">
       <div class="defterm">Definition</div>
-      <p>The <strong>context window</strong> is the maximum amount of text — measured in tokens — that a language model can attend to in a single request: system instructions, conversation history, retrieved documents, tool results, and the response being generated, all counted together.</p>
+      <p>The <strong>context window</strong> is the maximum amount of text (measured in tokens) that a language model can attend to in a single request: system instructions, conversation history, retrieved documents, tool results, and the response being generated, all counted together.</p>
     </div>
 
     <p class="lead">Everything a model "knows" during a conversation is either baked into its weights at training time or present in the window right now. There is no third place. That single fact explains most of the practical behavior people find surprising: why chatbots forget, why long conversations drift, and why pasting a 200-page PDF doesn't work as well as expected.</p>
 
     <h2>Tokens, not pages</h2>
-    <p>Windows are measured in tokens — subword units averaging roughly ¾ of an English word. A 128K-token window is on the order of 300 pages; a 1M-token window, several novels. Sounds infinite. It isn't, for three reasons.</p>
+    <p>Windows are measured in tokens, which are subword units averaging roughly ¾ of an English word. A 128K-token window is on the order of 300 pages; a 1M-token window, several novels. Sounds infinite. It isn't, for three reasons.</p>
 
     <h2>Why bigger windows didn't end the problem</h2>
     <h3>1. Attention degrades over long inputs</h3>
-    <p>Models attend unevenly across very long contexts. Information buried mid-window is recalled less reliably than information near the start or end — the well-documented "lost in the middle" effect. Stuffing the window trades retrieval precision for the illusion of completeness: the fact is technically <em>in</em> context and practically invisible.</p>
+    <p>Models attend unevenly across very long contexts. Information buried mid-window is recalled less reliably than information near the start or end. This is the well-documented "lost in the middle" effect. Stuffing the window trades retrieval precision for the illusion of completeness: the fact is technically <em>in</em> context and practically invisible.</p>
     <h3>2. Cost and latency scale with input</h3>
-    <p>You pay per token, per request. Carrying 400K tokens of "maybe relevant" material on every turn multiplies cost and slows responses — for context the model mostly ignores. Efficient systems send the <em>relevant</em> few thousand tokens, not the <em>available</em> few hundred thousand.</p>
+    <p>You pay per token, per request. Carrying 400K tokens of "maybe relevant" material on every turn multiplies cost and slows responses, all for context the model mostly ignores. Efficient systems send the <em>relevant</em> few thousand tokens, not the <em>available</em> few hundred thousand.</p>
     <h3>3. The window still resets</h3>
-    <p>This is the limit no window size fixes: when the session ends, the window empties. A 10M-token window that resets is still amnesia — just roomier. Persistence requires a store <em>outside</em> the window entirely.</p>
+    <p>This is the limit no window size fixes: when the session ends, the window empties. A 10M-token window that resets still forgets everything. It just has more room. Persistence requires a store <em>outside</em> the window entirely.</p>
 
     <h2>The working-memory model</h2>
     <p>The productive mental model comes from computing's memory hierarchy: <strong>the context window is RAM, not disk.</strong></p>
     <ul>
-      <li><strong>Window (RAM)</strong> — fast, expensive, volatile. Holds what's needed for the current task.</li>
-      <li><strong>Memory store (disk)</strong> — durable facts that survive sessions: decisions, preferences, state. Loaded into RAM on demand via <a href="/use-cases/persistent-memory/">semantic recall</a>.</li>
-      <li><strong>Knowledge corpus (disk)</strong> — indexed documents, from which retrieval loads only the relevant chunks per query (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</li>
+      <li><strong>Window (RAM)</strong>: fast, expensive, volatile. Holds what's needed for the current task.</li>
+      <li><strong>Memory store (disk)</strong>: durable facts that survive sessions: decisions, preferences, state. Loaded into RAM on demand via <a href="/use-cases/persistent-memory/">semantic recall</a>.</li>
+      <li><strong>Knowledge corpus (disk)</strong>: indexed documents, from which retrieval loads only the relevant chunks per query (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>).</li>
     </ul>
-    <p>Nobody solves RAM limits by buying enough RAM to hold their whole hard drive. You page in what you need. Retrieval and memory are exactly that paging mechanism for AI — which is why they matter <em>more</em>, not less, as windows grow: the bigger the window, the more tempting the anti-pattern of filling it.</p>
+    <p>Nobody solves RAM limits by buying enough RAM to hold their whole hard drive. You page in what you need. Retrieval and memory are exactly that paging mechanism for AI, which is why they matter <em>more</em>, not less, as windows grow: the bigger the window, the more tempting the anti-pattern of filling it.</p>
 
     <h2>Practical implications</h2>
     <h3>For everyday AI use</h3>
     <ul>
-      <li>Don't re-paste stable context every session — store it once (memory) and let recall inject it when relevant.</li>
-      <li>Don't paste whole documents when you need answers from them — index them and let retrieval pick chunks (a <a href="/use-cases/private-ai-knowledge-base/">knowledge base</a>).</li>
+      <li>Don't re-paste stable context every session. Store it once (memory) and let recall inject it when relevant.</li>
+      <li>Don't paste whole documents when you need answers from them. Index them and let retrieval pick chunks (a <a href="/use-cases/private-ai-knowledge-base/">knowledge base</a>).</li>
       <li>Long conversations drift because early turns effectively fade; important conclusions should graduate from the window to the store: "remember this decision."</li>
     </ul>
     <h3>For agents and automation</h3>
@@ -158,13 +158,13 @@
     </ul>
 
     <h2>How the pieces fit</h2>
-    <p>A well-engineered session composes its window per request: standing instructions (small), recalled memories relevant to the question (smaller), retrieved chunks from the corpus (targeted), and the live conversation. That composition discipline is <a href="/blog/what-is-context-engineering/">context engineering</a> — and services like <a href="/context.html">VeelIQ Context</a> exist to make the store-and-retrieve side of it automatic: the assistant calls <code>recall</code> and <code>search_knowledge</code> over MCP and pages in precisely what the moment needs.</p>
+    <p>A well-engineered session composes its window per request: standing instructions (small), recalled memories relevant to the question (smaller), retrieved chunks from the corpus (targeted), and the live conversation. That composition discipline is <a href="/blog/what-is-context-engineering/">context engineering</a>, and services like <a href="/context.html">VeelIQ Context</a> exist to make the store-and-retrieve side of it automatic: the assistant calls <code>recall</code> and <code>search_knowledge</code> over MCP and pages in precisely what the moment needs.</p>
 
     <h2>Key takeaways</h2>
     <ul>
       <li>The window bounds a single request; it is working memory, not storage.</li>
       <li>Bigger windows help but don't repeal the three limits: attention degradation, token economics, and session reset.</li>
-      <li>Durable AI systems pair the window with external memory and retrieval — RAM plus disk, paged on demand.</li>
+      <li>Durable AI systems pair the window with external memory and retrieval, like RAM plus disk, paged in on demand.</li>
       <li>The skill isn't filling the window; it's composing it.</li>
     </ul>
 

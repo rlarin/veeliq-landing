@@ -117,16 +117,16 @@
 <main class="article">
   <div class="wrap-article">
 
-    <p class="lead">Retrieval-augmented generation (RAG) and AI memory share machinery — both store information outside the model and retrieve it by semantic similarity at query time. But they differ in <strong>what</strong> is stored, <strong>who writes it</strong>, <strong>how it changes</strong>, and <strong>what question it answers</strong>. Getting the distinction right is foundational to designing any persistent AI system.</p>
+    <p class="lead">Retrieval-augmented generation (RAG) and AI memory share machinery. Both store information outside the model and retrieve it by semantic similarity at query time. But they differ in <strong>what</strong> is stored, <strong>who writes it</strong>, <strong>how it changes</strong>, and <strong>what question it answers</strong>. Getting the distinction right is foundational to designing any persistent AI system.</p>
 
     <h2>Two definitions</h2>
     <div class="defbox">
-      <div class="defterm">RAG — Retrieval-Augmented Generation</div>
+      <div class="defterm">RAG (Retrieval-Augmented Generation)</div>
       <p>A pattern where documents are chunked, embedded, and indexed; at query time the most relevant chunks are retrieved and injected into the model's context so the answer is grounded in them. The store is a <strong>corpus of source material</strong> written by humans.</p>
     </div>
     <div class="defbox">
       <div class="defterm">AI Memory</div>
-      <p>A store of <strong>discrete, distilled facts</strong> accumulated during use — decisions, preferences, entities, constraints — written mostly <strong>by the AI itself</strong> (on user request or by policy) and recalled in later sessions. Memory is about continuity, not source material.</p>
+      <p>A store of <strong>discrete, distilled facts</strong> accumulated during use (decisions, preferences, entities, constraints), written mostly <strong>by the AI itself</strong> (on user request or by policy) and recalled in later sessions. Memory is about continuity, not source material.</p>
     </div>
 
     <h2>The differences that matter</h2>
@@ -144,29 +144,29 @@
     </table></div>
 
     <h2>Why the confusion happens</h2>
-    <p>Under the hood, both usually run on the same stack: embeddings plus a vector index plus similarity search (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>). From the model's perspective both arrive the same way — as text injected into context. The difference is entirely in the data discipline above the stack. That's exactly why systems that treat them as one store go wrong: they end up with meeting-decision facts buried between 800-token PDF chunks, or entire documents "remembered" as memories that can never be updated or cited.</p>
+    <p>Under the hood, both usually run on the same stack: embeddings plus a vector index plus similarity search (<a href="/blog/how-retrieval-works-in-modern-ai/">how retrieval works</a>). From the model's perspective both arrive the same way: as text injected into context. The difference is entirely in the data discipline above the stack. That's exactly why systems that treat them as one store go wrong: they end up with meeting-decision facts buried between 800-token PDF chunks, or entire documents "remembered" as memories that can never be updated or cited.</p>
 
     <h2>When you want RAG</h2>
     <ul>
       <li>The information exists as <strong>documents</strong>: manuals, papers, specs, contracts, handbooks.</li>
-      <li>Answers must <strong>cite sources</strong> — "per section 4.2 of the lease..."</li>
+      <li>Answers must <strong>cite sources</strong>: "per section 4.2 of the lease..."</li>
       <li>The corpus is large relative to what fits (or belongs) in a prompt.</li>
       <li>Content changes by <strong>replacement</strong>: new report, new version, re-index.</li>
     </ul>
-    <p>Example: uploading forty research papers and asking comparative questions across them. That's a <a href="/use-cases/private-ai-knowledge-base/">private AI knowledge base</a> — pure RAG.</p>
+    <p>Example: uploading forty research papers and asking comparative questions across them. That's a <a href="/use-cases/private-ai-knowledge-base/">private AI knowledge base</a>. That's pure RAG.</p>
 
     <h2>When you want memory</h2>
     <ul>
       <li>The information emerges <strong>in conversation</strong>: "we decided X", "I prefer Y", "the client's deadline is Z."</li>
       <li>It must survive the session and be available <strong>next week, in any client</strong>.</li>
-      <li>It's compact and factual — a sentence, not a document.</li>
+      <li>It's compact and factual: a sentence, not a document.</li>
       <li>It may need to be <strong>revised or deleted</strong> as reality changes.</li>
     </ul>
-    <p>Example: an assistant that stops asking about your stack because it remembered it the first time. That's <a href="/use-cases/persistent-memory/">persistent memory</a> — no documents involved.</p>
+    <p>Example: an assistant that stops asking about your stack because it remembered it the first time. That's <a href="/use-cases/persistent-memory/">persistent memory</a>, with no documents involved.</p>
 
     <h2>Why serious systems need both</h2>
-    <p>A real working session weaves them together. Ask "Draft the renewal email for Acme": memory supplies who Acme's decision-maker is and what discount was agreed; knowledge supplies the contract clause the email must reference. Neither store alone can answer the question. This is why unified context layers expose both behind one interface — in <a href="/context.html">VeelIQ Context</a>, an assistant calls <code>search_knowledge</code> for documents and <code>recall</code> for facts, through the same MCP endpoint, and decides per question which to use (often both).</p>
-    <p>The pairing also fixes each store's weakness. Memory keeps RAG current ("the Q2 report supersedes Q1 for revenue questions"). RAG keeps memory honest — a fact can cite the document that supports it.</p>
+    <p>A real working session weaves them together. Ask "Draft the renewal email for Acme": memory supplies who Acme's decision-maker is and what discount was agreed; knowledge supplies the contract clause the email must reference. Neither store alone can answer the question. This is why unified context layers expose both behind one interface. In <a href="/context.html">VeelIQ Context</a>, an assistant calls <code>search_knowledge</code> for documents and <code>recall</code> for facts, through the same MCP endpoint, and decides per question which to use (often both).</p>
+    <p>The pairing also fixes each store's weakness. Memory keeps RAG current ("the Q2 report supersedes Q1 for revenue questions"). RAG keeps memory honest, because a fact can cite the document that supports it.</p>
 
     <h2>Design rules of thumb</h2>
     <ol>
@@ -179,7 +179,7 @@
     <h2>Key takeaways</h2>
     <ul>
       <li>RAG retrieves from human-written source material; memory retrieves facts the AI accumulated during use.</li>
-      <li>Same machinery, different data discipline — and the discipline is what makes each useful.</li>
+      <li>Same machinery, different data discipline, and that discipline is what makes each one useful.</li>
       <li>Most real assistant tasks need both, which is why modern context layers ship them together.</li>
     </ul>
 
