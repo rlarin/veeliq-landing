@@ -33,6 +33,7 @@ Zed, and Windsurf.
 Products:
 - VeelIQ Context (Beta, free plan available): https://www.veeliq.com/context.html
 - Plugin Marketplace (in development): https://www.veeliq.com/plugins.html
+- Plugin Marketplace waitlist: https://www.veeliq.com/waitlist/
 
 Key Pages:
 - What is VeelIQ (canonical overview): https://www.veeliq.com/about/what-is-veeliq/
