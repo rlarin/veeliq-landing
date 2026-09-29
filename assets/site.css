@@ -86,6 +86,7 @@ img,svg{display:block;max-width:100%}
 .nav-drawer{display:none;flex-direction:column;background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}
 .nav-drawer.open{max-height:420px;padding:1rem 0}
 .nav-drawer .nav-link{display:block;padding:.75rem 1.5rem;border-bottom:1px solid var(--line)}
+.nav-drawer .btn-sm{display:flex;justify-content:center;margin:.75rem 1.5rem 0;padding:10px 12px}
 
 /* ===== BUTTONS / PILLS ===== */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:-.005em;transition:all .2s;white-space:nowrap;font-family:var(--font-ui)}
@@ -235,6 +236,8 @@ footer.foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){.foot-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.wrap,.wrap-article{padding-inline:20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}}
+@media(max-width:900px){.wrap,.wrap-article{padding-inline:20px}.nav-inner{padding:14px 20px;gap:12px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}}
+/* Narrow phones: the nav CTA moves into the drawer so the hamburger stays on screen */
+@media(max-width:380px){.nav-actions .btn{display:none}}
 @media(max-width:600px){.foot-grid{grid-template-columns:1fr;gap:28px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

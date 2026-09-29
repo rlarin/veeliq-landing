@@ -78,8 +78,9 @@ button{font-family:inherit;background:none;border:none;cursor:pointer;color:inhe
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .nav-drawer{display:none;flex-direction:column;background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}
-.nav-drawer.open{max-height:260px;padding:1rem 0}
+.nav-drawer.open{max-height:320px;padding:1rem 0}
 .nav-drawer .nav-link{display:block;padding:.75rem 1.5rem;border-bottom:1px solid var(--line)}
+.nav-drawer .btn-sm{display:flex;justify-content:center;margin:.75rem 1.5rem 0;padding:10px 12px}
 
 .page-body{position:relative;z-index:1}
 .content{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem;opacity:0;animation:fadeUp 1s ease .2s forwards}
@@ -133,7 +134,8 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
 .foot-link:hover{color:var(--ink)}
 .foot-copy{font-size:11px;color:var(--muted-2);font-family:var(--font-mono)}
 
-@media(max-width:900px){.nav-inner{padding:14px 20px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.geo-diamond,.geo-diamond-sm{display:none}.content{padding:2.5rem 1.25rem 4rem}.foot-inner{flex-direction:column;align-items:flex-start;padding-inline:20px}.legal-nav{flex-wrap:wrap}}
+@media(max-width:900px){.nav-inner{padding:14px 20px;gap:12px}.nav-links{display:none}.hamburger{display:flex}.nav-drawer{display:flex}.geo-diamond,.geo-diamond-sm{display:none}.content{padding:2.5rem 1.25rem 4rem}.foot-inner{flex-direction:column;align-items:flex-start;padding-inline:20px}.legal-nav{flex-wrap:wrap}}
+@media(max-width:380px){.nav-actions .btn{display:none}}
 </style>
 </head>
 <body data-theme="light">
@@ -171,6 +173,7 @@ footer.foot{padding:40px 0 32px;border-top:1px solid var(--line);background:var(
     <a href="index.html" class="nav-link">← Home</a>
     <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
     <a href="terms-of-service.html" class="nav-link">Terms</a>
+    <a href="https://app.context.veeliq.com/" class="btn btn-sm btn-orange" target="_blank" rel="noopener">Try Context free →</a>
   </div>
 </nav>
 
